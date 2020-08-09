@@ -1,0 +1,231 @@
+
+
+/*chat code start */
+.chatTab ul li a{
+    display: flex;
+    justify-content: space-around;
+        border-bottom: 1px solid #f0f0f0;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+.ChatAll{
+     
+    margin-bottom: 30px;
+}
+.chatInner{
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16);
+}
+.clientImg{
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    float: left;
+}
+.clientImg img{
+    width: 100%;
+    object-fit: cover;
+}
+.clientContent{
+    display: inline-block;
+    float: right;
+    width: 50%;
+}
+.clientContent h5{
+    color: #000;
+    font-size: 14px;
+    line-height: 16px;
+    font-family: var(--monserratRegular);
+}
+.clientContent p{
+    color: #00000080;
+    font-size: 12px;
+    line-height: 16px;
+    font-family: var(--monserratLight);
+}
+.chatDate{
+    font-size: 12px;
+    color: #00000080;
+    font-family: var(--monserratLight);
+    float: right;
+}
+.chatTab ul li a.chatActive{
+  background: #007bff9c;
+}
+.chatTab ul li a.chatActive h5,.chatTab ul li a.chatActive p{
+       color: #fff;
+}
+.chatTab ul li a.chatActive .chatDate{
+    color: #fff;
+}
+.chatLeft h2{
+    padding: 10px 20px;
+}
+.chatLeft{
+        background-color: #f7f7f7
+}
+.profileImg{
+    height: 32px;
+    width: 32px;
+        border-radius: 50%;
+    overflow: hidden;
+}
+.profileImg img{
+    width: 100%;
+    height: 100%;
+}
+.profileName h5{
+       color: #000;
+    font-size: 20px;
+    line-height: 16px;
+    font-family: var(--monserratRegular); 
+}
+.personalHead{
+    display: flex;
+   align-items: center;
+           padding: 15px 20px;
+}
+.profileName{
+    margin-left: 15px;
+}
+.reciverImg{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.reciverImg img{
+    width: 100%;
+    height: 100%;
+}
+.revicerInner{
+    display: flex;
+    align-items: center;
+        margin-bottom: 30px;
+}
+.revicerInner:last-child{
+    margin-bottom: 0;
+}
+.reciverContent p {
+    color: #00000080;
+    font-size: 14px;
+    line-height: 18px;
+    font-family: var(--monserratLight);
+}
+.reciverContent{
+    width: 40%;
+    padding: 9px 17px;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.16);
+    margin-left:25px;
+    background-color: #fff;
+}
+.chatRight{
+/*       padding: 0px 15px;*/
+}
+.reciverContent .chatDate{
+    margin-top: 10px;
+    font-size: 10px;
+}
+/*
+.revicerInner:nth-child(even){
+    flex-direction: row-reverse;
+}
+*/
+.revicerInner:nth-child(even) .reciverContent{
+    margin-left: 0px;
+    margin-right: 25px;
+}
+.personalchatAll{
+    padding:25px 15px;
+        height: 655px;
+    overflow-x: auto;
+}
+.bgColor8{
+    background: #fbfbfb;
+    padding: 0;
+}
+.bgColor4{
+    background: #f7f7f7;
+     padding: 0;
+}
+.personalHead{
+    position: relative;
+}
+.personalHead::before{
+    position: absolute;
+    content: '';
+    top: 60px;
+    left: 0px;
+    height: 2px;
+    background: #f0f0f0;
+    width: 100%;
+    
+}
+.chatLeft h2{
+    font-size: 26px;
+}
+.chatGroup{
+    margin-bottom: 0;
+    position: relative;
+    width: 85%;
+    display: inline-block;
+}
+.personalFooter{
+        padding: 15px 25px;
+    background: #fff;
+}
+.chatSmile{
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    top: 8px;
+    left: 10px
+}
+.chatSmile img{
+    width: 100%;
+    object-fit: cover;
+}
+.chatGroup input{
+         padding: 10px 10px 10px 40px;
+    border: 1px solid #f0f0f0;
+    border-radius: 20px;
+    background: #fff;
+    font-family: var(--monserratLight);
+    font-size: 15px;
+}
+.chatGroup input:focus{
+    outline: none;
+     border: 1px solid #f0f0f0;
+}
+.chatBtn2{
+    display: inline-block;
+    margin-left: 15px;
+    margin-bottom: 0;
+}
+.chatBtn2 button{
+    background: #007bff9c;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 0;
+    cursor: pointer;
+}
+.chatTab{
+    height: 767px;
+    overflow-x: auto;
+}
+.personalchatAll:nth-child(4){
+    padding:25px 15px;
+        height: 655px;
+    overflow-x: auto;
+}
+
+.revicerInner.right_contet{
+    flex-direction: row-reverse;
+}
+/*chat code end*/
