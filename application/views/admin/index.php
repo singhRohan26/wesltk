@@ -14,14 +14,7 @@
                                 <div class="page-title-box d-flex align-items-center justify-content-between">
                                     <h4 class="mb-0 font-size-18">Dashboard</h4>
 
-                                    <div class="page-title-right">
-                                        <select class="form-control" id="filter_days" data-url="<?php echo base_url('admin/dashboardFilter');?>">
-                                            <option value="">Overall</option>
-                                            <option value="Daily">Daily</option>
-                                            <option value="Weekly">Weekly</option>
-                                            <option value="Monthly">Monthly</option>
-                                        </select>
-                                    </div>
+                                    
                                     
                                 </div>
                             </div>
@@ -43,7 +36,7 @@
                                                         </span>
                                                     </div>
                                                 </div>
-                                                <h4 class="m-0 align-self-center"><?php echo $total_users;?></h4>
+                                                <h4 class="m-0 align-self-center">1</h4>
                                                 
                                             </div>
                                         </div>
@@ -64,7 +57,7 @@
                                                         </span>
                                                     </div>
                                                 </div>
-                                                <h4 class="m-0 align-self-center"><?php echo $total_orders;?></h4>
+                                                <h4 class="m-0 align-self-center">1</h4>
                                                 
                                             </div>
                                         </div>
@@ -85,7 +78,7 @@
                                                         </span>
                                                     </div>
                                                 </div>
-                                                <h4 class="m-0 align-self-center"><?php echo $total_completed_orders;?></h4>
+                                                <h4 class="m-0 align-self-center">1</h4>
                                             </div>
                                         </div>
                                     </a>

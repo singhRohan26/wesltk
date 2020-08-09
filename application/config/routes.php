@@ -53,8 +53,16 @@ $route['default_controller'] = 'home';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = TRUE;
 
-
-
 ///   Admin Controlller ////
-
 $route['admin'] = 'admin/admin/index';
+$route['admin/doLogin'] = 'admin/admin/doLogin';
+$route['admin/dashboard'] = 'admin/admin/dashboard';
+$route['admin/forgot-password'] = 'admin/admin/forgotpassword';
+$route['admin/doForgotPassword'] = 'admin/admin/doForgotPassword';
+$route['admin/logout'] = 'admin/admin/logout';
+$route['admin/change-password'] = 'admin/admin/changePassword';
+$route['admin/doChangePass'] = 'admin/admin/doChangePass';
+$route['admin/edit-profile'] = 'admin/admin/editProfile';
+$route['admin/doChangeProfile/(:any)'] = 'admin/admin/doChangeProfile/$1';
+///   Admin-user Controlller ////
+$route['admin/user'] = 'admin/user/users';

@@ -30,7 +30,7 @@
                         <div class="card">
                             <div class="card-body p-4">
                                 <div class="p-2">
-                                    <h5 class="text-center">Admin Panel</h5>
+                                    <h5 class="text-center">Wesltk Admin Panel</h5>
                                     
                                     <div class="error_msg"></div>
                                     <?php 

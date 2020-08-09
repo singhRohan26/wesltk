@@ -36,9 +36,9 @@
                                         </div>
                                         <div class="card-block">
                                             <form name="editProfile" id="editProfile" method="post" action="<?php if(!empty($profileData['id'])) { echo base_url('admin/doChangeProfile/'.$profileData['id']); } else { echo ""; } ?>" enctype="multipart/form-data">
-                                                <div id="error_msg"></div>
+<!--                                                <div id="error_msg"></div>-->
                                                 <div class="form-group row">
-                                                    <label class="col-sm-2 col-form-label">Admin Name</label>
+                                                    <label class="col-sm-2 col-form-label">Name</label>
                                                     <div class="col-sm-10">
                                                      <input type="text" name="admin_name" id="admin_name" class="admin_name form-control" placeholder="Admin Name" value="<?php if(!empty($profileData['name'])) { echo $profileData['name'];}else{ echo "";} ?>">
                                                     </div>
@@ -50,19 +50,12 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
-                                                    <label class="col-sm-2 col-form-label">Profile Picture</label>
+                                                    <label class="col-sm-2 col-form-label">Phone No.</label>
                                                     <div class="col-sm-10">
-                                                     <input type="file" name="image_url" id="image_url" class="image_url form-control"><br>
+                                                     <input type="number" name="phone" id="phone" class="image_url form-control" value="<?php if(!empty($profileData['phone'])) { echo $profileData['phone'];}else{ echo "";} ?>"><br>
                                                     </div>
                                                 </div>
-                                             <?php if (!empty($profileData['image_url'])) { ?>
-                                          <div class="form-group row">
-                                            <label class="col-sm-2"></label>
-                                                <div class="col-sm-10">
-                                                  <img src="<?php echo base_url('uploads/image/' . $profileData['image_url']); ?>" style='height: 100px; width: 100px;' class="img-responsive">
-                                                </div>
-                                              </div>
-                                            <?php } ?>
+                                             
 
                                                 <div class="form-group row">
                                                     <label class="col-sm-2"></label>

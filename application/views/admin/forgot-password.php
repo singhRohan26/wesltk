@@ -21,7 +21,7 @@
 
     <body class="bg-primary bg-pattern">
         <div class="home-btn d-none d-sm-block">
-            <a href="index.html"><i class="mdi mdi-home-variant h2 text-white"></i></a>
+            <a href="<?php echo base_url('admin')?>"><i class="mdi mdi-home-variant h2 text-white"></i></a>
         </div>
 
         <div class="account-pages my-5 pt-5">

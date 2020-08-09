@@ -43,21 +43,14 @@
                     <div class="d-flex">
                         <!-- LOGO -->
                         <div class="navbar-brand-box">
-                           <!--  <a href="<?php echo base_url('admin/dashboard');?>" class="logo logo-dark">
-                                <span class="logo-sm" >
-                                    <img src="<?php echo base_url('uploads/image/' . $userData['image_url']); ?>" alt="" height="22">
-                                </span>
-                                <span class="logo-lg" >
-                                    <img src="<?php echo base_url('uploads/image/' . $userData['image_url']); ?>" alt="" height="20">
-                                </span>
-                            </a> -->
+                          
 
                             <a href="<?php echo base_url('admin/dashboard');?>" class="logo logo-light">
                                 <span class="logo-sm" >
-                                    <img src="<?php echo base_url('uploads/image/' . $userData['image_url']); ?>" alt="" style="position: absolute;height: 40px;width: 40px;border-radius: 50%;left: 4px;top: 10px;">
+                                    <img src="<?php echo base_url('public/admin/assets/images/logo.png') ?>" alt="" style="position: absolute;height: 40px;width: 40px;border-radius: 50%;left: 4px;top: 10px;">
                                 </span>
                                 <span class="logo-lg" >
-                                    <img src="<?php echo base_url('uploads/image/' . $userData['image_url']); ?>" alt="" style="position: absolute;height: 70px;width: 70px;left: 70px;border-radius: 50%;">
+                                    <img src="<?php echo base_url('public/admin/assets/images/logo.png') ?>" alt="" style="position: absolute;height: 40px;width: 80px;left: 70px;top:20px">
                                 </span>
                             </a>
                         </div>
@@ -163,18 +156,20 @@
                         <div class="dropdown d-inline-block">
                             <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img class="rounded-circle header-profile-user" src="<?php echo base_url('uploads/image/' . $userData['image_url']); ?>"
+<!--
+                                <img class="rounded-circle header-profile-user" src=""
                                     alt="Header Avatar">
+-->
                                 <span class="d-none d-sm-inline-block ml-1"><?php echo $userData['name'];?></span>
                                 <i class="mdi mdi-chevron-down d-none d-sm-inline-block"></i>
                             </button>
                             <div class="dropdown-menu dropdown-menu-right">
                                 <!-- item-->
-                                 <a class="dropdown-item" href="<?php echo base_url('admin/edit-profile/');?>"><i class="mdi mdi-face-profile font-size-16 align-middle mr-1"></i> Edit Profile</a>
+                                 <a class="dropdown-item" href="<?php echo base_url('admin/edit-profile') ?>"><i class="fas fa-user-alt"></i> Edit Profile</a>
                                  
-                                <a class="dropdown-item" href="<?php echo base_url('admin/change-password');?>"><i class="mdi mdi-face-profile font-size-16 align-middle mr-1"></i> Change Password</a>
+                                <a class="dropdown-item" href="<?php echo base_url('admin/change-password') ?>"><i class="fas fa-edit"></i> Change Password</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="<?php echo base_url('admin/logout');?>"><i class="mdi mdi-logout font-size-16 align-middle mr-1"></i> Logout</a>
+                                <a class="dropdown-item" href="<?php echo base_url('admin/logout') ?>"><i class="mdi mdi-logout font-size-16 align-middle mr-1"></i> Logout</a>
                             </div>
                         </div>
             
