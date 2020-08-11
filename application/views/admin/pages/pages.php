@@ -33,15 +33,8 @@
                                                 $content = array('id' => 'common-form', 'role' => "form");
                                                 echo form_open('admin/doupdateContent/'.$page_data['id'], $content);
                                             ?>
-	                                            <div class="row">
-                                                	
-	                                            	<div class="col-12">
-		                                                <div class="form-group">
-		                                                    <h5 class="font-size-14">Heading</h5>
-		                                                    <textarea class="form-control" id="page_heading" name="page_heading"><?php if(!empty($page_data)) { echo $page_data['heading']; }?></textarea>
-		                                                </div>
-                                                	</div>
-	                                            </div> 
+	                                            
+        								 <div id="error_msg"></div>
 	                                            <div class="row">
                                                 	
 	                                            	<div class="col-12">

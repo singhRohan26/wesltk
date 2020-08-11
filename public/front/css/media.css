@@ -1,0 +1,167 @@
+/*
+@media(max-width:2050px){
+	.bannerInner{
+    background: url(../img/banner.png) no-repeat;
+    min-height: 1265px;
+    background-size: cover
+}
+	.bannerContent{
+		padding-top: 100px;
+	}
+}
+@media(max-width:1920px){
+.bannerInner {
+    min-height: 1125px;
+}
+}
+@media(max-width:1720px){
+.bannerInner {
+    min-height: 1060px;
+}
+}
+	@media(max-width:1560px){
+.bannerInner {
+    min-height: 940px;	
+}
+		.bannerContent {
+    padding-top: 70px;
+}
+}
+@media(max-width:1367px){
+.bannerInner {
+    min-height: 855px;
+}
+}
+*/
+@media(max-width:1199px){
+
+
+}
+@media(max-width:991px){
+
+   /* Home Page Start*/
+   .container {
+    max-width: 100%;
+    padding: 0 30px;
+}
+.nav-item {
+    margin-right: 25px;
+}
+.nav-link {
+    font-size: 16px;
+}
+.bannerBox .searchBox {
+    padding: 0px;
+}
+.servicesSlider .serviceSlide .serviceImages
+{
+    height: 60px;
+    width: 60px;
+}
+.getappInner .col-sm-4, 
+.getappInner .col-sm-8
+{
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+.getappLeft
+{
+    text-align: center;
+}
+.homeSliders.slick-prev {
+    left: 43%;
+}
+.homeSliders .slick-next {
+    right: 43%;
+}
+ /* Home Page End*/
+
+
+}
+@media(max-width:767px){ 
+    
+    /* Sidenav Start */
+    .header
+    {
+        padding: 15px 0;
+    }
+
+    .navbar-expand-md .navbar-toggler {
+        display: block;
+        position: absolute;
+        right: 0;
+    }
+    .navbar-expand-md .navbar-collapse {
+        position: fixed;
+        width: 250px;
+        top: 0;
+        left: -250px;
+        background: var(--colorWhite);
+        height: 100%;
+        transition: all 0.3s ease;
+        display: initial !important;
+        margin-top: 60px;
+        padding: 20px 12px 0px 12px;
+        z-index: 9;
+        box-shadow: 0px 1px 1px 0px rgba(0,0,0,0.5);
+    }    
+    .nav-link:hover, .nav-link:focus
+    {
+        border-bottom: none;
+    }
+    .navbar-expand-md .navbar-nav {
+        flex-direction: column;
+    }
+    .navbar-light .navbar-nav .nav-item {
+        margin-bottom: 5px;
+    }
+    .headerBox 
+    {
+        display: block !important;
+        float: left !important;
+    }
+    .navbar-expand-md .navbar-nav .nav-link
+    {
+        padding: 0;
+    }
+    .nav-item
+    {
+        margin-bottom: 20px;
+    }
+    .navbar-expand-md .navbar-nav .dropdown-menu
+    {
+        position: relative;
+        background: transparent;
+        border: none;
+        padding-bottom: 0;
+    }
+    .navbar-expand-md .navbar-nav .dropdown-menu.show
+    {
+        transition: all 0.3s ease;
+    }
+    
+    .dropdown-item
+    {
+        color: #fff;
+    }
+    .userBox {
+        margin-left: 0;
+        position: relative;
+        margin-right: 0px;
+    }
+    .nav-item
+    {
+        margin-right: 0;
+    }
+    .headerBox
+    {
+        width: 100%;
+    }
+    /* Sidenav End */
+}
+@media(max-width:560px){
+
+
+}
+@media(max-width:414px){
+}

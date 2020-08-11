@@ -191,6 +191,40 @@ class Admin extends CI_Controller {
         }
     }
     
+    public function pages($page_id){
+        if(empty($this->is_login())){
+			redirect(base_url('admin'));
+		}
+		$data['pages_side'] = "true";
+		$data['title'] = ucwords($page_id);
+		$data['userData'] = $this->getLoginDetail();
+		$data['page_data'] = $this->admin_model->getPageDataByPageId($page_id);
+		$this->load->view('admin/commons/header', $data);
+		$this->load->view('admin/commons/sidebar');
+		$this->load->view('admin/pages/pages');
+		$this->load->view('admin/commons/footer');
+    }
+    
+    public function doupdateContent($page_id){
+    	if(empty($this->is_login())){
+			redirect(base_url('admin'));
+		}
+        $this->output->set_content_type('application/json');
+		$this->form_validation->set_rules('page_name', 'Content', 'required');
+		if ($this->form_validation->run() === FALSE) {
+			$this->output->set_output(json_encode(['result' => 0, 'errors' => $this->form_validation->error_array()]));
+			return FALSE;
+		}
+		$result = $this->admin_model->doupdateContent($page_id);
+		if ($result) {
+			$this->output->set_output(json_encode(['result' => 1, 'url' => $_SERVER['HTTP_REFERER'], 'msg' => 'Data Updated successfully!!..']));
+			return FALSE;
+		} else {
+			$this->output->set_output(json_encode(['result' => -1, 'msg' => 'No changes Were Made!']));
+			return FALSE;
+		}
+    }
+    
     
 
 	

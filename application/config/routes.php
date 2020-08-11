@@ -53,6 +53,10 @@ $route['default_controller'] = 'home';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = TRUE;
 
+///   home Controlller ////
+$route['home/your-cart'] = 'home/cart';
+
+
 ///   Admin Controlller ////
 $route['admin'] = 'admin/admin/index';
 $route['admin/doLogin'] = 'admin/admin/doLogin';
@@ -64,5 +68,7 @@ $route['admin/change-password'] = 'admin/admin/changePassword';
 $route['admin/doChangePass'] = 'admin/admin/doChangePass';
 $route['admin/edit-profile'] = 'admin/admin/editProfile';
 $route['admin/doChangeProfile/(:any)'] = 'admin/admin/doChangeProfile/$1';
+$route['admin/pages/(:any)'] = 'admin/admin/pages/$1';
+$route['admin/doupdateContent/(:any)'] = 'admin/admin/doupdateContent/$1';
 ///   Admin-user Controlller ////
 $route['admin/user'] = 'admin/user/users';

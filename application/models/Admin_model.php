@@ -47,5 +47,18 @@ class Admin_model extends CI_Model {
         return $this->db->affected_rows();
 
     }
+    
+    public function getPageDataByPageId($page_id){
+        $query = $this->db->get_where('pages', ['page_id' => $page_id]);
+        return $query->row_array();
+    }
+    
+    public function doupdateContent($id){
+        $data = array(
+            'message' => $this->input->post('page_name'),
+          );
+         $this->db->update('pages', $data, ['id' => $id]);
+         return $this->db->affected_rows();
+    }
 	
 }

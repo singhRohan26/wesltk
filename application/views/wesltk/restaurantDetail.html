@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Wesltk | Restaurants Details</title>
+	<!-- Bootstrap -->
+	<link href="img/fav.png" rel="icon" type="icon/image">
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/slick.css" rel="stylesheet">
+	<link href="css/hamburgers.css" rel="stylesheet">
+	<link href="css/slick-theme.css" rel="stylesheet">
+	<link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/intlTelInput.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
+	<link href="css/style.css" rel="stylesheet">
+	<link href="css/media.css" rel="stylesheet">
+</head>
+
+<body>
+	<!-- Header Start -->
+	<div class="header boxs">
+		<div class="container">
+			<nav class="navbar navbar-default">
+				<nav class="navbar navbar-expand-md">
+					<a class="navbar-brand" href="index.html"><img src="img/logoblue.svg" class="img-fluid" alt="logo"></a>
+					<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#nav"><span class="navIcon"></span></button>
+					<div class="navbar-collapse" id="nav">
+						<div class="headerBox d-flex align-items-center float-right">
+							<ul class="navbar-nav">
+								<li class="nav-item"><a class="nav-link active" href="javascript:void(0)">Become a Partner </a></li>
+								<li class="nav-item afterLogin categoryBox"><a class="nav-link subMenu" href="javascript:void(0)"> Offers </a>
+								</li>
+								<li class="nav-item"><a class="nav-link" href="#0">Services <span><img src="img/dropblue.svg" class="img-fluid" alt="dropdown"></span></a></li>
+								<li class="nav-item"><a class="nav-link" href="#0">Shop <span><img src="img/dropblue.svg" class="img-fluid" alt="dropdown"></span> </a></li>
+								<li class="nav-item"><a class="nav-link" href="#0"><span><img src="img/cart2.svg" class="img-fluid" alt="cart"></span> </a></li>
+
+								<li class="nav-item loginShow"><a class="nav-link loginBtn" href="#0">Login</a></li>
+								<li class="nav-item urserShow"><a class="nav-link afterloginBtn" href="#0"><span><img src="img/user.png" class="img-fluid" alt="user"></span>Deepanshu
+									</a>
+									<div class="profileChanges">
+													<ul>
+											<li><a href="profile.html">Profile</a></li>
+											<li><a href="profile.html">Notification</a></li>
+											<li><a href="profile.html">Orders</a></li>
+											<li><a href="profile.html">Address</a></li>
+											<li><a href="profile.html">Logout</a></li>
+										</ul>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</nav>
+
+			</nav>
+
+		</div>
+	</div>
+	<!-- Header End -->
+
+	<!--restaurant details code start-->
+	<section class="restaurantDet scrollTop paddingAll   boxs">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="restImgs">
+						<img src="img/rest1.png" class="img-fluid" alt="resturant">
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="detailContent">
+						<a href="#0" class="lacation"><span><img src="img/location.svg" class="img-fluid" alt="location"></span>Sector 16, Noida</a>
+						<h2 class="new">Bikanervala</h2>
+						<p>North Indian, Mughlai, Seafood, Biryani, Desserts, Kebabs</p>
+						<div class="OrderDetail">
+							<ul>
+								<li>Minimum Order Amount :</li>
+								<li>AED 150.00</li>
+							</ul>
+							<ul>
+								<li>Working Hours Today :</li>
+								<li>10.00 AM - 4.00 PM</li>
+							</ul>
+							<ul>
+								<li>Delivery Time :</li>
+								<li>120 Mins.</li>
+							</ul>
+
+						</div>
+						<div class="orderBtn">
+							<ul>
+								<li><a href="#0"><span><img src="img/direction.svg" class="img-fluid" alt="direction"></span>Direction</a></li>
+								<li><a href="shopingCart.html"><span><img src="img/book.svg" class="img-fluid" alt="direction"></span>Bookmark</a></li>
+								<li><a href="#0" class="sharebtn"><span><img src="img/share.svg" class="img-fluid" alt="direction"></span>Share</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--restaurant details code end-->
+	<!--	order review code start-->
+	<section class="orderReview boxs">
+		<div class="container">
+			<div class="resturaRightHead resturaRightHead2">
+				<div class="resturantMenu resturantMenu2">
+					<ul>
+						<li><a href="#0" class="active" data-id='1'>Order Online</a></li>
+						<li><a href="#0" data-id='2'>Reviews</a></li>
+						<li><a href="#0" data-id='3'>Photos</a></li>
+					</ul>
+				</div>
+				<div class="searchFood searchFood3 searchFood2">
+					<input type="text" class="form-control" placeholder="Search for a food, product & services">
+					<span><img src="img/search.svg" class="img-fluid" alt="search"> </span>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--	order review code end-->
+
+	<section class="resturantList paddingAll  boxs">
+		<div class="container">
+			<div class="resturentData resturentData2 active view1 boxs">
+				<div class="resturantLeft resturantLeft2">
+					<div class="restarLeft restarLeft22">
+						<div class="radio">
+							<input id="radio-11" name="radio" type="radio" checked>
+							<label for="radio-11" class="radio-label ">Veg Only<span class="foodType"><img src="img/veg.svg" class="img-fluid" alt="veg"></span></label>
+						</div>
+
+						<div class="radio">
+							<input id="radio-12" name="radio" type="radio">
+							<label for="radio-12" class="radio-label">Non Veg<span class="foodType"><img src="img/nonveg.svg" class="img-fluid" alt="veg"></span></label>
+						</div>
+					</div>
+					<div class="restarLeft">
+						<div class="radio">
+							<input id="radio-1" name="radio" type="radio" checked>
+							<label for="radio-1" class="radio-label active">Recommended</label>
+						</div>
+
+						<div class="radio">
+							<input id="radio-2" name="radio" type="radio">
+							<label for="radio-2" class="radio-label">Meal Combos</label>
+						</div>
+						<div class="radio">
+							<input id="radio-10" name="radio" type="radio">
+							<label for="radio-10" class="radio-label">Drinks</label>
+						</div>
+						<div class="radio">
+							<input id="radio-3" name="radio" type="radio">
+							<label for="radio-3" class="radio-label">Snacks</label>
+						</div>
+						<div class="radio">
+							<input id="radio-4" name="radio" type="radio">
+							<label for="radio-4" class="radio-label">Sandwiches</label>
+						</div>
+						<div class="radio">
+							<input id="radio-5" name="radio" type="radio">
+							<label for="radio-5" class="radio-label">Noodles</label>
+						</div>
+						<div class="radio">
+							<input id="radio-6" name="radio" type="radio">
+							<label for="radio-6" class="radio-label">Thalis</label>
+						</div>
+					</div>
+				</div>
+				<div class="restaurntRight restaurntRight2 boxs">
+					<div>
+						<div class="menuDetail menuShow">
+							<ul class="menuDetailnew menuDetailnew2">
+								<li>
+									<div class="menuListImg menuListImg2">
+										<img src="img/list1.png" class="img-fluid" alt="list">
+									</div>
+									<div class="menuContent menuContent2">
+										<h2>Barbeque Nation<span class="foodType"><img src="img/veg.svg" class="img-fluid" alt="veg"></span></h2>
+										<p>North Indian, Mughlai, Seafood, Biryani, Desserts, Kebabss</p>
+										<h2 class="price">$15.93</h2>
+
+										<div class="addProduct">
+											<div class="vaulebox">
+												<button type="button" class="minus_btn">-</button>
+												<input type="text" value="1" class="qty">
+												<p class="productAdd">Add to Cart</p>
+												<button type="button" class="plus_btn">+</button>
+											</div>
+										</div>
+
+									</div>
+								</li>
+								<li>
+									<div class="menuListImg menuListImg2">
+										<img src="img/list1.png" class="img-fluid" alt="list">
+									</div>
+									<div class="menuContent menuContent2">
+										<h2>Barbeque Nation<span class="foodType"><img src="img/veg.svg" class="img-fluid" alt="veg"></span></h2>
+										<p>North Indian, Mughlai, Seafood, Biryani, Desserts, Kebabss</p>
+										<h2 class="price">$15.93</h2>
+
+										<div class="addProduct">
+											<div class="vaulebox">
+												<button type="button" class="minus_btn">-</button>
+												<input type="text" value="1" class="qty">
+												<p class="productAdd">Add to Cart</p>
+												<button type="button" class="plus_btn">+</button>
+											</div>
+										</div>
+
+									</div>
+								</li>
+								<li>
+									<div class="menuListImg menuListImg2">
+										<img src="img/list1.png" class="img-fluid" alt="list">
+									</div>
+									<div class="menuContent menuContent2">
+										<h2>Barbeque Nation<span class="foodType"><img src="img/veg.svg" class="img-fluid" alt="veg"></span></h2>
+										<p>North Indian, Mughlai, Seafood, Biryani, Desserts, Kebabss</p>
+										<h2 class="price">$15.93</h2>
+
+										<div class="addProduct">
+											<div class="vaulebox">
+												<button type="button" class="minus_btn">-</button>
+												<input type="text" value="1" class="qty">
+												<p class="productAdd">Add to Cart</p>
+												<button type="button" class="plus_btn">+</button>
+											</div>
+										</div>
+
+									</div>
+								</li>
+								<li>
+									<div class="menuListImg menuListImg2">
+										<img src="img/list1.png" class="img-fluid" alt="list">
+									</div>
+									<div class="menuContent menuContent2">
+										<h2>Barbeque Nation<span class="foodType"><img src="img/veg.svg" class="img-fluid" alt="veg"></span></h2>
+										<p>North Indian, Mughlai, Seafood, Biryani, Desserts, Kebabss</p>
+										<h2 class="price">$15.93</h2>
+
+										<div class="addProduct">
+											<div class="vaulebox">
+												<button type="button" class="minus_btn">-</button>
+												<input type="text" value="1" class="qty">
+												<p class="productAdd">Add to Cart</p>
+												<button type="button" class="plus_btn">+</button>
+											</div>
+										</div>
+
+									</div>
+								</li>
+								<li>
+									<div class="menuListImg menuListImg2">
+										<img src="img/list1.png" class="img-fluid" alt="list">
+									</div>
+									<div class="menuContent menuContent2">
+										<h2>Barbeque Nation<span class="foodType"><img src="img/veg.svg" class="img-fluid" alt="veg"></span></h2>
+										<p>North Indian, Mughlai, Seafood, Biryani, Desserts, Kebabss</p>
+										<h2 class="price">$15.93</h2>
+
+										<div class="addProduct">
+											<div class="vaulebox">
+												<button type="button" class="minus_btn">-</button>
+												<input type="text" value="1" class="qty">
+												<p class="productAdd">Add to Cart</p>
+												<button type="button" class="plus_btn">+</button>
+											</div>
+										</div>
+
+									</div>
+								</li>
+								<li>
+									<div class="menuListImg menuListImg2">
+										<img src="img/list1.png" class="img-fluid" alt="list">
+									</div>
+									<div class="menuContent menuContent2">
+										<h2>Barbeque Nation<span class="foodType"><img src="img/veg.svg" class="img-fluid" alt="veg"></span></h2>
+										<p>North Indian, Mughlai, Seafood, Biryani, Desserts, Kebabss</p>
+										<h2 class="price">$15.93</h2>
+
+										<div class="addProduct">
+											<div class="vaulebox">
+												<button type="button" class="minus_btn">-</button>
+												<input type="text" value="1" class="qty">
+												<p class="productAdd">Add to Cart</p>
+												<button type="button" class="plus_btn">+</button>
+											</div>
+										</div>
+
+									</div>
+								</li>
+								<li>
+									<div class="menuListImg menuListImg2">
+										<img src="img/list1.png" class="img-fluid" alt="list">
+									</div>
+									<div class="menuContent menuContent2">
+										<h2>Barbeque Nation<span class="foodType"><img src="img/veg.svg" class="img-fluid" alt="veg"></span></h2>
+										<p>North Indian, Mughlai, Seafood, Biryani, Desserts, Kebabss</p>
+										<h2 class="price">$15.93</h2>
+
+										<div class="addProduct">
+											<div class="vaulebox">
+												<button type="button" class="minus_btn">-</button>
+												<input type="text" value="1" class="qty">
+												<p class="productAdd">Add to Cart</p>
+												<button type="button" class="plus_btn">+</button>
+											</div>
+										</div>
+
+									</div>
+								</li>
+								<li>
+									<div class="menuListImg menuListImg2">
+										<img src="img/list1.png" class="img-fluid" alt="list">
+									</div>
+									<div class="menuContent menuContent2">
+										<h2>Barbeque Nation<span class="foodType"><img src="img/veg.svg" class="img-fluid" alt="veg"></span></h2>
+										<p>North Indian, Mughlai, Seafood, Biryani, Desserts, Kebabss</p>
+										<h2 class="price">$15.93</h2>
+
+										<div class="addProduct">
+											<div class="vaulebox">
+												<button type="button" class="minus_btn">-</button>
+												<input type="text" value="1" class="qty">
+												<p class="productAdd">Add to Cart</p>
+												<button type="button" class="plus_btn">+</button>
+											</div>
+										</div>
+
+									</div>
+								</li>
+								<li>
+									<div class="menuListImg menuListImg2">
+										<img src="img/list1.png" class="img-fluid" alt="list">
+									</div>
+									<div class="menuContent menuContent2">
+										<h2>Barbeque Nation<span class="foodType"><img src="img/veg.svg" class="img-fluid" alt="veg"></span></h2>
+										<p>North Indian, Mughlai, Seafood, Biryani, Desserts, Kebabss</p>
+										<h2 class="price">$15.93</h2>
+
+										<div class="addProduct">
+											<div class="vaulebox">
+												<button type="button" class="minus_btn">-</button>
+												<input type="text" value="1" class="qty">
+												<p class="productAdd">Add to Cart</p>
+												<button type="button" class="plus_btn">+</button>
+											</div>
+										</div>
+
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="resturentData resturentData2 view2">
+				<div class="reviewAll">
+					<div class="container">
+						<div class="rivewTop">
+							<div class="reviewTopLeft restHeadd">
+								<h2>Reviews <span>(6)</span></h2>
+								<div class="reviewWay">
+									<p>Sort By :<span> Newest Review</span><b><img src="img/drop.svg" class="img-fluid" alt="drop"></b></p>
+									<ul class="dropValue">
+										<li>Most relevant</li>
+
+										<li>Highest rating</li>
+										<li>Lowest rating</li>
+									</ul>
+								</div>
+							</div>
+							<div class="reviewRight">
+								<a href="#0" data-toggle="modal" data-target="#reviewModals"><span><img src="img/pen.svg" class="img-fluid" alt="pen"></span>write a review</a>
+							</div>
+						</div>
+						<div class="customerReview">
+							<div class="customerAl">
+								<div class="customerProfile">
+									<div class="profileImg">
+										<img src="img/customer.png" class="img-fluid" alt="customer">
+									</div>
+									<div class="profileContent">
+										<h2>Garima</h2>
+										<div class="rating">
+											<ul>
+												<li><img src="img/star.png" class="img-fluid starnew" alt="star">
+													<img src="img/star1.png" class="img-fluid starshow" alt="star">
+												</li>
+												<li><img src="img/star.png" class="img-fluid starnew" alt="star">
+													<img src="img/star1.png" class="img-fluid starshow" alt="star">
+												</li>
+												<li><img src="img/star.png" class="img-fluid starnew" alt="star">
+													<img src="img/star1.png" class="img-fluid starshow" alt="star">
+												</li>
+												<li><img src="img/star.png" class="img-fluid starnew" alt="star">
+													<img src="img/star1.png" class="img-fluid starshow" alt="star">
+												</li>
+												<li><img src="img/star.png" class="img-fluid starnew" alt="star">
+													<img src="img/star1.png" class="img-fluid starshow" alt="star">
+												</li>
+											</ul>
+											<div class="ratingTime">
+												<p>| 07/08/2020</p>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="customerThumb">
+									<h2>was this report helpful?</h2>
+									<a href="#0" class="thumbUp"><span><img src="img/thumb.svg" class="img-fluid" alt="thumb"></span>0</a>
+									<a href="#0" class="thumdown"><span><img src="img/thumb.svg" class="img-fluid" alt="thumb"></span>0</a>
+								</div>
+							</div>
+							<p class="revie">Mauris fames ut vitae blandit sagittis eget eget. Mi, leo varius leo est a turpis vitae neque. Luctus urna ipsum enim, quis ipsum amet in a ultricies. Sodales metus tincidunt vitae nunc dolor porttitor. Amet tristique in amet risus in nibh viverra aliquet. Dui maecenas risus sed eu blandit. Proin ultrices interdum sollicitudin volutpat.
+							</p>
+							<ul class="customerIm">
+								<li><img src="img/review.png" class="img-fluid" alt="review"></li>
+								<li><img src="img/review.png" class="img-fluid" alt="review"></li>
+							</ul>
+						</div>
+						<div class="customerReview">
+							<div class="customerAl">
+								<div class="customerProfile">
+									<div class="profileImg">
+										<img src="img/customer.png" class="img-fluid" alt="customer">
+									</div>
+									<div class="profileContent">
+										<h2>Garima</h2>
+										<div class="rating">
+											<ul>
+												<li><img src="img/star.png" class="img-fluid starnew" alt="star">
+													<img src="img/star1.png" class="img-fluid starshow" alt="star">
+												</li>
+												<li><img src="img/star.png" class="img-fluid starnew" alt="star">
+													<img src="img/star1.png" class="img-fluid starshow" alt="star">
+												</li>
+												<li><img src="img/star.png" class="img-fluid starnew" alt="star">
+													<img src="img/star1.png" class="img-fluid starshow" alt="star">
+												</li>
+												<li><img src="img/star.png" class="img-fluid starnew" alt="star">
+													<img src="img/star1.png" class="img-fluid starshow" alt="star">
+												</li>
+												<li><img src="img/star.png" class="img-fluid starnew" alt="star">
+													<img src="img/star1.png" class="img-fluid starshow" alt="star">
+												</li>
+											</ul>
+											<div class="ratingTime">
+												<p>| 07/08/2020</p>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="customerThumb">
+									<h2>was this report helpful?</h2>
+									<a href="#0" class="thumbUp"><span><img src="img/thumb.svg" class="img-fluid" alt="thumb"></span>0</a>
+									<a href="#0" class="thumdown"><span><img src="img/thumb.svg" class="img-fluid" alt="thumb"></span>0</a>
+								</div>
+							</div>
+							<p class="revie">Mauris fames ut vitae blandit sagittis eget eget. Mi, leo varius leo est a turpis vitae neque. Luctus urna ipsum enim, quis ipsum amet in a ultricies. Sodales metus tincidunt vitae nunc dolor porttitor. Amet tristique in amet risus in nibh viverra aliquet. Dui maecenas risus sed eu blandit. Proin ultrices interdum sollicitudin volutpat.
+							</p>
+
+						</div>
+						<div class="customerReview">
+							<div class="customerAl">
+								<div class="customerProfile">
+									<div class="profileImg">
+										<img src="img/customer.png" class="img-fluid" alt="customer">
+									</div>
+									<div class="profileContent">
+										<h2>Garima</h2>
+										<div class="rating">
+											<ul>
+												<li><img src="img/star.png" class="img-fluid starnew" alt="star">
+													<img src="img/star1.png" class="img-fluid starshow" alt="star">
+												</li>
+												<li><img src="img/star.png" class="img-fluid starnew" alt="star">
+													<img src="img/star1.png" class="img-fluid starshow" alt="star">
+												</li>
+												<li><img src="img/star.png" class="img-fluid starnew" alt="star">
+													<img src="img/star1.png" class="img-fluid starshow" alt="star">
+												</li>
+												<li><img src="img/star.png" class="img-fluid starnew" alt="star">
+													<img src="img/star1.png" class="img-fluid starshow" alt="star">
+												</li>
+												<li><img src="img/star.png" class="img-fluid starnew" alt="star">
+													<img src="img/star1.png" class="img-fluid starshow" alt="star">
+												</li>
+											</ul>
+											<div class="ratingTime">
+												<p>| 07/08/2020</p>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="customerThumb">
+									<h2>was this report helpful?</h2>
+									<a href="#0" class="thumbUp"><span><img src="img/thumb.svg" class="img-fluid" alt="thumb"></span>0</a>
+									<a href="#0" class="thumdown"><span><img src="img/thumb.svg" class="img-fluid" alt="thumb"></span>0</a>
+								</div>
+							</div>
+							<p class="revie">Mauris fames ut vitae blandit sagittis eget eget. Mi, leo varius leo est a turpis vitae neque. Luctus urna ipsum enim, quis ipsum amet in a ultricies. Sodales metus tincidunt vitae nunc dolor porttitor. Amet tristique in amet risus in nibh viverra aliquet. Dui maecenas risus sed eu blandit. Proin ultrices interdum sollicitudin volutpat.
+							</p>
+							<ul class="customerIm">
+								<li><img src="img/review.png" class="img-fluid" alt="review"></li>
+								<li><img src="img/review.png" class="img-fluid" alt="review"></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="resturentData resturentData2 view3">
+				<ul class="customerIm customerIm2">
+					<li><img src="img/review.png" class="img-fluid" alt="img"></li>
+					<li><img src="img/review.png" class="img-fluid" alt="img"></li>
+					<li><img src="img/review.png" class="img-fluid" alt="img"></li>
+					<li><img src="img/review.png" class="img-fluid" alt="img"></li>
+					<li><img src="img/review.png" class="img-fluid" alt="img"></li>
+					<li><img src="img/review.png" class="img-fluid" alt="img"></li>
+					<li><img src="img/review.png" class="img-fluid" alt="img"></li>
+					<li><img src="img/review.png" class="img-fluid" alt="img"></li>
+					<li><img src="img/review.png" class="img-fluid" alt="img"></li>
+					<li><img src="img/review.png" class="img-fluid" alt="img"></li>
+				</ul>
+			</div>
+		</div>
+
+	</section>
+
+	<!--	footer code start-->
+	<section class="footer boxs">
+		<div class="container">
+			<div class="footerIn">
+				<div class="scrollbar">
+					<a href="#0" class="topArrow"><img src="img/scroll.svg" class="img-fluid" alt="scroll"></a>
+				</div>
+				<div class="footerAl footerFirst">
+					<h2>CHOBANI</h2>
+					<p>Bushwick meh Blue Bottle pork belly<br> mustache skate Echo Park.</p>
+					<p>© 2020 LifeSet All Rights Reserved.</p>
+				</div>
+				<div class="footerAl">
+					<h2>Quick Links</h2>
+					<ul>
+						<li><a href="aboutUs.html">About us</a></li>
+						<li><a href="contactus.html">Contact Us</a></li>
+						<li><a href="career.html">Why Us</a></li>
+						<li><a href="#0">Track Order</a></li>
+					</ul>
+				</div>
+				<div class="footerAl">
+					<h2>Help Links</h2>
+					<ul>
+						<li><a href="#0">Cancellation Policy</a></li>
+						<li><a href="#0">Shipping Policy</a></li>
+						<li><a href="#0">Terms And Conditions</a></li>
+						<li><a href="#0">Privacy Policy</a></li>
+					</ul>
+				</div>
+				<div class="socialMedia">
+					<ul>
+						<li><a href="#0">Twitter</a></li>
+						<li><a href="#0">Facebook</a></li>
+						<li><a href="#0">Instagram</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--	footer code end-->
+
+	<!-- Start of Popup Modal of login confirm-->
+	<div class="modal  ReviewModals fade" id="reviewModals" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="closeBtn">
+					<a href="#0" data-dismiss="modal"><img src="img/close.svg" class="img-fluid" alt="close"></a>
+				</div>
+				<div class="loginAll">
+					<div class="loginRight loginRightreview">
+						<form>
+							<div class="forgetIn">
+								<h2 class="">Write A Review</h2>
+							</div>
+							<div class="reviewForm">
+								<div class="form-group">
+									<label class="labelel">Full Name</label>
+									<input type="text" class="form-control inputcss" placeholder="Full Name">
+								</div>
+								<div class="form-group">
+									<label class="labelel">What did you like ?</label>
+									<input type="text" class="form-control inputcss" placeholder="Full Name">
+								</div>
+								<div class="form-group">
+									<label class="labelel">Add Photos</label>
+									<input type="file" class="form-control inputcss" placeholder="Full Name">
+								</div>
+								<div class="form-group">
+									<label class="labelel">Write a Review</label>
+									<textarea  class="form-control inputcss" placeholder="Message"></textarea>
+								</div>
+							</div>
+							<div class="socialIconsM socialIconsM33 socialIconsM2">
+								<ul>
+									<li class="Btn"><a href="#0" class="btncommon">Add Review</a></li>
+								</ul>
+							</div>
+
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- End of Popup Modal of login confirm-->
+
+	<script src="js/jquery.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/slick.js"></script>
+	<script src="js/custom.js"></script>
+</body>
+
+</html>
