@@ -55,6 +55,7 @@ $route['translate_uri_dashes'] = TRUE;
 
 ///   home Controlller ////
 $route['home/your-cart'] = 'home/cart';
+$route['home/user-registration'] = 'user/doRegistration';
 
 
 ///   Admin Controlller ////

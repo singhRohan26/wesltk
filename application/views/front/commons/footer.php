@@ -52,17 +52,17 @@
 						<img src="<?php echo base_url('public/front/') ?>img/login.png" class="img-fluid" alt="login">
 					</div>
 					<div class="loginRight">
-						<form>
+						<form method="post">
 							<ul class="headIn">
 								<li>Wesltk</li>
 								<li>Login Now</li>
 							</ul>
 							<div class="loginInput">
 								<div class="form-group">
-									<input type="email" class="form-control inputcss" placeholder="Email Address">
+									<input type="email" class="form-control inputcss" placeholder="Email Address" required>
 								</div>
 								<div class="form-group">
-									<input type="password" class="form-control inputcss" placeholder="Password">
+									<input type="password" class="form-control inputcss" placeholder="Password" required>
 								</div>
 
 							</div>
@@ -71,7 +71,8 @@
 							</div>
 							<div class="socialIconsM">
 								<ul>
-									<li class="Btn"><a href="#0" class="btncommon">Login</a></li>
+<!--									<li class="Btn"><a href="#0" class="btncommon">Login</a></li>-->
+                                    <li class="Btn"><button type="button" class="btncommon">Login</button></li>
 									<li><a href="#0"><img src="<?php echo base_url('public/front/') ?>img/fb.svg" class="img-fluid" alt="fb"></a></li>
 									<li><a href="#0"><img src="<?php echo base_url('public/front/') ?>img/go.svg" class="img-fluid" alt="fb"></a></li>
 								</ul>
@@ -99,32 +100,35 @@
 						<img src="<?php echo base_url('public/front/') ?>img/login2.png" class="img-fluid" alt="login">
 					</div>
 					<div class="loginRight">
-						<form>
+						<form method="post" action="<?php echo base_url('home/user-registration') ?>" id="common-form">
 							<ul class="headIn">
 								<li>Wesltk</li>
 								<li>Registration Now</li>
 							</ul>
+                            
 							<div class="loginInput">
+                                <div class="error_msg"></div>
 								<div class="form-group">
-									<input type="Text" class="form-control inputcss" placeholder="Full Name">
+									<input type="Text" class="form-control inputcss" placeholder="Full Name" name="name" id="name">
 								</div>
 								<div class="form-group">
-									<input type="email" class="form-control inputcss" placeholder="Email Address">
+									<input type="email" class="form-control inputcss" placeholder="Email Address" name="email" id="email">
 								</div>
 								<div class="form-group">
-									<input type="number" class="form-control inputcss" placeholder="Mobile Number">
+									<input type="number" class="form-control inputcss" placeholder="Mobile Number" name="phone" id="phone">
 								</div>
 								<div class="form-group">
-									<input type="password" class="form-control inputcss" placeholder="Password">
+									<input type="password" class="form-control inputcss" placeholder="Password" name="pass" id="pass">
 								</div>
 								<div class="form-group">
-									<input type="password" class="form-control inputcss" placeholder="Confirm Password">
+									<input type="password" class="form-control inputcss" placeholder="Confirm Password" name="cpass" id="cpass">
 								</div>
 
 							</div>
 							<div class="socialIconsM">
 								<ul>
-									<li class="Btn"><a href="#0" class="btncommon">Register</a></li>
+<!--									<li class="Btn"><a href="#0" class="btncommon">Register</a></li>-->
+                                    <li class="Btn"><button type="submit" class="btncommon">Register</button></li>
 								</ul>
 							</div>
 							<div class="accountnot boxs">
@@ -183,6 +187,7 @@
 	<script src='https://cdn.jsdelivr.net/jquery.counterup/1.0/jquery.counterup.min.js'></script>
 	<script src="<?php echo base_url('public/front/') ?>script.js"></script>
 	<script src="<?php echo base_url('public/front/') ?>js/custom.js"></script>
+    <script src="<?php echo base_url('public/front/') ?>js/event.js"></script>
 </body>
 
 </html>

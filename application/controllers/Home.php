@@ -21,6 +21,7 @@ class Home extends CI_Controller {
         $this->load->view('front/commons/footer');
     }
     
+        
     public function cart(){
         $data['title'] = 'Cart';
         $this->load->view('front/commons/header',$data);
