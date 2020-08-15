@@ -52,17 +52,18 @@
 						<img src="<?php echo base_url('public/front/') ?>img/login.png" class="img-fluid" alt="login">
 					</div>
 					<div class="loginRight">
-						<form method="post">
+						<form method="post"action="<?php echo base_url('user/user-login') ?>" id="common-form">
 							<ul class="headIn">
 								<li>Wesltk</li>
 								<li>Login Now</li>
 							</ul>
+                            <div class="error_msg"></div>
 							<div class="loginInput">
 								<div class="form-group">
-									<input type="email" class="form-control inputcss" placeholder="Email Address" required>
+									<input type="email" class="form-control inputcss" placeholder="Email Address" name="email" id="email">
 								</div>
 								<div class="form-group">
-									<input type="password" class="form-control inputcss" placeholder="Password" required>
+									<input type="password" class="form-control inputcss" placeholder="Password" name="pass" id="pass">
 								</div>
 
 							</div>
@@ -72,13 +73,13 @@
 							<div class="socialIconsM">
 								<ul>
 <!--									<li class="Btn"><a href="#0" class="btncommon">Login</a></li>-->
-                                    <li class="Btn"><button type="button" class="btncommon">Login</button></li>
+                                    <li class="Btn"><button type="submit" class="btncommon">Login</button></li>
 									<li><a href="#0"><img src="<?php echo base_url('public/front/') ?>img/fb.svg" class="img-fluid" alt="fb"></a></li>
 									<li><a href="#0"><img src="<?php echo base_url('public/front/') ?>img/go.svg" class="img-fluid" alt="fb"></a></li>
 								</ul>
 							</div>
 							<div class="accountnot boxs">
-								<p>If you have an account?<a href="#0" data-dismiss="modal" data-toggle="modal" data-target="#registerModal"> Register</a></p>
+								<p>Don't have an account?<a href="#0" data-dismiss="modal" data-toggle="modal" data-target="#registerModal"> Register</a></p>
 							</div>
 						</form>
 					</div>
@@ -132,7 +133,7 @@
 								</ul>
 							</div>
 							<div class="accountnot boxs">
-								<p>If you have an account?<a href="#0" data-dismiss="modal" data-toggle="modal" data-target="#loginModal"> Login</a></p>
+								<p>Already have an account?<a href="#0" data-dismiss="modal" data-toggle="modal" data-target="#loginModal"> Login</a></p>
 							</div>
 						</form>
 					</div>
@@ -180,6 +181,36 @@
 		</div>
 	</div>
 	<!-- End of Popup Modal of login confirm-->
+
+<!-- Start of Popup Modal of edit-profile -->
+	<div class="modal  LoginModals LoginModals2 fade" id="editModal" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="closeBtn">
+					<a href="#0" data-dismiss="modal"><img src="<?php echo base_url('public/front/')?>img/close.svg" class="img-fluid" alt="close"></a>
+				</div>
+				<div class="editPopup">
+					<h2>Edit Profile</h2>
+					<div class="form-group">
+						<label class="labelel">Full Name</label>
+						<input type="name" class="form-control inputcss" placeholder="Name">
+					</div>
+					<div class="form-group">
+						<label class="labelel">Email Address</label>
+						<input type="email" class="form-control inputcss" placeholder="Email">
+					</div>
+					<div class="form-group">
+						<label class="labelel">Password</label>
+						<input type="password" class="form-control inputcss" placeholder="Password">
+					</div>
+					<div class="editBtn">
+						<button type="submit" class="btncommon">Update</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- End of Popup Modal of edit-profile -->
 	<script src="<?php echo base_url('public/front/') ?>js/jquery.js"></script>
 	<script src="<?php echo base_url('public/front/') ?>js/bootstrap.min.js"></script>
 	<script src="<?php echo base_url('public/front/') ?>js/slick.js"></script>

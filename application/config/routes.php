@@ -58,6 +58,13 @@ $route['home/your-cart'] = 'home/cart';
 $route['home/user-registration'] = 'user/doRegistration';
 
 
+///   User Controlller ////
+$route['user/user-profile'] = 'user/profile';
+$route['user/logout'] = 'user/logout';
+$route['user/user-login'] = 'user/doLogin';
+
+
+
 ///   Admin Controlller ////
 $route['admin'] = 'admin/admin/index';
 $route['admin/doLogin'] = 'admin/admin/doLogin';

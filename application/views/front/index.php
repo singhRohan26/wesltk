@@ -23,7 +23,22 @@
 					<div class="loginCart">
 						<ul>
 							<li><a href="<?php echo base_url('home/your-cart') ?>"><img src="<?php echo base_url('public/front/') ?>img/cart.svg" class="img-fluid" alt="cart"></a></li>
-							<li><a href="#0" class="loginPop" data-toggle="modal" data-target="#loginModal">Login</a></li>
+                            <?php if(!empty($this->session->userdata('login_id'))) {   ?>
+                            <li class="nav-item urserShow"><a class="nav-link afterloginBtn" href="#0"><span></span><?php echo $userData['name'] ?>
+									</a>
+									<div class="profileChanges">
+										<ul>
+											<li><a href="<?php echo base_url('user/user-profile') ?>">Profile</a></li>
+											<li><a href="profile.html">Notification</a></li>
+											<li><a href="profile.html">Orders</a></li>
+											<li><a href="profile.html">Address</a></li>
+											<li><a href="<?php echo base_url('user/logout') ?>">Logout</a></li>
+										</ul>
+									</div>
+								</li>
+                            <?php }else{   ?>
+                            <li><a href="#0" class="loginPop" data-toggle="modal" data-target="#loginModal">Login</a></li>     
+                            <?php } ?>
 						</ul>
 					</div>
 				</div>

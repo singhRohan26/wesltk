@@ -15,19 +15,23 @@
 								<li class="nav-item"><a class="nav-link" href="#0">Shop <span><img src="<?php echo base_url('public/front/') ?>img/dropblue.svg" class="img-fluid" alt="dropdown"></span> </a></li>
 								<li class="nav-item"><a class="nav-link" href="#0"><span><img src="<?php echo base_url('public/front/') ?>img/cart2.svg" class="img-fluid" alt="cart"></span> </a></li>
 
-								<li class="nav-item loginShow"><a class="nav-link loginBtn" href="#0">Login</a></li>
-								<li class="nav-item urserShow"><a class="nav-link afterloginBtn" href="#0"><span><img src="<?php echo base_url('public/front/') ?>img/user.png" class="img-fluid" alt="user"></span>Deepanshu
+								
+                                <?php if(!empty($this->session->userdata('login_id'))){  ?>
+								<li class="nav-item urserShow"><a class="nav-link afterloginBtn" href="#0"><span><img src="<?php echo base_url('public/front/') ?>img/user.png" class="img-fluid" alt="user"></span><?php echo $userData['name'] ?>
 									</a>
 									<div class="profileChanges">
 										<ul>
-											<li><a href="profile.html">Profile</a></li>
+											<li><a href="<?php echo base_url('user/user-profile') ?>">Profile</a></li>
 											<li><a href="profile.html">Notification</a></li>
 											<li><a href="profile.html">Orders</a></li>
 											<li><a href="profile.html">Address</a></li>
-											<li><a href="profile.html">Logout</a></li>
+											<li><a href="<?php echo base_url('user/logout') ?>">Logout</a></li>
 										</ul>
 									</div>
 								</li>
+                                <?php }else{   ?>
+                                <li class="nav-item loginShow"><a class="nav-link loginBtn" href="#0">Login</a></li>
+                                <?php } ?>
 							</ul>
 						</div>
 					</div>

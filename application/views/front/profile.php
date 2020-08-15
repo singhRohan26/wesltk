@@ -1,75 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Wesltk | Profile</title>
-	<!-- Bootstrap -->
-	<link href="img/fav.png" rel="icon" type="icon/image">
-	<link href="css/bootstrap.min.css" rel="stylesheet">
-	<link href="css/slick.css" rel="stylesheet">
-	<link href="css/hamburgers.css" rel="stylesheet">
-	<link href="css/slick-theme.css" rel="stylesheet">
-	<link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="css/intlTelInput.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
-	<link href="css/style.css" rel="stylesheet">
-	<link href="css/media.css" rel="stylesheet">
-</head>
-
-<body>
-	<!-- Header Start -->
-	<div class="header boxs">
-		<div class="container">
-			<nav class="navbar navbar-default">
-				<nav class="navbar navbar-expand-md">
-					<a class="navbar-brand" href="index.html"><img src="img/logoblue.svg" class="img-fluid" alt="logo"></a>
-					<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#nav"><span class="navIcon"></span></button>
-					<div class="navbar-collapse" id="nav">
-						<div class="headerBox d-flex align-items-center float-right">
-							<ul class="navbar-nav">
-								<li class="nav-item"><a class="nav-link active" href="javascript:void(0)">Become a Partner </a></li>
-								<li class="nav-item afterLogin categoryBox"><a class="nav-link subMenu" href="javascript:void(0)"> Offers </a>
-								</li>
-								<li class="nav-item"><a class="nav-link" href="#0">Services <span><img src="img/dropblue.svg" class="img-fluid" alt="dropdown"></span></a></li>
-								<li class="nav-item"><a class="nav-link" href="#0">Shop <span><img src="img/dropblue.svg" class="img-fluid" alt="dropdown"></span> </a></li>
-								<li class="nav-item"><a class="nav-link" href="#0"><span><img src="img/cart2.svg" class="img-fluid" alt="cart"></span> </a></li>
-
-								<li class="nav-item loginShow"><a class="nav-link loginBtn" href="#0">Login</a></li>
-								<li class="nav-item urserShow"><a class="nav-link afterloginBtn" href="#0"><span><img src="img/user.png" class="img-fluid" alt="user"></span>Deepanshu
-									</a>
-									<div class="profileChanges">
-													<ul>
-											<li><a href="profile.html">Profile</a></li>
-											<li><a href="profile.html">Notification</a></li>
-											<li><a href="profile.html">Orders</a></li>
-											<li><a href="profile.html">Address</a></li>
-											<li><a href="profile.html">Logout</a></li>
-										</ul>
-									</div>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</nav>
-
-			</nav>
-
-		</div>
-	</div>
-	<!-- Header End -->
-
-	<section class="profileAll scrollTop boxs">
+<section class="profileAll scrollTop boxs">
 		<div class="container">
 			<div class="profileIn boxs">
 				<div class="profilrLeft">
-					<h2>Deepanshu Tyagi</h2>
-					<p><span>angi2341@gmail.com</span> | <span>4445555888</span></p>
+					<h2><?php echo $userData['name']; ?></h2>
+					<p><span><?php echo $userData['email']; ?></span> | <span><?php echo $userData['phone']; ?></span></p>
 				</div>
 				<div class="profilrright">
-					<a href="#0" data-toggle="modal" data-target="#editModal"><span><img src="img/editwhite.svg" class="img-fluid" alt="edit"></span>Edit Profile</a>
+					<a href="#0" data-toggle="modal" data-target="#editModal"><span><img src="<?php echo base_url('public/front/')?>img/editwhite.svg" class="img-fluid" alt="edit"></span>Edit Profile</a>
 				</div>
 			</div>
 		</div>
@@ -81,10 +18,10 @@
 				<div class="col-sm-3">
 					<div class="profileOrders">
 						<ul>
-							<li><a href="#0" class="active" data-id="1"><span><img src="img/rightarrow.svg" class="img-fluid" alt="arrow"></span>Orders</a></li>
-							<li><a href="#0" data-id="2"><span><img src="img/rightarrow.svg" class="img-fluid" alt="arrow"></span>Notification</a></li>
-							<li><a href="#0" data-id="3"><span><img src="img/rightarrow.svg" class="img-fluid" alt="arrow"></span>Addresses</a></li>
-							<li><a href="#0" data-id="4"><span><img src="img/rightarrow.svg" class="img-fluid" alt="arrow"></span>Change Password</a></li>
+							<li><a href="#0" class="active" data-id="1"><span><img src="<?php echo base_url('public/front/')?>img/rightarrow.svg" class="img-fluid" alt="arrow"></span>Orders</a></li>
+							<li><a href="#0" data-id="2"><span><img src="<?php echo base_url('public/front/')?>img/rightarrow.svg" class="img-fluid" alt="arrow"></span>Notification</a></li>
+							<li><a href="#0" data-id="3"><span><img src="<?php echo base_url('public/front/')?>img/rightarrow.svg" class="img-fluid" alt="arrow"></span>Addresses</a></li>
+							<li><a href="#0" data-id="4"><span><img src="<?php echo base_url('public/front/')?>img/rightarrow.svg" class="img-fluid" alt="arrow"></span>Change Password</a></li>
 						</ul>
 					</div>
 				</div>
@@ -97,10 +34,10 @@
 								</div>
 								<div class="orderProcess">
 									<ul>
-										<li><span><img src="img/bluecheck.svg" class="img-fluid" alt="check"></span>In Process</li>
+										<li><span><img src="<?php echo base_url('public/front/')?>img/bluecheck.svg" class="img-fluid" alt="check"></span>In Process</li>
 										<li>12 Jul. SUNDAY 9:00 AM - 12 PM</li>
 										<li>Order Amount: $ 22.90</li>
-										<li><a href="#0" class="showDrop"><img src="img/dropblue.svg" class="img-fluid" alt="dropdown"></a></li>
+										<li><a href="#0" class="showDrop"><img src="<?php echo base_url('public/front/')?>img/dropblue.svg" class="img-fluid" alt="dropdown"></a></li>
 									</ul>
 								</div>
 								<div class="AllorderDetail">
@@ -120,7 +57,7 @@
 									</div>
 									<div class="orderInner2">
 										<div class="foody">
-											<img src="img/foody.png" class="img-fluid" alt="foody">
+											<img src="<?php echo base_url('public/front/')?>img/foody.png" class="img-fluid" alt="foody">
 										</div>
 										<div class="foodyContent">
 											<h2>Mix Veg</h2>
@@ -140,10 +77,10 @@
 
 								<div class="orderProcess">
 									<ul>
-										<li class="green"><span><img src="img/bluecheck.svg" class="img-fluid" alt="check"></span>Delivered</li>
+										<li class="green"><span><img src="<?php echo base_url('public/front/')?>img/bluecheck.svg" class="img-fluid" alt="check"></span>Delivered</li>
 										<li>12 Jul. SUNDAY 9:00 AM - 12 PM</li>
 										<li>Order Amount: $ 22.90</li>
-										<li><a href="#0" class="showDrop"><img src="img/dropblue.svg" class="img-fluid" alt="dropdown"></a></li>
+										<li><a href="#0" class="showDrop"><img src="<?php echo base_url('public/front/')?>img/dropblue.svg" class="img-fluid" alt="dropdown"></a></li>
 									</ul>
 								</div>
 								<div class="AllorderDetail">
@@ -163,7 +100,7 @@
 									</div>
 									<div class="orderInner2">
 										<div class="foody">
-											<img src="img/foody.png" class="img-fluid" alt="foody">
+											<img src="<?php echo base_url('public/front/')?>img/foody.png" class="img-fluid" alt="foody">
 										</div>
 										<div class="foodyContent">
 											<h2>Mix Veg</h2>
@@ -182,10 +119,10 @@
 							<div class="orderFirst">
 								<div class="orderProcess">
 									<ul>
-										<li class="cancel"><span><img src="img/bluecheck.svg" class="img-fluid" alt="check"></span>Cancel</li>
+										<li class="cancel"><span><img src="<?php echo base_url('public/front/')?>img/bluecheck.svg" class="img-fluid" alt="check"></span>Cancel</li>
 										<li>12 Jul. SUNDAY 9:00 AM - 12 PM</li>
 										<li>Order Amount: $ 22.90</li>
-										<li><a href="#0" class="showDrop"><img src="img/dropblue.svg" class="img-fluid" alt="dropdown"></a></li>
+										<li><a href="#0" class="showDrop"><img src="<?php echo base_url('public/front/')?>img/dropblue.svg" class="img-fluid" alt="dropdown"></a></li>
 									</ul>
 								</div>
 								<div class="AllorderDetail">
@@ -205,7 +142,7 @@
 									</div>
 									<div class="orderInner2">
 										<div class="foody">
-											<img src="img/foody.png" class="img-fluid" alt="foody">
+											<img src="<?php echo base_url('public/front/')?>img/foody.png" class="img-fluid" alt="foody">
 										</div>
 										<div class="foodyContent">
 											<h2>Mix Veg</h2>
@@ -231,7 +168,7 @@
 									<div class="customerAl">
 										<div class="customerProfile">
 											<div class="profileImg">
-												<img src="img/customer.png" class="img-fluid" alt="customer">
+												<img src="<?php echo base_url('public/front/')?>img/customer.png" class="img-fluid" alt="customer">
 											</div>
 											<div class="profileContent">
 												<h2>Garima</h2>
@@ -251,7 +188,7 @@
 									<div class="customerAl">
 										<div class="customerProfile">
 											<div class="profileImg">
-												<img src="img/customer.png" class="img-fluid" alt="customer">
+												<img src="<?php echo base_url('public/front/')?>img/customer.png" class="img-fluid" alt="customer">
 											</div>
 											<div class="profileContent">
 												<h2>Garima</h2>
@@ -271,7 +208,7 @@
 									<div class="customerAl">
 										<div class="customerProfile">
 											<div class="profileImg">
-												<img src="img/customer.png" class="img-fluid" alt="customer">
+												<img src="<?php echo base_url('public/front/')?>img/customer.png" class="img-fluid" alt="customer">
 											</div>
 											<div class="profileContent">
 												<h2>Garima</h2>
@@ -291,7 +228,7 @@
 									<div class="customerAl">
 										<div class="customerProfile">
 											<div class="profileImg">
-												<img src="img/customer.png" class="img-fluid" alt="customer">
+												<img src="<?php echo base_url('public/front/')?>img/customer.png" class="img-fluid" alt="customer">
 											</div>
 											<div class="profileContent">
 												<h2>Garima</h2>
@@ -385,82 +322,3 @@
 			</div>
 		</div>
 	</section>
-
-	<!--	footer code start-->
-	<section class="footer boxs">
-		<div class="container">
-			<div class="footerIn">
-				<div class="scrollbar">
-					<a href="#0" class="topArrow"><img src="img/scroll.svg" class="img-fluid" alt="scroll"></a>
-				</div>
-				<div class="footerAl footerFirst">
-					<h2>CHOBANI</h2>
-					<p>Bushwick meh Blue Bottle pork belly<br> mustache skate Echo Park.</p>
-					<p>© 2020 LifeSet All Rights Reserved.</p>
-				</div>
-				<div class="footerAl">
-					<h2>Quick Links</h2>
-					<ul>
-						<li><a href="aboutUs.html">About us</a></li>
-						<li><a href="contactus.html">Contact Us</a></li>
-						<li><a href="career.html">Why Us</a></li>
-						<li><a href="#0">Track Order</a></li>
-					</ul>
-				</div>
-				<div class="footerAl">
-					<h2>Help Links</h2>
-					<ul>
-						<li><a href="#0">Cancellation Policy</a></li>
-						<li><a href="#0">Shipping Policy</a></li>
-						<li><a href="#0">Terms And Conditions</a></li>
-						<li><a href="#0">Privacy Policy</a></li>
-					</ul>
-				</div>
-				<div class="socialMedia">
-					<ul>
-						<li><a href="#0">Twitter</a></li>
-						<li><a href="#0">Facebook</a></li>
-						<li><a href="#0">Instagram</a></li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!--	footer code end-->
-
-	<!-- Start of Popup Modal of edit-profile -->
-	<div class="modal  LoginModals LoginModals2 fade" id="editModal" role="dialog">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="closeBtn">
-					<a href="#0" data-dismiss="modal"><img src="img/close.svg" class="img-fluid" alt="close"></a>
-				</div>
-				<div class="editPopup">
-					<h2>Edit Profile</h2>
-					<div class="form-group">
-						<label class="labelel">Full Name</label>
-						<input type="name" class="form-control inputcss" placeholder="Name">
-					</div>
-					<div class="form-group">
-						<label class="labelel">Email Address</label>
-						<input type="email" class="form-control inputcss" placeholder="Email">
-					</div>
-					<div class="form-group">
-						<label class="labelel">Password</label>
-						<input type="password" class="form-control inputcss" placeholder="Password">
-					</div>
-					<div class="editBtn">
-						<button type="submit" class="btncommon">Update</button>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- End of Popup Modal of edit-profile -->
-	<script src="js/jquery.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/slick.js"></script>
-	<script src="js/custom.js"></script>
-</body>
-
-</html>

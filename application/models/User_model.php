@@ -21,9 +21,26 @@ class User_model extends CI_Model {
         return $this->db->insert_id();       
     }
     
-    public function checkLogin(){
+    public function checkemail(){
         $sel = $this->db->get_where('users',['email'=>$this->security->xss_clean($this->input->post('email'))]);
         return $sel->row_array();
+    }
+    
+    public function getLoginDetail($login_id){
+        $sel = $this->db->get_where('users',['user_id'=>$login_id]);
+        return $sel->row_array();
+    }
+    
+    public function checkLogin(){
+        $email = $this->security->xss_clean($this->input->post('email'));
+        $pass = $this->security->xss_clean(hash('sha256', $this->input->post('pass')));
+        $this->db->select('*')
+                ->from('users')
+                ->where('email',$email)
+                ->where('password',$pass);
+        $sel = $this->db->get();
+        return $sel->row_array();
+        
     }
 	
 }
