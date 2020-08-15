@@ -39,6 +39,32 @@ class User extends CI_Controller {
 			
 		}
     }
+
+	public function updatProfile(){
+        $this->output->set_content_type('application/json');
+		$this->form_validation->set_rules('profile_name', 'Name', 'required');
+		$this->form_validation->set_rules('profile_email', 'Email', 'required|valid_email');
+		$this->form_validation->set_rules('profile_phone', 'Phone Number', 'required');
+		if ($this->form_validation->run() === FALSE) {
+			$this->output->set_output(json_encode(['result' => 0, 'errors' => $this->form_validation->error_array()]));
+			return FALSE;
+		}
+		$result = $this->user_model->checkemail($this->session->userdata('login_id'));
+		if ($result) {
+            $this->output->set_output(json_encode(['result' => -1, 'msg' => 'Email already exists.']));
+			return FALSE;
+		} else {
+            $register = $this->user_model->updatProfile();
+            if($register){
+	            $this->output->set_output(json_encode(['result' => 1, 'url' => base_url("user/user-profile"), 'msg' => 'Profile Updated Successfully']));
+				return FALSE;
+            }else{
+            	$this->output->set_output(json_encode(['result' => -1, 'msg' => 'No Chnages Were Made!..']));
+				return FALSE;
+            }
+			
+		}
+    }
     
     public function doLogin(){
         $this->output->set_content_type('application/json');
@@ -56,6 +82,34 @@ class User extends CI_Controller {
 			return FALSE;   
         }else{
            $this->output->set_output(json_encode(['result' => -1, 'msg' => 'Invalid credentials']));
+			return FALSE; 
+        }
+        
+    }  
+    public function change_password(){
+        $this->output->set_content_type('application/json');
+		$this->form_validation->set_rules('opass', 'Old Password', 'required');
+		$this->form_validation->set_rules('npass', 'New Password', 'required|min_length[6]');
+		$this->form_validation->set_rules('cpass', 'Confirm Password', 'required|min_length[6]|matches[npass]');
+		if ($this->form_validation->run() === FALSE) {
+			$this->output->set_output(json_encode(['result' => 0, 'errors' => $this->form_validation->error_array()]));
+			return FALSE;
+		}
+		$chk_password = $this->getLoginDetail();
+        if($chk_password['password'] != $this->security->xss_clean(hash('sha256', $this->input->post('opass')))) {
+        	$this->output->set_output(json_encode(['result' => 0, 'errors' => ['opass' => 'Old Password is incorrect']]));
+			return FALSE;
+        }
+        if($chk_password['password'] == $this->security->xss_clean(hash('sha256', $this->input->post('npass')))) {
+        	$this->output->set_output(json_encode(['result' => 0, 'errors' => ['opass' => 'New Password and Old Password should not be same']]));
+			return FALSE;
+        }
+        $result = $this->user_model->changePassword();
+        if($result){
+         $this->output->set_output(json_encode(['result' => 1, 'url' => base_url("user/user-profile"), 'msg' => 'Password Chaged Successfully']));
+			return FALSE;   
+        }else{
+           $this->output->set_output(json_encode(['result' => -1, 'msg' => 'Something Went Wrong!..']));
 			return FALSE; 
         }
         

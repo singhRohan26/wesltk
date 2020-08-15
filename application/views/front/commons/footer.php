@@ -13,7 +13,7 @@
 				<div class="footerAl">
 					<h2>Quick Links</h2>
 					<ul>
-						<li><a href="aboutUs.html">About us</a></li>
+						<li><a href="<?php echo base_url('about');?>">About us</a></li>
 						<li><a href="contactus.html">Contact Us</a></li>
 						<li><a href="career.html">Why Us</a></li>
 						<li><a href="#0">Track Order</a></li>
@@ -25,7 +25,7 @@
 						<li><a href="faq.html">Cancellation Policy</a></li>
 						<li><a href="faq.html">Shipping Policy</a></li>
 						<li><a href="#0">Terms And Conditions</a></li>
-						<li><a href="faq.html">Privacy Policy</a></li>
+						<li><a href="<?php echo base_url('privacy-policy');?>">Privacy Policy</a></li>
 					</ul>
 				</div>
 				<div class="socialMedia">
@@ -189,24 +189,32 @@
 				<div class="closeBtn">
 					<a href="#0" data-dismiss="modal"><img src="<?php echo base_url('public/front/')?>img/close.svg" class="img-fluid" alt="close"></a>
 				</div>
-				<div class="editPopup">
-					<h2>Edit Profile</h2>
-					<div class="form-group">
-						<label class="labelel">Full Name</label>
-						<input type="name" class="form-control inputcss" placeholder="Name">
+				<?php
+					$content = array('class' => 'common-image-form');
+					echo form_open('user/updatProfile/', $content);
+				?>
+					<div class="editPopup">
+						<h2>Edit Profile</h2>
+						<div class="error_msg"></div>
+						<div class="form-group">
+							<label class="labelel">Full Name</label>
+							<input type="text" name="profile_name" id="profile_name" class="form-control inputcss" placeholder="Name" value="<?php echo $userData['name'] ?>">
+						</div>
+						<div class="form-group">
+							<label class="labelel">Email Address</label>
+							<input type="text" class="form-control inputcss" name="profile_email" id="profile_email" placeholder="Email"  value="<?php echo $userData['email'] ?>">
+						</div>
+						<div class="form-group">
+							<label class="labelel">Number</label>
+							<input type="number" class="form-control inputcss" placeholder="Number" name="profile_phone" id="profile_phone" value="<?php echo $userData['phone'] ?>">
+						</div>
+						<div class="editBtn">
+							<button type="submit" class="btncommon">Update</button>
+						</div>
 					</div>
-					<div class="form-group">
-						<label class="labelel">Email Address</label>
-						<input type="email" class="form-control inputcss" placeholder="Email">
-					</div>
-					<div class="form-group">
-						<label class="labelel">Password</label>
-						<input type="password" class="form-control inputcss" placeholder="Password">
-					</div>
-					<div class="editBtn">
-						<button type="submit" class="btncommon">Update</button>
-					</div>
-				</div>
+				<?php
+					echo form_close();
+				?>	
 			</div>
 		</div>
 	</div>

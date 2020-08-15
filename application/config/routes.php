@@ -55,6 +55,9 @@ $route['translate_uri_dashes'] = TRUE;
 
 ///   home Controlller ////
 $route['home/your-cart'] = 'home/cart';
+$route['becomePartner'] = 'home/becomePartner';
+$route['about'] = 'home/about';
+$route['privacy-policy'] = 'home/privacy_policy';
 $route['home/user-registration'] = 'user/doRegistration';
 
 

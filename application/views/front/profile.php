@@ -290,31 +290,39 @@
 								<div class="orderHead ">
 									<h2>Change Password</h2>
 								</div>
-								<div class="passwordIn">
-									<div class="row">
-										<div class="col-sm-6">
-											<div class="form-group">
-												<label class="labelel">Old Password</label>
-												<input type="password" class="form-control inputcss" placeholder="xxx">
+								<?php
+									$content = array('class' => 'common-form');
+									echo form_open('user/change-password/', $content);
+								?>
+									<div class="error_msg"></div>
+									<div class="passwordIn">
+										<div class="row">
+											<div class="col-sm-6">
+												<div class="form-group">
+													<label class="labelel">Old Password</label>
+													<input type="password" name="opass" id="opass" class="form-control inputcss" placeholder="xxx">
+												</div>
 											</div>
-										</div>
-										<div class="col-sm-6">
-											<div class="form-group">
-												<label class="labelel">New Password</label>
-												<input type="password" class="form-control inputcss" placeholder="xxx">
+											<div class="col-sm-6">
+												<div class="form-group">
+													<label class="labelel">New Password</label>
+													<input type="password" name="npass" id="npass" class="form-control inputcss" placeholder="xxx">
+												</div>
 											</div>
-										</div>
-										<div class="col-sm-6">
-											<div class="form-group">
-												<label class="labelel">Confirm Password</label>
-												<input type="password" class="form-control inputcss" placeholder="xxx">
+											<div class="col-sm-6">
+												<div class="form-group">
+													<label class="labelel">Confirm Password</label>
+													<input type="password" name="cpass" id="cpass" class="form-control inputcss" placeholder="xxx">
+												</div>
 											</div>
 										</div>
 									</div>
-								</div>
-								<div class="passwordUp">
-									<button type="submit" class="btncommon">Save Password</button>
-								</div>
+									<div class="passwordUp">
+										<button type="submit" class="btncommon">Save Password</button>
+									</div>
+								<?php
+									echo form_close();
+								?>	
 							</div>
 						</div>
 					</div>

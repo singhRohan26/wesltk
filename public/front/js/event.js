@@ -20,7 +20,7 @@ var Event = function () {
 };
 
 this.commonForm = function(){
-    $(document).on('submit', '#common-form', function(e){   
+    $(document).on('submit', '#common-form, .common-image-form', function(e){   
       e.preventDefault();
       var url = $(this).attr("action");
       var postdata = $(this).serialize();
@@ -55,7 +55,7 @@ this.commonForm = function(){
   })
 }
 this.commonSurveyForm = function(){
-    $(document).on('submit', '#common-survey-form', function(e){   
+    $(document).on('submit', '.common-form', function(e){   
       e.preventDefault();
       var url = $(this).attr("action");
       var postdata = $(this).serialize();

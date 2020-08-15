@@ -9,6 +9,10 @@ class Home_model extends CI_Model {
 	 
 	 */
 
-
+	public function getPagesData($page_id)
+	{
+		$query = $this->db->get_where('pages', ['page_id' => $page_id]);
+		return $query->row_array();
+	}
 	
 }
