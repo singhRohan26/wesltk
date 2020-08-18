@@ -187,15 +187,28 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="closeBtn">
-					<a href="#0" data-dismiss="modal"><img src="<?php echo base_url('public/front/')?>img/close.svg" class="img-fluid" alt="close"></a>
+					<a href="#0" data-dismiss="modal"><img src="<?php echo base_url('public/front/') ?>img/close.svg" class="img-fluid" alt="close"></a>
 				</div>
-				<?php
+                
+                <?php
 					$content = array('class' => 'common-image-form');
-					echo form_open('user/updatProfile/', $content);
+					echo form_open_multipart('user/updatProfile/', $content);
 				?>
-					<div class="editPopup">
-						<h2>Edit Profile</h2>
-						<div class="error_msg"></div>
+                
+                
+				<div class="editPopup">
+					<h2>Edit Profile</h2>
+						<div class="avatar-upload">
+							<div class="avatar-edit">
+								<input type='file' id="imageUpload" name="imageUpload" accept=".png, .jpg, .jpeg" />
+								<label for="imageUpload"></label>
+							</div>
+							<div class="avatar-preview">
+								<div id="imagePreview" style="background-image: url(http://i.pravatar.cc/500?img=7);">
+								</div>
+							</div>
+					</div>
+					<div class="error_msg"></div>
 						<div class="form-group">
 							<label class="labelel">Full Name</label>
 							<input type="text" name="profile_name" id="profile_name" class="form-control inputcss" placeholder="Name" value="<?php echo $userData['name'] ?>">
@@ -211,11 +224,11 @@
 						<div class="editBtn">
 							<button type="submit" class="btncommon">Update</button>
 						</div>
-					</div>
-				<?php
-					echo form_close();
-				?>	
+				</div>
 			</div>
+            <?php
+					echo form_close();
+				?>
 		</div>
 	</div>
 	<!-- End of Popup Modal of edit-profile -->

@@ -49,21 +49,53 @@ class User extends CI_Controller {
 			$this->output->set_output(json_encode(['result' => 0, 'errors' => $this->form_validation->error_array()]));
 			return FALSE;
 		}
+        
+        if (!empty($_FILES['imageUpload']['name'])) {
+            echo 'ho';die;
+                $image_name = $_FILES['imageUpload']['name'];
+                $img = rand(1, 99999);
+                $image_tmp = $_FILES['imageUpload']['tmp_name'];
+                $allowed_types = ["jpeg","jpg","png"];
+                $ext = pathinfo($image_name, PATHINFO_EXTENSION);
+                if(in_array($ext, $allowed_types)){
+                    $image = $img.".".$ext;
+                    move_uploaded_file($image_tmp, './uploads/users/'.$image);
+                }
+            }else{
+//            echo 'hi';die;
+                $user = $this->getLoginDetail();
+                $image = $user['image'];
+            } 
+        
 		$result = $this->user_model->checkemail($this->session->userdata('login_id'));
 		if ($result) {
             $this->output->set_output(json_encode(['result' => -1, 'msg' => 'Email already exists.']));
 			return FALSE;
 		} else {
-            $register = $this->user_model->updatProfile();
+            $register = $this->user_model->updatProfile($image);
             if($register){
 	            $this->output->set_output(json_encode(['result' => 1, 'url' => base_url("user/user-profile"), 'msg' => 'Profile Updated Successfully']));
 				return FALSE;
             }else{
-            	$this->output->set_output(json_encode(['result' => -1, 'msg' => 'No Chnages Were Made!..']));
+            	$this->output->set_output(json_encode(['result' => -1, 'msg' => 'No changes Were Made!..']));
 				return FALSE;
             }
 			
 		}
+    }
+    
+    public function doUploadProfileImage($file){
+        $file1 = $_FILES[$file]['name'];
+        $config['upload_path'] = './uploads/users/';
+        $config['allowed_types'] = 'gif|jpg|png|jpeg';
+        $config['max_size'] = '0';
+       // $config['max_filename'] = '2555';
+        $config['file_name'] = rand();
+        $this->upload->initialize($config);
+        $this->upload->do_upload($file);
+        $upload_data = $this->upload->data();
+        return $upload_data['file_name'];
+        
     }
     
     public function doLogin(){

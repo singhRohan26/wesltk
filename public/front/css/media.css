@@ -35,7 +35,82 @@
 */
 @media(max-width:1199px){
 
-
+	h2.heading{
+		font-size: 50px;
+	}
+	.bannerContent {
+		padding-top: 50px;
+	}
+	.resturantMenu ul li a{
+		font-size: 13px;
+	}
+.resturantMenu ul li {
+    margin-right: 4.924%;
+}
+	.restBanCont h2{
+		font-size: 38px;
+	}
+	.resturantLeft{
+		width: 18%;
+	}
+	.restaurntRight{
+		width: 78%;
+	}
+	.menuDetail ul li{
+		max-width: 50%;
+	}
+	.menuListImg{
+		width: 100%;
+		    border-radius: 8px 8px 0px 0px;
+    overflow: hidden;
+	}
+	.menuDetail ul li:nth-child(3n + 3) {
+    margin-right: 25px;
+}
+		.menuDetail ul li:nth-child(2n + 2) {
+    margin-right: 0;
+}
+	.restImgs {
+		width: 100%;
+		height: 100%;
+	}
+	.OrderDetail ul li:first-child,.OrderDetail ul li:last-child{
+		width: 48%;
+	}
+	.resturantMenu.resturantMenu2 ul li{
+		margin-right: 55px;
+	}
+	.customerIm.customerIm2 li:nth-child(3n +3) {
+    margin-right: 0;
+}
+	.customerIm.customerIm2 li:nth-child(4n +4) {
+    margin-right: 32px;
+}
+	.procedTo {
+    width: 100%;
+     margin-left: 0px; 
+}
+	.AddressLeft ul.adres li,.AddressLeft ul.adres li a{
+		width: 100%;
+	}
+	.contactDetail{
+		top: -112px;
+	}
+	.customerIm.customerIm2{
+		text-align: center;
+		display: block;
+	}
+	.menuDetail ul.menuDetailnew {
+    padding-top: 0;
+    display: block;
+    text-align: center;
+}
+	.menuDetail ul{
+		text-align: center;
+	}
+	.menuContent{
+		text-align: left;
+	}
 }
 @media(max-width:991px){
 
@@ -75,7 +150,107 @@
     right: 43%;
 }
  /* Home Page End*/
+	.middleMenu ul li a, .loginCart ul li a{
+		font-size: 16px;
+	}
+	.middleMenu ul li, .loginCart ul li{
+		margin-right: 25px;
+	}
+	h2.heading {
+    font-size: 40px;
+}
+.bannerContent {
+    padding-top: 35px;
+}
+	h2.subHeading{
+		font-size: 30px;
+	}
+	.foodAllservice {
+    padding: 15px 10px;
+}
+	h3.headingSize{
+		font-size: 35px;
+	}
+	.appImg {
+    height: 585px;
+    width: 100%;
+}
+	.LoginModals .modal-dialog {
+    max-width: 92%;
+}
+	.nav-item {
+    margin-right: 20px;
+}
+	.nav-link {
+    font-size: 14px;
+}
+	.resturantLeft {
+    width: 100%;
+		display: block;
+}
+	.restaurBanner{
+		margin-bottom: 60px;
+	}
+	.restaurntRight {
+    width: 100%;
+    margin-top: 50px;
+}
+	.resturantMenu ul li {
+    margin-right: 4.5%;
+}
+	.restaurantDet .col-sm-6 {
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+	.resturantMenu.resturantMenu2 ul li a{
+		font-size: 20px;
+	}
+	.resturantLeft.resturantLeft2,.restaurntRight.restaurntRight2 {
+    width: 100%;
+}
+	.customerIm.customerIm2 li:nth-child(2n +2) {
+    margin-right: 0;
+}
+	.customerIm.customerIm2 li:nth-child(3n +3) {
+    margin-right: 32px;
+}
+	.detailContent {
+    padding-left: 0;
+padding-top: 25px;
+}
+	.contactLeft{
+		padding: 25px;
+	}
 
+.shopingCart.scrollTop.paddingAll.boxs .col-sm-9 {
+    flex: 0 0 70%;
+    max-width: 70%;
+}
+		.shopingCart.scrollTop.paddingAll.boxs .col-sm-3 {
+    flex: 0 0 30%;
+    max-width: 30%;
+}
+	.contactDetail{
+		width: 75%;
+		top: -100px;
+	}
+	.contactRight {
+    width: 40%;
+}
+	.profileDetail.paddingAll.boxs .col-sm-3,.profileDetail.paddingAll.boxs .col-sm-9 {
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+	profileDetail.paddingAll.boxs .col-sm-9 {
+margin-top: 40px;
+}
+	.shopingCart.shopingCart222.scrollTop.paddingAll.boxs .col-sm-9,.shopingCart.shopingCart222.scrollTop.paddingAll.boxs .col-sm-3 {
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+	.shopingCart.shopingCart222.scrollTop.paddingAll.boxs .col-sm-3{
+		margin-top: 30px;
+	}
 
 }
 @media(max-width:767px){ 
@@ -158,10 +333,461 @@
         width: 100%;
     }
     /* Sidenav End */
+	.middleMenu{
+	display: none;
+	}
+	h2.heading {
+    font-size: 30px;
+}
+.bannerContent {
+    padding-top: 20px;
+}
+	.banerImgg {
+    width: 100%;
+    height: 475px;
+}
+	.paddingAll {
+    padding-bottom: 55px;
+}
+	.counterIn {
+    margin-bottom: 25px;
+}
+
+	h2.member::before {
+    left: 40px;
+}
+	h2.food::before {
+    left: 30px;
+}
+	h2.order::before {
+    left: 47px;
+}
+	h2.headingSize{
+		font-size: 34px;
+	}
+	.foodAllservice{
+		padding: 35px;
+	}
+	.exporeService .col-sm-4,.exploreMenu.paddingAll.boxs .col-sm-4 {
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+	.exploreMenu.paddingAll.boxs .col-sm-4 {
+margin-bottom: 50px;
+}
+	.exploreMenu.paddingAll.boxs .col-sm-4:last-child{
+		margin-bottom: 0;
+	}
+		.counterAll.paddingAll.boxs .col-md-3:last-child .counterIn{
+		margin-bottom: 0;
+	}
+	.appImg img{
+		display: none;
+	}
+	.appImg{
+		background: var(--Black);
+	}
+	.appImg {
+    min-height: 452px;
+    height: auto;
+}
+	.appContent{
+		top: -30px;
+	}
+	.joinUs .col-sm-6{
+		    flex: 0 0 100%;
+    max-width: 100%;
+	}
+	.joinUs .col-sm-6:first-child{
+		margin-bottom: 40px;
+	}
+	.footerAl,.socialMedia,.footerAl.footerFirst {
+		width: 48%;
+		display: inline-block;
+	}
+	.footerIn{
+		display: block;
+	}
+	.footer {
+    background: #f5fbff;
+}
+	.loginRight, .loginLeft {
+    width: 100%;
+}
+	.accountnot {
+		padding-bottom: 25px;
+	}
+	.loginAll{
+		display: block;
+	}
+	.loginLeft{
+		display: none;
+	}
+	.codeAll {
+
+    width: 40%;
+}
+	.restaurBanner{
+		height: 225px;
+	}
+	.bannerRest,.bannerRest img{
+		height: 100%;
+		width: 100%;
+		object-fit: cover;
+	}
+	.restBanCont h2 {
+    font-size: 28px;
+}
+	.restaurBanner {
+margin-bottom: 60px;
+}
+	.searchFood{
+		width: 55%;
+	}	
+	.resturantMenu ul{
+	overflow: auto;
+    white-space: nowrap;
+    overflow-y: hidden;	
+/*		float: left;*/
+	}
+	.menuDetail ul li {
+    max-width: 47%;
+}
+	.menuListImg{
+		height: 185px;
+	}
+	.searchFood.searchFood3{
+		display: none;
+	}
+	.menuDetailnew.menuDetailnew2 li {
+    max-width: 47%;
+}
+	.menuListImg.menuListImg2{
+		width: 100%;
+	}
+	.reviewWay{
+		display: none;
+	}
+	.customerAl{
+		display: block;
+	}
+	.customerThumb{
+		margin-top: 20px;
+	}
+	.menuContent{
+		text-align: left;
+	}
+	.shopingCart.scrollTop.paddingAll.boxs .col-sm-9 {
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+		.shopingCart.scrollTop.paddingAll.boxs .col-sm-3 {
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+	.procedTo{
+	width: 50%;
+		margin-top: 25px;
+	}
+	.contactDetail{
+		width: 95%;
+		top: -75px;
+	}
+	.Adresses{
+		display: block;
+	}
+	.AddressLeft{
+		width: 100%;
+	}
+	.AddressLeft.AddressRight{
+		margin-top: 30px;
+	}
+	.AddressLeft.AddressRight ul.adres {
+    position: initial;
+}
+	.profileOrders{
+		margin-bottom: 30px;
+	}
+		.contactDetail.contactDetailcar{
+		margin: 20px 0px 0px;
+		box-shadow: none;
+		border: none;
+	}
+	.contactDetail.contactDetailcar .contactLeft{
+		padding-left: 0;
+		padding-right: 0;
+	}
+	.aboutU .col-sm-6 {
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+	.reviewFirst {
+    width: 49%;
+    display: inline-block;
+}
+	.reviewOrder{
+		display: block;
+		padding: 20px;
+	}
+	.reviewFirst:nth-child(2){
+		float: right;
+		padding-left: 10px;
+	}
+	.reviewFirst:last-child {
+    width: 100%;
+    margin-top: 25px;
+}
+	.shopingCart.shopingCart222.scrollTop.paddingAll.boxs .col-sm-3 .procedTo {
+    width: 100%;
+    margin-top: 25px;
+}
+		.shopingCart.scrollTop {
+    margin-top: 85px;
+}
+	.faq.scroll.paddingAll.boxs{
+		margin-top: 85px;
+	}
+	.restaurantDet.scrollTop{
+		margin-top: 85px;
+	}
 }
 @media(max-width:560px){
-
-
+h2.heading {
+    font-size: 25px;
+}
+	.select-styled{
+		font-size: 16px;
+	}
+	.searchFood .form-control {
+    font-size: 14px;
+    line-height: 22px;
+    padding: 12px 25px 12px 40px;
+    color: #4b4e55;
+    border-radius: 4px;
+    border: none;
+}
+	h3.headingSize {
+    font-size: 26px;
+}
+	.joinContent p br{
+		display: none;
+	}
+	.footerAl, .socialMedia, .footerAl.footerFirst {
+    width: 100%;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+	.footerAl p{
+		padding-bottom: 10px;
+	}
+	.footerAl p:last-child{
+		padding-bottom: 0;
+	}
+	.footerAl h2{
+		padding-bottom: 15px;
+	}
+	.closeBtn a img{
+		width: 75%;
+	}
+	.closeBtn {
+    position: absolute;
+    right: -55px;
+    top: -35px;
+}
+	.codeAll {
+    width: 62%;
+}
+	.menuDetail ul li {
+    max-width: 100%;
+    margin-right: 0;
+}
+	.menuDetail ul li:nth-child(3n + 3),.menuDetail ul li:nth-child(2n + 2) {
+    margin-right: 0;
+}
+	.menuDetail ul{
+		text-align: center;
+	}
+	.resturaRightHead{
+		display: block;
+	}
+	.searchFood {
+    width: 100%;
+    margin: 0;
+    margin-top: 15px;
+}
+	.OrderDetail ul li:first-child, .OrderDetail ul li:last-child {
+    width: 49%;
+}
+	.orderBtn ul li a.sharebtn {
+    width: 132px;
+}
+	.orderBtn ul li:last-child {
+    margin-right: 0;
+    margin-top: 15px;
+}
+	.resturantMenu.resturantMenu2 ul li a {
+    font-size: 16px;
+}
+	.resturantMenu.resturantMenu2 ul li {
+    margin-right: 50px;
+}
+	.menuDetailnew.menuDetailnew2 li {
+    max-width: 100%;
+}
+	.reviewAll .container{
+		padding: 0;
+	}
+	.customerReview ul.customerIm li {
+    display: inline-block;
+    width: 135px;
+    height: 100px;
+    margin-right: 15px;
+}
+	.checkLogin ul li a{
+		width: 125px;
+	}
+	.contactTitle,.contactNo{
+		display: none;
+	}
+	.contactRight ul li a{
+		padding: 85px 0px;
+	}
+	.contactLeft {
+    padding: 15px;
+}
+	.reviewFirst {
+    width: 100%;
+    display: inline-block;
+}
+	.reviewFirst:nth-child(2) {
+    float: right;
+    padding-left: 0;
+    padding-top: 25px;
+}
+	.shopCartInAl{
+		display: block;
+	}
+	.shopingDet{
+		display: block;
+		padding: 30px 0px 0px;
+	}
+	.shopContent{
+		margin-left: 0;
+		    padding-top: 25px;
+	}
+	.priceAl{
+		padding: 10px 0px 30px;
+	}
 }
 @media(max-width:414px){
+	h2.heading {
+    font-size: 22px;
+}
+	.searchFood {
+    width: 100%;
+     margin-left: 0; 
+    display: block;
+    float: left;
+}
+	.select{
+		width: 100%;
+		margin-bottom: 15px;
+	}
+	.cityAll1{
+		display: block;
+	}
+	.banerImgg {
+    height: 575px;
+}
+	h2.headingSize {
+    font-size: 26px;
+}
+	h3.headingSize {
+    font-size: 22px;
+}
+	.appContent ul li a,.appContent ul li {
+    display: block;
+}
+	.appContent ul li {
+    margin-bottom: 20px;
+}
+	.appContent ul li:last-child{
+		margin-bottom: 0;
+	}
+	.container{
+		padding: 0px 15px;
+	}
+	.loginRight {
+    padding: 25px;
+}
+	.btncommon{
+		width: 135px;
+	}
+	.codeAll {
+    width: 75%;
+}
+	.OrderDetail ul li:first-child {
+    width: 56%;
+		font-size: 12px;
+}
+	 .OrderDetail ul li:last-child {
+    width: 42%;
+		 font-size: 12px;
+}
+	.customerReview{
+		padding: 15px;
+	}
+	.rivewTop{
+		display: block;
+	}
+	.reviewRight{
+		margin-top: 20px;
+	}
+	.customerReview ul.customerIm li{
+		width: 46%;
+	}
+	.customerIm.customerIm2 {
+		text-align: center;
+	}
+		.customerIm.customerIm2 li{
+		margin-right: 0;
+	}
+	.customerIm.customerIm2 li:nth-child(3n +3) {
+    margin-right: 0;
+}
+	.checkoutAll:first-child .checkLogin{
+		padding: 20px;
+	}
+	.checkLogin ul li a {
+    width: 115px;
+}
+	.checkLogin ul li {
+ margin-right: 10px;
+}
+	.checkLogin{padding: 15px;
+	}
+	h2.mainHeading{
+		font-size: 20px;
+	}
+	.contactLeft {
+    width: 100%;
+}
+	.priceedBtn a{
+		min-width: 130px;
+	}
+	.procedTo{
+		width: 100%;
+	}
+	.faqContent a span{
+		background: var(--colorWhite);
+	}
+	.shopCartInHead.shopCartInHead2 h2{
+		font-size: 15px;
+	}
+	.AddressLeft ul.adres li a{
+		padding: 10px;
+	}
+	.radio.radio2 label{
+		font-size: 14px;
+	}
 }

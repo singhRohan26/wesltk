@@ -1,13 +1,137 @@
-//$(window).scroll(function() {    
-//    var scroll = $(window).scrollTop();
-//
-//    if (scroll >= 570 ) {
-//        $(".resturantLeft.resturantLeft2").addClass("fixed");
-//    }
-//	else{
-//	 $(".resturantLeft.resturantLeft2").removeClass("fixed");	
-//	}
-//})
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            $('#imagePreview').css('background-image', 'url('+e.target.result +')');
+            $('#imagePreview').hide();
+            $('#imagePreview').fadeIn(650);
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+$("#imageUpload").change(function() {
+    readURL(this);
+});
+
+// Fixed Header Start
+
+    $(window).scroll(function () {
+    
+        if ($(window).scrollTop() >= 1) {
+            $('.header').addClass('fixedHeader');
+        } else {
+            $('.header').removeClass('fixedHeader');
+        }
+    });
+  
+  // Fixed Header End
+
+    $().ready(function(){
+        $('.slick-carousel').slick({
+        autoplay: true,
+        autoplaySpeed: 1000,
+        arrows: false,
+        centerPadding: "0px",
+        dots: false,
+        slidesToShow: 4,
+        infinite: true
+        });
+    });
+
+  // Sidebar Start
+
+    $('.navbar-toggler').click(function () {
+        if ($(this).parents('.navbar').find('.navbar-collapse').hasClass('show')) {
+            $('.navbar-expand-md .navbar-collapse').css('left', '-250px');
+        } else {
+            $('.navbar-expand-md .navbar-collapse').css('left', '0px');
+        }
+    });
+  
+  // Sidebar End
+
+  // Navbar Button Style Start
+
+    $(document).ready(function(){
+        $('.navbar-toggler').click(function(){
+            if($(this).hasClass('active'))
+            {
+                $(this).removeClass('active')
+            }
+            else{
+                $(this).addClass('active')
+            }
+        });
+    });
+  
+  // Navbar Button Style End
+$(document).on('click','.rating ul li',function(){
+	$(this).children('.starnew').hide();
+	$(this).children('.starshow').show();
+});
+//$(document).on('click','.rating ul li',function(){
+//	$(this).children('.starshow').hide();
+//	$(this).children('.starnew').show();
+//});
+
+(function() {
+  // Display the images to be uploaded.
+  var multiPhotoDisplay;
+
+  $('#photos').on('change', function(e) {
+    return multiPhotoDisplay(this);
+  });
+
+  this.readURL = function(input) {
+    var reader;
+    
+    // Read the contents of the image file to be uploaded and display it.
+
+    if (input.files && input.files[0]) {
+      reader = new FileReader();
+      reader.onload = function(e) {
+        var $preview;
+        $('.image_to_upload').attr('src', e.target.result);
+        $preview = $('.preview');
+        if ($preview.hasClass('hide')) {
+          return $preview.toggleClass('hide');
+        }
+      };
+      return reader.readAsDataURL(input.files[0]);
+    }
+  };
+
+  multiPhotoDisplay = function(input) {
+    var file, i, len, reader, ref;
+    
+    // Read the contents of the image file to be uploaded and display it.
+
+    if (input.files && input.files[0]) {
+      ref = input.files;
+      for (i = 0, len = ref.length; i < len; i++) {
+        file = ref[i];
+        reader = new FileReader();
+        reader.onload = function(e) {
+          var image_html;
+          image_html = `<li><a class="th" href="${e.target.result}"><img width="75" src="${e.target.result}"></a></li>`;
+          $('#photos_clearing').append(image_html);
+          if ($('.pics-label.hide').length !== 0) {
+            $('.pics-label').toggle('hide').removeClass('hide');
+          }
+          return $(document).foundation('reflow');
+        };
+        reader.readAsDataURL(file);
+      }
+      window.post_files = input.files;
+      if (window.post_files !== void 0) {
+        return input.files = $.merge(window.post_files, input.files);
+      }
+    }
+  };
+
+}).call(this);
+
+
 $(document).on('click','.afterloginBtn',function(){
 	$('.profileChanges').slideDown();
 });

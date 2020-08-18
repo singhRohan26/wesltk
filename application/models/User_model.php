@@ -31,11 +31,12 @@ class User_model extends CI_Model {
         return $this->db->insert_id();       
     }
     
-    public function updatProfile(){
+    public function updatProfile($image){
         $data = array(
         'name' =>$this->security->xss_clean($this->input->post('profile_name')),
         'email' =>$this->security->xss_clean($this->input->post('profile_email')),
         'phone' =>$this->security->xss_clean($this->input->post('profile_phone')),
+        'image'=> $image
         );
         $this->db->update('users', $data, ['user_id' => $this->session->userdata('login_id')]);
         return $this->db->affected_rows();       

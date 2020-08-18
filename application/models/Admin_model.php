@@ -60,5 +60,12 @@ class Admin_model extends CI_Model {
          $this->db->update('pages', $data, ['id' => $id]);
          return $this->db->affected_rows();
     }
+    
+    public function getUsersList(){
+        $this->db->select('*');
+        $this->db->from('users');
+        $sel = $this->db->get();
+        return $sel->result_array();
+    }
 	
 }

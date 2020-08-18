@@ -1,9 +1,16 @@
+
+
 <section class="profileAll scrollTop boxs">
 		<div class="container">
 			<div class="profileIn boxs">
 				<div class="profilrLeft">
-					<h2><?php echo $userData['name']; ?></h2>
-					<p><span><?php echo $userData['email']; ?></span> | <span><?php echo $userData['phone']; ?></span></p>
+					<div class="profileImgIn">
+						<img src="img/deepu.jpg" class="img-fluid" alt="img">
+					</div>
+					<div class="">
+						<h2><?php echo $userData['name']; ?></h2>
+						<p><span><?php echo $userData['email']; ?></span> | <span><?php echo $userData['phone']; ?></span></p>
+					</div>
 				</div>
 				<div class="profilrright">
 					<a href="#0" data-toggle="modal" data-target="#editModal"><span><img src="<?php echo base_url('public/front/')?>img/editwhite.svg" class="img-fluid" alt="edit"></span>Edit Profile</a>

@@ -214,7 +214,7 @@ input[type=date]::-webkit-outer-spin-button {
 .header {
     position: fixed;
     z-index: 999;
-    padding: 20px 0;
+/*    padding: 20px 0;*/
 	background: var(--colorWhite);
 	 box-shadow: 4px 2px 12px 0 rgba(0, 0, 0, 0.08);
 }
@@ -267,8 +267,8 @@ input[type=date]::-webkit-outer-spin-button {
     padding: 0;
 }
 .navbar-expand-md .navbar-nav{
-	display: flex;
-	align-items: center;
+    display: flex;
+    padding: 20px;
 }
 .navbar-expand-md {
     width: 100%;
@@ -298,7 +298,7 @@ input[type=date]::-webkit-outer-spin-button {
     width: 30px;
     right: 0px;
     top: 50%;
-    background: var(--colorWhite);
+    background: var(--Black);
     transition-duration: 0.075s;
     transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
 }
@@ -310,7 +310,7 @@ input[type=date]::-webkit-outer-spin-button {
     left: 0;
     height: 3px;
     width: 30px;
-    background: var(--colorWhite);
+    background: var(--Black);
     transition: all 0.3s ease;
 }
 
@@ -321,7 +321,7 @@ input[type=date]::-webkit-outer-spin-button {
     left: 0;
     height: 3px;
     width: 30px;
-    background: var(--colorWhite);
+    background: var(--Black);
     opacity: 1;
     transition: top 0.075s ease, opacity 0.075s 0.12s ease;
 }
@@ -382,6 +382,9 @@ input[type=date]::-webkit-outer-spin-button {
 	width: 100%;
 	display: flex;
 	justify-content: center;
+}
+.bannerInner {
+	position: relative;
 }
 .bannerHead{
 	display: flex;
@@ -516,6 +519,9 @@ display: none;
 	background: var(--colorWhite);
 	border-radius: 4px;
 	border: none;
+}
+.bannerRest img{
+	width: 100%;
 }
 .searchFood .form-control::placeholder{
 	color: #bbbcbf;
@@ -868,6 +874,7 @@ right: 0;
 	  border-radius: 6px;
   border: solid 2px #ececec;
 	    padding: 10px 15px;
+	width: 100%;
 }
 .inputcss:focus{
   border: solid 2px #ececec;
@@ -1983,6 +1990,7 @@ color: var(--colorBlack);
 	font-size: 14px;
 	font-family: var(--latoSemibold);
 	    margin-bottom: 10px;
+	display: block;
 }
 
 /*review code start*/
@@ -2789,7 +2797,105 @@ position: absolute;
 	text-align: center;
 	    margin: 20px auto;
 }
+.clearing-thumbs{
+	margin-top: 20px;
+}
+.Browse{
+	font-size: 16px;
+	color: var(--latoBold);
+	color: var(--colorWhite);
+    background: #1390e0;
+    padding: 10px 25px;
+    border-radius: 0px 6px 6px 0px;
+	cursor: pointer;
+}
+.brossNone{
+	display: none;
+}
+.browseAll{
+	display: flex;
+}
+.browseAll input{
+border-radius: 6px 0px 0px 6px;	
+}
+.th img{
+width: 125px;
+	height: 125px;
+	object-fit: cover;
+}
+.forgetIn{
+	padding-bottom: 20px;
+}
+.profileImgIn{
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	overflow: hidden;
+		margin-right: 15px;
+}
+.profilrLeft{
+	display: flex;
+}
 
+/*image uploader code*/
+.avatar-upload {
+position: relative;
+    max-width: 155px;
+    margin: 10px auto 35px;
+}
+.avatar-upload .avatar-edit {
+  position: absolute;
+  right: 12px;
+  z-index: 1;
+  top: 10px;
+}
+.avatar-upload .avatar-edit input {
+  display: none;
+}
+.avatar-upload .avatar-edit input + label {
+  display: inline-block;
+  width: 34px;
+  height: 34px;
+  margin-bottom: 0;
+  border-radius: 100%;
+  background: #FFFFFF;
+  border: 1px solid transparent;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+  font-weight: normal;
+  transition: all 0.2s ease-in-out;
+}
+.avatar-upload .avatar-edit input + label:hover {
+  background: #f1f1f1;
+  border-color: #d6d6d6;
+}
+.avatar-upload .avatar-edit input + label:after {
+  content: "\f040";
+  font-family: 'FontAwesome';
+  color: #757575;
+  position: absolute;
+  top: 10px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  margin: auto;
+}
+.avatar-upload .avatar-preview {
+  width: 140px;
+  height: 140px;
+  position: relative;
+  border-radius: 100%;
+  border: 6px solid #F8F8F8;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+}
+.avatar-upload .avatar-preview > div {
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
 .socialIconsM ul li.Btn button {
     background: var(--colorYellow);
     color: var(--Black);
