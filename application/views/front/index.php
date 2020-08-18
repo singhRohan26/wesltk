@@ -14,7 +14,7 @@
 					</div>
 					<div class="middleMenu">
 						<ul>
-							<li><a href="#0">Become a Partner</a></li>
+							<li><a href="javascript:void(0);" data-toggle="modal" data-target="#become_partner">Become a Partner</a></li>
 							<li><a href="#0">Offers</a></li>
 							<li><a href="#0">Services <span><img src="<?php echo base_url('public/front/') ?>img/dropdown2.svg" class="img-fluid" alt="dropdown"></span></a></li>
 							<li><a href="#0">Shop <span><img src="<?php echo base_url('public/front/') ?>img/dropdown2.svg" class="img-fluid" alt="dropdown"></span></a></li>

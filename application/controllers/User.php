@@ -49,30 +49,13 @@ class User extends CI_Controller {
 			$this->output->set_output(json_encode(['result' => 0, 'errors' => $this->form_validation->error_array()]));
 			return FALSE;
 		}
-        
-        if (!empty($_FILES['imageUpload']['name'])) {
-            echo 'ho';die;
-                $image_name = $_FILES['imageUpload']['name'];
-                $img = rand(1, 99999);
-                $image_tmp = $_FILES['imageUpload']['tmp_name'];
-                $allowed_types = ["jpeg","jpg","png"];
-                $ext = pathinfo($image_name, PATHINFO_EXTENSION);
-                if(in_array($ext, $allowed_types)){
-                    $image = $img.".".$ext;
-                    move_uploaded_file($image_tmp, './uploads/users/'.$image);
-                }
-            }else{
-//            echo 'hi';die;
-                $user = $this->getLoginDetail();
-                $image = $user['image'];
-            } 
-        
+                
 		$result = $this->user_model->checkemail($this->session->userdata('login_id'));
 		if ($result) {
             $this->output->set_output(json_encode(['result' => -1, 'msg' => 'Email already exists.']));
 			return FALSE;
 		} else {
-            $register = $this->user_model->updatProfile($image);
+            $register = $this->user_model->updatProfile();
             if($register){
 	            $this->output->set_output(json_encode(['result' => 1, 'url' => base_url("user/user-profile"), 'msg' => 'Profile Updated Successfully']));
 				return FALSE;
