@@ -68,6 +68,28 @@ $route['user/user-login'] = 'user/doLogin';
 
 
 
+///   Vendor Controlller ////
+$route['vendor'] = 'vendor/vendor/index';
+$route['vendor/doLogin'] = 'vendor/vendor/doLogin';
+$route['vendor/dashboard'] = 'vendor/vendor/dashboard';
+$route['vendor/logout'] = 'vendor/vendor/logout';
+$route['vendor/change-password'] = 'vendor/vendor/changePassword';
+$route['vendor/doChangePass'] = 'vendor/vendor/doChangePass';
+$route['vendor/edit-profile'] = 'vendor/vendor/editProfile';
+$route['vendor/doChangeProfile/(:any)'] = 'vendor/vendor/doChangeProfile/$1';
+
+///   Restaurant Controlller ////
+$route['vendor/restaurant-menu'] = 'vendor/restaurant/index';
+$route['vendor/edit-restaurant-menu/(:any)'] = 'vendor/restaurant/index/$1';
+$route['vendor/addRestaurantMenu'] = 'vendor/restaurant/addRestaurantMenu';
+$route['vendor/editRestaurantMenu/(:any)'] = 'vendor/restaurant/editRestaurantMenu/$1';
+$route['vendor/delete-restaurant-menu/(:any)'] = 'vendor/restaurant/delete-restaurant-menu/$1';
+
+
+
+
+///   Admin-user Controlller ////
+$route['admin/user'] = 'admin/user/users';
 ///   Admin Controlller ////
 $route['admin'] = 'admin/admin/index';
 $route['admin/doLogin'] = 'admin/admin/doLogin';

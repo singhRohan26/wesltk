@@ -36,7 +36,7 @@
                                         <div id="error_msg"></div>
                                         <?php 
                                             $content = array('id' => 'common-form', 'class' => "form-horizontal");
-                                            echo form_open('admin/doForgotPassword', $content);
+                                            echo form_open('vendor/doForgotPassword', $content);
                                         ?>
                                         <div class="row">
                                             <div class="col-md-12">

@@ -16,7 +16,7 @@
 
                                     <div class="page-title-right">
                                         <ol class="breadcrumb m-0">
-                                            <li class="breadcrumb-item"><a href="<?php echo base_url('admin/dashboard');?>">Dashboard</a></li>
+                                            <li class="breadcrumb-item"><a href="<?php echo base_url('vendor/dashboard');?>">Dashboard</a></li>
                                             <li class="breadcrumb-item"><a href="javascript: void(0);">Change Password</a></li>
                                             <!-- <li class="breadcrumb-item active">Form Elements</li> -->
                                         </ol>
@@ -38,7 +38,7 @@
                                                 <div id="error_msg"></div>
                                                 <?php 
                                                     $content = array('id' => 'common-form', 'role' => "form");
-                                                    echo form_open('admin/doChangePass', $content);
+                                                    echo form_open('vendor/doChangePass', $content);
                                                 ?>
                                                 <div class="form-group">
                                                     <h5 class="font-size-14">Old Password</h5>

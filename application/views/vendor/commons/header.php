@@ -45,7 +45,7 @@
                         <div class="navbar-brand-box">
                           
 
-                            <a href="<?php echo base_url('admin/dashboard');?>" class="logo logo-light">
+                            <a href="<?php echo base_url('vendor/dashboard');?>" class="logo logo-light">
                                 <span class="logo-sm" >
                                     <img src="<?php echo base_url('public/admin/assets/images/logo.png') ?>" alt="" style="position: absolute;height: 40px;width: 40px;border-radius: 50%;left: 4px;top: 10px;">
                                 </span>
@@ -165,11 +165,11 @@
                             </button>
                             <div class="dropdown-menu dropdown-menu-right">
                                 <!-- item-->
-                                 <a class="dropdown-item" href="<?php echo base_url('admin/edit-profile') ?>"><i class="fas fa-user-alt"></i> Edit Profile</a>
+                                 <a class="dropdown-item" href="<?php echo base_url('vendor/edit-profile') ?>"><i class="fas fa-user-alt"></i> Edit Profile</a>
                                  
-                                <a class="dropdown-item" href="<?php echo base_url('admin/change-password') ?>"><i class="fas fa-edit"></i> Change Password</a>
+                                <a class="dropdown-item" href="<?php echo base_url('vendor/change-password') ?>"><i class="fas fa-edit"></i> Change Password</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="<?php echo base_url('admin/logout') ?>"><i class="mdi mdi-logout font-size-16 align-middle mr-1"></i> Logout</a>
+                                <a class="dropdown-item" href="<?php echo base_url('vendor/logout') ?>"><i class="mdi mdi-logout font-size-16 align-middle mr-1"></i> Logout</a>
                             </div>
                         </div>
             

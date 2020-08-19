@@ -21,6 +21,7 @@ class User extends CI_Controller {
 		$data['title'] = "edit profile";
 		$id = $this->session->userdata('login_id');
         $data['userData'] = $this->getLoginDetail();
+        $data['users'] = $this->admin_model->getUsersList();
 		$this->load->view('admin/commons/header', $data);
 		$this->load->view('admin/commons/sidebar');
 		$this->load->view('admin/users/user-list');

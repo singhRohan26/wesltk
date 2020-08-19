@@ -30,12 +30,12 @@
                         <div class="card">
                             <div class="card-body p-4">
                                 <div class="p-2">
-                                    <h5 class="text-center">Wesltk Admin Panel</h5>
+                                    <h5 class="text-center">Wesltk Vendor Panel</h5>
                                     
                                     <div class="error_msg"></div>
                                     <?php 
                                         $content = array('id' => 'common-form', 'role' => "form", 'class' => "form-horizontal");
-                                        echo form_open('admin/doLogin', $content);
+                                        echo form_open('vendor/doLogin', $content);
                                     ?>
                                         <div class="row">
                                             <div class="col-md-12">

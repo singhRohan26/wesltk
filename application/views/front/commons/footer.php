@@ -187,15 +187,28 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="closeBtn">
-					<a href="#0" data-dismiss="modal"><img src="<?php echo base_url('public/front/')?>img/close.svg" class="img-fluid" alt="close"></a>
+					<a href="#0" data-dismiss="modal"><img src="<?php echo base_url('public/front/') ?>img/close.svg" class="img-fluid" alt="close"></a>
 				</div>
-				<?php
+                
+                <?php
 					$content = array('class' => 'common-image-form');
-					echo form_open('user/updatProfile/', $content);
+					echo form_open_multipart('user/updatProfile/', $content);
 				?>
-					<div class="editPopup">
-						<h2>Edit Profile</h2>
-						<div class="error_msg"></div>
+                
+                
+				<div class="editPopup">
+					<h2>Edit Profile</h2>
+						<div class="avatar-upload">
+							<div class="avatar-edit">
+								<input type='file' id="imageUpload" name="imageUpload" accept=".png, .jpg, .jpeg" />
+								<label for="imageUpload"></label>
+							</div>
+							<div class="avatar-preview">
+								<div id="imagePreview" style="background-image: url(http://i.pravatar.cc/500?img=7);">
+								</div>
+							</div>
+					</div>
+					<div class="error_msg"></div>
 						<div class="form-group">
 							<label class="labelel">Full Name</label>
 							<input type="text" name="profile_name" id="profile_name" class="form-control inputcss" placeholder="Name" value="<?php echo $userData['name'] ?>">
@@ -211,6 +224,48 @@
 						<div class="editBtn">
 							<button type="submit" class="btncommon">Update</button>
 						</div>
+				</div>
+                <?php
+					echo form_close();
+				?>
+			</div>
+            
+		</div>
+	</div>
+	<!-- End of Popup Modal of edit-profile -->
+<!-- Start of Popup Modal of vendor -->
+	<div class="modal  LoginModals LoginModals2 fade" id="become_partner" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="closeBtn">
+					<a href="#0" data-dismiss="modal"><img src="<?php echo base_url('public/front/')?>img/close.svg" class="img-fluid" alt="close"></a>
+				</div>
+				<?php
+					$content = array('class' => 'common-image-form');
+					echo form_open('becomePartner/', $content);
+				?>
+					<div class="editPopup">
+						<h2>Become A Partner</h2>
+						<div class="error_msg"></div>
+						<div class="form-group">
+							<label class="labelel">Full Name</label>
+							<input type="text" name="vendor_name" id="vendor_name" class="form-control inputcss" placeholder="Name" >
+						</div>
+						<div class="form-group">
+							<label class="labelel">Email Address</label>
+							<input type="text" class="form-control inputcss" name="vendor_email" id="vendor_email" placeholder="Email"  >
+						</div>
+						<div class="form-group">
+							<label class="labelel">Phone Number</label>
+							<input type="number" class="form-control inputcss" placeholder="Number" name="vendor_phone" id="vendor_phone" >
+						</div>
+						<div class="form-group">
+							<label class="labelel">Website</label>
+							<input type="text" class="form-control inputcss" placeholder="Website" name="vendor_website" id="vendor_website" >
+						</div>
+						<div class="editBtn">
+							<button type="submit" class="btncommon">Submit</button>
+						</div>
 					</div>
 				<?php
 					echo form_close();
@@ -218,7 +273,7 @@
 			</div>
 		</div>
 	</div>
-	<!-- End of Popup Modal of edit-profile -->
+	<!-- End of Popup Modal of vendor -->
 	<script src="<?php echo base_url('public/front/') ?>js/jquery.js"></script>
 	<script src="<?php echo base_url('public/front/') ?>js/bootstrap.min.js"></script>
 	<script src="<?php echo base_url('public/front/') ?>js/slick.js"></script>

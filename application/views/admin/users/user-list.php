@@ -6,12 +6,13 @@
         <div class="container-fluid">
             <!-- start page title -->
             <div class="row">
-                <div class="col-12">
-                    <div class="page-title-box d-flex align-items-center justify-content-between">
-                        <h4 class="mb-0 font-size-18">Users List</h4>
-                    </div>
-                </div>
+                 <div class="card-header">
+                <i class="fa fa-user" aria-hidden="true"></i>
+                <a class="notify" href="#"> Users List</a>
             </div>
+            <p class="error_msg"></p>
+            </div>
+
             <!-- end page title -->
 
             <div class="row">
@@ -20,40 +21,34 @@
                         <div class="card-body">
                             <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                 <thead>
-                                    <tr>
-                                        <th>Id</th>
-                                        <th>Image</th>
-                                        <th>Name</th>
-                                        <th>Email</th>
-                                        <th>Status</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
+                            <tr>
+                                
+                                <th>Sno.</th>
+                                <th>Image</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
 
-                                <tbody>
-                                    
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-                                            
-                                    
-                                        <tr>
-                                            <td colspan="7" class="text-danger">
-                                    <center></center>
-                                    </td>
-                                    </tr>
-                                                                 
-                                </tbody>
-                            </table>
-                        </div>
+                              <tbody>
+                            <?php $a=1; foreach($users as $user){  ?>
+                            <tr>
+                                <td><?php echo $a;  ?></td>
+                                <td></td>
+                                <td><?php echo $user['name'];  ?></td>
+                                <td><?php echo $user['email'];  ?></td>
+                                <td><?php echo $user['phone'];  ?></td>
+                                <td></td>
+                            </tr>
+                            <?php $a++; } ?>
+                        </tbody>
+                    </table>
                     </div>
-                </div> <!-- end col -->
-            </div> <!-- end row -->
-        </div> <!-- container-fluid -->
-    </div>
+                </div>
+            </div> <!-- end col -->
+        </div> <!-- end row -->
+    </div> <!-- container-fluid -->
+</div>
     <!-- End Page-content -->

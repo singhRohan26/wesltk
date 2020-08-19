@@ -16,7 +16,7 @@
 
                                     <div class="page-title-right">
                                         <ol class="breadcrumb m-0">
-                                            <li class="breadcrumb-item"><a href="<?php echo base_url('admin/dashboard');?>">Dashboard</a></li>
+                                            <li class="breadcrumb-item"><a href="<?php echo base_url('vendor/dashboard');?>">Dashboard</a></li>
                                             <li class="breadcrumb-item"><a href="javascript: void(0);">Edit Profile</a></li>
                                             <!-- <li class="breadcrumb-item active">Form Elements</li> -->
                                         </ol>
@@ -35,12 +35,12 @@
                                            <p class="error_msg"></p>
                                         </div>
                                         <div class="card-block">
-                                            <form name="editProfile" id="editProfile" method="post" action="<?php if(!empty($profileData['id'])) { echo base_url('admin/doChangeProfile/'.$profileData['id']); } else { echo ""; } ?>" enctype="multipart/form-data">
+                                            <form name="editProfile" id="editProfile" method="post" action="<?php if(!empty($profileData['vendor_id'])) { echo base_url('vendor/doChangeProfile/'.$profileData['vendor_id']); } else { echo ""; } ?>" enctype="multipart/form-data">
 <!--                                                <div id="error_msg"></div>-->
                                                 <div class="form-group row">
                                                     <label class="col-sm-2 col-form-label">Name</label>
                                                     <div class="col-sm-10">
-                                                     <input type="text" name="admin_name" id="admin_name" class="admin_name form-control" placeholder="Admin Name" value="<?php if(!empty($profileData['name'])) { echo $profileData['name'];}else{ echo "";} ?>">
+                                                     <input type="text" name="vendor_name" id="vendor_name" class="admin_name form-control" placeholder="Admin Name" value="<?php if(!empty($profileData['name'])) { echo $profileData['name'];}else{ echo "";} ?>">
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
