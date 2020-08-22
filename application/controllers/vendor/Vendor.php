@@ -179,8 +179,13 @@ class Vendor extends CI_Controller {
 			$this->output->set_output(json_encode(['result' => 0, 'errors' => $this->form_validation->error_array()]));
 			return FALSE;
 		}
+        if(!empty($_FILES['image_url']['name'])){
+            $file1=$this->doUploadProfileImage('image_url');
+        }if(empty($_FILES['image_url']['name'])){
+            $file1=$image['image'];
+        }
 		 
-        $result = $this->vendor_model->doChangeProfile($id);
+        $result = $this->vendor_model->doChangeProfile($id,$file1);
         if ($result) {
             $this->output->set_output(json_encode(['result' => 1, 'msg' => 'Profile Changed successfully!!.', 'url' => base_url('vendor/edit-profile/')]));
             return FALSE;
@@ -188,6 +193,20 @@ class Vendor extends CI_Controller {
             $this->output->set_output(json_encode(['result' => -1, 'msg' => 'No changes were made!!.']));
             return FALSE;
         }
+    }
+    
+    public function doUploadProfileImage($file){
+        $file1 = $_FILES[$file]['name'];
+        $config['upload_path'] = './uploads/vendor/';
+        $config['allowed_types'] = 'gif|jpg|png|jpeg';
+        $config['max_size'] = '0';
+       // $config['max_filename'] = '2555';
+        $config['file_name'] = rand();
+        $this->upload->initialize($config);
+        $this->upload->do_upload($file);
+        $upload_data = $this->upload->data();
+        return $upload_data['file_name'];
+        
     }
     
     public function pages($page_id){

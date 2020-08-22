@@ -59,6 +59,7 @@ $route['becomePartner'] = 'home/becomePartner';
 $route['about'] = 'home/about';
 $route['privacy-policy'] = 'home/privacy_policy';
 $route['home/user-registration'] = 'user/doRegistration';
+$route['home/restaurant-lists'] = 'home/restaurantsLists';
 
 
 ///   User Controlller ////

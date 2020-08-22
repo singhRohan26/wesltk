@@ -106,6 +106,7 @@ class Restaurant extends CI_Controller {
 			$data['product_image'] = $this->restaurant_model->getProductImageByProductId($id);
 		}
 		$data['menus'] = $this->restaurant_model->getMenuData();
+        $data['category'] = $this->restaurant_model->getAdminMenus();
 		$this->load->view('vendor/commons/header', $data);
 		$this->load->view('vendor/commons/sidebar');
 		$this->load->view('vendor/restaurant/addRestaurantProduct');
@@ -148,6 +149,7 @@ class Restaurant extends CI_Controller {
 
 	public function doAddProduct(){
 		$this->output->set_content_type('application/json');
+		$this->form_validation->set_rules('admin_menu', 'Restaurant Category', 'required');
 		$this->form_validation->set_rules('menu', 'menu', 'required');
 		$this->form_validation->set_rules('name', 'Item Name', 'required');
 		$this->form_validation->set_rules('price', 'Item Price', 'required');

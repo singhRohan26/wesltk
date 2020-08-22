@@ -37,12 +37,14 @@ class Vendor_model extends CI_Model {
        return $query->row_array();
     }
     
-    public function doChangeProfile($id){
+    public function doChangeProfile($id,$img_res){
          $logindata = array(
             'name' => $this->security->xss_clean($this->input->post('vendor_name')),
             'email' => $this->security->xss_clean($this->input->post('email_id')),
             'phone' =>$this->security->xss_clean($this->input->post('phone')),
             'website' =>$this->security->xss_clean($this->input->post('website')),
+            'image'=>$img_res
+             
           );
          $this->db->update('vendors', $logindata,['vendor_id'=>$id]);
         return $this->db->affected_rows();

@@ -107,7 +107,7 @@
 				<div class="exporeService">
 					<div class="row">
 						<div class="col-sm-4">
-							<a href="#" class="foodAllservice boxs">
+							<a href="<?php echo base_url('home/restaurant-lists') ?>" class="foodAllservice boxs">
 								<div class="exploreFood">
 
 									<div class="foodImg">

@@ -36,9 +36,27 @@
 							}
 							?>
 							<div class="row">
+                                <div class="col-sm-6">
+									<div class="form-group">
+										<h5 class="font-size-14">Choose Restaurant Category</h5>
+										<select class="form-control" id="admin_menu" name="admin_menu">
+											<option value="">-- Choose Restaurant Category --</option>
+											<?php
+												if(!empty($category)){
+													foreach ($category as $cat) {
+											?>
+											<option <?php if(!empty($product)) { if($product['admin_menu_id'] == $cat['id']){ echo "selected";} }?> value="<?php echo $cat['id'];?>"><?php echo $cat['name'];?></option>
+											<?php
+													}
+												}
+											?>
+
+										</select>
+									</div>
+								</div>
 								<div class="col-sm-6">
 									<div class="form-group">
-										<h5 class="font-size-14">Choose Menu</h5>
+										<h5 class="font-size-14">Choose Your Category</h5>
 										<select class="form-control" id="menu" name="menu">
 											<option value="">-- Select Menu --</option>
 											<?php
@@ -54,21 +72,27 @@
 										</select>
 									</div>
 								</div>
-								<div class="col-sm-6">
+								
+							</div>
+							<div class="row">
+                                <div class="col-sm-6">
 									<div class="form-group">
 										<h5 class="font-size-14">Name</h5>
 										<input class="form-control" value="<?php if(!empty($product)) { echo $product['product_name']; }?>" type="text" name="name" id="name" placeholder="Product Name....">
 									</div>
 								</div>
-							</div>
-							<div class="row">
+                                
+                                
 								<div class="col-sm-6">
 									<div class="form-group">
 										<h5 class="font-size-14">Price</h5>
 										<input class="form-control" value="<?php if(!empty($product)) { echo $product['price']; }?>" type="text" name="price" id="price" placeholder="price....">
 									</div>
 								</div>
-								<div class="col-sm-6">
+								
+							</div>
+							<div class="row">
+                                <div class="col-sm-6">
 									<div class="form-group">
 										<h5 class="font-size-14">Status</h5>
 										<select class="form-control" id="status" name="status">
@@ -79,8 +103,19 @@
 										</select>
 									</div>
 								</div>
-							</div>
-							<div class="row">
+                                
+                                <div class="col-sm-6">
+									<div class="form-group">
+										<h5 class="font-size-14">Choose Food type</h5>
+										<select class="form-control" id="food_type" name="food_type">
+											<option value="">-- Choose Food type --</option>
+											<option <?php if(!empty($product)) { if($product['product_type'] == "Veg"){ echo "selected";} }?> value="Active">Veg</option>
+											<option <?php if(!empty($product)) { if($product['product_type'] == "Non-veg"){ echo "selected";} }?> value="Non-veg">Non-veg</option>
+
+										</select>
+									</div>
+								</div>
+                                
 								<div class="col-sm-12">
 									<div class="form-group">
 										<h5 class="font-size-14">Description</h5>

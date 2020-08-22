@@ -51,9 +51,10 @@ class Restaurant_model extends CI_Model {
         return $query->result_array();
     }
     public function getProductDataById($id){
-        $this->db->select('m.name as menu_name, p.name as product_name, p.price,p.status, p.id,p.description, m.id as menu_id');
+        $this->db->select('m.name as menu_name, p.name as product_name, p.price,p.status, p.id,p.description,p.product_type, m.id as menu_id,am.name as admin_menu,am.id as admin_menu_id');
         $this->db->from('menu_restaurant m');
         $this->db->join('product p', 'p.menu_id = m.id');
+        $this->db->join('admin_menu am','am.id=p.admin_menu_id');
         $this->db->where(['m.deleted_status' => '0', 'p.deleted_status' => '0', 'm.status' => 'Active', 'p.id' => $id]);
         $query = $this->db->get();
         return $query->row_array();
@@ -103,6 +104,13 @@ class Restaurant_model extends CI_Model {
             }
         }
         return $id;
+    }
+    
+    public function getAdminMenus(){
+        $this->db->select('*');
+        $this->db->from('admin_menu');
+        $sel = $this->db->get();
+        return $sel->result_array();
     }
     
 }

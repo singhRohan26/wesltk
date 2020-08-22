@@ -63,6 +63,14 @@
                             <input type="text" name="website" id="website" class="form-control" value="<?php if(!empty($profileData['website'])) { echo $profileData['website'];}else{ echo "";} ?>" placeholder="Website Url...">
                         </div>
                     </div>
+                         
+                    <div class="col-sm-6">
+                         <div class="form-group">
+                            <label class="col-form-label">Upload Images</label>
+                            <input type="file" name="image_url" id="image_url" multiple="" class="form-control">
+                             <img src="<?php echo base_url('uploads/vendor/'. $profileData['image']);?>" style="height: 100px; width: 150px;">
+                        </div>
+                    </div>
                 </div>   
 
 

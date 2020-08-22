@@ -88,6 +88,16 @@ class Home extends CI_Controller {
 		return $this->user_model->getLoginDetail($login_id);
 	}
     
+    public function restaurantsLists(){
+        $data['title'] = 'Restaurant List';
+        $data['userData'] = $this->getLoginDetail();
+        $data['about_data'] = $this->home_model->getPagesData('privacy');
+        $data['restaurants'] = $this->home_model->getRestaurants();
+        $this->load->view('front/commons/header',$data);
+        $this->load->view('front/commons/navbar');
+        $this->load->view('front/restaurant/restaurant-list');
+        $this->load->view('front/commons/footer');
+    }
 
 	
 }
