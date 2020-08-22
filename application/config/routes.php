@@ -84,7 +84,12 @@ $route['vendor/edit-restaurant-menu/(:any)'] = 'vendor/restaurant/index/$1';
 $route['vendor/addRestaurantMenu'] = 'vendor/restaurant/addRestaurantMenu';
 $route['vendor/editRestaurantMenu/(:any)'] = 'vendor/restaurant/editRestaurantMenu/$1';
 $route['vendor/delete-restaurant-menu/(:any)'] = 'vendor/restaurant/delete-restaurant-menu/$1';
-
+$route['vendor/restaurant-product'] = 'vendor/restaurant/restaurantProduct';
+$route['vendor/add-restaurant-product'] = 'vendor/restaurant/addRestaurantProduct';
+$route['vendor/edit-restaurant-product/(:any)'] = 'vendor/restaurant/addRestaurantProduct/$1';
+$route['vendor/delete-product-image/(:any)'] = 'vendor/restaurant/deleteRestaurantProductImage/$1';
+$route['vendor/doAddProduct'] = 'vendor/restaurant/doAddProduct';
+$route['vendor/doEditProduct/(:any)'] = 'vendor/restaurant/doEditProduct/$1';
 
 
 

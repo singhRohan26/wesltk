@@ -180,7 +180,7 @@ class Vendor extends CI_Controller {
 			return FALSE;
 		}
 		 
-         $result = $this->vendor_model->doChangeProfile($id);
+        $result = $this->vendor_model->doChangeProfile($id);
         if ($result) {
             $this->output->set_output(json_encode(['result' => 1, 'msg' => 'Profile Changed successfully!!.', 'url' => base_url('vendor/edit-profile/')]));
             return FALSE;

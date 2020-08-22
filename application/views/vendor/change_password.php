@@ -35,7 +35,7 @@
                                         <div class="row">
                                             <div class="col-md-3"></div>
                                             <div class="col-md-6">
-                                                <div id="error_msg"></div>
+                                                <div class="error_msg"></div>
                                                 <?php 
                                                     $content = array('id' => 'common-form', 'role' => "form");
                                                     echo form_open('vendor/doChangePass', $content);

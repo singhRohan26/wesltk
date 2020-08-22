@@ -42,6 +42,7 @@ class Vendor_model extends CI_Model {
             'name' => $this->security->xss_clean($this->input->post('vendor_name')),
             'email' => $this->security->xss_clean($this->input->post('email_id')),
             'phone' =>$this->security->xss_clean($this->input->post('phone')),
+            'website' =>$this->security->xss_clean($this->input->post('website')),
           );
          $this->db->update('vendors', $logindata,['vendor_id'=>$id]);
         return $this->db->affected_rows();

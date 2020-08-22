@@ -18,12 +18,13 @@
     
                            
                             <li class="<?php if(!empty($pages_side)){ echo "mm-active"; }?>">
-                                <a href="javascript: void(0);" class="has-arrow waves-effect <?php if(!empty($pages_side)){ echo "mm-active"; }?>" aria-expanded="<?php if(!empty($pages_side)){ echo "true"; }else{ echo "fals";}?>">
+                                <a href="javascript: void(0);" class="has-arrow waves-effect <?php if(!empty($pages_side)){ echo "mm-active"; }?>" aria-expanded="<?php if(!empty($pages_side)){ echo "true"; }else{ echo "false";}?>">
                                     <i class="fas fa-users"></i>
                                     <span>Restaurant</span>
                                 </a>
                                 <ul class="sub-menu mm-collapse" aria-expanded="false" >
                                     <li><a href="<?php echo base_url('vendor/restaurant-menu');?>">Add Menus</a></li>
+                                    <li><a href="<?php echo base_url('vendor/restaurant-product');?>">Add Product</a></li>
                                 </ul>
                             </li>
                            
