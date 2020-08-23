@@ -17,6 +17,11 @@ var Event = function () {
     this.searchWrapper();
     this.searchBrandWrapper();
     this.addMoreCerti();
+    this.cuisineWrapper();
+    this.searchRestaurant();
+    this.clickCuisineWrapper();
+    this.restaurantVegType();
+    this.serachProduct();
 };
 
 this.commonForm = function(){
@@ -462,7 +467,205 @@ this.addMoreCerti = function (){
         $(".as_chk").clone().insertAfter("div.as_chk:last");
     })
 }
+this.cuisineWrapper = function (){
+    var url = $(".restaurant-wrapper").data('url');
+    var checked_val = [];
+    $(".list-menu-res").each(function(){
+        if($(this).children('input').prop('checked') == true){
+            checked_val.push($(this).children('input').val());
+        }
+    })
+    var data_id = $(".resturantMenu ul li a.active").data('id');
+    $.post(url, {checked_val : checked_val, data_id : data_id}, function(res){
+        $(".restaurant-wrapper").html(res.wrapper);
+        $(".resturaRightHead .restHeadd h2 span").text(res.count_wrapper);
+    })
+}
+this.searchRestaurant = function (){
+    $(document).on('keyup', '.search-restaurant', function(){
+        var url = $(this).data('url');
+        var key_search = $(this).val();
+        var checked_val = [];
+        $(".list-menu-res").children('label').removeClass('active')
+        $(".list-menu-res").each(function(){
+            if($(this).children('input').prop('checked') == true){
+                checked_val.push($(this).children('input').val());
+                $(this).children('label').addClass('active')
+            }
+        })
+        var data_id = $(".resturantMenu ul li a.active").data('id');
+        $.post(url, {checked_val : checked_val, data_id : data_id, key_search : key_search}, function(res){
+            $(".restaurant-wrapper").html(res.wrapper);
+            $(".resturaRightHead .restHeadd h2 span").text(res.count_wrapper);
+        })
+    })
+}
+this.clickCuisineWrapper = function (){
+    $(document).on('click', '.list-menu-res input', function(){
+        var url = $(".restaurant-wrapper").data('url');
+        var checked_val = [];
+        $(".list-menu-res").children('label').removeClass('active')
+        $(".list-menu-res").each(function(){
+            if($(this).children('input').prop('checked') == true){
+                checked_val.push($(this).children('input').val());
+                $(this).children('label').addClass('active')
+            }
+        })
+        var data_id = $(".resturantMenu ul li a.active").data('id');
+        $.post(url, {checked_val : checked_val, data_id : data_id}, function(res){
+            $(".restaurant-wrapper").html(res.wrapper);
+            $(".resturaRightHead .restHeadd h2 span").text(res.count_wrapper);
+        })
+    })
+    $(document).on('click', '.resturantMenu ul li a', function(){
+        var url = $(".restaurant-wrapper").data('url');
+        var checked_val = [];
+        $(".resturantMenu ul li a").removeClass('active')
+        $(".list-menu-res").each(function(){
+            if($(this).children('input').prop('checked') == true){
+                checked_val.push($(this).children('input').val());
+            }
+        })
+        $(this).addClass('active');
+        var data_id = $(".resturantMenu ul li a.active").data('id');
+        $.post(url, {checked_val : checked_val, data_id : data_id}, function(res){
+            $(".restaurant-wrapper").html(res.wrapper);
+            $(".resturaRightHead .restHeadd h2 span").text(res.count_wrapper);
+        })
+    })
+}
+this.restaurantVegType = function (){
+    
+    var url = $(".res_menu_type ul li a.active").data('url');
+    var veg_type = [];
+    $(".restaurant_veg_type").children('label').removeClass('active')
+    $(".restaurant_veg_type").each(function(){
+        if($(this).children('input').prop('checked') == true){
+            veg_type.push($(this).children('input').val());
+            $(this).children('label').addClass('active')
+        }
+    })
+    var cat_type = [];
+    $(".restaurant_cat_type").children('label').removeClass('active')
+    $(".restaurant_cat_type").each(function(){
+        if($(this).children('input').prop('checked') == true){
+            cat_type.push($(this).children('input').val());
+            $(this).children('label').addClass('active')
+        }
+    })
+    var data_id = $(".resturantMenu ul li a.active").data('id');
+    $.post(url, {veg_type : veg_type, cat_type : cat_type, data_id : data_id}, function(res){
+        $(".product-wrapper"+data_id).html(res.wrapper);
+    })
 
+    $(document).on('click', '.restaurant_veg_type input', function(){
+        var url = $(".res_menu_type ul li a.active").data('url');
+        var veg_type = [];
+        $(".restaurant_veg_type").children('label').removeClass('active')
+        $(".restaurant_veg_type").each(function(){
+            if($(this).children('input').prop('checked') == true){
+                veg_type.push($(this).children('input').val());
+                $(this).children('label').addClass('active')
+            }
+        })
+        var cat_type = [];
+        $(".restaurant_cat_type").children('label').removeClass('active')
+        $(".restaurant_cat_type").each(function(){
+            if($(this).children('input').prop('checked') == true){
+                cat_type.push($(this).children('input').val());
+                $(this).children('label').addClass('active')
+            }
+        })
+        var data_id = $(".resturantMenu ul li a.active").data('id');
+        $.post(url, {veg_type : veg_type, cat_type : cat_type, data_id : data_id}, function(res){
+            $(".product-wrapper"+data_id).html(res.wrapper);
+        })
+    })
+    $(document).on('click', '.restaurant_cat_type input', function(){
+        var url = $(".res_menu_type ul li a.active").data('url');
+        var veg_type = [];
+        $(".restaurant_veg_type").children('label').removeClass('active')
+        $(".restaurant_veg_type").each(function(){
+            if($(this).children('input').prop('checked') == true){
+                veg_type.push($(this).children('input').val());
+                $(this).children('label').addClass('active')
+            }
+        })
+        var cat_type = [];
+        $(".restaurant_cat_type").children('label').removeClass('active')
+        $(".restaurant_cat_type").each(function(){
+            if($(this).children('input').prop('checked') == true){
+                cat_type.push($(this).children('input').val());
+                $(this).children('label').addClass('active')
+            }
+        })
+        var data_id = $(".resturantMenu ul li a.active").data('id');
+        $.post(url, {veg_type : veg_type, cat_type : cat_type, data_id : data_id}, function(res){
+            $(".product-wrapper"+data_id).html(res.wrapper);
+        })
+    })
+    $(document).on('click', '.resturantMenu ul li a', function(){
+        $(".searchFood.searchFood3.searchFood2").show();
+        if($(this).data('id') != '1'){
+            $(".searchFood.searchFood3.searchFood2").hide();
+        }
+        $(".resturentData").removeClass('active');
+        if($(this).data('id') == '1'){
+            $(".resturentData.view1").addClass('active');
+        }else if($(this).data('id') == '2'){
+            $(".resturentData.view2").addClass('active');
+        }else if($(this).data('id') == '3'){
+            $(".resturentData.view3").addClass('active');
+        }
+        var url = $(".res_menu_type ul li a.active").data('url');
+        var veg_type = [];
+        $(".restaurant_veg_type").children('label').removeClass('active')
+        $(".restaurant_veg_type").each(function(){
+            if($(this).children('input').prop('checked') == true){
+                veg_type.push($(this).children('input').val());
+                $(this).children('label').addClass('active')
+            }
+        })
+        var cat_type = [];
+        $(".restaurant_cat_type").children('label').removeClass('active')
+        $(".restaurant_cat_type").each(function(){
+            if($(this).children('input').prop('checked') == true){
+                cat_type.push($(this).children('input').val());
+                $(this).children('label').addClass('active')
+            }
+        })
+        var data_id = $(".resturantMenu ul li a.active").data('id');
+        $.post(url, {veg_type : veg_type, cat_type : cat_type, data_id : data_id}, function(res){
+            $(".product-wrapper"+data_id).html(res.wrapper);
+        })
+    })
+}
+this.serachProduct = function (){
+    $(document).on('keyup', '.serach-product', function(){
+        var url = $(this).data('url');
+        var key_search = $(this).val();
+        var veg_type = [];
+        $(".restaurant_veg_type").children('label').removeClass('active')
+        $(".restaurant_veg_type").each(function(){
+            if($(this).children('input').prop('checked') == true){
+                veg_type.push($(this).children('input').val());
+                $(this).children('label').addClass('active')
+            }
+        })
+        var cat_type = [];
+        $(".restaurant_cat_type").children('label').removeClass('active')
+        $(".restaurant_cat_type").each(function(){
+            if($(this).children('input').prop('checked') == true){
+                cat_type.push($(this).children('input').val());
+                $(this).children('label').addClass('active')
+            }
+        })
+        var data_id = $(".resturantMenu ul li a.active").data('id');
+        $.post(url, {veg_type : veg_type, cat_type : cat_type, data_id : data_id, key_search : key_search}, function(res){
+            $(".product-wrapper"+data_id).html(res.wrapper);
+        })
+    })
+}
 this.__construct();
 };
 var obj = new Event();

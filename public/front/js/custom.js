@@ -226,20 +226,20 @@ $(document).ready(function () {
     });
 });
 
-$(document).on('click','.resturantMenu ul li a', function(){
-	$('.resturantMenu ul li a').removeClass('active');
-	$(this).addClass('active');
-});
-$(document).on('click','.resturantMenu ul li a' ,function(){
-	var id =$(this).data('id');
-	$(".resturentData.resturentData2").removeClass('active');
-	$(".view"+id).addClass('active');
-});
-$(document).on('click','.resturantMenu ul li a' ,function(){
-	var id =$(this).data('id');
-	$(".menuDetail ").removeClass('active');
-	$(".menu"+id).addClass('active');
-});
+// $(document).on('click','.resturantMenu ul li a', function(){
+// 	$('.resturantMenu ul li a').removeClass('active');
+// 	$(this).addClass('active');
+// });
+// $(document).on('click','.resturantMenu ul li a' ,function(){
+// 	var id =$(this).data('id');
+// 	$(".resturentData.resturentData2").removeClass('active');
+// 	$(".view"+id).addClass('active');
+// });
+// $(document).on('click','.resturantMenu ul li a' ,function(){
+// 	var id =$(this).data('id');
+// 	$(".menuDetail ").removeClass('active');
+// 	$(".menu"+id).addClass('active');
+// });
 $(document).on('click','.profileOrders ul li a' ,function(){
 	var id =$(this).data('id');
 	$(".profileAll12").removeClass('active');
@@ -262,10 +262,10 @@ $(window).scroll(function() {
 })
 
 
-$(document).on('click', '.radio label', function () {
-	$('.radio label').removeClass('active');
-	$(this).addClass('active');
-});
+// $(document).on('click', '.radio label', function () {
+// 	$('.radio label').removeClass('active');
+// 	$(this).addClass('active');
+// });
 $('.counter').counterUp({
 	delay: 10,
 	time: 2000

@@ -91,12 +91,87 @@ class Home extends CI_Controller {
     public function restaurantsLists(){
         $data['title'] = 'Restaurant List';
         $data['userData'] = $this->getLoginDetail();
+        $data['menus'] = $this->home_model->getAdminMenu();
         $data['about_data'] = $this->home_model->getPagesData('privacy');
-        $data['restaurants'] = $this->home_model->getRestaurants();
         $this->load->view('front/commons/header',$data);
         $this->load->view('front/commons/navbar');
         $this->load->view('front/restaurant/restaurant-list');
         $this->load->view('front/commons/footer');
+    }
+
+    public function restaurantWrapper(){
+        $this->output->set_content_type('application/json');
+        $checked_val = $this->input->post('checked_val');
+        $data_id = $this->input->post('data_id');
+        $data['restaurants'] = $this->home_model->getRestaurants($checked_val);
+        $wrapper = $this->load->view('front/wrapper/restaurant-list', $data, true);
+        $this->output->set_output(json_encode(['result' => 1, 'wrapper' => $wrapper, 'count_wrapper' => '('.count($data['restaurants']).')']));
+        return FALSE;
+    }
+    public function search_restaurant(){
+        $this->output->set_content_type('application/json');
+        $search = $this->input->post('key_search');
+        $checked_val = $this->input->post('checked_val');
+        $data_id = $this->input->post('data_id');
+        $data['restaurants'] = $this->home_model->searchRestaurants($search, $checked_val);
+        $wrapper = $this->load->view('front/wrapper/restaurant-list', $data, true);
+        $this->output->set_output(json_encode(['result' => 1, 'wrapper' => $wrapper, 'count_wrapper' => '('.count($data['restaurants']).')']));
+        return FALSE;
+    }
+
+    public function restaurant_details($restaurant_name){
+        $data['title'] = 'Restaurant List';
+        $restaurant_name = str_replace('-', ' ', $restaurant_name);
+        $data['userData'] = $this->getLoginDetail();
+        $data['restaurant'] = $this->home_model->getRestaurantDataByName($restaurant_name);
+        if(empty($data['restaurant'])){
+            redirect(base_url('home/restaurant-lists'));
+        }
+        $data['menus'] = $this->home_model->getRestaurantMenuData($data['restaurant']['vendor_id']);
+        $this->load->view('front/commons/header',$data);
+        $this->load->view('front/commons/navbar');
+        $this->load->view('front/restaurant/restaurant-detail');
+        $this->load->view('front/commons/footer');
+    }
+
+    public function product_listing($vendor_id){
+        $this->output->set_content_type('application/json');
+        $veg_type = $this->input->post('veg_type');
+        $cat_type = $this->input->post('cat_type');
+        $data['products'] = $this->home_model->getProducts($veg_type, $cat_type, $vendor_id);
+        $wrapper = $this->load->view('front/wrapper/product-list', $data, true);
+        $this->output->set_output(json_encode(['result' => 1, 'wrapper' => $wrapper]));
+        return FALSE;
+    }
+    public function search_product($vendor_id){
+        $this->output->set_content_type('application/json');
+        $key_search = $this->input->post('key_search');
+        $veg_type = $this->input->post('veg_type');
+        $cat_type = $this->input->post('cat_type');
+        $data['products'] = $this->home_model->getProductSearch($key_search, $veg_type, $cat_type, $vendor_id);
+        $wrapper = $this->load->view('front/wrapper/product-list', $data, true);
+        $this->output->set_output(json_encode(['result' => 1, 'wrapper' => $wrapper]));
+        return FALSE;
+    }
+    public function review_listing($vendor_id){
+        $this->output->set_content_type('application/json');
+        $veg_type = $this->input->post('veg_type');
+        $cat_type = $this->input->post('cat_type');
+        $data['reviews'] = "true";
+        // $data['products'] = $this->home_model->getProducts($veg_type, $cat_type, $vendor_id);
+        $wrapper = $this->load->view('front/wrapper/restaurant-reviews', $data, true);
+        $this->output->set_output(json_encode(['result' => 1, 'wrapper' => $wrapper]));
+        return FALSE;
+    }
+    public function product_img($vendor_id){
+        $this->output->set_content_type('application/json');
+        $veg_type = $this->input->post('veg_type');
+        $cat_type = $this->input->post('cat_type');
+        $data['reviews'] = "true";
+        $data['product_images'] = $this->home_model->getProductImages($vendor_id);
+        $wrapper = $this->load->view('front/wrapper/restaurant-img', $data, true);
+        $this->output->set_output(json_encode(['result' => 1, 'wrapper' => $wrapper]));
+        return FALSE;
     }
 
 	
