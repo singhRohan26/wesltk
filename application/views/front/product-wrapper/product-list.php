@@ -1,9 +1,9 @@
 <ul>
 	<?php 
-		if(!empty($restaurants)){
-			foreach($restaurants as $restaurant) {
+		if(!empty($products)){
+			foreach($products as $restaurant) {
 			$var = explode(',',$restaurant['category']);
-			if(in_array('food',$var)){ 
+			if(in_array('product',$var)){ 
 			?>
 			<li>
 				<div class="menuListImg">
@@ -14,13 +14,13 @@
 					<h2><?php echo $restaurant['name'] ?></h2>
 					<p>North Indian, Mughlai, Seafood, Biryani, Desserts, Kebabs</p>
 					<div class="quickView">
-						<a href="<?php echo base_url('restaurant-details/'.$restaurant['name']);?>">Quick View</a>
+						<a href="<?php echo base_url('shop-details/'.$restaurant['name']);?>">Quick View</a>
 					</div>
 				</div>
 			</li>
 		<?php } }  } else{
 		?>
-			<h2>No Restaurants Found!!..</h2>
+			<h2>No Shops Found!!..</h2>
 		<?php
 			}
 		?>    	

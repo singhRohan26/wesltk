@@ -173,6 +173,57 @@ class Home extends CI_Controller {
         $this->output->set_output(json_encode(['result' => 1, 'wrapper' => $wrapper]));
         return FALSE;
     }
+    
+    //PRODUCT SECTION
+    public function productsLists(){
+        $data['title'] = 'Products List';
+        $data['userData'] = $this->getLoginDetail();
+        $data['about_data'] = $this->home_model->getPagesData('privacy');
+        $data['menus'] = $this->home_model->getProductMenu();
+        $this->load->view('front/commons/header',$data);
+        $this->load->view('front/commons/navbar');
+        $this->load->view('front/products/products-list');
+        $this->load->view('front/commons/footer');
+    }
+    
+    public function productWrapper(){
+        $this->output->set_content_type('application/json');
+        $checked_val = $this->input->post('checked_val');
+        $data_id = $this->input->post('data_id');
+        $data['products'] = $this->home_model->getShopProducts($checked_val);
+//        print_r($data['products']);die;
+        $wrapper = $this->load->view('front/product-wrapper/product-list', $data, true);
+        $this->output->set_output(json_encode(['result' => 1, 'wrapper' => $wrapper, 'count_wrapper' => '('.count($data['products']).')']));
+        return FALSE;
+    }
+    
+    public function shopDetails($restaurant_name){
+        $data['title'] = 'Product Details';
+        $restaurant_name = str_replace('-', ' ', $restaurant_name);
+        $data['userData'] = $this->getLoginDetail();
+        $data['shop'] = $this->home_model->getProductDataByName($restaurant_name);
+        if(empty($data['shop'])){
+            redirect(base_url('home/products-shops'));
+        }
+        $data['menus'] = $this->home_model->getProductMenuData($data['shop']['vendor_id']);
+        $this->load->view('front/commons/header',$data);
+        $this->load->view('front/commons/navbar');
+        $this->load->view('front/products/product-details');
+        $this->load->view('front/commons/footer');
+    }
+    
+    public function shopProductListing($vendor_id){
+        $this->output->set_content_type('application/json');
+//        $veg_type = $this->input->post('veg_type');
+//        $cat_type = $this->input->post('cat_type');
+        $data['products'] = $this->home_model->getShopProductLists($vendor_id);
+//        print_r($data['products']);die;
+        $wrapper = $this->load->view('front/product-wrapper/product-list-details', $data, true);
+        $this->output->set_output(json_encode(['result' => 1, 'wrapper' => $wrapper]));
+        return FALSE;
+    }
+    
+    
 
 	
 }

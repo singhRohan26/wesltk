@@ -48,7 +48,9 @@ class Restaurant extends CI_Controller {
 		// 	$this->output->set_output(json_encode(['result' => 0, 'errors' => $this->form_validation->error_array()]));
 		// 	return FALSE;
 		// }
-		$result = $this->restaurant_model->doAddRestaurantMenu();
+        $data['userData'] = $this->getLoginDetail();
+        $vendor_id = $data['userData']['vendor_id'];
+		$result = $this->restaurant_model->doAddRestaurantMenu($vendor_id);
         if($result){
             $this->output->set_output(json_encode(['result' => 1, 'url' => base_url("vendor/restaurant-menu"), 'msg' => 'Menu Added Successfully..']));
 			return FALSE;
@@ -159,11 +161,7 @@ class Restaurant extends CI_Controller {
 			$this->output->set_output(json_encode(['result' => 0, 'errors' => $this->form_validation->error_array()]));
 			return FALSE;
 		}
-		// $exist = $this->admin_model->checkDuplicateProductData();
-		// if($exist){
-		// 	$this->output->set_output(json_encode(['result' => 0, 'errors' => ['product_name' =>'This Product Name already Taken!..']]));
-		// 	return FALSE;
-		// }
+		
 		$img_res = $this->doUploadMultiImage();
 		if($img_res){
 	 		foreach ($img_res as $res) {

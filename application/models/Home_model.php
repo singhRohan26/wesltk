@@ -25,7 +25,19 @@ class Home_model extends CI_Model {
         $this->db->group_by('v.vendor_id');
         $sel = $this->db->get();
         return $sel->result_array();
-    }     
+    }    
+    
+    public function getShopProducts($checked_val){
+       $this->db->select('v.name,v.image,v.category');
+        $this->db->from('vendors v');
+        $this->db->join('menu_product m', 'm.vendor_id = v.vendor_id');
+        $this->db->join('product p', 'p.menu_product_id = m.id');
+        $this->db->where(['p.deleted_status' => '0', 'm.deleted_status' => '0', 'p.status' => 'Active', 'm.status' => 'Active']);
+        $this->db->where_in('p.admin_product_menu_id', $checked_val);
+        $this->db->group_by('v.vendor_id');
+        $sel = $this->db->get();
+        return $sel->result_array(); 
+    }
     public function searchRestaurants($key_search, $checked_val){
         $this->db->select('v.name,v.image,v.category');
         $this->db->from('vendors v');
@@ -81,7 +93,20 @@ class Home_model extends CI_Model {
         $this->db->group_by('v.vendor_id');
         $sel = $this->db->get();
         return $sel->row_array();
-    }    
+    } 
+    
+    public function getProductDataByName($restaurant_name){
+        $this->db->select('v.name,v.image,v.category, v.vendor_id');
+        $this->db->from('vendors v');
+        $this->db->join('menu_product m', 'm.vendor_id = v.vendor_id');
+        $this->db->join('product p', 'p.menu_product_id = m.id');
+        $this->db->where(['p.deleted_status' => '0', 'm.deleted_status' => '0', 'p.status' => 'Active', 'm.status' => 'Active']);
+        $this->db->where_in('v.name', $restaurant_name);
+        $this->db->group_by('v.vendor_id');
+        $sel = $this->db->get();
+        return $sel->row_array();
+    }
+    
     public function getRestaurantMenuData($vendor_id){
         $this->db->from('menu_restaurant m');
         $this->db->where(['m.deleted_status' => '0', 'm.status' => 'Active']);
@@ -89,9 +114,33 @@ class Home_model extends CI_Model {
         $sel = $this->db->get();
         return $sel->result_array();
     }
+    
+    public function getProductMenuData($vendor_id){
+        $this->db->from('menu_product m');
+        $this->db->where(['m.deleted_status' => '0', 'm.status' => 'Active']);
+        $this->db->where_in('m.vendor_id', $vendor_id);
+        $sel = $this->db->get();
+        return $sel->result_array();
+    }
 
     public function getAdminMenu(){
-    	$sel = $this->db->get_where('admin_menu', ['status' => 'Active', 'delete_status' => '0']);
+    	$sel = $this->db->get_where('admin_menu', ['status' => 'Active', 'deleted_status' => '0']);
+        return $sel->result_array();
+    }
+    
+    public function getProductMenu(){
+        $sel = $this->db->get_where('admin_product_menu', ['status' => 'Active', 'deleted_status' => '0']);
+        return $sel->result_array();
+    }
+    
+    public function getShopProductLists($vendor_id){
+        $this->db->select('p.*');
+        $this->db->from('vendors v');
+        $this->db->join('menu_product m', 'm.vendor_id = v.vendor_id');
+        $this->db->join('product p', 'p.menu_product_id = m.id');
+        $this->db->where(['p.deleted_status' => '0', 'm.deleted_status' => '0', 'p.status' => 'Active', 'm.status' => 'Active', 'v.vendor_id' => $vendor_id]);        
+        $sel = $this->db->get();
+//        echo $this->db->last_query();die;
         return $sel->result_array();
     }
 	

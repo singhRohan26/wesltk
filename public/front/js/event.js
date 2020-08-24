@@ -467,6 +467,8 @@ this.addMoreCerti = function (){
         $(".as_chk").clone().insertAfter("div.as_chk:last");
     })
 }
+
+// restaurant-filter
 this.cuisineWrapper = function (){
     var url = $(".restaurant-wrapper").data('url');
     var checked_val = [];

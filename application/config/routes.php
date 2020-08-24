@@ -62,7 +62,9 @@ $route['home/product-listing/(:any)'] = 'home/product-listing/$1';
 $route['privacy-policy'] = 'home/privacy_policy';
 $route['home/user-registration'] = 'user/doRegistration';
 $route['home/restaurant-lists'] = 'home/restaurantsLists';
-
+$route['home/products-shops'] = 'home/productsLists';
+$route['shop-details/(:any)'] = 'home/shopDetails/$1';
+$route['home/shop-product-listing/(:any)'] = 'home/shopProductListing/$1';
 
 ///   User Controlller ////
 $route['user/user-profile'] = 'user/profile';
@@ -81,6 +83,15 @@ $route['vendor/doChangePass'] = 'vendor/vendor/doChangePass';
 $route['vendor/edit-profile'] = 'vendor/vendor/editProfile';
 $route['vendor/doChangeProfile/(:any)'] = 'vendor/vendor/doChangeProfile/$1';
 
+
+///   Product Controlller ////
+$route['vendor/product-lists'] = 'vendor/product/index';
+$route['vendor/add-product'] = 'vendor/product/addProduct';
+$route['vendor/doAddShopProduct'] = 'vendor/product/doAddShopProduct';
+$route['vendor/delete-product/(:any)'] = 'vendor/product/deleteProduct/$1';
+
+
+
 ///   Restaurant Controlller ////
 $route['vendor/restaurant-menu'] = 'vendor/restaurant/index';
 $route['vendor/edit-restaurant-menu/(:any)'] = 'vendor/restaurant/index/$1';
@@ -93,6 +104,7 @@ $route['vendor/edit-restaurant-product/(:any)'] = 'vendor/restaurant/addRestaura
 $route['vendor/delete-product-image/(:any)'] = 'vendor/restaurant/deleteRestaurantProductImage/$1';
 $route['vendor/doAddProduct'] = 'vendor/restaurant/doAddProduct';
 $route['vendor/doEditProduct/(:any)'] = 'vendor/restaurant/doEditProduct/$1';
+
 
 
 

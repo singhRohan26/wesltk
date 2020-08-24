@@ -9,8 +9,9 @@ class Restaurant_model extends CI_Model {
      
      */
 
-    public function doAddRestaurantMenu(){
+    public function doAddRestaurantMenu($vendor_id){
         $data = array(
+            'vendor_id' => $vendor_id,
             'name' => $this->security->xss_clean($this->input->post('name')),
             'status' => $this->security->xss_clean($this->input->post('status'))
           );
@@ -46,7 +47,7 @@ class Restaurant_model extends CI_Model {
         $this->db->select('m.name as menu_name, p.name as product_name, p.price,p.status, p.id');
         $this->db->from('menu_restaurant m');
         $this->db->join('product p', 'p.menu_id = m.id');
-        $this->db->where(['m.deleted_status' => '0', 'p.deleted_status' => '0', 'm.status' => 'Active']);
+        $this->db->where(['m.deleted_status' => '0', 'p.deleted_status' => '0', 'm.status' => 'Active','p.form_type'=>'food']);
         $query = $this->db->get();
         return $query->result_array();
     }
@@ -75,11 +76,13 @@ class Restaurant_model extends CI_Model {
 
     public function doAddProduct($img_res){
         $data = array(
+            'admin_menu_id' => $this->security->xss_clean($this->input->post('admin_menu')),
             'menu_id' => $this->security->xss_clean($this->input->post('menu')),
             'name' => $this->security->xss_clean($this->input->post('name')),
             'price' => $this->security->xss_clean($this->input->post('price')),
             'description' => $this->security->xss_clean($this->input->post('description')),
-            'status' => $this->security->xss_clean($this->input->post('status'))
+            'status' => $this->security->xss_clean($this->input->post('status')),
+            'form_type'=>'food'
           );
         $this->db->insert('product', $data);
         $product_id = $this->db->insert_id();

@@ -139,7 +139,7 @@
 							</a>
 						</div>
 						<div class="col-sm-4">
-							<a href="restaurantslist.html" class="foodAllservice boxs">
+							<a href="<?php echo base_url('home/products-shops') ?>" class="foodAllservice boxs">
 								<div class="exploreFood">
 
 									<div class="foodImg">
