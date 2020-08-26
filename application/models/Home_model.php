@@ -144,4 +144,27 @@ class Home_model extends CI_Model {
         return $sel->result_array();
     }
 	
+    public function getProductDataById($id){
+        $query = $this->db->get_where('product', ['id' => $id]);
+        return $query->row_array();
+    }
+    public function getProductImageById($id){
+        $query = $this->db->get_where('product_image', ['product_id' => $id]);
+        return $query->row_array();
+    }
+    public function getVenodrIdByProductMenu($id){
+       $this->db->select('m.vendor_id');
+        $this->db->from('menu_product m');
+        $this->db->where(['m.status' => 'Active', 'm.id' => $id]);        
+        $sel = $this->db->get();
+        echo $this->db->last_query();die;
+        return $sel->row_array()['vendor_id'];
+    }
+    public function getVenodrIdByResturantMenu($id){
+       $this->db->select('m.vendor_id');
+        $this->db->from('menu_restaurant m');
+        $this->db->where(['m.status' => 'Active', 'm.id' => $id]);        
+        $sel = $this->db->get();
+        return $sel->row_array()['vendor_id'];
+    }
 }

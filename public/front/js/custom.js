@@ -201,30 +201,30 @@ $(document).on('click','.dropValue li',function(){
 	$('.dropValue').slideUp();
 });
 //add to cart code start
-$(document).on('click','.addProduct .productAdd',function(){
-	$(this).siblings('.addProduct .minus_btn,.plus_btn').show();
-});
-$(".plus_btn").click(function () {
-    var $n = $(this).parent(".vaulebox").find(".qty");
-    $n.val(Number($n.val()) + 1);
-});
+// $(document).on('click','.addProduct .productAdd',function(){
+// 	$(this).siblings('.addProduct .minus_btn,.plus_btn').show();
+// });
+// $(".plus_btn").click(function () {
+//     var $n = $(this).parent(".vaulebox").find(".qty");
+//     $n.val(Number($n.val()) + 1);
+// });
 
-$(".minus_btn").click(function () {
-    var $n = $(this).parent(".vaulebox").find(".qty");
-    var amount = Number($n.val());
-    if (amount > 0) {
-        $n.val(amount - 1);
-    }
-});
+// $(".minus_btn").click(function () {
+//     var $n = $(this).parent(".vaulebox").find(".qty");
+//     var amount = Number($n.val());
+//     if (amount > 0) {
+//         $n.val(amount - 1);
+//     }
+// });
 //add to cart code end
-$(document).ready(function () {
-    $('.productAdd').click(function () {
-        $(this).parents('.vaulebox').find('.minus_btn').css('display', 'block');
-        $(this).parents('.vaulebox').find('.qty').css('display', 'block');
-        $(this).parents('.vaulebox').find('.productAdd').css('display', 'none');
-        $(this).parents('.categoriesInner').find('.bookNowbox').css('display', 'block');
-    });
-});
+// $(document).ready(function () {
+//     $('.productAdd').click(function () {
+//         $(this).parents('.vaulebox').find('.minus_btn').css('display', 'block');
+//         $(this).parents('.vaulebox').find('.qty').css('display', 'block');
+//         $(this).parents('.vaulebox').find('.productAdd').css('display', 'none');
+//         $(this).parents('.categoriesInner').find('.bookNowbox').css('display', 'block');
+//     });
+// });
 
 // $(document).on('click','.resturantMenu ul li a', function(){
 // 	$('.resturantMenu ul li a').removeClass('active');

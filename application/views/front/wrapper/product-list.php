@@ -28,7 +28,7 @@
 					<div class="vaulebox">
 						<button type="button" class="minus_btn">-</button>
 						<input type="text" value="1" class="qty">
-						<p class="productAdd">Add to Cart</p>
+						<p class="productAdd"  data-url="<?php echo base_url('addToCart/'.$product['id']);?>">Add to Cart</p>
 						<button type="button" class="plus_btn">+</button>
 					</div>
 				</div>

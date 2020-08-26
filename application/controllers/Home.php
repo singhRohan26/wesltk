@@ -225,5 +225,48 @@ class Home extends CI_Controller {
     
     
 
+       public function addToCart($product_id) {
+            $this->output->set_content_type('application/json');
+            $quantity = $this->input->post('qty');
+            $product_data = $this->home_model->getProductDataById($product_id);
+            if(!empty($product_data['menu_id'])){
+                $vendor_id = $this->home_model->getVenodrIdByResturantMenu($product_data['menu_id']);
+                $type = "resturant";
+            }else if (!empty($product_data['menu_product_id'])) {
+                $vendor_id = $this->home_model->getVenodrIdByProductMenu($product_data['menu_product_id']);
+                $type = "product";
+            }
+            if(!empty($this->cart->contents())) {
+                foreach($this->cart->contents() as $cart){
+                    if($cart['type'] != $type){
+                        $this->output->set_output(json_encode(['result' => -1, 'msg' => "You cannot add two different type at a time"]));
+                         return FALSE; 
+                    }if($cart['vendor_id'] != $vendor_id){
+                        $this->output->set_output(json_encode(['result' => -1, 'msg' => "You cannot add two different vendor at a time"]));
+                         return FALSE; 
+                    }
+                }
+            }
+            $product_img = $this->home_model->getProductImageById($product_id);
+            $data = array(
+                    'id' => $product_id,
+                    'type' => $type,
+                    'vendor_id' => $vendor_id,
+                    'qty' => $quantity,
+                    'price' => $product_data['price'],
+                    'name' => $this->strimSpecialCharacter($product_data['name']),
+                    'product_name' => $product_data['name'],
+                    'image' => $product_img['image']
+                );
+            $this->cart->insert($data);
+            $this->output->set_output(json_encode(['result' => 1]));
+            return FALSE;  
+        }
+
+
+    private function strimSpecialCharacter($variable){
+         $trimed = preg_replace('/[^A-Za-z0-9\-]/', ' ', $variable);
+         return $trimed;
+     }
 	
 }

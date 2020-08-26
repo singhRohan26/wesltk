@@ -279,6 +279,7 @@
 	<script src="<?php echo base_url('public/front/') ?>js/slick.js"></script>
 	<script src='https://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js'></script>
 	<script src='https://cdn.jsdelivr.net/jquery.counterup/1.0/jquery.counterup.min.js'></script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<script src="<?php echo base_url('public/front/') ?>script.js"></script>
 	<script src="<?php echo base_url('public/front/') ?>js/custom.js"></script>
     <script src="<?php echo base_url('public/front/') ?>js/event.js"></script>
