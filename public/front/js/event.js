@@ -540,7 +540,7 @@ this.clickCuisineWrapper = function (){
     })
 }
 this.restaurantVegType = function (){
-    
+    //bydefault
     var url = $(".res_menu_type ul li a.active").data('url');
     var veg_type = [];
     $(".restaurant_veg_type").children('label').removeClass('active')
@@ -563,6 +563,7 @@ this.restaurantVegType = function (){
         $(".product-wrapper"+data_id).html(res.wrapper);
     })
 
+    //veg-non-veg
     $(document).on('click', '.restaurant_veg_type input', function(){
         var url = $(".res_menu_type ul li a.active").data('url');
         var veg_type = [];
@@ -586,6 +587,8 @@ this.restaurantVegType = function (){
             $(".product-wrapper"+data_id).html(res.wrapper);
         })
     })
+    
+    //category filter
     $(document).on('click', '.restaurant_cat_type input', function(){
         var url = $(".res_menu_type ul li a.active").data('url');
         var veg_type = [];
@@ -609,6 +612,8 @@ this.restaurantVegType = function (){
             $(".product-wrapper"+data_id).html(res.wrapper);
         })
     })
+    
+    
     $(document).on('click', '.resturantMenu ul li a', function(){
         $(".searchFood.searchFood3.searchFood2").show();
         if($(this).data('id') != '1'){

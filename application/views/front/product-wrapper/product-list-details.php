@@ -10,17 +10,7 @@
 			</div>
 			<div class="menuContent menuContent2">
 				<h2><?php echo $product['name'];?><span class="foodType">
-					<?php
-						if($product['product_type'] == "Veg"){
-					?>
-						<img src="<?php echo base_url('public/front/');?>img/veg.svg" class="img-fluid" alt="veg">
-					<?php
-						}else if($product['product_type'] == "Non-veg"){
-					?>
-						<img src="<?php echo base_url('public/front/');?>img/nonveg.svg" class="img-fluid" alt="veg">
-					<?php
-						}
-					?>
+					
 				</span></h2>
 				<p><?php echo $product['description'];?></p>
 				<h2 class="price">$<?php echo $product['price'];?></h2>

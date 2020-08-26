@@ -133,12 +133,13 @@ class Home_model extends CI_Model {
         return $sel->result_array();
     }
     
-    public function getShopProductLists($vendor_id){
+    public function getShopProductLists($vendor_id,$cat_type){
         $this->db->select('p.*');
         $this->db->from('vendors v');
         $this->db->join('menu_product m', 'm.vendor_id = v.vendor_id');
         $this->db->join('product p', 'p.menu_product_id = m.id');
-        $this->db->where(['p.deleted_status' => '0', 'm.deleted_status' => '0', 'p.status' => 'Active', 'm.status' => 'Active', 'v.vendor_id' => $vendor_id]);        
+        $this->db->where(['p.deleted_status' => '0', 'm.deleted_status' => '0', 'p.status' => 'Active', 'm.status' => 'Active', 'v.vendor_id' => $vendor_id]);
+        $this->db->where_in('m.id',$cat_type);
         $sel = $this->db->get();
 //        echo $this->db->last_query();die;
         return $sel->result_array();
@@ -157,7 +158,7 @@ class Home_model extends CI_Model {
         $this->db->from('menu_product m');
         $this->db->where(['m.status' => 'Active', 'm.id' => $id]);        
         $sel = $this->db->get();
-        echo $this->db->last_query();die;
+//        echo $this->db->last_query();die;
         return $sel->row_array()['vendor_id'];
     }
     public function getVenodrIdByResturantMenu($id){

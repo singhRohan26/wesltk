@@ -47,7 +47,7 @@
 			<div class="resturaRightHead resturaRightHead2">
 				<div class="resturantMenu resturantMenu2 res_menu_type">
 					<ul>
-						<li><a href="#0" class="active" data-id='1' data-url="<?php echo base_url('home/product-listing/'. $shop['vendor_id']);?>">Order Online</a></li>
+						<li><a href="#0" class="active" data-id='1' data-url="<?php echo base_url('home/shop-product-listing/'. $shop['vendor_id']);?>">Order Online</a></li>
 						<li><a href="#0" data-id='2' data-url="<?php echo base_url('home/review-listing/'. $shop['vendor_id']);?>">Reviews</a></li>
 						<li><a href="#0" data-id='3' data-url="<?php echo base_url('home/product-img/'. $shop['vendor_id']);?>">Photos</a></li>
 					</ul>

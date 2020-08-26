@@ -215,8 +215,8 @@ class Home extends CI_Controller {
     public function shopProductListing($vendor_id){
         $this->output->set_content_type('application/json');
 //        $veg_type = $this->input->post('veg_type');
-//        $cat_type = $this->input->post('cat_type');
-        $data['products'] = $this->home_model->getShopProductLists($vendor_id);
+        $cat_type = $this->input->post('cat_type');
+        $data['products'] = $this->home_model->getShopProductLists($vendor_id,$cat_type);
 //        print_r($data['products']);die;
         $wrapper = $this->load->view('front/product-wrapper/product-list-details', $data, true);
         $this->output->set_output(json_encode(['result' => 1, 'wrapper' => $wrapper]));
