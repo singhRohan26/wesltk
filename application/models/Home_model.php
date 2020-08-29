@@ -168,4 +168,43 @@ class Home_model extends CI_Model {
         $sel = $this->db->get();
         return $sel->row_array()['vendor_id'];
     }
+    
+    public function doAddAddress($user_id){
+        $data = array(
+        'user_id' =>$user_id,
+        'name' =>$this->security->xss_clean($this->input->post('username')),
+        'address' =>$this->security->xss_clean($this->input->post('address')),
+        'pincode' =>$this->security->xss_clean($this->input->post('pincode')),
+        'city_id' =>$this->security->xss_clean($this->input->post('city')),
+        'state_id' =>$this->security->xss_clean($this->input->post('state')),
+        'country_id' =>$this->security->xss_clean($this->input->post('country')),
+//        'type' =>$this->security->xss_clean($this->input->post('vendor_website')),
+        );
+        
+        $this->db->insert('address',$data);
+        return $this->db->insert_id();
+    }
+    
+    public function getAddressByUserId($user_id){
+        $sel = $this->db->get_where('address',['user_id'=>$user_id]);
+        return $sel->result_array();
+    }
+    
+    public function order($unique_id,$vendor_id,$user_id,$total){
+       $data = array(
+        'unique_id' =>$unique_id,
+        'vendor_id'=>$vendor_id,
+        'user_id'=>$user_id,
+        'sub_total'=>$total,
+        'status'=>'Processing'
+        );
+        
+        $this->db->insert('order',$data);
+        return $this->db->insert_id();
+    }
+    
+    public function order_details($data){
+        $this->db->insert_batch('order_details',$data);
+        return $this->db->insert_id();
+    }
 }

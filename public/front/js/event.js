@@ -238,6 +238,7 @@ this.addToCart = function(){
                     $(this_data).parents('.vaulebox').find('.minus_btn').css('display', 'block');
                     $(this_data).parents('.vaulebox').find('.plus_btn').css('display', 'block');
                     $(this_data).parents('.vaulebox').find('.qty').css('display', 'block');
+                    $(this_data).parents('.vaulebox').find('.qty').val(qty);
                     $(this_data).parents('.vaulebox').find('.productAdd').css('display', 'none');
                     $(this_data).parents('.categoriesInner').find('.bookNowbox').css('display', 'block');
                 });
@@ -404,12 +405,16 @@ $(document).on('click', '.minus_btn', function () {
 });
 }
 
+
+//by default cart
 this.cartWrappper = function (){
     var url = $("#conent_cart_wrapper").data('url');
     $.post(url, function(out){
         $("#conent_cart_wrapper").html(out.content_wrapper)
     })
 }
+
+
 this.orderConfirm = function (){
     $(document).on('click', '.placeOdbtn .orderConfirm', function(e){
         e.preventDefault();

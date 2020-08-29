@@ -2901,3 +2901,32 @@ position: relative;
     color: var(--Black);
     text-align: center;
 }
+
+.fifty{
+	width: 48%;
+	display: inline-block;
+}
+.fifty.right{
+	float: right;
+}
+
+.addressType h2{
+	font-size: 20px;
+    line-height: 22px;
+    color: var(--colorBlue);
+    letter-spacing: 0.2px;
+    font-family: var(--muliBold);
+	padding-bottom: 20px;
+}
+.addressType ul li{
+	font-size: 14px;
+	padding: 5px 10px;
+	margin-right: 5px;
+	display: inline-block;
+	cursor: pointer;
+	background: #ccc;
+	border-radius: 10px;
+}
+.addressType{
+	padding-top: 25px;
+}

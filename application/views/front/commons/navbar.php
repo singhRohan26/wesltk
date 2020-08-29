@@ -13,7 +13,7 @@
 								</li>
 								<li class="nav-item"><a class="nav-link" href="#0">Services <span><img src="<?php echo base_url('public/front/') ?>img/dropblue.svg" class="img-fluid" alt="dropdown"></span></a></li>
 								<li class="nav-item"><a class="nav-link" href="#0">Shop <span><img src="<?php echo base_url('public/front/') ?>img/dropblue.svg" class="img-fluid" alt="dropdown"></span> </a></li>
-								<li class="nav-item"><a class="nav-link" href="#0"><span><img src="<?php echo base_url('public/front/') ?>img/cart2.svg" class="img-fluid" alt="cart"></span> </a></li>
+								<li class="nav-item"><a class="nav-link" href="<?php echo base_url('home/your-cart') ?>"><span><img src="<?php echo base_url('public/front/') ?>img/cart2.svg" class="img-fluid" alt="cart"></span><span class="badge"><?php echo count($this->cart->contents()); ?></span> </a></li>
 
 								
                                 <?php if(!empty($this->session->userdata('login_id'))){  ?>

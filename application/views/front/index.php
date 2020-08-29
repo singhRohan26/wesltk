@@ -22,7 +22,7 @@
 					</div>
 					<div class="loginCart">
 						<ul>
-							<li><a href="<?php echo base_url('home/your-cart') ?>"><img src="<?php echo base_url('public/front/') ?>img/cart.svg" class="img-fluid" alt="cart"></a></li>
+							<li><a href="<?php echo base_url('home/your-cart') ?>"><img src="<?php echo base_url('public/front/') ?>img/cart.svg" class="img-fluid" alt="cart"></a><span class="badge"><?php echo count($this->cart->contents()); ?></span></li>
                             <?php if(!empty($this->session->userdata('login_id'))) {   ?>
                             <li class="nav-item urserShow"><a class="nav-link afterloginBtn" href="#0"><span></span><?php echo $userData['name'] ?>
 									</a>

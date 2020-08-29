@@ -238,11 +238,18 @@ class Home extends CI_Controller {
             }
             if(!empty($this->cart->contents())) {
                 foreach($this->cart->contents() as $cart){
+                    if(!empty($this->input->post('minus'))){
+                        $quantity = -1;
+                        $this->cart->update(['rowid' => $cart['rowid'], 'qty' => 0]);
+                        return false;
+                    }else{
+                        $quantity = 1;
+                    }
                     if($cart['type'] != $type){
-                        $this->output->set_output(json_encode(['result' => -1, 'msg' => "You cannot add two different type at a time"]));
+                        $this->output->set_output(json_encode(['result' => -1, 'msg' => "You cannot add two different type at a time",'url' => $_SERVER['HTTP_REFERER']]));
                          return FALSE; 
                     }if($cart['vendor_id'] != $vendor_id){
-                        $this->output->set_output(json_encode(['result' => -1, 'msg' => "You cannot add two different vendor at a time"]));
+                        $this->output->set_output(json_encode(['result' => -1, 'msg' => "You cannot add two different vendor at a time",'url' => $_SERVER['HTTP_REFERER']]));
                          return FALSE; 
                     }
                 }
@@ -268,5 +275,14 @@ class Home extends CI_Controller {
          $trimed = preg_replace('/[^A-Za-z0-9\-]/', ' ', $variable);
          return $trimed;
      }
+    
+     public function cart_content_wrapper() {
+        $this->output->set_content_type('application/json');
+        $data['true'] = "1";
+//        $data['tax_data'] = $this->home_model->getTaxData();
+        $content_wrapper = $this->load->view('front/wrapper/cart-wrapper', $data, TRUE);
+        $this->output->set_output(json_encode(['result' => 1, 'content_wrapper' => $content_wrapper]));
+        return FALSE;
+    }
 	
 }

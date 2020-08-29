@@ -73,6 +73,10 @@ $route['user/logout'] = 'user/logout';
 $route['user/user-login'] = 'user/doLogin';
 
 
+// Booking controller//
+$route['checkout'] = 'booking/checkout';
+$route['home/confirmation'] = 'booking/orderConfirmation';
+
 
 ///   Vendor Controlller ////
 $route['vendor'] = 'vendor/vendor/index';
