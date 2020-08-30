@@ -110,6 +110,20 @@ $route['vendor/delete-product-image/(:any)'] = 'vendor/restaurant/deleteRestaura
 $route['vendor/doAddProduct'] = 'vendor/restaurant/doAddProduct';
 $route['vendor/doEditProduct/(:any)'] = 'vendor/restaurant/doEditProduct/$1';
 
+///   Restaurant Controlller ////
+$route['vendor/service-menu'] = 'vendor/service/index';
+$route['vendor/edit-service-menu/(:any)'] = 'vendor/service/index/$1';
+$route['vendor/addServiceMenu'] = 'vendor/service/addServiceMenu';
+$route['vendor/editServiceMenu/(:any)'] = 'vendor/service/editServiceMenu/$1';
+$route['vendor/delete-service-menu/(:any)'] = 'vendor/service/delete-service-menu/$1';
+$route['vendor/service-product-lists'] = 'vendor/service/serviceProduct';
+$route['vendor/add-service-product'] = 'vendor/service/addServiceProduct';
+$route['vendor/edit-service-product/(:any)'] = 'vendor/service/addServiceProduct/$1';
+$route['vendor/delete-service-product-image/(:any)'] = 'vendor/service/deleteServiceProductImage/$1';
+$route['vendor/delete-service-product/(:any)'] = 'vendor/service/deleteServiceProduct/$1';
+$route['vendor/doAddServiceProduct'] = 'vendor/service/doAddServiceProduct';
+$route['vendor/doEditServiceProduct/(:any)'] = 'vendor/service/doEditServiceProduct/$1';
+
 
 
 

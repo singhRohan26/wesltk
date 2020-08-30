@@ -80,10 +80,10 @@ class Booking extends CI_Controller {
             return FALSE;
         }
         $address_id = $this->input->post('address_id');
-        $payment_type = $this->input->post('radion3');
+        $payment_type = $this->input->post('card_type');
         $unique_id = $this->uniqueId();
         $user_id = $this->getLoginDetail()['user_id'];
-        $total = $this->input->post('total');
+        $total = $this->cart->total();
         $data = [];
         $vendor_id = '';
         foreach($this->cart->contents() as $cart ){
@@ -99,7 +99,6 @@ class Booking extends CI_Controller {
         $result = $this->home_model->order($unique_id,$vendor_id,$user_id,$total);
         $this->home_model->order_details($data);
         if($result){
-            $this->cart->destroy();
             $this->output->set_output(json_encode(['result' => 1, 'url' => base_url('home/confirmation'), 'msg' => 'Order placed Successfully!..']));
                 return FALSE;
         }else{
@@ -110,6 +109,10 @@ class Booking extends CI_Controller {
     }
     
     public function orderConfirmation(){
+        if(empty($this->cart->contents())){
+            redirect(base_url());
+        }
+        $this->cart->destroy();
         $data['title'] = 'Order-confirmation';
         $data['userData'] = $this->getLoginDetail();
         $this->load->view('front/commons/header',$data);

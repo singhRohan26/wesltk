@@ -44,7 +44,7 @@ if(!empty($this->cart->contents())) {  ?>
 							<h3>$<?php echo $this->cart->total(); ?></h3>
 						</div>
 						<div class="priceedBtn boxs">
-							<a href="<?php echo base_url('checkout/') ?>">Proceed to Buy</a>
+							<a href="<?php echo base_url('checkout/') ?>" >Proceed to Buy</a>
 						</div>
 					</div>
 				</div>
