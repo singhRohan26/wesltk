@@ -118,6 +118,18 @@ class Booking extends CI_Controller {
         $this->load->view('front/commons/footer');
         
     }
+    
+    public function removeCart($rowid){
+        $data = array(
+        'rowid'   => $rowid,
+        'qty'     => 0
+        );
+
+        $res = $this->cart->update($data);
+        if($res){
+            return redirect('home/your-cart');
+        }
+    }
 
 
 	

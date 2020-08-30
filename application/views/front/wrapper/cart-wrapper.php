@@ -26,7 +26,7 @@ if(!empty($this->cart->contents())) {  ?>
 												<button type="button" class="plus_btn">+</button>
 											</div>
 										</div>
-										<a href="#0"> X Remove</a>
+										<a href="<?php echo base_url('home/remove-cart/'.$cart['rowid']) ?>"> X Remove</a>
 									</div>
 								</div>
 							</div>
@@ -49,5 +49,8 @@ if(!empty($this->cart->contents())) {  ?>
 					</div>
 				</div>
 <?php } else{   ?>
-<p>Empty cart</p>
+<div style="text-align:center">
+<img src="<?php echo base_url('public/front/img/emptycart.png') ?>">
+<p>No items in the cart!</p>
+</div>
 <?php } ?>

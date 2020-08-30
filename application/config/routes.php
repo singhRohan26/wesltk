@@ -76,6 +76,7 @@ $route['user/user-login'] = 'user/doLogin';
 // Booking controller//
 $route['checkout'] = 'booking/checkout';
 $route['home/confirmation'] = 'booking/orderConfirmation';
+$route['home/remove-cart/(:any)'] = 'booking/removeCart/$1';
 
 
 ///   Vendor Controlller ////
