@@ -11,7 +11,7 @@
                         <ul class="metismenu list-unstyled" id="side-menu">
                            
                             <li>
-                                <a href="<?php echo base_url('admin/dashboard');?>" class="waves-effect">
+                                <a href="<?php echo base_url('vendor/dashboard');?>" class="waves-effect">
                                     <span>Dashboard</span>
                                 </a>
                             </li>
@@ -36,6 +36,16 @@
                                 <ul class="sub-menu mm-collapse" aria-expanded="false" >
                                     <li><a href="<?php echo base_url('vendor/restaurant-menu');?>">Add Category</a></li>
                                     <li><a href="<?php echo base_url('vendor/product-lists');?>">Add Product</a></li>
+                                </ul>
+                            </li>
+                            <li class="<?php if(!empty($pages_side_product)){ echo "mm-active"; }?>">
+                                <a href="javascript: void(0);" class="has-arrow waves-effect <?php if(!empty($pages_side_product)){ echo "mm-active"; }?>" aria-expanded="<?php if(!empty($pages_side_product)){ echo "true"; }else{ echo "false";}?>">
+                                    <i class="fas fa-users"></i>
+                                    <span>Services</span>
+                                </a>
+                                <ul class="sub-menu mm-collapse" aria-expanded="false" >
+                                    <li><a href="<?php echo base_url('vendor/service-menu');?>">Add Category</a></li>
+                                    <li><a href="<?php echo base_url('vendor/service-product-lists');?>">Add Product</a></li>
                                 </ul>
                             </li>
                                                   

@@ -28,7 +28,7 @@
 									</div>
 									<ul class="adres">
 										<li><a href="#0">Delete Address</a></li>
-										<li><a href="#0">Delivery here  <input type="checkbox" name="address_id" id="address_id" value="<?php echo $add['id'] ?>"></a></li>
+										<li><a href="#0">Delivery here  <input type="radio" name="address_id" id="address_id" value="<?php echo $add['id'] ?>"></a></li>
 									</ul>
 								</div>
                                 <?php } ?>
@@ -51,7 +51,7 @@
 							<h2 class="mainHeading">Select Payment Method</h2>
 							<div class="paymentMethod">
 								<div class="radio radio2">
-									<input id="radion1" name="radio" type="checkbox">
+									<input id="radion1" name="card_type" type="radio" value="card">
 									<label for="radion1" class="radio-label active">Credit Card/Debit Card<span><img src="<?php echo base_url('public/front/') ?>img/dropdown.svg" class="img-fluid" alt="drop"></span></label>
 								</div>
 								<div class="accountDetail">
@@ -93,7 +93,7 @@
 							</div>
 							<div class="paymentMethod">
 								<div class="radio radio2">
-									<input id="radion2" name="radio" type="checkbox">
+									<input id="radion2" name="card_type" type="radio" value="net">
 									<label for="radion2" class="radio-label ">Net Banking<span><img src="<?php echo base_url('public/front/') ?>img/dropdown.svg" class="img-fluid" alt="drop"></span></label>
 								</div>
 								<div class="accountDetail">
@@ -136,7 +136,7 @@
                             
                             <div class="paymentMethod">
 								<div class="radio radio2">
-									<input id="radion3" name="radion3" type="checkbox" value="cod">
+									<input id="radion3" name="card_type" type="radio" value="cod">
 									<label for="radion3" class="radio-label ">Cash on delivery</label>
 								</div>
 								
@@ -154,7 +154,7 @@
 <!--							<a href="">Continue</a>-->
                             <div class="socialIconsM socialIconsM33 socialIconsM2">
 								<ul>
-									<li class="Btn"><button type="submit" class="btncommon">Submit</button></li>
+									<li class="Btn"><button type="submit" class="btncommon prcd_buy" data-url="<?php echo base_url('booking/order');?>">Submit</button></li>
 								</ul>
 							</div>
 						</div>

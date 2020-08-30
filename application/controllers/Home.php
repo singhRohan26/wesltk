@@ -27,6 +27,7 @@ class Home extends CI_Controller {
     public function cart(){
         $data['title'] = 'Cart';
         $data['userData'] = $this->getLoginDetail();
+        $this->session->set_userdata('booking','booking');
         $this->load->view('front/commons/header',$data);
         $this->load->view('front/commons/navbar');
         $this->load->view('front/cart/cart');
@@ -139,6 +140,7 @@ class Home extends CI_Controller {
         $veg_type = $this->input->post('veg_type');
         $cat_type = $this->input->post('cat_type');
         $data['products'] = $this->home_model->getProducts($veg_type, $cat_type, $vendor_id);
+//        print_r($data['products']);die;
         $wrapper = $this->load->view('front/wrapper/product-list', $data, true);
         $this->output->set_output(json_encode(['result' => 1, 'wrapper' => $wrapper]));
         return FALSE;
@@ -163,12 +165,14 @@ class Home extends CI_Controller {
         $this->output->set_output(json_encode(['result' => 1, 'wrapper' => $wrapper]));
         return FALSE;
     }
-    public function product_img($vendor_id){
+    public function product_img($vendor_id,$type){
         $this->output->set_content_type('application/json');
-        $veg_type = $this->input->post('veg_type');
-        $cat_type = $this->input->post('cat_type');
+//        $veg_type = $this->input->post('veg_type');
+//        $cat_type = $this->input->post('cat_type');
+        
         $data['reviews'] = "true";
-        $data['product_images'] = $this->home_model->getProductImages($vendor_id);
+        $data['product_images'] = $this->home_model->getProductImages($vendor_id,$type);
+//        print_r($data['product_images']);die;
         $wrapper = $this->load->view('front/wrapper/restaurant-img', $data, true);
         $this->output->set_output(json_encode(['result' => 1, 'wrapper' => $wrapper]));
         return FALSE;
@@ -223,8 +227,19 @@ class Home extends CI_Controller {
         return FALSE;
     }
     
+    public function shop_product_img($vendor_id,$type){
+      $this->output->set_content_type('application/json');
+        
+        $data['reviews'] = "true";
+        $data['product_images'] = $this->home_model->getShopProductImages($vendor_id,$type);
+//        print_r($data['product_images']);die;
+        $wrapper = $this->load->view('front/wrapper/restaurant-img', $data, true);
+        $this->output->set_output(json_encode(['result' => 1, 'wrapper' => $wrapper]));
+        return FALSE;  
+    }
     
-
+    
+//Add to cart section
        public function addToCart($product_id) {
             $this->output->set_content_type('application/json');
             $quantity = $this->input->post('qty');
@@ -279,7 +294,6 @@ class Home extends CI_Controller {
      public function cart_content_wrapper() {
         $this->output->set_content_type('application/json');
         $data['true'] = "1";
-//        $data['tax_data'] = $this->home_model->getTaxData();
         $content_wrapper = $this->load->view('front/wrapper/cart-wrapper', $data, TRUE);
         $this->output->set_output(json_encode(['result' => 1, 'content_wrapper' => $content_wrapper]));
         return FALSE;

@@ -46,5 +46,41 @@ class Product_model extends CI_Model {
         $query = $this->db->get();
         return $query->result_array();
     }
+    
+    public function getProductDataById($id){
+        $this->db->select('m.name as menu_name, p.name as product_name, p.price,p.status, p.id,p.description,p.product_type, m.id as menu_id,am.name as admin_menu,am.id as admin_menu_id');
+        $this->db->from('menu_product m');
+        $this->db->join('product p', 'p.menu_product_id = m.id');
+        $this->db->join('admin_product_menu am','am.id=p.admin_product_menu_id');
+        $this->db->where(['m.deleted_status' => '0', 'p.deleted_status' => '0', 'm.status' => 'Active', 'p.id' => $id]);
+        $query = $this->db->get();
+        return $query->row_array();
+    }
+    
+    public function getProductImageByProductId($id){
+        $query = $this->db->get_where('product_image', ['product_id' => $id]);
+        return $query->result_array();
+    }
+    
+    public function doEditProduct($id, $img_res){
+        $data = array(
+            'admin_product_menu_id' => $this->security->xss_clean($this->input->post('product_menu')),
+            'menu_product_id' => $this->security->xss_clean($this->input->post('menu')),
+            'name' => $this->security->xss_clean($this->input->post('name')),
+            'price' => $this->security->xss_clean($this->input->post('price')),
+            'description' => $this->security->xss_clean($this->input->post('description')),
+            'status' => $this->security->xss_clean($this->input->post('status')),
+            'quantity'=> $this->security->xss_clean($this->input->post('quantity')),
+            'form_type'=>'products'
+          );
+        $this->db->update('product', $data, ['id' => $id]);
+        $this->db->affected_rows();
+        if(!empty($img_res)){
+            foreach ($img_res as $img) {
+                $this->db->insert('product_image', ['image' => $img['file_name'], 'product_id' => $id]);
+            }
+        }
+        return $id;
+    }
 	
 }

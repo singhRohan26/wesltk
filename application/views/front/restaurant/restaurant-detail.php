@@ -49,7 +49,7 @@
 					<ul>
 						<li><a href="#0" class="active" data-id='1' data-url="<?php echo base_url('home/product-listing/'. $restaurant['vendor_id']);?>">Order Online</a></li>
 						<li><a href="#0" data-id='2' data-url="<?php echo base_url('home/review-listing/'. $restaurant['vendor_id']);?>">Reviews</a></li>
-						<li><a href="#0" data-id='3' data-url="<?php echo base_url('home/product-img/'. $restaurant['vendor_id']);?>">Photos</a></li>
+						<li><a href="#0" data-id='3' data-url="<?php echo base_url('home/product-img/'. $restaurant['vendor_id'].'/'.$type='food');?>">Photos</a></li>
 					</ul>
 				</div>
 				<div class="searchFood searchFood3 searchFood2">

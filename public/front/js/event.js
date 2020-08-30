@@ -416,11 +416,23 @@ this.cartWrappper = function (){
 
 
 this.orderConfirm = function (){
-    $(document).on('click', '.placeOdbtn .orderConfirm', function(e){
+    $(document).on('click', '.prcd_buy', function(e){
         e.preventDefault();
-        var url = $(this).attr('href');
-        var remark = $("#remark").val();
-        $.post(url, {remark : remark}, function(out){
+        var url = $(this).data('url');
+        var address_id = $("input[name='address_id']:checked").val();
+        var card_type = $("input[name='card_type']:checked").val();
+        $(".error.text-danger").remove();
+        if(!address_id || !card_type){
+            if(!address_id){
+                $("input[name='address_id']").parents('.checkLogin').append("<span class='error text-danger'>Please Select Address</span>");
+            }if(!card_type){
+                $("input[name='card_type']").parents('.checkLogin').append("<span class='error text-danger'>Please Select Card Type</span>");
+            }else{
+                $("input[name='address_id']").parents('.checkLogin').append("<span class='error text-danger'>Please Select Address</span>");
+                $("input[name='card_type']").parents('.checkLogin').append("<span class='error text-danger'>Please Select Card Type</span>");
+            }
+        }
+        $.post(url, {address_id : address_id, card_type : card_type}, function(out){
             if(out.result == 1){
                 window.location.href = out.url;
             }

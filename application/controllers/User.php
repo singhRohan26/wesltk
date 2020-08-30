@@ -33,7 +33,7 @@ class User extends CI_Controller {
             $register = $this->user_model->doRegistration();
             if($register){
             $this->session->set_userdata('login_id', $register);
-            $this->output->set_output(json_encode(['result' => 1, 'url' => base_url("home"), 'msg' => 'Registration Success']));
+            $this->output->set_output(json_encode(['result' => 1, 'url' => $_SERVER['HTTP_REFERER'], 'msg' => 'Registration Success']));
 			return FALSE;
             }
 			
@@ -93,7 +93,7 @@ class User extends CI_Controller {
         $result = $this->user_model->checkLogin();
         if($result){
             $this->session->set_userdata('login_id', $result['user_id']);
-         $this->output->set_output(json_encode(['result' => 1, 'url' => base_url("home"), 'msg' => 'Login Success']));
+         $this->output->set_output(json_encode(['result' => 1, 'url' => $_SERVER['HTTP_REFERER'], 'msg' => 'Login Success']));
 			return FALSE;   
         }else{
            $this->output->set_output(json_encode(['result' => -1, 'msg' => 'Invalid credentials']));

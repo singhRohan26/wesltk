@@ -29,9 +29,16 @@ class Product extends CI_Controller {
 		$this->load->view('vendor/commons/footer');
     }
     
-    public function addProduct(){
+    public function addProduct($id = null){
         $data['title'] = 'Product Lists';
         $data['userData'] = $this->getLoginDetail();
+        if(!empty($id)){
+			$data['product'] = $this->product_model->getProductDataById($id);
+			if(empty($data['product'])){
+				redirect(base_url('vendor/product-lists'));
+			}
+			$data['product_image'] = $this->product_model->getProductImageByProductId($id);
+		}
         $data['category'] = $this->product_model->getProductCategory();
         $data['menus'] = $this->product_model->getMenu();
         $this->load->view('vendor/commons/header', $data);
@@ -99,6 +106,40 @@ class Product extends CI_Controller {
 		$result = $this->product_model->doAddProduct($img_res);
 		if ($result) {
 			$this->output->set_output(json_encode(['result' => 1, 'url' => base_url("vendor/product-lists"), 'msg' => 'Product Added Successfully!!..']));
+			return FALSE;
+		} else {
+			$this->output->set_output(json_encode(['result' => -1, 'msg' => 'Something Went Wrong!!..']));
+			return FALSE;
+		}
+	}
+    
+    public function doEditProduct($id){
+		$this->output->set_content_type('application/json');
+		$this->form_validation->set_rules('product_menu', 'Product Category', 'required');
+		$this->form_validation->set_rules('menu', 'Category', 'required');
+		$this->form_validation->set_rules('name', 'Item Name', 'required');
+		$this->form_validation->set_rules('price', 'Item Price', 'required');
+		$this->form_validation->set_rules('description', 'Description', 'required');
+		$this->form_validation->set_rules('status', 'Status', 'required');
+		$this->form_validation->set_rules('quantity', 'Quantity', 'required');
+		if ($this->form_validation->run() === FALSE) {
+			$this->output->set_output(json_encode(['result' => 0, 'errors' => $this->form_validation->error_array()]));
+			return FALSE;
+		}
+		$img_res = $this->doUploadMultiImage($id);
+		if($img_res){
+	 		foreach ($img_res as $res) {
+	    		move_uploaded_file($res['tmp_name'], './uploads/product_image/'. $res['file_name']);
+	    	}
+	    }else{
+	    	if(!empty($this->session->userdata('image_url'))){
+		    	$this->output->set_output(json_encode(['result' => 0, 'errors' => $this->session->userdata('image_url')]));
+	            return FALSE;
+	        }
+	    }	
+		$result = $this->product_model->doEditProduct($id, $img_res);
+		if ($result) {
+			$this->output->set_output(json_encode(['result' => 1, 'url' => base_url("vendor/product-lists"), 'msg' => 'Product Updated Successfully!!..']));
 			return FALSE;
 		} else {
 			$this->output->set_output(json_encode(['result' => -1, 'msg' => 'Something Went Wrong!!..']));

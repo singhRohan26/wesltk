@@ -5,7 +5,7 @@
 	?>
 		<li>
 			<div class="menuListImg menuListImg2">
-				<img src="<?php echo base_url('public/front/');?>img/list1.png" class="img-fluid" alt="list">
+				<img src="<?php echo base_url('uploads/product_image/'.$product['image']);?>" class="img-fluid" alt="list">
 			</div>
 			<div class="menuContent menuContent2">
 				<h2><?php echo $product['name'];?><span class="foodType">

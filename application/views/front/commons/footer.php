@@ -263,6 +263,15 @@
 							<label class="labelel">Website</label>
 							<input type="text" class="form-control inputcss" placeholder="Website" name="vendor_website" id="vendor_website" >
 						</div>
+                        <div class="form-group">
+							<!-- <label class="labelel">Choose category</label> -->
+							<select class="form-control">
+								<option>Choose category</option>
+								<option value="Food">Food</option>
+								<option value="Services">Services</option>
+								<option value="Products">Products</option>
+							</select>
+						</div>
 						<div class="editBtn">
 							<button type="submit" class="btncommon">Submit</button>
 						</div>

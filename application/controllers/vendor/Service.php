@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Restaurant extends CI_Controller {
+class Service extends CI_Controller {
 
 	/**
 	 * vendor  controller.
@@ -22,22 +22,22 @@ class Restaurant extends CI_Controller {
 	{
 		$data['title'] = "Restaurant Menu";
 		$data['userData'] = $this->getLoginDetail();
-		$data['menus'] = $this->restaurant_model->getMenuData();
+		$data['menus'] = $this->restaurant_model->getMenuServiceData();
 		if(!empty($id)){
-			$data['menu_data'] = $this->restaurant_model->getMenuDataById($id);
+			$data['menu_data'] = $this->restaurant_model->getMenuServiceDataById($id);
 			if(empty($data['menu_data'])){
-				redirect(base_url('vendor/restaurant-menu'));
+				redirect(base_url('vendor/service-menu'));
 			}
 		}		
 		$this->load->view('vendor/commons/header', $data);
 		$this->load->view('vendor/commons/sidebar');
-		$this->load->view('vendor/restaurant/menu');
+		$this->load->view('vendor/service/menu');
 		$this->load->view('vendor/commons/footer');
 	}
     
-	public function addRestaurantMenu(){
+	public function addServiceMenu(){
 		$this->output->set_content_type('application/json');
-		$this->form_validation->set_rules('name', 'Name', 'required|is_unique[menu_restaurant.name]');
+		$this->form_validation->set_rules('name', 'Name', 'required|is_unique[menu_servcie.name]');
 		$this->form_validation->set_rules('status', 'Status', 'required');
 		if ($this->form_validation->run() === FALSE) {
 			$this->output->set_output(json_encode(['result' => 0, 'errors' => $this->form_validation->error_array()]));
@@ -50,16 +50,16 @@ class Restaurant extends CI_Controller {
 		// }
         $data['userData'] = $this->getLoginDetail();
         $vendor_id = $data['userData']['vendor_id'];
-		$result = $this->restaurant_model->doAddRestaurantMenu($vendor_id);
+		$result = $this->restaurant_model->doAddServiceMenu($vendor_id);
         if($result){
-            $this->output->set_output(json_encode(['result' => 1, 'url' => base_url("vendor/restaurant-menu"), 'msg' => 'Menu Added Successfully..']));
+            $this->output->set_output(json_encode(['result' => 1, 'url' => base_url("vendor/service-menu"), 'msg' => 'Menu Added Successfully..']));
 			return FALSE;
         }else{
             $this->output->set_output(json_encode(['result' => -1, 'msg' => 'Something Went Wrong!!...']));
 			return FALSE;
         }
 	}       
-	public function editRestaurantMenu($id){
+	public function editServiceMenu($id){
 		$this->output->set_content_type('application/json');
 		$this->form_validation->set_rules('name', 'Name', 'required');
 		$this->form_validation->set_rules('status', 'Status', 'required');
@@ -72,46 +72,46 @@ class Restaurant extends CI_Controller {
 		// 	$this->output->set_output(json_encode(['result' => 0, 'errors' => $this->form_validation->error_array()]));
 		// 	return FALSE;
 		// }
-		$result = $this->restaurant_model->doEditRestaurantMenu($id);
+		$result = $this->restaurant_model->doEditServiceMenu($id);
         if($result){
-            $this->output->set_output(json_encode(['result' => 1, 'url' => base_url("vendor/restaurant-menu"), 'msg' => 'Menu Updated Successfully..']));
+            $this->output->set_output(json_encode(['result' => 1, 'url' => base_url("vendor/service-menu"), 'msg' => 'Menu Updated Successfully..']));
 			return FALSE;
         }else{
             $this->output->set_output(json_encode(['result' => -1, 'msg' => 'No Changes Were Made!!...']));
 			return FALSE;
         }
 	}         
-	public function delete_restaurant_menu($id){
+	public function delete_service_menu($id){
 		$this->output->set_content_type('application/json');
-		$result = $this->restaurant_model->doDeleteRestaurantMenu($id);
-        $this->output->set_output(json_encode(['result' => 1, 'url' => base_url("vendor/restaurant-menu"), 'msg' => 'Menu Updated Successfully..']));
+		$result = $this->restaurant_model->doDeleteServiceMenu($id);
+        $this->output->set_output(json_encode(['result' => 1, 'url' => base_url("vendor/service-menu"), 'msg' => 'Menu Updated Successfully..']));
 		return FALSE;
 	}    
 
-	public function restaurantProduct(){
+	public function serviceProduct(){
 		$data['title'] = "Restaurant Product";
 		$data['userData'] = $this->getLoginDetail();
-		$data['products'] = $this->restaurant_model->getProductData();
+		$data['products'] = $this->restaurant_model->getServiceProductData();
 		$this->load->view('vendor/commons/header', $data);
 		$this->load->view('vendor/commons/sidebar');
-		$this->load->view('vendor/restaurant/restaurantProduct');
+		$this->load->view('vendor/service/serviceProduct');
 		$this->load->view('vendor/commons/footer');
 	}
-	public function addRestaurantProduct($id = null){
-		$data['title'] = "Add Restaurant Product";
+	public function addServiceProduct($id = null){
+		$data['title'] = "Add Service Product";
 		$data['userData'] = $this->getLoginDetail();
 		if(!empty($id)){
-			$data['product'] = $this->restaurant_model->getProductDataById($id);
+			$data['product'] = $this->restaurant_model->getServiceProductDataById($id);
 			if(empty($data['product'])){
 				redirect(base_url('vendor/restaurant-product'));
 			}
 			$data['product_image'] = $this->restaurant_model->getProductImageByProductId($id);
 		}
-		$data['menus'] = $this->restaurant_model->getMenuData();
-        $data['category'] = $this->restaurant_model->getAdminMenus();
+		$data['menus'] = $this->restaurant_model->getMenuServiceData();
+        $data['category'] = $this->restaurant_model->getAdminServiceMenus();
 		$this->load->view('vendor/commons/header', $data);
 		$this->load->view('vendor/commons/sidebar');
-		$this->load->view('vendor/restaurant/addRestaurantProduct');
+		$this->load->view('vendor/service/addServiceProduct');
 		$this->load->view('vendor/commons/footer');
 	}
 
@@ -149,7 +149,7 @@ class Restaurant extends CI_Controller {
         return $image;
     }
 
-	public function doAddProduct(){
+	public function doAddServiceProduct(){
 		$this->output->set_content_type('application/json');
 		$this->form_validation->set_rules('admin_menu', 'Restaurant Category', 'required');
 		$this->form_validation->set_rules('menu', 'menu', 'required');
@@ -157,12 +157,11 @@ class Restaurant extends CI_Controller {
 		$this->form_validation->set_rules('price', 'Item Price', 'required');
 		$this->form_validation->set_rules('description', 'Description', 'required');
 		$this->form_validation->set_rules('status', 'Status', 'required');
-		$this->form_validation->set_rules('food_type', 'Food Type', 'required');
 		if ($this->form_validation->run() === FALSE) {
 			$this->output->set_output(json_encode(['result' => 0, 'errors' => $this->form_validation->error_array()]));
 			return FALSE;
 		}
-        
+		
 		$img_res = $this->doUploadMultiImage();
 		if($img_res){
 	 		foreach ($img_res as $res) {
@@ -172,16 +171,16 @@ class Restaurant extends CI_Controller {
 	    	$this->output->set_output(json_encode(['result' => 0, 'errors' => $this->session->userdata('image_url')]));
             return FALSE;
 	    }
-		$result = $this->restaurant_model->doAddProduct($img_res);
+		$result = $this->restaurant_model->doAddServiceProduct($img_res);
 		if ($result) {
-			$this->output->set_output(json_encode(['result' => 1, 'url' => base_url("vendor/restaurant-product"), 'msg' => 'Product Added Successfully!!..']));
+			$this->output->set_output(json_encode(['result' => 1, 'url' => base_url("vendor/service-product-lists"), 'msg' => 'Product Added Successfully!!..']));
 			return FALSE;
 		} else {
 			$this->output->set_output(json_encode(['result' => -1, 'msg' => 'Something Went Wrong!!..']));
 			return FALSE;
 		}
 	}
-	public function doEditProduct($id){
+	public function doEditServiceProduct($id){
 		$this->output->set_content_type('application/json');
 		$this->form_validation->set_rules('menu', 'menu', 'required');
 		$this->form_validation->set_rules('name', 'Item Name', 'required');
@@ -208,23 +207,29 @@ class Restaurant extends CI_Controller {
 	            return FALSE;
 	        }
 	    }	
-		$result = $this->restaurant_model->doEditProduct($id, $img_res);
+		$result = $this->restaurant_model->doEditServiceProduct($id, $img_res);
 		if ($result) {
-			$this->output->set_output(json_encode(['result' => 1, 'url' => base_url("vendor/restaurant-product"), 'msg' => 'Product Updated Successfully!!..']));
+			$this->output->set_output(json_encode(['result' => 1, 'url' => base_url("vendor/service-product-lists"), 'msg' => 'Product Updated Successfully!!..']));
 			return FALSE;
 		} else {
-			$this->output->set_output(json_encode(['result' => -1, 'msg' => 'Something Went Wrong!!..']));
+			$this->output->set_output(json_encode(['result' => -1, 'msg' => 'No Changes Were Made!!..']));
 			return FALSE;
 		}
 	}
 
-	public function deleteRestaurantProductImage($id){
+	public function deleteServiceProductImage($id){
 		$this->output->set_content_type('application/json');
 		$img = $this->restaurant_model->getProductImageById($id);
 		if($img){
 			unlink('uploads/product_image/'.$img['image']);
 		}
 		$this->restaurant_model->deleteProductImageById($id);
+		$this->output->set_output(json_encode(['result' => 1, 'url' => $_SERVER['HTTP_REFERER'], 'msg' => 'Product Deleted Successfully!!..']));
+		return FALSE;
+	}
+	public function deleteServiceProduct($id){
+		$this->output->set_content_type('application/json');
+		$this->restaurant_model->deleteServiceProduct($id);
 		$this->output->set_output(json_encode(['result' => 1, 'url' => $_SERVER['HTTP_REFERER'], 'msg' => 'Product Deleted Successfully!!..']));
 		return FALSE;
 	}
