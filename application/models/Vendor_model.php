@@ -19,9 +19,16 @@ class Vendor_model extends CI_Model {
         return $query->row_array();
     }
     
-    public function getLoginDetail($login_id){
+    public function getLoginDetail($login_id, $category_type = null){
         $sel = $this->db->get_where('vendors', ['vendor_id'=>$login_id]);
-        return $sel->row_array();
+        $row = $sel->row_array();
+        if(!empty($category_type)){
+            if(in_array($category_type, explode(',', $row['category']))){
+                return $row;
+            }
+        }else{
+            return $row;
+        }
     }
     
     public function doChangePass(){

@@ -16,9 +16,11 @@
                                 </a>
                             </li>
     
-                           
-                            <li class="<?php if(!empty($pages_side)){ echo "mm-active"; }?>">
-                                <a href="javascript: void(0);" class="has-arrow waves-effect <?php if(!empty($pages_side)){ echo "mm-active"; }?>" aria-expanded="<?php if(!empty($pages_side)){ echo "true"; }else{ echo "false";}?>">
+                            <?php
+                                if(in_array('food', explode(',', $userData['category']))){
+                            ?>
+                            <li class="<?php if(!empty($pages_side_res)){ echo "mm-active"; }?>">
+                                <a href="javascript: void(0);" class="has-arrow waves-effect <?php if(!empty($pages_side_res)){ echo "mm-active"; }?>" aria-expanded="<?php if(!empty($pages_side_res)){ echo "true"; }else{ echo "false";}?>">
                                     <i class="fas fa-users"></i>
                                     <span>Restaurant</span>
                                 </a>
@@ -27,9 +29,11 @@
                                     <li><a href="<?php echo base_url('vendor/restaurant-product');?>">Add Product</a></li>
                                 </ul>
                             </li>
-                           
-                            <li class="<?php if(!empty($pages_side)){ echo "mm-active"; }?>">
-                                <a href="javascript: void(0);" class="has-arrow waves-effect <?php if(!empty($pages_side)){ echo "mm-active"; }?>" aria-expanded="<?php if(!empty($pages_side)){ echo "true"; }else{ echo "false";}?>">
+                           <?php
+                                } if(in_array('product', explode(',', $userData['category']))){
+                           ?>
+                            <li class="<?php if(!empty($pages_side_product)){ echo "mm-active"; }?>">
+                                <a href="javascript: void(0);" class="has-arrow waves-effect <?php if(!empty($pages_side_product)){ echo "mm-active"; }?>" aria-expanded="<?php if(!empty($pages_side_product)){ echo "true"; }else{ echo "false";}?>">
                                     <i class="fas fa-users"></i>
                                     <span>Products</span>
                                 </a>
@@ -38,8 +42,11 @@
                                     <li><a href="<?php echo base_url('vendor/product-lists');?>">Add Product</a></li>
                                 </ul>
                             </li>
-                            <li class="<?php if(!empty($pages_side_product)){ echo "mm-active"; }?>">
-                                <a href="javascript: void(0);" class="has-arrow waves-effect <?php if(!empty($pages_side_product)){ echo "mm-active"; }?>" aria-expanded="<?php if(!empty($pages_side_product)){ echo "true"; }else{ echo "false";}?>">
+                            <?php
+                                } if(in_array('service', explode(',', $userData['category']))){
+                            ?>
+                            <li class="<?php if(!empty($pages_side_service)){ echo "mm-active"; }?>">
+                                <a href="javascript: void(0);" class="has-arrow waves-effect <?php if(!empty($pages_side_service)){ echo "mm-active"; }?>" aria-expanded="<?php if(!empty($pages_side_service)){ echo "true"; }else{ echo "false";}?>">
                                     <i class="fas fa-users"></i>
                                     <span>Services</span>
                                 </a>
@@ -48,6 +55,9 @@
                                     <li><a href="<?php echo base_url('vendor/service-product-lists');?>">Add Product</a></li>
                                 </ul>
                             </li>
+                            <?php
+                                }
+                            ?>
                                                   
                         </ul>
 

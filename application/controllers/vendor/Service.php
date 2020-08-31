@@ -11,17 +11,21 @@ class Service extends CI_Controller {
 	public function __construct() {
 		parent::__construct();
 		$this->load->model(['restaurant_model', 'vendor_model']);
+		if(empty($this->vendor_model->getLoginDetail($this->session->userdata('vendor_login_id'), 'service'))){
+			redirect(base_url('vendor/dashboard'));
+		}
 	}
 
 	private function getLoginDetail(){
 		$vendor_login_id = $this->session->userdata('vendor_login_id');
-		return $this->vendor_model->getLoginDetail($vendor_login_id);
+		return $this->vendor_model->getLoginDetail($vendor_login_id, 'service');
 	}
 
 	public function index($id = null)
 	{
 		$data['title'] = "Restaurant Menu";
 		$data['userData'] = $this->getLoginDetail();
+		$data['pages_side_service'] = "true";
 		$data['menus'] = $this->restaurant_model->getMenuServiceData();
 		if(!empty($id)){
 			$data['menu_data'] = $this->restaurant_model->getMenuServiceDataById($id);
@@ -49,6 +53,7 @@ class Service extends CI_Controller {
 		// 	return FALSE;
 		// }
         $data['userData'] = $this->getLoginDetail();
+        $data['pages_side_service'] = "true";
         $vendor_id = $data['userData']['vendor_id'];
 		$result = $this->restaurant_model->doAddServiceMenu($vendor_id);
         if($result){
@@ -91,6 +96,7 @@ class Service extends CI_Controller {
 	public function serviceProduct(){
 		$data['title'] = "Restaurant Product";
 		$data['userData'] = $this->getLoginDetail();
+		$data['pages_side_service'] = "true";
 		$data['products'] = $this->restaurant_model->getServiceProductData();
 		$this->load->view('vendor/commons/header', $data);
 		$this->load->view('vendor/commons/sidebar');
@@ -100,6 +106,7 @@ class Service extends CI_Controller {
 	public function addServiceProduct($id = null){
 		$data['title'] = "Add Service Product";
 		$data['userData'] = $this->getLoginDetail();
+		$data['pages_side_service'] = "true";
 		if(!empty($id)){
 			$data['product'] = $this->restaurant_model->getServiceProductDataById($id);
 			if(empty($data['product'])){

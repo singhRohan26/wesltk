@@ -11,16 +11,20 @@ class Product extends CI_Controller {
 	public function __construct() {
 		parent::__construct();
 		$this->load->model(['product_model','vendor_model']);
+		if(empty($this->vendor_model->getLoginDetail($this->session->userdata('vendor_login_id'), 'product'))){
+			redirect(base_url('vendor/dashboard'));
+		}
 	}
     
     private function getLoginDetail(){
 		$vendor_login_id = $this->session->userdata('vendor_login_id');        
-		return $this->vendor_model->getLoginDetail($vendor_login_id);
+		return $this->vendor_model->getLoginDetail($vendor_login_id, 'product');
 	}
     
     public function index(){
         $data['title'] = 'Product Lists';
         $data['userData'] = $this->getLoginDetail();
+        $data['pages_side_product'] = "true";
         $data['products'] = $this->product_model->getProducts();
         
         $this->load->view('vendor/commons/header', $data);
@@ -32,6 +36,7 @@ class Product extends CI_Controller {
     public function addProduct($id = null){
         $data['title'] = 'Product Lists';
         $data['userData'] = $this->getLoginDetail();
+        $data['pages_side_product'] = "true";
         if(!empty($id)){
 			$data['product'] = $this->product_model->getProductDataById($id);
 			if(empty($data['product'])){
