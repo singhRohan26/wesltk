@@ -80,6 +80,16 @@ class Home extends CI_Controller {
         $this->load->view('front/commons/footer');
     }
     
+    public function contactUs(){
+        $data['title'] = 'Contact us';
+        $data['userData'] = $this->getLoginDetail();
+        $data['about_data'] = $this->home_model->getPagesData('privacy');
+        $this->load->view('front/commons/header',$data);
+        $this->load->view('front/commons/navbar');
+        $this->load->view('front/contact-us');
+        $this->load->view('front/commons/footer');
+    }
+    
     private function is_login(){
 		return $this->session->userdata('login_id');
 	}
@@ -88,6 +98,28 @@ class Home extends CI_Controller {
 		$login_id = $this->session->userdata('login_id');
 		return $this->user_model->getLoginDetail($login_id);
 	}
+    
+    public function doContactUs(){
+        $this->output->set_content_type('application/json');
+        $this->form_validation->set_rules('name', 'Name', 'required');
+        $this->form_validation->set_rules('email', ' Email', 'required|valid_email');
+        $this->form_validation->set_rules('phone', ' Phone Number', 'required');
+        $this->form_validation->set_rules('subject', 'Subject', 'required');
+        $this->form_validation->set_rules('msg', 'Message', 'required');
+        if ($this->form_validation->run() === FALSE) {
+            $this->output->set_output(json_encode(['result' => 0, 'errors' => $this->form_validation->error_array()]));
+            return FALSE;
+        }
+        
+        $result = $this->home_model->doContactUs();
+        if($result){
+            $this->output->set_output(json_encode(['result' => 1, 'url' => base_url('/'), 'msg' => 'Message sent Successfully!..']));
+                return FALSE;
+        }else{
+            $this->output->set_output(json_encode(['result' => -1, 'msg' => 'Something Went Wrong!..']));
+                return FALSE;
+        }
+    }
     
     public function restaurantsLists(){
         $data['title'] = 'Restaurant List';
@@ -298,5 +330,7 @@ class Home extends CI_Controller {
         $this->output->set_output(json_encode(['result' => 1, 'content_wrapper' => $content_wrapper]));
         return FALSE;
     }
+    
+    
 	
 }

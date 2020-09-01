@@ -76,6 +76,32 @@ class Booking extends CI_Controller {
         
     }
     
+    public function doEditAddress($id){
+       $this->output->set_content_type('application/json');
+        $this->form_validation->set_rules('username', 'Name', 'required');
+        $this->form_validation->set_rules('address', 'Address', 'required');
+        $this->form_validation->set_rules('pincode', 'Pin code', 'required');
+        $this->form_validation->set_rules('city', 'City', 'required');
+        $this->form_validation->set_rules('state', 'State', 'required');
+        $this->form_validation->set_rules('country', 'Country', 'required');
+        if ($this->form_validation->run() === FALSE) {
+            $this->output->set_output(json_encode(['result' => 0, 'errors' => $this->form_validation->error_array()]));
+            return FALSE;
+        } 
+        $data['userData'] = $this->getLoginDetail();
+        $user_id = $data['userData']['user_id'];
+        $result = $this->home_model->doEditAddress($id);
+        if($result){
+            $this->output->set_output(json_encode(['result' => 1, 'url' => $_SERVER['HTTP_REFERER'], 'msg' => 'Address Added Successfully!..']));
+                return FALSE;
+        }else{
+            $this->output->set_output(json_encode(['result' => -1, 'msg' => 'Something Went Wrong!..']));
+                return FALSE;
+        }
+        
+        
+    }
+    
     public function order(){
         $this->output->set_content_type('application/json');
         $this->form_validation->set_rules('address_id', 'Address', 'required');

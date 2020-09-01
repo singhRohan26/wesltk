@@ -261,32 +261,92 @@
 									<h2>Address</h2>
 								</div>
 								<div class="Adresses">
+                                    <?php foreach($address as $add) { ?>
 									<div class="AddressLeft AddressLeft2">
 										<div class="addressUp">
 											<div class="editProp">
-												<h2>Other</h2>
+												<h2><?php echo $add['name'] ?></h2>
 											</div>
-											<p>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. 2972 Westheimer Rd. Santa Ana, Illinois 85486 </p>
-											<h3>39 mins.</h3>
+											<p><?php echo $add['address'] ?>,<?php echo $add['city_id'] ?>,<?php echo $add['state_id'] ?> </p>
+											<h3><?php echo $add['pincode'] ?></h3>
 										</div>
 										<ul class="adres">
 											<li><a href="#0">Delete Address</a></li>
-											<li><a href="#0">Edit</a></li>
+											<li><a href="#0" data-toggle="modal" data-target="#reviewModals<?php echo $add['id'] ?>">Edit</a></li>
 										</ul>
 									</div>
-									<div class="AddressLeft AddressLeft2 ">
-										<div class="addressUp">
-											<div class="editProp">
-												<h2>Other</h2>
-											</div>
-											<p>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. 2972 Westheimer Rd. Santa Ana, Illinois 85486 </p>
-											<h3>39 mins.</h3>
-										</div>
-										<ul class="adres">
-											<li><a href="#0">Delete Address</a></li>
-											<li><a href="#0">Edit</a></li>
-										</ul>
-									</div>
+                                
+                                    
+<div class="modal  ReviewModals fade" id="reviewModals<?php echo $add['id'] ?>" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content" id="address_wrapper">
+				<div class="closeBtn">
+					<a href="#0" data-dismiss="modal"><img src="<?php echo base_url('public/front/') ?>img/close.svg" class="img-fluid" alt="close"></a>
+				</div>
+				<div class="loginAll">
+					<div class="loginRight loginRightreview">
+						<form method="post" action="<?php echo base_url('booking/doEditAddress/'.$add['id']) ?>" id="common-form"> 
+							<div class="forgetIn">
+								<h2 class="">Add new address</h2>
+							</div>
+							<div class="reviewForm">
+								<div class="form-group">
+									<label class="labelel">Name</label>
+									<input type="text" class="form-control inputcss" placeholder="Name" name="username" id="username" value="<?php echo $add['name'] ?>">
+								</div>
+<!--
+								<div class="form-group">
+									<label class="labelel">Contact number</label>
+									<input type="number" class="form-control inputcss" placeholder="number">
+								</div>
+-->
+								<div class="form-group">
+									<label class="labelel">Address</label>
+									<input type="text" class="form-control inputcss" placeholder="Address" id="address" name="address" value="<?php echo $add['address'] ?>">
+								</div>
+									<div class="form-group fifty">
+									<label class="labelel">Pincode</label>
+									<input type="number" class="form-control inputcss" placeholder="pincode" name="pincode" id="pincode" value="<?php echo $add['pincode'] ?>">
+								</div>
+									<div class="form-group fifty right">
+									<label class="labelel">City</label>
+									<input type="text" class="form-control inputcss" placeholder="city" name="city" id="city" value="<?php echo $add['city_id'] ?>">
+								</div>
+													<div class="form-group fifty">
+									<label class="labelel">State</label>
+									<input type="text" class="form-control inputcss" placeholder="state" name="state" id="state" value="<?php echo $add['state_id'] ?>">
+								</div>
+									<div class="form-group fifty right">
+									<label class="labelel">Country</label>
+									<input type="text" class="form-control inputcss" placeholder="country" name="country" id="country" value="<?php echo $add['country_id'] ?>">
+								</div>
+							
+							</div>
+							<div class="addressType">
+								<h2 class="">Address type</h2>
+								<ul>
+									<li>Work</li>
+									<li>Home</li>
+									<li>Other</li>
+								</ul>
+							</div>
+							<div class="socialIconsM socialIconsM33 socialIconsM2">
+								<ul>
+									<li class="Btn"><button type="submit" class="btncommon">Submit</button></li>
+								</ul>
+							</div>
+
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+                                    
+                                    
+                                    
+                                    
+									<?php } ?>
 								</div>
 							</div>
 						</div>

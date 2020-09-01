@@ -195,11 +195,24 @@ class Home_model extends CI_Model {
         'city_id' =>$this->security->xss_clean($this->input->post('city')),
         'state_id' =>$this->security->xss_clean($this->input->post('state')),
         'country_id' =>$this->security->xss_clean($this->input->post('country')),
-//        'type' =>$this->security->xss_clean($this->input->post('vendor_website')),
-        );
-        
+            );
         $this->db->insert('address',$data);
         return $this->db->insert_id();
+    }
+    
+    public function doEditAddress($id){
+      $data = array(
+        'name' =>$this->security->xss_clean($this->input->post('username')),
+        'address' =>$this->security->xss_clean($this->input->post('address')),
+        'pincode' =>$this->security->xss_clean($this->input->post('pincode')),
+        'city_id' =>$this->security->xss_clean($this->input->post('city')),
+        'state_id' =>$this->security->xss_clean($this->input->post('state')),
+        'country_id' =>$this->security->xss_clean($this->input->post('country')),
+        );
+        $this->db->where('id',$id);
+        $this->db->update('address',$data);
+        return $this->db->affected_rows();
+        
     }
     
     public function getAddressByUserId($user_id){
@@ -222,6 +235,19 @@ class Home_model extends CI_Model {
     
     public function order_details($data){
         $this->db->insert_batch('order_details',$data);
+        return $this->db->insert_id();
+    }
+    
+    public function doContactUs(){
+        $data = array(
+        'name' =>$this->security->xss_clean($this->input->post('name')),
+        'email' =>$this->security->xss_clean($this->input->post('email')),
+        'phone' =>$this->security->xss_clean($this->input->post('phone')),
+        'subject' =>$this->security->xss_clean($this->input->post('subject')),
+        'msg' =>$this->security->xss_clean($this->input->post('msg')),
+        );
+        
+        $this->db->insert('contact_us',$data);
         return $this->db->insert_id();
     }
 }

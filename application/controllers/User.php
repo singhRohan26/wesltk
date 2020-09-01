@@ -10,7 +10,7 @@ class User extends CI_Controller {
 	 */
 	public function __construct() {
 		parent::__construct();
-		$this->load->model('user_model');
+		$this->load->model(['user_model','home_model']);
 	}
 
 
@@ -134,6 +134,7 @@ class User extends CI_Controller {
     public function profile(){
         $data['title'] = 'User Profile';
         $data['userData'] = $this->getLoginDetail();
+        $data['address'] = $this->home_model->getAddressByUserId($data['userData']['user_id']);
         $this->load->view('front/commons/header',$data);
         $this->load->view('front/commons/navbar');
         $this->load->view('front/profile');

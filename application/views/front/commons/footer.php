@@ -14,7 +14,7 @@
 					<h2>Quick Links</h2>
 					<ul>
 						<li><a href="<?php echo base_url('about');?>">About us</a></li>
-						<li><a href="contactus.html">Contact Us</a></li>
+						<li><a href="<?php echo base_url('home/contact-us') ?>">Contact Us</a></li>
 						<li><a href="career.html">Why Us</a></li>
 						<li><a href="#0">Track Order</a></li>
 					</ul>

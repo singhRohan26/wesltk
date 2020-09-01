@@ -66,6 +66,7 @@ $route['home/restaurant-lists'] = 'home/restaurantsLists';
 $route['home/products-shops'] = 'home/productsLists';
 $route['shop-details/(:any)'] = 'home/shopDetails/$1';
 $route['home/shop-product-listing/(:any)'] = 'home/shopProductListing/$1';
+$route['home/contact-us'] = 'home/contactUs';
 
 ///   User Controlller ////
 $route['user/user-profile'] = 'user/profile';
