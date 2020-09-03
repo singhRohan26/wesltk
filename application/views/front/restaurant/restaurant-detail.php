@@ -10,13 +10,13 @@
 				</div>
 				<div class="col-sm-6">
 					<div class="detailContent">
-						<a href="#0" class="lacation"><span><img src="<?php echo base_url('public/front/');?>img/location.svg" class="img-fluid" alt="location"></span>Sector 16, Noida</a>
+						<a href="" class="lacation"><span><img src="<?php echo base_url('public/front/');?>img/location.svg" class="img-fluid" alt="location"></span>Sector 16, Noida</a>
 						<h2 class="new"><?php echo $restaurant['name'] ?></h2>
 						<p>North Indian, Mughlai, Seafood, Biryani, Desserts, Kebabs</p>
 						<div class="OrderDetail">
 							<ul>
 								<li>Minimum Order Amount :</li>
-								<li>AED 150.00</li>
+								<li>AED 100.00</li>
 							</ul>
 							<ul>
 								<li>Working Hours Today :</li>
