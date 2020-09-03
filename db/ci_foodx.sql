@@ -2,10 +2,10 @@
 -- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Aug 30, 2020 at 06:43 PM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.2.33
+-- Host: 127.0.0.1
+-- Generation Time: Sep 03, 2020 at 05:40 AM
+-- Server version: 10.4.13-MariaDB
+-- PHP Version: 7.2.32
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -228,6 +228,7 @@ INSERT INTO `menu_servcie` (`id`, `name`, `vendor_id`, `status`, `deleted_status
 
 CREATE TABLE `order` (
   `id` int(11) NOT NULL,
+  `address_id` int(11) NOT NULL,
   `unique_id` int(11) NOT NULL,
   `vendor_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
@@ -235,6 +236,39 @@ CREATE TABLE `order` (
   `status` enum('Processing','Accepted','Out for delivery','Completed') NOT NULL,
   `created_at` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `order`
+--
+
+INSERT INTO `order` (`id`, `address_id`, `unique_id`, `vendor_id`, `user_id`, `sub_total`, `status`, `created_at`) VALUES
+(1, 2, 38516472, 1, 1, 100, 'Processing', '2020-09-03 09:08:44'),
+(2, 3, 13287965, 1, 1, 100, 'Processing', '2020-09-03 09:10:35');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `order_address`
+--
+
+CREATE TABLE `order_address` (
+  `id` int(11) NOT NULL,
+  `name` varchar(40) NOT NULL,
+  `email` varchar(40) NOT NULL,
+  `phone` varchar(12) NOT NULL,
+  `address` varchar(250) NOT NULL,
+  `date` date NOT NULL,
+  `time` time NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `order_address`
+--
+
+INSERT INTO `order_address` (`id`, `name`, `email`, `phone`, `address`, `date`, `time`) VALUES
+(1, 'Ram', 'ram@gmail.com', '7458868452', '', '2020-09-10', '21:09:00'),
+(2, 'Ram', 'ram@gmail.com', '7458868452', '', '2020-09-10', '21:09:00'),
+(3, 'Ram', 'ram@gmail.com', '2784783478', '', '2020-09-12', '22:11:00');
 
 -- --------------------------------------------------------
 
@@ -250,6 +284,13 @@ CREATE TABLE `order_details` (
   `price` int(11) NOT NULL DEFAULT current_timestamp(),
   `created_at` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `order_details`
+--
+
+INSERT INTO `order_details` (`id`, `unique_id`, `product_id`, `qty`, `price`, `created_at`) VALUES
+(1, 13287965, 22, 1, 100, '2020-09-03 09:10:35');
 
 -- --------------------------------------------------------
 
@@ -307,7 +348,8 @@ INSERT INTO `product` (`id`, `admin_menu_id`, `menu_id`, `admin_product_menu_id`
 (7, 1, 1, 0, 0, 0, 0, 'Test', '100', 'Desc', 'Veg', 0, 'food', 'Active', '0'),
 (19, 3, 3, 0, 0, 0, 0, 'Chicken Biryani', '450', 'Chicken biryani with boneless chicken served with green chutney and salad', 'Non-veg', 0, 'food', 'Active', '0'),
 (20, 8, 2, 0, 0, 0, 0, 'Veg chowmein', '100', 'Spicy Veg chowmein served  with mayonise', 'Veg', 0, 'food', 'Active', '0'),
-(21, 0, 0, 4, 2, 0, 0, 'Veggie Nuggets', '120', 'Readymade crispy veg snacks', 'Veg', 10, 'products', 'Active', '0');
+(21, 0, 0, 4, 2, 0, 0, 'Veggie Nuggets', '120', 'Readymade crispy veg snacks', 'Veg', 10, 'products', 'Active', '0'),
+(22, 0, 0, 0, 0, 1, 1, 'Ram', '100', 'Demo', 'Veg', 0, 'services', 'Active', '0');
 
 -- --------------------------------------------------------
 
@@ -346,7 +388,8 @@ INSERT INTO `product_image` (`id`, `product_id`, `image`) VALUES
 (23, 18, '9389.jpg'),
 (24, 19, '5453.jpeg'),
 (25, 20, '3813.jpg'),
-(26, 21, '3349.jpg');
+(26, 21, '3349.jpg'),
+(27, 22, '9595.jpg');
 
 -- --------------------------------------------------------
 
@@ -408,7 +451,7 @@ CREATE TABLE `vendors` (
 --
 
 INSERT INTO `vendors` (`vendor_id`, `name`, `email`, `phone`, `password`, `website`, `category`, `image`, `status`, `is_forgot`, `address_line_1`, `address_line_2`, `area`, `state_id`, `city_id`, `country_id`, `zipcode`, `landline`, `created_at`) VALUES
-(1, 'Bikanervala', 'ram.bikaner@gmail.com', '898928923', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'http://localhost/wesltk/privacy-policy', 'food,product', '1079967070.png', 'Active', 'Active', '', '', '', 0, 0, 0, 0, '', '2020-08-15 16:39:02');
+(1, 'Bikanervala', 'ram.bikaner@gmail.com', '898928923', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'http://localhost/wesltk/privacy-policy', 'food,product,service', '1079967070.png', 'Active', 'Active', '', '', '', 0, 0, 0, 0, '', '2020-08-15 16:39:02');
 
 --
 -- Indexes for dumped tables
@@ -472,6 +515,12 @@ ALTER TABLE `menu_servcie`
 -- Indexes for table `order`
 --
 ALTER TABLE `order`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `order_address`
+--
+ALTER TABLE `order_address`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -572,13 +621,19 @@ ALTER TABLE `menu_servcie`
 -- AUTO_INCREMENT for table `order`
 --
 ALTER TABLE `order`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `order_address`
+--
+ALTER TABLE `order_address`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `order_details`
 --
 ALTER TABLE `order_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `pages`
@@ -590,13 +645,13 @@ ALTER TABLE `pages`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `product_image`
 --
 ALTER TABLE `product_image`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `users`

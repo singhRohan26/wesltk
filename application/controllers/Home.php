@@ -119,6 +119,48 @@ class Home extends CI_Controller {
             $this->output->set_output(json_encode(['result' => -1, 'msg' => 'Something Went Wrong!..']));
                 return FALSE;
         }
+    } 
+
+
+    private function uniqueId() {
+        $str = '123456789';
+        $nstr = str_shuffle($str);
+        $unique_id = substr($nstr, 0, 8);
+        return $unique_id;
+    }
+
+    public function bookService(){
+        $this->output->set_content_type('application/json');
+        $this->form_validation->set_rules('full_name_ser', 'Name', 'required');
+        $this->form_validation->set_rules('email_sir', ' Email', 'required|valid_email');
+        $this->form_validation->set_rules('phone_no_ser', ' Phone Number', 'required');
+        $this->form_validation->set_rules('date_ser', 'Date', 'required');
+        $this->form_validation->set_rules('time_ser', 'Time', 'required');
+        if ($this->form_validation->run() === FALSE) {
+            $this->output->set_output(json_encode(['result' => 0, 'errors' => $this->form_validation->error_array()]));
+            return FALSE;
+        }
+        $unique_id = $this->uniqueId();
+        $user_id = $this->getLoginDetail()['user_id'];
+        $product_detail = $this->home_model->getLoginDetailBySalonProductId($this->input->post('product_id'));
+        $vendor_id = $product_detail['vendor_id'];
+        $total = $product_detail['price'];
+        $data[] = array(
+            'product_id' => $this->input->post('product_id'),
+            'qty' => 1,
+            'price'=>$total,
+            'unique_id'=>$unique_id
+            );
+        $result = $this->home_model->doBookService();
+        $this->home_model->order($unique_id,$vendor_id,$user_id,$total, $result);
+        $this->home_model->order_details($data);
+        if($result){
+            $this->output->set_output(json_encode(['result' => 1, 'url' => $_SERVER['HTTP_REFERER'], 'msg' => 'Service Booked Successfully!..', 'swal' => 'true']));
+                return FALSE;
+        }else{
+            $this->output->set_output(json_encode(['result' => -1, 'msg' => 'Something Went Wrong!..']));
+                return FALSE;
+        }
     }
     
     public function restaurantsLists(){
@@ -131,6 +173,16 @@ class Home extends CI_Controller {
         $this->load->view('front/restaurant/restaurant-list');
         $this->load->view('front/commons/footer');
     }
+    public function salonLists(){
+        $data['title'] = 'Restaurant List';
+        $data['userData'] = $this->getLoginDetail();
+        $data['menus'] = $this->home_model->getAdminSalonMenu();
+        $data['about_data'] = $this->home_model->getPagesData('privacy');
+        $this->load->view('front/commons/header',$data);
+        $this->load->view('front/commons/navbar');
+        $this->load->view('front/salon/salon-list');
+        $this->load->view('front/commons/footer');
+    }
 
     public function restaurantWrapper(){
         $this->output->set_content_type('application/json');
@@ -138,6 +190,15 @@ class Home extends CI_Controller {
         $data_id = $this->input->post('data_id');
         $data['restaurants'] = $this->home_model->getRestaurants($checked_val);
         $wrapper = $this->load->view('front/wrapper/restaurant-list', $data, true);
+        $this->output->set_output(json_encode(['result' => 1, 'wrapper' => $wrapper, 'count_wrapper' => '('.count($data['restaurants']).')']));
+        return FALSE;
+    }
+    public function salonWrapper(){
+        $this->output->set_content_type('application/json');
+        $checked_val = $this->input->post('checked_val');
+        $data_id = $this->input->post('data_id');
+        $data['restaurants'] = $this->home_model->getsalons($checked_val);
+        $wrapper = $this->load->view('front/wrapper/salon-list', $data, true);
         $this->output->set_output(json_encode(['result' => 1, 'wrapper' => $wrapper, 'count_wrapper' => '('.count($data['restaurants']).')']));
         return FALSE;
     }
@@ -166,6 +227,20 @@ class Home extends CI_Controller {
         $this->load->view('front/restaurant/restaurant-detail');
         $this->load->view('front/commons/footer');
     }
+    public function salon_details($restaurant_name){
+        $data['title'] = 'Restaurant List';
+        $restaurant_name = str_replace('-', ' ', $restaurant_name);
+        $data['userData'] = $this->getLoginDetail();
+        $data['restaurant'] = $this->home_model->getSalonDataByName($restaurant_name);
+        if(empty($data['restaurant'])){
+            redirect(base_url('home/salon-lists'));
+        }
+        $data['menus'] = $this->home_model->getSalonMenuData($data['restaurant']['vendor_id']);
+        $this->load->view('front/commons/header',$data);
+        $this->load->view('front/commons/navbar');
+        $this->load->view('front/salon/salon-detail');
+        $this->load->view('front/commons/footer');
+    }
 
     public function product_listing($vendor_id){
         $this->output->set_content_type('application/json');
@@ -177,6 +252,15 @@ class Home extends CI_Controller {
         $this->output->set_output(json_encode(['result' => 1, 'wrapper' => $wrapper]));
         return FALSE;
     }
+    public function salon_listing($vendor_id){
+        $this->output->set_content_type('application/json');
+        $cat_type = $this->input->post('cat_type');
+        $data['products'] = $this->home_model->getSalonProduct($cat_type, $vendor_id);
+//        print_r($data['products']);die;
+        $wrapper = $this->load->view('front/wrapper/salon-product-list', $data, true);
+        $this->output->set_output(json_encode(['result' => 1, 'wrapper' => $wrapper]));
+        return FALSE;
+    }
     public function search_product($vendor_id){
         $this->output->set_content_type('application/json');
         $key_search = $this->input->post('key_search');
@@ -184,6 +268,15 @@ class Home extends CI_Controller {
         $cat_type = $this->input->post('cat_type');
         $data['products'] = $this->home_model->getProductSearch($key_search, $veg_type, $cat_type, $vendor_id);
         $wrapper = $this->load->view('front/wrapper/product-list', $data, true);
+        $this->output->set_output(json_encode(['result' => 1, 'wrapper' => $wrapper]));
+        return FALSE;
+    }
+    public function salon_product($vendor_id){
+        $this->output->set_content_type('application/json');
+        $key_search = $this->input->post('key_search');
+        $cat_type = $this->input->post('cat_type');
+        $data['products'] = $this->home_model->getSalonProductSearch($key_search, $cat_type, $vendor_id);
+        $wrapper = $this->load->view('front/wrapper/salon-product-list', $data, true);
         $this->output->set_output(json_encode(['result' => 1, 'wrapper' => $wrapper]));
         return FALSE;
     }
