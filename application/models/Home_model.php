@@ -337,4 +337,23 @@ class Home_model extends CI_Model {
         $this->db->insert('order_address',$data);
         return $this->db->insert_id();
     }
+    
+    public function getOrderListByUserId($user_id){
+        $this->db->select('o.*');
+        $this->db->from('order o');
+        $this->db->where('o.user_id',$user_id);
+        $sel = $this->db->get();
+        return $sel->result_array();
+    }
+    
+    public function getOrderDetails($unique_id){
+        $this->db->select('o.*,p.*,pi.*');
+        $this->db->from('order_details o');
+        $this->db->join('product p','p.id=o.product_id');
+        $this->db->join('product_image pi','pi.product_id=p.id');
+        $this->db->where('o.unique_id',$unique_id);
+        $this->db->group_by('p.id');
+        $sel = $this->db->get();
+        return $sel->result_array();
+    }
 }
