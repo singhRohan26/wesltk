@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 03, 2020 at 05:40 AM
+-- Generation Time: Sep 05, 2020 at 10:39 AM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.2.32
 
@@ -208,6 +208,7 @@ INSERT INTO `menu_restaurant` (`id`, `vendor_id`, `name`, `status`, `deleted_sta
 CREATE TABLE `menu_servcie` (
   `id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
+  `type` enum('catring','salon') NOT NULL,
   `vendor_id` int(11) NOT NULL,
   `status` enum('Active','Inactive') NOT NULL,
   `deleted_status` enum('0','1') NOT NULL
@@ -217,8 +218,10 @@ CREATE TABLE `menu_servcie` (
 -- Dumping data for table `menu_servcie`
 --
 
-INSERT INTO `menu_servcie` (`id`, `name`, `vendor_id`, `status`, `deleted_status`) VALUES
-(1, 'test1', 1, 'Active', '0');
+INSERT INTO `menu_servcie` (`id`, `name`, `type`, `vendor_id`, `status`, `deleted_status`) VALUES
+(1, 'test1', 'catring', 1, 'Active', '0'),
+(2, 'demo1', 'catring', 1, 'Active', '0'),
+(5, 'test_sal1', 'salon', 1, 'Active', '0');
 
 -- --------------------------------------------------------
 
@@ -349,7 +352,8 @@ INSERT INTO `product` (`id`, `admin_menu_id`, `menu_id`, `admin_product_menu_id`
 (19, 3, 3, 0, 0, 0, 0, 'Chicken Biryani', '450', 'Chicken biryani with boneless chicken served with green chutney and salad', 'Non-veg', 0, 'food', 'Active', '0'),
 (20, 8, 2, 0, 0, 0, 0, 'Veg chowmein', '100', 'Spicy Veg chowmein served  with mayonise', 'Veg', 0, 'food', 'Active', '0'),
 (21, 0, 0, 4, 2, 0, 0, 'Veggie Nuggets', '120', 'Readymade crispy veg snacks', 'Veg', 10, 'products', 'Active', '0'),
-(22, 0, 0, 0, 0, 1, 1, 'Ram', '100', 'Demo', 'Veg', 0, 'services', 'Active', '0');
+(22, 0, 0, 0, 0, 1, 2, 'Ram', '100', 'Demo', 'Veg', 0, 'services', 'Active', '0'),
+(23, 0, 0, 0, 0, 1, 5, '121212', 'Y2IY', 'Demo', 'Veg', 0, 'services', 'Active', '0');
 
 -- --------------------------------------------------------
 
@@ -389,7 +393,8 @@ INSERT INTO `product_image` (`id`, `product_id`, `image`) VALUES
 (24, 19, '5453.jpeg'),
 (25, 20, '3813.jpg'),
 (26, 21, '3349.jpg'),
-(27, 22, '9595.jpg');
+(27, 22, '9595.jpg'),
+(28, 23, '4157.png');
 
 -- --------------------------------------------------------
 
@@ -415,7 +420,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `name`, `email`, `phone`, `password`, `status`, `is_forgot`, `image`, `source`, `created_at`) VALUES
-(1, 'Rohan Singh', 'rohan@gmail.com', '8383908866', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'Active', 'Active', '', 'self', '2020-08-15 00:35:51'),
+(1, 'Rohan Singh', 'rohan@gmail.com', '8383908866', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'Active', 'Active', '5987.jpg', 'self', '2020-08-15 00:35:51'),
 (2, 'Ram', 'ram@gmail.com', '7458868452', '8bb0cf6eb9b17d0f7d22b456f121257dc1254e1f01665370476383ea776df414', 'Active', 'Active', '', 'self', '2020-08-15 15:23:03');
 
 -- --------------------------------------------------------
@@ -615,7 +620,7 @@ ALTER TABLE `menu_restaurant`
 -- AUTO_INCREMENT for table `menu_servcie`
 --
 ALTER TABLE `menu_servcie`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `order`
@@ -645,13 +650,13 @@ ALTER TABLE `pages`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `product_image`
 --
 ALTER TABLE `product_image`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `users`
