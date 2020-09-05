@@ -212,6 +212,16 @@ class Home extends CI_Controller {
         $this->output->set_output(json_encode(['result' => 1, 'wrapper' => $wrapper, 'count_wrapper' => '('.count($data['restaurants']).')']));
         return FALSE;
     }
+    public function search_salon(){
+        $this->output->set_content_type('application/json');
+        $search = $this->input->post('key_search');
+        $checked_val = $this->input->post('checked_val');
+        $data_id = $this->input->post('data_id');
+        $data['restaurants'] = $this->home_model->searchRestaurants($search, $checked_val);
+        $wrapper = $this->load->view('front/wrapper/salon-list', $data, true);
+        $this->output->set_output(json_encode(['result' => 1, 'wrapper' => $wrapper, 'count_wrapper' => '('.count($data['restaurants']).')']));
+        return FALSE;
+    }
 
     public function restaurant_details($restaurant_name){
         $data['title'] = 'Restaurant List';

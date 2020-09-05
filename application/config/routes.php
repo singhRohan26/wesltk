@@ -130,6 +130,17 @@ $route['vendor/delete-service-product/(:any)'] = 'vendor/service/deleteServicePr
 $route['vendor/doAddServiceProduct'] = 'vendor/service/doAddServiceProduct';
 $route['vendor/doEditServiceProduct/(:any)'] = 'vendor/service/doEditServiceProduct/$1';
 
+$route['vendor/service-catring-menu'] = 'vendor/catring/index';
+$route['vendor/edit-service-catring-menu/(:any)'] = 'vendor/catring/index/$1';
+$route['vendor/addServiceCatringMenu'] = 'vendor/catring/addServiceMenu';
+$route['vendor/editCatringServiceMenu/(:any)'] = 'vendor/catring/editServiceMenu/$1';
+$route['vendor/delete-service-catring-menu/(:any)'] = 'vendor/catring/delete-service-menu/$1';
+$route['vendor/service-catring-product-lists'] = 'vendor/catring/serviceProduct';
+$route['vendor/add-service-catring-product'] = 'vendor/catring/addServiceProduct';
+$route['vendor/edit-service-catring-product/(:any)'] = 'vendor/catring/addServiceProduct/$1';
+$route['vendor/doAddServiceCatringProduct'] = 'vendor/catring/doAddServiceProduct';
+$route['vendor/doEditServiceCatringProduct/(:any)'] = 'vendor/catring/doEditServiceProduct/$1';
+
 
 
 

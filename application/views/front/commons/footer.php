@@ -191,7 +191,7 @@
 				</div>
                 
                 <?php
-					$content = array('class' => 'common-image-form');
+					$content = array('id' => 'common-image-form');
 					echo form_open_multipart('user/updatProfile/', $content);
 				?>
                 
@@ -204,7 +204,7 @@
 								<label for="imageUpload"></label>
 							</div>
 							<div class="avatar-preview">
-								<div id="imagePreview" style="background-image: url(http://i.pravatar.cc/500?img=7);">
+								<div id="imagePreview" style="background-image: url(<?php if(!empty($userData['image'])){ echo base_url('uploads/users/'. $userData['image']); }else{ echo base_url('public/front/deepu.jpg'); }?>);">
 								</div>
 							</div>
 					</div>

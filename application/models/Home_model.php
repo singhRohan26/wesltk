@@ -72,6 +72,18 @@ class Home_model extends CI_Model {
         $this->db->group_by('v.vendor_id');
         $sel = $this->db->get();
         return $sel->result_array();
+    }  
+    public function searchSalons($key_search, $checked_val){
+        $this->db->select('v.name,v.image,v.category');
+        $this->db->from('vendors v');
+        $this->db->join('menu_servcie m', 'm.vendor_id = v.vendor_id');
+        $this->db->join('product p', 'p.service_menu_id = m.id');
+        $this->db->where(['p.deleted_status' => '0', 'm.deleted_status' => '0', 'p.status' => 'Active', 'm.status' => 'Active']);
+        $this->db->where_in('p.admin_service_menu_id', $checked_val);
+        $this->db->like('v.name', $key_search, 'both');
+        $this->db->group_by('v.vendor_id');
+        $sel = $this->db->get();
+        return $sel->result_array();
     }       
     public function getProducts($veg_type, $cat_type, $vendor_id){
         $this->db->select('p.*,pi.image');

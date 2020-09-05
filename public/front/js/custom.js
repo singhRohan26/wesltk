@@ -1,4 +1,4 @@
-function readURL(input) {
+function readURLImg(input) {
     if (input.files && input.files[0]) {
         var reader = new FileReader();
         reader.onload = function(e) {
@@ -9,8 +9,8 @@ function readURL(input) {
         reader.readAsDataURL(input.files[0]);
     }
 }
-$("#imageUpload").change(function() {
-    readURL(this);
+$(document).on('change', '#imageUpload',function() {
+    readURLImg(this);
 });
 
 // Fixed Header Start

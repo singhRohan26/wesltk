@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Service extends CI_Controller {
+class Catring extends CI_Controller {
 
 	/**
 	 * vendor  controller.
@@ -26,7 +26,7 @@ class Service extends CI_Controller {
 		$data['title'] = "Restaurant Menu";
 		$data['userData'] = $this->getLoginDetail();
 		$data['pages_side_service'] = "true";
-		$data['menus'] = $this->restaurant_model->getMenuServiceData('salon');
+		$data['menus'] = $this->restaurant_model->getMenuServiceData('catring');
 		if(!empty($id)){
 			$data['menu_data'] = $this->restaurant_model->getMenuServiceDataById($id);
 			if(empty($data['menu_data'])){
@@ -35,7 +35,7 @@ class Service extends CI_Controller {
 		}		
 		$this->load->view('vendor/commons/header', $data);
 		$this->load->view('vendor/commons/sidebar');
-		$this->load->view('vendor/service/menu');
+		$this->load->view('vendor/catring/menu');
 		$this->load->view('vendor/commons/footer');
 	}
     
@@ -55,9 +55,9 @@ class Service extends CI_Controller {
         $data['userData'] = $this->getLoginDetail();
         $data['pages_side_service'] = "true";
         $vendor_id = $data['userData']['vendor_id'];
-		$result = $this->restaurant_model->doAddServiceMenu($vendor_id, 'salon');
+		$result = $this->restaurant_model->doAddServiceMenu($vendor_id, 'catring');
         if($result){
-            $this->output->set_output(json_encode(['result' => 1, 'url' => base_url("vendor/service-menu"), 'msg' => 'Menu Added Successfully..']));
+            $this->output->set_output(json_encode(['result' => 1, 'url' => base_url("vendor/service-catring-menu"), 'msg' => 'Menu Added Successfully..']));
 			return FALSE;
         }else{
             $this->output->set_output(json_encode(['result' => -1, 'msg' => 'Something Went Wrong!!...']));
@@ -79,7 +79,7 @@ class Service extends CI_Controller {
 		// }
 		$result = $this->restaurant_model->doEditServiceMenu($id);
         if($result){
-            $this->output->set_output(json_encode(['result' => 1, 'url' => base_url("vendor/service-menu"), 'msg' => 'Menu Updated Successfully..']));
+            $this->output->set_output(json_encode(['result' => 1, 'url' => base_url("vendor/service-catring-menu"), 'msg' => 'Menu Updated Successfully..']));
 			return FALSE;
         }else{
             $this->output->set_output(json_encode(['result' => -1, 'msg' => 'No Changes Were Made!!...']));
@@ -97,10 +97,10 @@ class Service extends CI_Controller {
 		$data['title'] = "Restaurant Product";
 		$data['userData'] = $this->getLoginDetail();
 		$data['pages_side_service'] = "true";
-		$data['products'] = $this->restaurant_model->getServiceProductData('salon');
+		$data['products'] = $this->restaurant_model->getServiceProductData('catring');
 		$this->load->view('vendor/commons/header', $data);
 		$this->load->view('vendor/commons/sidebar');
-		$this->load->view('vendor/service/serviceProduct');
+		$this->load->view('vendor/catring/serviceProduct');
 		$this->load->view('vendor/commons/footer');
 	}
 	public function addServiceProduct($id = null){
@@ -114,11 +114,11 @@ class Service extends CI_Controller {
 			}
 			$data['product_image'] = $this->restaurant_model->getProductImageByProductId($id);
 		}
-		$data['menus'] = $this->restaurant_model->getMenuServiceData('salon');
+		$data['menus'] = $this->restaurant_model->getMenuServiceData('catring');
         $data['category'] = $this->restaurant_model->getAdminServiceMenus();
 		$this->load->view('vendor/commons/header', $data);
 		$this->load->view('vendor/commons/sidebar');
-		$this->load->view('vendor/service/addServiceProduct');
+		$this->load->view('vendor/catring/addServiceProduct');
 		$this->load->view('vendor/commons/footer');
 	}
 
@@ -180,7 +180,7 @@ class Service extends CI_Controller {
 	    }
 		$result = $this->restaurant_model->doAddServiceProduct($img_res);
 		if ($result) {
-			$this->output->set_output(json_encode(['result' => 1, 'url' => base_url("vendor/service-product-lists"), 'msg' => 'Product Added Successfully!!..']));
+			$this->output->set_output(json_encode(['result' => 1, 'url' => base_url("vendor/service-catring-product-lists"), 'msg' => 'Product Added Successfully!!..']));
 			return FALSE;
 		} else {
 			$this->output->set_output(json_encode(['result' => -1, 'msg' => 'Something Went Wrong!!..']));
@@ -216,7 +216,7 @@ class Service extends CI_Controller {
 	    }	
 		$result = $this->restaurant_model->doEditServiceProduct($id, $img_res);
 		if ($result) {
-			$this->output->set_output(json_encode(['result' => 1, 'url' => base_url("vendor/service-product-lists"), 'msg' => 'Product Updated Successfully!!..']));
+			$this->output->set_output(json_encode(['result' => 1, 'url' => base_url("vendor/service-catring-product-lists"), 'msg' => 'Product Updated Successfully!!..']));
 			return FALSE;
 		} else {
 			$this->output->set_output(json_encode(['result' => -1, 'msg' => 'No Changes Were Made!!..']));

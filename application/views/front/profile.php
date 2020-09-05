@@ -5,7 +5,7 @@
 			<div class="profileIn boxs">
 				<div class="profilrLeft">
 					<div class="profileImgIn">
-						<img src="img/deepu.jpg" class="img-fluid" alt="img">
+						<img src="<?php if(!empty($userData['image'])){ echo base_url('uploads/users/'. $userData['image']); }else{ echo base_url('public/front/deepu.jpg'); }?>" class="img-fluid" alt="img">
 					</div>
 					<div class="">
 						<h2><?php echo $userData['name']; ?></h2>

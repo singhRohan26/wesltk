@@ -55,7 +55,12 @@ class User extends CI_Controller {
             $this->output->set_output(json_encode(['result' => -1, 'msg' => 'Email already exists.']));
 			return FALSE;
 		} else {
-            $register = $this->user_model->updatProfile();
+			if(!empty($_FILES['imageUpload']['name'])){
+				$img = $this->doUploadProfileImage('imageUpload');
+			}else{
+				$img = $this->user_model->getLoginDetail($this->session->userdata('login_id'))['image'];
+			}
+            $register = $this->user_model->updatProfile($img);
             if($register){
 	            $this->output->set_output(json_encode(['result' => 1, 'url' => base_url("user/user-profile"), 'msg' => 'Profile Updated Successfully']));
 				return FALSE;
@@ -73,7 +78,7 @@ class User extends CI_Controller {
         $config['allowed_types'] = 'gif|jpg|png|jpeg';
         $config['max_size'] = '0';
        // $config['max_filename'] = '2555';
-        $config['file_name'] = rand();
+        $config['file_name'] = rand(111, 9999);
         $this->upload->initialize($config);
         $this->upload->do_upload($file);
         $upload_data = $this->upload->data();

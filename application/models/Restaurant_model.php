@@ -26,9 +26,10 @@ class Restaurant_model extends CI_Model {
         $this->db->update('menu_restaurant', $data, ['id' => $id]);
         return $this->db->affected_rows();
     }
-    public function doAddServiceMenu($vendor_id){
+    public function doAddServiceMenu($vendor_id, $type){
         $data = array(
             'vendor_id' => $vendor_id,
+            'type' => $type,
             'name' => $this->security->xss_clean($this->input->post('name')),
             'status' => $this->security->xss_clean($this->input->post('status'))
           );
@@ -67,8 +68,8 @@ class Restaurant_model extends CI_Model {
         $query = $this->db->get_where('menu_restaurant', ['id' => $id, 'deleted_status' => '0']);
         return $query->row_array();
     }
-    public function getMenuServiceData(){
-        $query = $this->db->get_where('menu_servcie', ['deleted_status' => '0']);
+    public function getMenuServiceData($type){
+        $query = $this->db->get_where('menu_servcie', ['deleted_status' => '0', 'type' => $type]);
         return $query->result_array();
     }
     public function getMenuServiceDataById($id){
@@ -92,12 +93,12 @@ class Restaurant_model extends CI_Model {
         $query = $this->db->get();
         return $query->row_array();
     }
-    public function getServiceProductData(){
+    public function getServiceProductData($type){
         $this->db->select('m.name as menu_name, p.name as product_name, p.price,p.status, p.id');
         $this->db->from('menu_servcie m');
         $this->db->join('product p', 'p.service_menu_id = m.id');
         $this->db->join('admin_service_menu am','am.id=p.admin_service_menu_id');
-        $this->db->where(['m.deleted_status' => '0', 'p.deleted_status' => '0', 'm.status' => 'Active','p.form_type'=>'services']);
+        $this->db->where(['m.deleted_status' => '0', 'm.type' => $type, 'p.deleted_status' => '0', 'm.status' => 'Active','p.form_type'=>'services']);
         $query = $this->db->get();
         return $query->result_array();
     }
