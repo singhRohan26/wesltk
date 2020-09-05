@@ -351,8 +351,10 @@ class Home_model extends CI_Model {
     }
     
     public function getOrderListByUserId($user_id){
-        $this->db->select('o.*');
+        $this->db->select('o.*,u.name as user_name,a.*');
         $this->db->from('order o');
+        $this->db->join('users u','u.user_id=o.user_id');
+        $this->db->join('address a','a.id=o.address_id');
         $this->db->where('o.user_id',$user_id);
         $sel = $this->db->get();
         return $sel->result_array();

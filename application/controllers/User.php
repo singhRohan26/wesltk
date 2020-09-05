@@ -141,14 +141,12 @@ class User extends CI_Controller {
         $data['userData'] = $this->getLoginDetail();
         $data['address'] = $this->home_model->getAddressByUserId($data['userData']['user_id']);
         $data['orderLists'] = $this->home_model->getOrderListByUserId($data['userData']['user_id']);
-//        echo '<pre>'; print_r($data['orderLists']);die;
-//        $var = [];
+
         $i=0;
         foreach($data['orderLists'] as $orders){
             $data['orderLists'][$i]['details'] = $this->home_model->getOrderDetails($orders['unique_id']);
             $i++;
         }
-//        echo '<pre>';print_r($data['orderLists']);die;
         $this->load->view('front/commons/header',$data);
         $this->load->view('front/commons/navbar');
         $this->load->view('front/profile');
