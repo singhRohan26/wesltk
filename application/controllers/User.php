@@ -167,6 +167,25 @@ class User extends CI_Controller {
 		redirect(base_url('home'));
     }
     
+    public function forgotPassword(){
+       $this->output->set_content_type('application/json');
+		$this->form_validation->set_rules('mobile', 'Mobile', 'required');
+		if ($this->form_validation->run() === FALSE) {
+			$this->output->set_output(json_encode(['result' => 0, 'errors' => $this->form_validation->error_array()]));
+			return FALSE;
+		}
+        
+        $result = 1;
+        if($result){
+           $this->output->set_output(json_encode(['result' => 4, 'msg' => 'OTP Sent Successfully']));
+			return FALSE;   
+        }else{
+           $this->output->set_output(json_encode(['result' => -1, 'msg' => 'Something Went Wrong!..']));
+			return FALSE;  
+        }
+        
+    }
+    
     
     
 

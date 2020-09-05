@@ -68,7 +68,7 @@
 
 							</div>
 							<div class="forget">
-								<a href="#0" data-dismiss="modal" data-toggle="modal" data-target="#forgetModal">Forgot Password?</a>
+								<a href="#0" data-dismiss="modal" data-toggle="modal" data-target="#forgetphone">Forgot Password?</a>
 							</div>
 							<div class="socialIconsM">
 								<ul>
@@ -144,6 +144,44 @@
 	<!-- End of Popup Modal of register confirm-->
 
 	<!-- Start of Popup Modal of login confirm-->
+    <div class="modal  LoginModals fade" id="forgetphone" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="closeBtn">
+					<a href="#0" data-dismiss="modal"><img src="<?php echo base_url('public/front/') ?>img/close.svg" class="img-fluid" alt="close"></a>
+				</div>
+				<div class="loginAll">
+					<div class="loginLeft">
+						<img src="<?php echo base_url('public/front/') ?>img/login.png" class="img-fluid" alt="login">
+					</div>
+					<div class="loginRight">
+						<form method="post" action="<?php echo base_url('home/forgot-password') ?>" id="common-form">
+							<div class="forgetIn">
+								<h2>Forgot Password?</h2>
+								<p>Enter your Phone Number</p>
+							</div>
+
+                            <div class="form-group">
+									<input type="Text" class="form-control inputcss" placeholder="Phone Number" name="mobile" id="mobile">
+								</div>
+							<div class="socialIconsM socialIconsM2">
+								<ul>
+									<li class="Btn"><button class="btncommon" >Continue</button></li>
+								</ul>
+							</div>
+							<div class="accountnot boxs">
+								<p>Didn’t received OTP? <a href="#0" > Resend</a></p>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
 	<div class="modal  LoginModals fade" id="forgetModal" role="dialog">
 		<div class="modal-dialog">
 			<div class="modal-content">
@@ -160,11 +198,9 @@
 								<h2>Forgot Password</h2>
 								<p>Enter your 4 digit code to sent <span>xxx xxxx 6001</span></p>
 							</div>
-							<div class="codeAll">
-								<input type="number" class="form-control">
-								<input type="number" class="form-control">
-								<input type="number" class="form-control">
-								<input type="number" class="form-control">
+							<div class="form-group">
+								<input type="text" class="form-control" id="partitioned" maxlength="4">
+								
 							</div>
 							<div class="socialIconsM socialIconsM2">
 								<ul>

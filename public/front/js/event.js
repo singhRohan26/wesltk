@@ -56,6 +56,11 @@ this.commonForm = function(){
                 window.location.href = out.url;
             }, 1000);
         }
+          
+          if (out.result === 4) {
+            $('#forgetModal').modal('show');
+            $('#forgetphone').modal('hide');
+        }
     });
   })
 }

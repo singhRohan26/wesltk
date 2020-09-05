@@ -70,11 +70,12 @@ $route['shop-details/(:any)'] = 'home/shopDetails/$1';
 $route['home/shop-product-listing/(:any)'] = 'home/shopProductListing/$1';
 $route['home/contact-us'] = 'home/contactUs';
 
+
 ///   User Controlller ////
 $route['user/user-profile'] = 'user/profile';
 $route['user/logout'] = 'user/logout';
 $route['user/user-login'] = 'user/doLogin';
-
+$route['home/forgot-password'] = 'user/forgotPassword';
 
 // Booking controller//
 $route['checkout'] = 'booking/checkout';
