@@ -34,6 +34,8 @@
 				</div>
 				<div class="col-sm-9">
 					<div class="profileAll12 profile1 active boxs">
+                        
+                        <?php foreach($orderLists as $order){  ?>
 						<div class="profileOrderDet">
 							<div class="orderFirst">
 								<div class="orderHead">
@@ -41,9 +43,9 @@
 								</div>
 								<div class="orderProcess">
 									<ul>
-										<li><span><img src="<?php echo base_url('public/front/')?>img/bluecheck.svg" class="img-fluid" alt="check"></span>In Process</li>
+										<li><span><img src="<?php echo base_url('public/front/')?>img/bluecheck.svg" class="img-fluid" alt="check"></span><?php echo $order['status']; ?></li>
 										<li>12 Jul. SUNDAY 9:00 AM - 12 PM</li>
-										<li>Order Amount: $ 22.90</li>
+										<li>Order Amount: $ <?php echo $order['sub_total']; ?></li>
 										<li><a href="#0" class="showDrop"><img src="<?php echo base_url('public/front/')?>img/dropblue.svg" class="img-fluid" alt="dropdown"></a></li>
 									</ul>
 								</div>
@@ -59,111 +61,32 @@
 										</div>
 										<div class="addressHist">
 											<h2>Order ID</h2>
-											<p>dffr12334456hjkk</p>
+											<p># <?php echo  $order['unique_id']; ?></p>
 										</div>
 									</div>
+                                    <?php foreach($order['details'] as $detail){  ?>
 									<div class="orderInner2">
 										<div class="foody">
-											<img src="<?php echo base_url('public/front/')?>img/foody.png" class="img-fluid" alt="foody">
+											<img src="<?php echo base_url('uploads/product_image/'.$detail['image'])?>" class="img-fluid" alt="foody">
 										</div>
+                                        
 										<div class="foodyContent">
-											<h2>Mix Veg</h2>
-											<p>North Indian, Mughlai, Seafood, Biryani</p>
+											<h2><?php echo $detail['name']; ?></h2>
+											<p><?php echo $detail['description']; ?></p>
 											<ul class="quantity">
-												<li>Quantity : <span>2</span></li>
-												<li><span>$ 12.93</span></li>
-												<li><a href="#0">Track Your Order</a></li>
+												<li>Quantity : <span><?php echo $detail['qty']; ?></span></li>
+												<li><span>$ <?php echo $detail['price']; ?></span></li>
+<!--												<li><a href="#0">Track Your Order</a></li>-->
 											</ul>
 										</div>
+                                        
 									</div>
+                                    <?php } ?>
 								</div>
 							</div>
 						</div>
-						<div class="profileOrderDet">
-							<div class="orderFirst">
-
-								<div class="orderProcess">
-									<ul>
-										<li class="green"><span><img src="<?php echo base_url('public/front/')?>img/bluecheck.svg" class="img-fluid" alt="check"></span>Delivered</li>
-										<li>12 Jul. SUNDAY 9:00 AM - 12 PM</li>
-										<li>Order Amount: $ 22.90</li>
-										<li><a href="#0" class="showDrop"><img src="<?php echo base_url('public/front/')?>img/dropblue.svg" class="img-fluid" alt="dropdown"></a></li>
-									</ul>
-								</div>
-								<div class="AllorderDetail">
-									<div class="orderInner">
-										<div class="addressHist">
-											<h2>Jenny Desouza</h2>
-											<p>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. 2972 Westheimer Rd. Santa Ana, Illinois 85486 </p>
-										</div>
-										<div class="addressHist">
-											<h2>Payment Informtion</h2>
-											<p class="paymentdone">Success</p>
-										</div>
-										<div class="addressHist">
-											<h2>Order ID</h2>
-											<p>dffr12334456hjkk</p>
-										</div>
-									</div>
-									<div class="orderInner2">
-										<div class="foody">
-											<img src="<?php echo base_url('public/front/')?>img/foody.png" class="img-fluid" alt="foody">
-										</div>
-										<div class="foodyContent">
-											<h2>Mix Veg</h2>
-											<p>North Indian, Mughlai, Seafood, Biryani</p>
-											<ul class="quantity">
-												<li>Quantity : <span>2</span></li>
-												<li><span>$ 12.93</span></li>
-												<li><a href="#0">Track Your Order</a></li>
-											</ul>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="profileOrderDet">
-							<div class="orderFirst">
-								<div class="orderProcess">
-									<ul>
-										<li class="cancel"><span><img src="<?php echo base_url('public/front/')?>img/bluecheck.svg" class="img-fluid" alt="check"></span>Cancel</li>
-										<li>12 Jul. SUNDAY 9:00 AM - 12 PM</li>
-										<li>Order Amount: $ 22.90</li>
-										<li><a href="#0" class="showDrop"><img src="<?php echo base_url('public/front/')?>img/dropblue.svg" class="img-fluid" alt="dropdown"></a></li>
-									</ul>
-								</div>
-								<div class="AllorderDetail">
-									<div class="orderInner">
-										<div class="addressHist">
-											<h2>Jenny Desouza</h2>
-											<p>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. 2972 Westheimer Rd. Santa Ana, Illinois 85486 </p>
-										</div>
-										<div class="addressHist">
-											<h2>Payment Informtion</h2>
-											<p class="paymentdone">Success</p>
-										</div>
-										<div class="addressHist">
-											<h2>Order ID</h2>
-											<p>dffr12334456hjkk</p>
-										</div>
-									</div>
-									<div class="orderInner2">
-										<div class="foody">
-											<img src="<?php echo base_url('public/front/')?>img/foody.png" class="img-fluid" alt="foody">
-										</div>
-										<div class="foodyContent">
-											<h2>Mix Veg</h2>
-											<p>North Indian, Mughlai, Seafood, Biryani</p>
-											<ul class="quantity">
-												<li>Quantity : <span>2</span></li>
-												<li><span>$ 12.93</span></li>
-												<li><a href="#0">Track Your Order</a></li>
-											</ul>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
+						<?php } ?>
+						
 					</div>
 					<div class="profileAll12 profile2 boxs">
 						<div class="profileOrderDet">
