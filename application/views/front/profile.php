@@ -44,7 +44,7 @@
 								<div class="orderProcess">
 									<ul>
 										<li><span><img src="<?php echo base_url('public/front/')?>img/bluecheck.svg" class="img-fluid" alt="check"></span><?php echo $order['status']; ?></li>
-										<li>12 Jul. SUNDAY 9:00 AM - 12 PM</li>
+										<li><?php echo date("F jS, Y", strtotime($order['created_at'])); ?></li>
 										<li>Order Amount: $ <?php echo $order['sub_total']; ?></li>
 										<li><a href="#0" class="showDrop"><img src="<?php echo base_url('public/front/')?>img/dropblue.svg" class="img-fluid" alt="dropdown"></a></li>
 									</ul>
@@ -52,8 +52,8 @@
 								<div class="AllorderDetail">
 									<div class="orderInner">
 										<div class="addressHist">
-											<h2>Jenny Desouza</h2>
-											<p>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. 2972 Westheimer Rd. Santa Ana, Illinois 85486 </p>
+											<h2><?php echo $order['user_name']; ?></h2>
+											<p><?php echo $order['address']; ?> ,<?php echo $order['pincode']; ?></p>
 										</div>
 										<div class="addressHist">
 											<h2>Payment Informtion</h2>
@@ -76,7 +76,7 @@
 											<ul class="quantity">
 												<li>Quantity : <span><?php echo $detail['qty']; ?></span></li>
 												<li><span>$ <?php echo $detail['price']; ?></span></li>
-<!--												<li><a href="#0">Track Your Order</a></li>-->
+												<li><a href="#0">Track Your Order</a></li>
 											</ul>
 										</div>
                                         
