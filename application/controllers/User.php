@@ -17,9 +17,9 @@ class User extends CI_Controller {
 	public function doRegistration(){
         $this->output->set_content_type('application/json');
 		$this->form_validation->set_rules('name', 'Name', 'required');
-		$this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+		$this->form_validation->set_rules('emailid', 'Email', 'required|valid_email');
 		$this->form_validation->set_rules('phone', 'Phone Number', 'required');
-		$this->form_validation->set_rules('pass', 'Password', 'required|min_length[6]');
+		$this->form_validation->set_rules('password', 'Password', 'required|min_length[6]');
 		$this->form_validation->set_rules('cpass', 'Confirm Password', 'required|min_length[6]|matches[pass]');
 		if ($this->form_validation->run() === FALSE) {
 			$this->output->set_output(json_encode(['result' => 0, 'errors' => $this->form_validation->error_array()]));
@@ -174,18 +174,89 @@ class User extends CI_Controller {
 			$this->output->set_output(json_encode(['result' => 0, 'errors' => $this->form_validation->error_array()]));
 			return FALSE;
 		}
-        
-        $result = 1;
-        if($result){
-           $this->output->set_output(json_encode(['result' => 4, 'msg' => 'OTP Sent Successfully']));
-			return FALSE;   
+        $phone = $this->input->post('mobile');
+        $check = $this->user_model->checkPhone($phone);
+        $this->session->set_flashdata('user_id',$check['user_id']);
+//        $check = 1;
+        $rand = rand('1111','9999');
+//        $data['userData'] = $this->getLoginDetail();
+        if($check){
+            //otp sent
+            $this->load->library('twilio');
+            $sms_sender = '+12029724537';
+            $sms_reciever = $phone;
+            $sms_message = 'Your otp to reset your password :'.$rand;
+            $from = '+'.$sms_sender; //trial account twilio number
+            $to = '+'.$sms_reciever; //sms recipient number
+            $response = $this->twilio->sms($from, $to,$sms_message);
+
+            if($response->IsError){
+
+            $this->output->set_output(json_encode(['result' => -1, 'msg' => 'Otp not sent']));
+			return FALSE; 
+            }
+            else{
+            $this->user_model->updateOTP($check['user_id'],$rand);
+            $this->output->set_output(json_encode(['result' => 4, 'msg' => 'OTP Sent Successfully']));
+			return FALSE; 
+            }
+            
         }else{
-           $this->output->set_output(json_encode(['result' => -1, 'msg' => 'Something Went Wrong!..']));
-			return FALSE;  
+            $this->output->set_output(json_encode(['result' => -1, 'msg' => 'Phone number does not exists']));
+			return FALSE; 
         }
         
     }
     
+    public function checkOtp(){
+      $this->output->set_content_type('application/json');
+      $this->form_validation->set_rules('partitioned', 'OTP', 'required');
+		if ($this->form_validation->run() === FALSE) {
+			$this->output->set_output(json_encode(['result' => 0, 'errors' => $this->form_validation->error_array()]));
+			return FALSE;
+		}
+        $user_id = $this->session->flashdata('user_id');
+        $this->session->set_flashdata('next_user_id',$user_id);
+//        echo $user_id;die;
+        $check = $this->user_model->checkOtp($user_id);
+        if($check){
+           $this->output->set_output(json_encode(['result' => 5, 'msg' => 'OTP Verified']));
+			return FALSE;  
+        }else{
+            $this->output->set_output(json_encode(['result' => -1, 'msg' => 'Invalid OTP']));
+			return FALSE;
+        }
+        
+    }
+    
+    public function resetPassword(){
+     $this->output->set_content_type('application/json');
+      $this->form_validation->set_rules('fpass', 'Password', 'required');
+      $this->form_validation->set_rules('fcpass', 'Confirm Password', 'required|matches[fpass]');
+		if ($this->form_validation->run() === FALSE) {
+			$this->output->set_output(json_encode(['result' => 0, 'errors' => $this->form_validation->error_array()]));
+			return FALSE;
+		}
+        $user_id = $this->session->flashdata('next_user_id');
+//        echo $user_id;die;
+        $result = $this->user_model->resetPassword($user_id);
+        if($result){
+           $this->output->set_output(json_encode(['result' => 1, 'msg' => 'Password changed!','url'=> base_url('/') ]));
+			return FALSE;  
+        }else{
+            $this->output->set_output(json_encode(['result' => -1, 'msg' => 'something went wrong']));
+			return FALSE;
+        }
+        
+    }
+    
+    
+    
+    
+
+    
+    
+
     
     
 

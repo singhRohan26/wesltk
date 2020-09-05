@@ -194,7 +194,7 @@
 											<h3><?php echo $add['pincode'] ?></h3>
 										</div>
 										<ul class="adres">
-											<li><a href="#0">Delete Address</a></li>
+											<li><a href="<?php echo base_url('booking/deleteAddress/'.$add['id']) ?>">Delete Address</a></li>
 											<li><a href="#0" data-toggle="modal" data-target="#reviewModals<?php echo $add['id'] ?>">Edit</a></li>
 										</ul>
 									</div>

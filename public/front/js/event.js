@@ -61,6 +61,10 @@ this.commonForm = function(){
             $('#forgetModal').modal('show');
             $('#forgetphone').modal('hide');
         }
+          if (out.result === 5) {
+            $('#resetModal').modal('show');
+            $('#forgetModal').modal('hide');
+        }
     });
   })
 }

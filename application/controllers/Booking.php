@@ -102,6 +102,13 @@ class Booking extends CI_Controller {
         
     }
     
+    public function deleteAddress($id){
+        $result = $this->home_model->deleteAddress($id);
+        if($result){
+        return redirect('/');    
+        }
+    }
+    
     public function order(){
         $this->output->set_content_type('application/json');
         $this->form_validation->set_rules('address_id', 'Address', 'required');

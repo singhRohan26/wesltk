@@ -90,6 +90,35 @@ class Home extends CI_Controller {
         $this->load->view('front/commons/footer');
     }
     
+    public function career(){
+        $data['title'] = 'Career with us';
+        $data['userData'] = $this->getLoginDetail();
+        $this->load->view('front/commons/header',$data);
+        $this->load->view('front/commons/navbar');
+        $this->load->view('front/career');
+        $this->load->view('front/commons/footer');
+    }
+    
+    public function doAddCareer(){
+      $this->output->set_content_type('application/json');
+        $this->form_validation->set_rules('name', 'Name', 'required');
+        $this->form_validation->set_rules('email', ' Email', 'required|valid_email');
+        $this->form_validation->set_rules('phone', ' Phone Number', 'required');
+        if ($this->form_validation->run() === FALSE) {
+            $this->output->set_output(json_encode(['result' => 0, 'errors' => $this->form_validation->error_array()]));
+            return FALSE;
+        }
+        
+        $result = $this->home_model->doAddCareer();
+        if($result){
+          $this->output->set_output(json_encode(['result' => 1, 'url' => base_url('/'), 'msg' => 'Thankyou for the details']));
+                return FALSE;  
+        }else{
+            $this->output->set_output(json_encode(['result' => -1, 'msg' => 'Something Went Wrong!..']));
+                return FALSE;
+        }
+    }
+    
     private function is_login(){
 		return $this->session->userdata('login_id');
 	}
