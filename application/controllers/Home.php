@@ -162,6 +162,26 @@ class Home extends CI_Controller {
                 return FALSE;
         }
     }
+    public function bookCatringService(){
+        $this->output->set_content_type('application/json');
+        $this->form_validation->set_rules('full_name_ser', 'Name', 'required');
+        $this->form_validation->set_rules('email_sir', ' Email', 'required|valid_email');
+        $this->form_validation->set_rules('phone_no_ser', ' Phone Number', 'required');
+        $this->form_validation->set_rules('date_ser', 'Date', 'required');
+        if ($this->form_validation->run() === FALSE) {
+            $this->output->set_output(json_encode(['result' => 0, 'errors' => $this->form_validation->error_array()]));
+            return FALSE;
+        }
+        $user_id = $this->getLoginDetail()['user_id'];
+        $result = $this->home_model->doBookCatringService($user_id);
+        if($result){
+            $this->output->set_output(json_encode(['result' => 1, 'url' => $_SERVER['HTTP_REFERER'], 'msg' => 'Catring Booked Successfully!..', 'swal' => 'true']));
+                return FALSE;
+        }else{
+            $this->output->set_output(json_encode(['result' => -1, 'msg' => 'Something Went Wrong!..']));
+                return FALSE;
+        }
+    }
     
     public function restaurantsLists(){
         $data['title'] = 'Restaurant List';
@@ -183,6 +203,16 @@ class Home extends CI_Controller {
         $this->load->view('front/salon/salon-list');
         $this->load->view('front/commons/footer');
     }
+    public function catringLists(){
+        $data['title'] = 'Restaurant List';
+        $data['userData'] = $this->getLoginDetail();
+        $data['menus'] = $this->home_model->getAdminSalonMenu();
+        $data['about_data'] = $this->home_model->getPagesData('privacy');
+        $this->load->view('front/commons/header',$data);
+        $this->load->view('front/commons/navbar');
+        $this->load->view('front/catring/catring-list');
+        $this->load->view('front/commons/footer');
+    }
 
     public function restaurantWrapper(){
         $this->output->set_content_type('application/json');
@@ -197,8 +227,17 @@ class Home extends CI_Controller {
         $this->output->set_content_type('application/json');
         $checked_val = $this->input->post('checked_val');
         $data_id = $this->input->post('data_id');
-        $data['restaurants'] = $this->home_model->getsalons($checked_val);
+        $data['restaurants'] = $this->home_model->getsalons($checked_val, 'salon');
         $wrapper = $this->load->view('front/wrapper/salon-list', $data, true);
+        $this->output->set_output(json_encode(['result' => 1, 'wrapper' => $wrapper, 'count_wrapper' => '('.count($data['restaurants']).')']));
+        return FALSE;
+    }
+    public function catringWrapper(){
+        $this->output->set_content_type('application/json');
+        $checked_val = $this->input->post('checked_val');
+        $data_id = $this->input->post('data_id');
+        $data['restaurants'] = $this->home_model->getsalons($checked_val, 'catring');
+        $wrapper = $this->load->view('front/wrapper/catring-list', $data, true);
         $this->output->set_output(json_encode(['result' => 1, 'wrapper' => $wrapper, 'count_wrapper' => '('.count($data['restaurants']).')']));
         return FALSE;
     }
@@ -241,14 +280,37 @@ class Home extends CI_Controller {
         $data['title'] = 'Restaurant List';
         $restaurant_name = str_replace('-', ' ', $restaurant_name);
         $data['userData'] = $this->getLoginDetail();
-        $data['restaurant'] = $this->home_model->getSalonDataByName($restaurant_name);
+        $data['restaurant'] = $this->home_model->getSalonDataByName($restaurant_name, 'salon');
         if(empty($data['restaurant'])){
             redirect(base_url('home/salon-lists'));
         }
-        $data['menus'] = $this->home_model->getSalonMenuData($data['restaurant']['vendor_id']);
+        $data['menus'] = $this->home_model->getSalonMenuData($data['restaurant']['vendor_id'], 'salon');
         $this->load->view('front/commons/header',$data);
         $this->load->view('front/commons/navbar');
         $this->load->view('front/salon/salon-detail');
+        $this->load->view('front/commons/footer');
+    }
+    public function catring_details($restaurant_name){
+        $data['title'] = 'Restaurant List';
+        $restaurant_name = str_replace('-', ' ', $restaurant_name);
+        $data['userData'] = $this->getLoginDetail();
+        $data['restaurant'] = $this->home_model->getSalonDataByName($restaurant_name, 'catring');
+        if(empty($data['restaurant'])){
+            redirect(base_url('home/salon-lists'));
+        }
+        $data['menus'] = $this->home_model->getSalonMenuData($data['restaurant']['vendor_id'], 'catring');
+        $this->load->view('front/commons/header',$data);
+        $this->load->view('front/commons/navbar');
+        $this->load->view('front/catring/catring-detail');
+        $this->load->view('front/commons/footer');
+    }
+    public function catring_detail($p_id){
+        $data['title'] = 'Restaurant List';
+        $data['userData'] = $this->getLoginDetail();
+        $data['restaurant'] = $this->home_model->getCatringDetailById($p_id, 'catring');
+        $this->load->view('front/commons/header',$data);
+        $this->load->view('front/commons/navbar');
+        $this->load->view('front/catring/catring-details');
         $this->load->view('front/commons/footer');
     }
 
@@ -265,9 +327,26 @@ class Home extends CI_Controller {
     public function salon_listing($vendor_id){
         $this->output->set_content_type('application/json');
         $cat_type = $this->input->post('cat_type');
-        $data['products'] = $this->home_model->getSalonProduct($cat_type, $vendor_id);
+        $data['products'] = $this->home_model->getSalonProduct($cat_type, $vendor_id, 'salon');
 //        print_r($data['products']);die;
         $wrapper = $this->load->view('front/wrapper/salon-product-list', $data, true);
+        $this->output->set_output(json_encode(['result' => 1, 'wrapper' => $wrapper]));
+        return FALSE;
+    }
+    public function catring_listing($vendor_id){
+        $this->output->set_content_type('application/json');
+        $cat_type = $this->input->post('cat_type');
+        $data['products'] = $this->home_model->getSalonProduct($cat_type, $vendor_id, 'catring');
+//        print_r($data['products']);die;
+        $wrapper = $this->load->view('front/wrapper/catring-product-list', $data, true);
+        $this->output->set_output(json_encode(['result' => 1, 'wrapper' => $wrapper]));
+        return FALSE;
+    }
+    public function catring_inner_listing($p_id){
+        $this->output->set_content_type('application/json');
+        $data['products'] = $this->home_model->getSalonProductByProductId($p_id, 'catring');
+//        print_r($data['products']);die;
+        $wrapper = $this->load->view('front/wrapper/catring-inner-list', $data, true);
         $this->output->set_output(json_encode(['result' => 1, 'wrapper' => $wrapper]));
         return FALSE;
     }
@@ -285,8 +364,17 @@ class Home extends CI_Controller {
         $this->output->set_content_type('application/json');
         $key_search = $this->input->post('key_search');
         $cat_type = $this->input->post('cat_type');
-        $data['products'] = $this->home_model->getSalonProductSearch($key_search, $cat_type, $vendor_id);
+        $data['products'] = $this->home_model->getSalonProductSearch($key_search, $cat_type, $vendor_id, 'salon');
         $wrapper = $this->load->view('front/wrapper/salon-product-list', $data, true);
+        $this->output->set_output(json_encode(['result' => 1, 'wrapper' => $wrapper]));
+        return FALSE;
+    }
+    public function catring_product($vendor_id){
+        $this->output->set_content_type('application/json');
+        $key_search = $this->input->post('key_search');
+        $cat_type = $this->input->post('cat_type');
+        $data['products'] = $this->home_model->getSalonProductSearch($key_search, $cat_type, $vendor_id, 'catring');
+        $wrapper = $this->load->view('front/wrapper/catring-product-list', $data, true);
         $this->output->set_output(json_encode(['result' => 1, 'wrapper' => $wrapper]));
         return FALSE;
     }

@@ -56,11 +56,14 @@ $route['translate_uri_dashes'] = TRUE;
 ///   home Controlller ////
 $route['home/your-cart'] = 'home/cart';
 $route['salon'] = 'home/salonLists';
+$route['catring'] = 'home/catringLists';
 $route['becomePartner'] = 'home/becomePartner';
 $route['addToCart/(:any)'] = 'home/addToCart/$1';
 $route['about'] = 'home/about';
 $route['restaurant-details/(:any)'] = 'home/restaurant-details/$1';
+$route['catring-detail/(:any)'] = 'home/catring-detail/$1';
 $route['salon-details/(:any)'] = 'home/salon-details/$1';
+$route['catring-details/(:any)'] = 'home/catring-details/$1';
 $route['home/product-listing/(:any)'] = 'home/product-listing/$1';
 $route['privacy-policy'] = 'home/privacy_policy';
 $route['home/user-registration'] = 'user/doRegistration';

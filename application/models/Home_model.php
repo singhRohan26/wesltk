@@ -27,12 +27,12 @@ class Home_model extends CI_Model {
         return $sel->result_array();
     }    
        
-    public function getsalons($checked_val){
+    public function getsalons($checked_val, $type){
         $this->db->select('v.name,v.image,v.category');
         $this->db->from('vendors v');
         $this->db->join('menu_servcie m', 'm.vendor_id = v.vendor_id');
         $this->db->join('product p', 'p.service_menu_id = m.id');
-        $this->db->where(['p.deleted_status' => '0', 'm.deleted_status' => '0', 'p.status' => 'Active', 'm.status' => 'Active']);
+        $this->db->where(['p.deleted_status' => '0', 'm.deleted_status' => '0', 'p.status' => 'Active', 'm.status' => 'Active', 'm.type' => $type]);
         $this->db->where_in('p.admin_service_menu_id', $checked_val);
         $this->db->group_by('v.vendor_id');
         $sel = $this->db->get();
@@ -98,17 +98,28 @@ class Home_model extends CI_Model {
         $sel = $this->db->get();
         return $sel->result_array();
     }            
-    public function getSalonProduct($cat_type, $vendor_id){
+    public function getSalonProduct($cat_type, $vendor_id, $type){
         $this->db->select('p.*,pi.image');
         $this->db->from('vendors v');
         $this->db->join('menu_servcie m', 'm.vendor_id = v.vendor_id');
         $this->db->join('product p', 'p.service_menu_id = m.id');
         $this->db->join('product_image pi','pi.product_id=p.id');
-        $this->db->where(['p.deleted_status' => '0', 'm.deleted_status' => '0', 'p.status' => 'Active', 'm.status' => 'Active', 'v.vendor_id' => $vendor_id]);
+        $this->db->where(['p.deleted_status' => '0', 'm.deleted_status' => '0', 'p.status' => 'Active', 'm.status' => 'Active', 'v.vendor_id' => $vendor_id, 'm.type' => $type]);
         $this->db->where_in('p.admin_service_menu_id', $cat_type);
         $this->db->group_by('pi.product_id');
         $sel = $this->db->get();
         return $sel->result_array();
+    }           
+    public function getSalonProductByProductId($p_id, $type){
+        $this->db->select('p.*,pi.image');
+        $this->db->from('vendors v');
+        $this->db->join('menu_servcie m', 'm.vendor_id = v.vendor_id');
+        $this->db->join('product p', 'p.service_menu_id = m.id');
+        $this->db->join('product_image pi','pi.product_id=p.id');
+        $this->db->where(['p.deleted_status' => '0', 'm.deleted_status' => '0', 'p.status' => 'Active', 'm.status' => 'Active', 'm.type' => $type]);
+        $this->db->group_by('pi.product_id');
+        $sel = $this->db->get();
+        return $sel->row_array();
     }        
     public function getProductSearch($key_search, $veg_type, $cat_type, $vendor_id){
         $this->db->select('p.*,,pi.image');
@@ -123,13 +134,13 @@ class Home_model extends CI_Model {
         $sel = $this->db->get();
         return $sel->result_array();
     }        
-    public function getSalonProductSearch($key_search, $cat_type, $vendor_id){
+    public function getSalonProductSearch($key_search, $cat_type, $vendor_id, $type){
         $this->db->select('p.*,pi.image');
         $this->db->from('vendors v');
         $this->db->join('menu_servcie m', 'm.vendor_id = v.vendor_id');
         $this->db->join('product p', 'p.service_menu_id = m.id');
         $this->db->join('product_image pi','pi.product_id=p.id');
-        $this->db->where(['p.deleted_status' => '0', 'm.deleted_status' => '0', 'p.status' => 'Active', 'm.status' => 'Active', 'v.vendor_id' => $vendor_id]);
+        $this->db->where(['p.deleted_status' => '0', 'm.deleted_status' => '0', 'p.status' => 'Active', 'm.status' => 'Active', 'v.vendor_id' => $vendor_id, 'm.type' => $type]);
         $this->db->where_in('p.admin_service_menu_id', $cat_type);
         $this->db->like('p.name', $key_search, 'both');
         $sel = $this->db->get();
@@ -158,13 +169,25 @@ class Home_model extends CI_Model {
 //        echo $this->db->last_query();
         return $sel->result_array();
     }
-    public function getSalonDataByName($restaurant_name){
+    public function getSalonDataByName($restaurant_name,$type){
         $this->db->select('v.name,v.image,v.category, v.vendor_id');
         $this->db->from('vendors v');
         $this->db->join('menu_servcie m', 'm.vendor_id = v.vendor_id');
         $this->db->join('product p', 'p.service_menu_id = m.id');
-        $this->db->where(['p.deleted_status' => '0', 'm.deleted_status' => '0', 'p.status' => 'Active', 'm.status' => 'Active']);
+        $this->db->where(['p.deleted_status' => '0', 'm.deleted_status' => '0', 'p.status' => 'Active', 'm.status' => 'Active', 'm.type' => $type]);
         $this->db->where_in('v.name', $restaurant_name);
+        $this->db->group_by('v.vendor_id');
+        $sel = $this->db->get();
+        return $sel->row_array();
+    }
+    public function getCatringDetailById($p_id,$type){
+        $this->db->select('p.*,v.name,v.image,v.category, v.vendor_id, pi.image');
+        $this->db->from('vendors v');
+        $this->db->join('menu_servcie m', 'm.vendor_id = v.vendor_id');
+        $this->db->join('product p', 'p.service_menu_id = m.id');
+        $this->db->join('product_image pi', 'pi.product_id = p.id');
+        $this->db->where(['p.deleted_status' => '0', 'm.deleted_status' => '0', 'p.status' => 'Active', 'm.status' => 'Active', 'm.type' => $type]);
+        $this->db->where_in('p.id', $p_id);
         $this->db->group_by('v.vendor_id');
         $sel = $this->db->get();
         return $sel->row_array();
@@ -200,9 +223,9 @@ class Home_model extends CI_Model {
         $sel = $this->db->get();
         return $sel->result_array();
     }  
-    public function getSalonMenuData($vendor_id){
+    public function getSalonMenuData($vendor_id, $type){
         $this->db->from('menu_servcie m');
-        $this->db->where(['m.deleted_status' => '0', 'm.status' => 'Active']);
+        $this->db->where(['m.deleted_status' => '0', 'm.status' => 'Active', 'm.type' => $type]);
         $this->db->where_in('m.vendor_id', $vendor_id);
         $sel = $this->db->get();
         return $sel->result_array();
@@ -347,6 +370,18 @@ class Home_model extends CI_Model {
         );
         
         $this->db->insert('order_address',$data);
+        return $this->db->insert_id();
+    }
+    public function doBookCatringService($user_id){
+        $data = array(
+            'user_id' => $user_id,
+            'name' =>$this->security->xss_clean($this->input->post('full_name_ser')),
+            'email' =>$this->security->xss_clean($this->input->post('email_sir')),
+            'phone' =>$this->security->xss_clean($this->input->post('phone_no_ser')),
+            'date' =>$this->security->xss_clean($this->input->post('date_ser')),
+        );
+        
+        $this->db->insert('catring_booking',$data);
         return $this->db->insert_id();
     }
     
