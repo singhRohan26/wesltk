@@ -80,5 +80,32 @@ class User_model extends CI_Model {
         return $sel->row_array();
         
     }
+    
+    public function checkPhone($phone){
+        $sel = $this->db->get_where('users',['phone'=>$phone]);
+        return $sel->row_array();
+    }
+    
+    public function updateOTP($user_id,$rand){
+        $this->db->where('user_id',$user_id);
+        $this->db->update('users',['otp'=>$rand]);
+        return $this->db->affected_rows();
+    }
+    
+    public function checkOtp($user_id){
+       $otp = $this->security->xss_clean($this->input->post('partitioned')); 
+       $sel = $this->db->get_where('users',['otp'=>$otp,'user_id'=>$user_id]);
+       return $sel->row_array();
+    }
+    
+    public function resetPassword($user_id){
+        $data = array(
+        'password' =>$this->security->xss_clean(hash('sha256', $this->input->post('fpass')))
+        );
+        $this->db->where('user_id',$user_id);
+        $this->db->update('users',$data);
+        return $this->db->affected_rows();
+        
+    }
 	
 }

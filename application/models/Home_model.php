@@ -359,6 +359,19 @@ class Home_model extends CI_Model {
         $this->db->insert('contact_us',$data);
         return $this->db->insert_id();
     }
+    
+    public function doAddCareer(){
+        $data = array(
+        'name' =>$this->security->xss_clean($this->input->post('name')),
+        'email' =>$this->security->xss_clean($this->input->post('email')),
+        'phone' =>$this->security->xss_clean($this->input->post('phone')),
+//        'subject' =>$this->security->xss_clean($this->input->post('subject')),
+//        'msg' =>$this->security->xss_clean($this->input->post('msg')),
+        );
+        
+        $this->db->insert('career',$data);
+        return $this->db->insert_id();
+    }
 
     public function doBookService(){
         $data = array(
@@ -404,5 +417,11 @@ class Home_model extends CI_Model {
         $this->db->group_by('p.id');
         $sel = $this->db->get();
         return $sel->result_array();
+    }
+    
+    public function deleteAddress($id){
+        $this->db->where('id',$id);
+        $this->db->delete('address');
+        return $this->db->affected_rows();
     }
 }

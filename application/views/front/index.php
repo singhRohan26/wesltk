@@ -238,7 +238,7 @@
 					<div class="joinContent">
 						<h2>Become a Partner</h2>
 						<p>Kogi Cosby sweater ethical squid irony disrupt, organic tote bag gluten<br> free XOXO wolf typewriter mixtape.</p>
-						<a href="#0" class="btncommon">Find Out More</a>
+						<a href="#0" class="btncommon" data-toggle="modal" data-target="#become_partner">Find Out More</a>
 					</div>
 				</div>
 				<div class="col-sm-6">
@@ -248,7 +248,7 @@
 					<div class="joinContent">
 						<h2>Build your career</h2>
 						<p>Kogi Cosby sweater ethical squid irony disrupt, organic tote bag gluten<br> free XOXO wolf typewriter mixtape.</p>
-						<a href="career.html" class="btncommon">Find Jobs</a>
+						<a href="<?php echo base_url('home/career') ?>" class="btncommon">Find Jobs</a>
 					</div>
 
 				</div>

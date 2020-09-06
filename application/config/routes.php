@@ -72,6 +72,8 @@ $route['home/products-shops'] = 'home/productsLists';
 $route['shop-details/(:any)'] = 'home/shopDetails/$1';
 $route['home/shop-product-listing/(:any)'] = 'home/shopProductListing/$1';
 $route['home/contact-us'] = 'home/contactUs';
+$route['home/career'] = 'home/career';
+$route['home/do-add-career'] = 'home/doAddCareer';
 
 
 ///   User Controlller ////
@@ -79,6 +81,8 @@ $route['user/user-profile'] = 'user/profile';
 $route['user/logout'] = 'user/logout';
 $route['user/user-login'] = 'user/doLogin';
 $route['home/forgot-password'] = 'user/forgotPassword';
+$route['home/check-otp'] = 'user/checkOtp';
+$route['home/reset-password'] = 'user/resetPassword';
 
 // Booking controller//
 $route['checkout'] = 'booking/checkout';
