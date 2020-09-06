@@ -38,7 +38,7 @@
 					<div>
 					<div class="resturaRightHead">
 						<div class="restHeadd">
-							<h2>Salon <span>(386)</span></h2>
+							<h2>Catring <span>(386)</span></h2>
 						</div>
 						<div class="searchFood searchFood2">
 							<input type="text" class="form-control search-restaurant" data-url="<?php echo base_url('home/search-catring');?>" placeholder="Search for a food, product & services">

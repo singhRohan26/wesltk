@@ -16,7 +16,14 @@
 						<ul>
 							<li><a href="javascript:void(0);" data-toggle="modal" data-target="#become_partner">Become a Partner</a></li>
 							<li><a href="#0">Offers</a></li>
-							<li><a href="#0">Services <span><img src="<?php echo base_url('public/front/') ?>img/dropdown2.svg" class="img-fluid" alt="dropdown"></span></a></li>
+							<li class="nav-item urserShow"> <a  class="nav-link afterservClick" href="#0">Services <span><img src="<?php echo base_url('public/front/') ?>img/dropdown2.svg" class="img-fluid" alt="dropdown"></span></a>
+								<div class="profileChanges chk">
+										<ul>
+											<li><a href="<?php echo base_url('catring') ?>">Catring</a></li>
+											<li><a href="<?php echo base_url('salon') ?>">Salon</a></li>
+										</ul>
+									</div>
+							</li>
 							<li><a href="#0">Shop <span><img src="<?php echo base_url('public/front/') ?>img/dropdown2.svg" class="img-fluid" alt="dropdown"></span></a></li>
 						</ul>
 					</div>
@@ -26,7 +33,7 @@
                             <?php if(!empty($this->session->userdata('login_id'))) {   ?>
                             <li class="nav-item urserShow"><a class="nav-link afterloginBtn" href="#0"><span></span><?php echo $userData['name'] ?>
 									</a>
-									<div class="profileChanges">
+									<div class="profileChanges chk1">
 										<ul>
 											<li><a href="<?php echo base_url('user/user-profile') ?>">Profile</a></li>
 											<li><a href="profile.html">Notification</a></li>

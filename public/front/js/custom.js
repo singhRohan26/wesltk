@@ -133,12 +133,20 @@ $(document).on('click','.rating ul li',function(){
 
 
 $(document).on('click','.afterloginBtn',function(){
-	$('.profileChanges').slideDown();
+	$('.profileChanges.chk1').slideDown();
+});
+$(document).on('click','.afterservClick',function(){
+  $('.profileChanges.chk').slideDown();
 });
 document.addEventListener("mousedown", function (event) {
-    if (event.target.closest(".profileChanges ,.afterloginBtn"))
+    if (event.target.closest(".profileChanges.chk1 ,.afterloginBtn"))
         return;
-    $('.profileChanges').slideUp();
+    $('.profileChanges.chk1').slideUp();
+});
+document.addEventListener("mousedown", function (event) {
+    if (event.target.closest(".profileChanges.chk,.afterservClick"))
+        return;
+    $('.profileChanges.chk').slideUp();
 });
 $(document).on('click','.skinShow' ,function(){
 	$('.skinCare').slideDown();

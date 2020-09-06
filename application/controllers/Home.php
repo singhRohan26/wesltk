@@ -19,6 +19,7 @@ class Home extends CI_Controller {
         $data['title'] = 'Homepage';
         $data['userData'] = $this->getLoginDetail();
         $this->load->view('front/commons/header',$data);
+        // $this->load->view('front/commons/navbar');
         $this->load->view('front/index');
         $this->load->view('front/commons/footer');
     }
