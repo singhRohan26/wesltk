@@ -55,6 +55,7 @@ class Api extends CI_Controller {
         } else {
             $registered = $this->api_model->user_register();
             if(!empty($registered)){
+//                $this->sendMails($registered['full_name'],$registered['email']);
                 $this->output->set_output(json_encode(['result' => 1, 'msg' => 'Registration successfull!', 'data' => $registered]));
                 return true;
             }else{
@@ -157,12 +158,14 @@ class Api extends CI_Controller {
   }
 
 }
-    /**
+
+     /**
      * updateProfileImage using this function Upload Image!
      *
      * @return void
      */
-    public function updateProfileImage($file){
+
+        public function updateProfileImage($file){
         $file1 = $_FILES[$file]['name'];
         $config['upload_path'] = './uploads/users-profile/';
         $config['allowed_types'] = 'gif|jpg|png|jpeg';
@@ -176,7 +179,41 @@ class Api extends CI_Controller {
         
     }
     
+    public function getProfileData(){
+       $this->output->set_content_type('application/json');
+        $this->form_validation->set_rules('user_id','User Id','trim|required');
+        if ($this->form_validation->run() === false) {
+            $this->output->set_output(json_encode(['result' => 0, 'errors' => $this->form_validation->error_array()]));
+            return false;
+        }  
+        $user_id = $this->input->post('user_id');
+        $result = $this->api_model->get_userdata($user_id);
+        if($result){
+            if (!empty($result['image'])) {
+        $result['image'] = base_url('uploads/users-profile/' . $result['image']);
+        } else {
+            $result['image'] = '';
+        }
+            
+        $this->output->set_output(json_encode(['result' => 1, 'msg' => 'Profile Details', 'data' => $result]));
+            return TRUE;
+           } else {
+            $this->output->set_output(json_encode(['result' => -1, 'msg' => 'Something Went Wrong!']));
+            return false;
+          }
+    }
     
+    public function faq(){
+        $this->output->set_content_type('application/json');
+        $result = $this->api_model->getFaq();
+        if($result){
+         $this->output->set_output(json_encode(['result' => 1, 'msg' => 'Faq', 'data' => $result]));
+            return TRUE;   
+        }else{
+         $this->output->set_output(json_encode(['result' => -1, 'msg' => 'Something Went Wrong!']));
+            return false;   
+        }
+    }
 
     
 

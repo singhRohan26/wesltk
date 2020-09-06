@@ -15,16 +15,16 @@
 					<ul>
 						<li><a href="<?php echo base_url('about');?>">About us</a></li>
 						<li><a href="<?php echo base_url('home/contact-us') ?>">Contact Us</a></li>
-						<li><a href="career.html">Why Us</a></li>
-						<li><a href="#0">Track Order</a></li>
+						<li><a href="<?php echo base_url('home/why-us') ?>">Why Us</a></li>
+<!--						<li><a href="#0">Track Order</a></li>-->
 					</ul>
 				</div>
 				<div class="footerAl">
 					<h2>Help Links</h2>
 					<ul>
-						<li><a href="faq.html">Cancellation Policy</a></li>
-						<li><a href="faq.html">Shipping Policy</a></li>
-						<li><a href="#0">Terms And Conditions</a></li>
+						<li><a href="<?php echo base_url('home/cancellation-policy') ?>">Cancellation Policy</a></li>
+<!--						<li><a href="faq.html">Shipping Policy</a></li>-->
+						<li><a href="<?php echo base_url('home/terms-and-conditions') ?>">Terms And Conditions</a></li>
 						<li><a href="<?php echo base_url('privacy-policy');?>">Privacy Policy</a></li>
 					</ul>
 				</div>
@@ -115,9 +115,16 @@
 								<div class="form-group">
 									<input type="email" class="form-control inputcss" placeholder="Email Address" name="emailid" id="emailid">
 								</div>
+<!--
 								<div class="form-group">
 									<input type="number" class="form-control inputcss" placeholder="Mobile Number" name="phone" id="phone">
 								</div>
+-->
+                                <div class="form-group flexClass">
+									<input type="number" class="form-control inputcss" placeholder="91" name="phonecode" id="phonecode">
+									<input type="number" class="form-control inputcss" placeholder="Mobile Number" name="phone" id="phone">
+								</div>
+                                
 								<div class="form-group">
 									<input type="password" class="form-control inputcss" placeholder="Password" name="password" id="password">
 								</div>
@@ -291,7 +298,7 @@
 						</div>
 						<div class="form-group">
 							<label class="labelel">Email Address</label>
-							<input type="text" class="form-control inputcss" name="profile_email" id="profile_email" placeholder="Email"  value="<?php echo $userData['email'] ?>">
+							<input type="text" class="form-control inputcss" name="profile_email" id="profile_email" placeholder="Email"  value="<?php echo $userData['email'] ?>" disabled>
 						</div>
 						<div class="form-group">
 							<label class="labelel">Number</label>

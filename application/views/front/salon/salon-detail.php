@@ -16,15 +16,15 @@
 						<div class="OrderDetail">
 							<ul>
 								<li>Minimum Order Amount :</li>
-								<li>AED 150.00</li>
+								<li>$ <?php echo $restaurant['min_amount']  ?></li>
 							</ul>
 							<ul>
 								<li>Working Hours Today :</li>
-								<li>10.00 AM - 4.00 PM</li>
+								<li><?php echo $restaurant['working_hours']  ?></li>
 							</ul>
 							<ul>
 								<li>Delivery Time :</li>
-								<li>120 Mins.</li>
+								<li><?php echo $restaurant['delivery_time']  ?></li>
 							</ul>
 
 						</div>
@@ -49,7 +49,7 @@
 					<ul>
 						<li><a href="#0" class="active" data-id='1' data-url="<?php echo base_url('home/salon-listing/'. $restaurant['vendor_id']);?>">Order Online</a></li>
 						<li><a href="#0" data-id='2' data-url="<?php echo base_url('home/review-listing/'. $restaurant['vendor_id']);?>">Reviews</a></li>
-						<li><a href="#0" data-id='3' data-url="<?php echo base_url('home/product-img/'. $restaurant['vendor_id'].'/'.$type='food');?>">Photos</a></li>
+						<li><a href="#0" data-id='3' data-url="<?php echo base_url('home/saloon_product_img/'. $restaurant['vendor_id'].'/'.$type='services');?>">Photos</a></li>
 					</ul>
 				</div>
 				<div class="searchFood searchFood3 searchFood2">

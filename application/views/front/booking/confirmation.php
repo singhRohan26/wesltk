@@ -5,7 +5,8 @@
 				<div class="col-sm-12">
 					<div class="checkoutAll">
 						<div class="checkLogin">
-							<h2 class="mainHeading">Your order is placed successfully.</h2>
+							<h2 class="mainHeading">Your order is placed successfully.</h2><br>
+                            <a class="btn btn-warning" href="<?php echo base_url('/') ?>">Back to Home</a>
 							
 						</div>
 					</div>

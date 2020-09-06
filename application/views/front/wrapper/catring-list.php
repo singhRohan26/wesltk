@@ -20,7 +20,7 @@
 			</li>
 		<?php } }  } else{
 		?>
-			<h2>No Restaurants Found!!..</h2>
+			<h2>No Caterers Found!!..</h2>
 		<?php
 			}
 		?>    	

@@ -18,9 +18,10 @@ class User extends CI_Controller {
         $this->output->set_content_type('application/json');
 		$this->form_validation->set_rules('name', 'Name', 'required');
 		$this->form_validation->set_rules('emailid', 'Email', 'required|valid_email');
+        $this->form_validation->set_rules('phonecode', 'Phone code', 'required');
 		$this->form_validation->set_rules('phone', 'Phone Number', 'required');
 		$this->form_validation->set_rules('password', 'Password', 'required|min_length[6]');
-		$this->form_validation->set_rules('cpass', 'Confirm Password', 'required|min_length[6]|matches[pass]');
+		$this->form_validation->set_rules('cpass', 'Confirm Password', 'required|min_length[6]|matches[password]');
 		if ($this->form_validation->run() === FALSE) {
 			$this->output->set_output(json_encode(['result' => 0, 'errors' => $this->form_validation->error_array()]));
 			return FALSE;
@@ -43,13 +44,11 @@ class User extends CI_Controller {
 	public function updatProfile(){
         $this->output->set_content_type('application/json');
 		$this->form_validation->set_rules('profile_name', 'Name', 'required');
-		$this->form_validation->set_rules('profile_email', 'Email', 'required|valid_email');
 		$this->form_validation->set_rules('profile_phone', 'Phone Number', 'required');
 		if ($this->form_validation->run() === FALSE) {
 			$this->output->set_output(json_encode(['result' => 0, 'errors' => $this->form_validation->error_array()]));
 			return FALSE;
 		}
-                
 		$result = $this->user_model->checkemail($this->session->userdata('login_id'));
 		if ($result) {
             $this->output->set_output(json_encode(['result' => -1, 'msg' => 'Email already exists.']));
@@ -68,7 +67,6 @@ class User extends CI_Controller {
             	$this->output->set_output(json_encode(['result' => -1, 'msg' => 'No changes Were Made!..']));
 				return FALSE;
             }
-			
 		}
     }
     

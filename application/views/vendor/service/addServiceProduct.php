@@ -40,7 +40,7 @@
 									<div class="form-group">
 										<h5 class="font-size-14">Choose Service Category</h5>
 										<select class="form-control" id="admin_menu" name="admin_menu">
-											<option value="">-- Choose Restaurant Category --</option>
+											<option value="">-- Choose Service Category --</option>
 											<?php
 												if(!empty($category)){
 													foreach ($category as $cat) {
@@ -58,7 +58,7 @@
 									<div class="form-group">
 										<h5 class="font-size-14">Choose Your Category</h5>
 										<select class="form-control" id="menu" name="menu">
-											<option value="">-- Select Menu --</option>
+											<option value="">-- Select Your Category --</option>
 											<?php
 												if(!empty($menus)){
 													foreach ($menus as $menu) {

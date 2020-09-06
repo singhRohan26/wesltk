@@ -175,14 +175,18 @@ class Vendor extends CI_Controller {
 		$this->form_validation->set_rules('vendor_name','vendor name','trim|required');
 		$this->form_validation->set_rules('email_id','Email','required|valid_email');
 		$this->form_validation->set_rules('phone','Phone Number','required');
+		$this->form_validation->set_rules('amount','Minimum amount','required');
+		$this->form_validation->set_rules('time','Delivery Time','required');
+		$this->form_validation->set_rules('hours','Working Hours','required');
 		if ($this->form_validation->run() === FALSE) {
 			$this->output->set_output(json_encode(['result' => 0, 'errors' => $this->form_validation->error_array()]));
 			return FALSE;
 		}
+        $data['userData'] = $this->getLoginDetail();
         if(!empty($_FILES['image_url']['name'])){
             $file1=$this->doUploadProfileImage('image_url');
         }if(empty($_FILES['image_url']['name'])){
-            $file1=$image['image'];
+            $file1=$data['userData']['image'];
         }
 		 
         $result = $this->vendor_model->doChangeProfile($id,$file1);

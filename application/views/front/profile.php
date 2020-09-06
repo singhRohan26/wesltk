@@ -5,11 +5,11 @@
 			<div class="profileIn boxs">
 				<div class="profilrLeft">
 					<div class="profileImgIn">
-						<img src="<?php if(!empty($userData['image'])){ echo base_url('uploads/users/'. $userData['image']); }else{ echo base_url('public/front/deepu.jpg'); }?>" class="img-fluid" alt="img">
+						<img src="<?php if(!empty($userData['image'])){ echo base_url('uploads/users/'. $userData['image']); }else{ echo base_url('public/front/img/default.png'); }?>" class="img-fluid" alt="img">
 					</div>
 					<div class="">
 						<h2><?php echo $userData['name']; ?></h2>
-						<p><span><?php echo $userData['email']; ?></span> | <span><?php echo $userData['phone']; ?></span></p>
+						<p><span><?php echo $userData['email']; ?></span> | <span>+<?php echo $userData['phone']; ?></span></p>
 					</div>
 				</div>
 				<div class="profilrright">
@@ -26,21 +26,23 @@
 					<div class="profileOrders">
 						<ul>
 							<li><a href="#0" class="active" data-id="1"><span><img src="<?php echo base_url('public/front/')?>img/rightarrow.svg" class="img-fluid" alt="arrow"></span>Orders</a></li>
-							<li><a href="#0" data-id="2"><span><img src="<?php echo base_url('public/front/')?>img/rightarrow.svg" class="img-fluid" alt="arrow"></span>Notification</a></li>
-							<li><a href="#0" data-id="3"><span><img src="<?php echo base_url('public/front/')?>img/rightarrow.svg" class="img-fluid" alt="arrow"></span>Addresses</a></li>
+							<li><a href="#0" data-id="2"><span><img src="<?php echo base_url('public/front/')?>img/rightarrow.svg" class="img-fluid" alt="arrow"></span>Notifications</a></li>
+							<li><a href="#0" data-id="3"><span><img src="<?php echo base_url('public/front/')?>img/rightarrow.svg" class="img-fluid" alt="arrow"></span>Address</a></li>
 							<li><a href="#0" data-id="4"><span><img src="<?php echo base_url('public/front/')?>img/rightarrow.svg" class="img-fluid" alt="arrow"></span>Change Password</a></li>
 						</ul>
 					</div>
 				</div>
 				<div class="col-sm-9">
 					<div class="profileAll12 profile1 active boxs">
-                        
-                        <?php foreach($orderLists as $order){  ?>
-						<div class="profileOrderDet">
-							<div class="orderFirst">
-								<div class="orderHead">
+                        <div class="orderHead">
 									<h2>My Orders</h2>
 								</div>
+                        <?php
+                    if(!empty($orderLists)){  
+                        foreach($orderLists as $order){  ?>
+						<div class="profileOrderDet">
+							<div class="orderFirst">
+								
 								<div class="orderProcess">
 									<ul>
 										<li><span><img src="<?php echo base_url('public/front/')?>img/bluecheck.svg" class="img-fluid" alt="check"></span><?php echo $order['status']; ?></li>
@@ -76,7 +78,7 @@
 											<ul class="quantity">
 												<li>Quantity : <span><?php echo $detail['qty']; ?></span></li>
 												<li><span>$ <?php echo $detail['price']; ?></span></li>
-												<li><a href="#0">Track Your Order</a></li>
+<!--												<li><a href="#0">Track Your Order</a></li>-->
 											</ul>
 										</div>
                                         
@@ -85,7 +87,11 @@
 								</div>
 							</div>
 						</div>
-						<?php } ?>
+						<?php } } else{ ?>
+                        <center><p>No Orders Yet!</p></center>
+<!--                        <p>No Orders Yet!</p>-->
+                        
+                        <?php } ?>
 						
 					</div>
 					<div class="profileAll12 profile2 boxs">
@@ -94,6 +100,7 @@
 								<div class="orderHead order">
 									<h2>Notifications</h2>
 								</div>
+<!--
 								<div class="customerReview customerReview2">
 									<div class="customerAl">
 										<div class="customerProfile">
@@ -114,66 +121,8 @@
 									</p>
 
 								</div>
-								<div class="customerReview customerReview2">
-									<div class="customerAl">
-										<div class="customerProfile">
-											<div class="profileImg">
-												<img src="<?php echo base_url('public/front/')?>img/customer.png" class="img-fluid" alt="customer">
-											</div>
-											<div class="profileContent">
-												<h2>Garima</h2>
-												<div class="rating">
-													<div class="ratingTime">
-														<p>07/08/2020 | 25 Mins. ago</p>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-									<p class="revie">Mauris fames ut vitae blandit sagittis eget eget. Mi, leo varius leo est a turpis vitae neque. Luctus urna ipsum enim, quis ipsum amet in a ultricies. Sodales metus tincidunt vitae nunc dolor porttitor. Amet tristique in amet risus in nibh viverra aliquet. Dui maecenas risus sed eu blandit. Proin ultrices interdum sollicitudin volutpat.
-									</p>
-
-								</div>
-								<div class="customerReview customerReview2">
-									<div class="customerAl">
-										<div class="customerProfile">
-											<div class="profileImg">
-												<img src="<?php echo base_url('public/front/')?>img/customer.png" class="img-fluid" alt="customer">
-											</div>
-											<div class="profileContent">
-												<h2>Garima</h2>
-												<div class="rating">
-													<div class="ratingTime">
-														<p>07/08/2020 | 25 Mins. ago</p>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-									<p class="revie">Mauris fames ut vitae blandit sagittis eget eget. Mi, leo varius leo est a turpis vitae neque. Luctus urna ipsum enim, quis ipsum amet in a ultricies. Sodales metus tincidunt vitae nunc dolor porttitor. Amet tristique in amet risus in nibh viverra aliquet. Dui maecenas risus sed eu blandit. Proin ultrices interdum sollicitudin volutpat.
-									</p>
-
-								</div>
-								<div class="customerReview customerReview2">
-									<div class="customerAl">
-										<div class="customerProfile">
-											<div class="profileImg">
-												<img src="<?php echo base_url('public/front/')?>img/customer.png" class="img-fluid" alt="customer">
-											</div>
-											<div class="profileContent">
-												<h2>Garima</h2>
-												<div class="rating">
-													<div class="ratingTime">
-														<p>07/08/2020 | 25 Mins. ago</p>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-									<p class="revie">Mauris fames ut vitae blandit sagittis eget eget. Mi, leo varius leo est a turpis vitae neque. Luctus urna ipsum enim, quis ipsum amet in a ultricies. Sodales metus tincidunt vitae nunc dolor porttitor. Amet tristique in amet risus in nibh viverra aliquet. Dui maecenas risus sed eu blandit. Proin ultrices interdum sollicitudin volutpat.
-									</p>
-
-								</div>
+-->
+							<center><p>No Notifications Yet!</p></center>	
 							</div>
 						</div>
 					</div>
@@ -184,7 +133,9 @@
 									<h2>Address</h2>
 								</div>
 								<div class="Adresses">
-                                    <?php foreach($address as $add) { ?>
+                                    <?php
+                                            if(!empty($address)){ 
+                                        foreach($address as $add) { ?>
 									<div class="AddressLeft AddressLeft2">
 										<div class="addressUp">
 											<div class="editProp">
@@ -269,7 +220,9 @@
                                     
                                     
                                     
-									<?php } ?>
+									<?php } } else {   ?>
+                                    <center><p>No Addresses Yet!</p></center>
+                                    <?php } ?>
 								</div>
 							</div>
 						</div>

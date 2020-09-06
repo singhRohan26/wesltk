@@ -44,7 +44,7 @@
 							</a>
 						</div>
 						<div class="col-sm-4">
-							<a href="<?php echo base_url('salon');?>" class="foodAllservice  boxs">
+							<a href="<?php echo base_url('salon');?>" class="foodAllservice boxs">
 								<div class="exploreFood">
 
 									<div class="foodImg">

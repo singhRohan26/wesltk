@@ -2942,3 +2942,18 @@ position: relative;
   background-position-x: 35px;
   width: 200px;
 }
+
+.flexClass{
+	display: flex;
+}
+.flexClass .form-control:first-child{
+	width: 40%;
+	margin-right: 10px;
+}
+
+.cart {
+  display:flex;
+  justify-content: center;
+    width: 100%;
+    Float:left 
+}

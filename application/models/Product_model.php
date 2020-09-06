@@ -15,7 +15,7 @@ class Product_model extends CI_Model {
     }
     
     public function getMenu(){
-        $sel = $this->db->get_where('menu_product',['status'=>'Active','deleted_status'=>'0']);
+        $sel = $this->db->get_where('menu_product',['status'=>'Active','deleted_status'=>'0','vendor_id'=>$this->session->userdata('vendor_login_id')]);
         return $sel->result_array();
     }
     
@@ -42,7 +42,7 @@ class Product_model extends CI_Model {
         $this->db->select('m.name as menu_name, p.name as product_name, p.price,p.status, p.id');
         $this->db->from('menu_product m');
         $this->db->join('product p', 'p.menu_product_id = m.id');
-        $this->db->where(['m.deleted_status' => '0', 'p.deleted_status' => '0', 'm.status' => 'Active','p.form_type'=>'products']);
+        $this->db->where(['m.deleted_status' => '0', 'p.deleted_status' => '0', 'm.status' => 'Active','p.form_type'=>'products','vendor_id'=>$this->session->userdata('vendor_login_id')]);
         $query = $this->db->get();
         return $query->result_array();
     }
@@ -52,7 +52,7 @@ class Product_model extends CI_Model {
         $this->db->from('menu_product m');
         $this->db->join('product p', 'p.menu_product_id = m.id');
         $this->db->join('admin_product_menu am','am.id=p.admin_product_menu_id');
-        $this->db->where(['m.deleted_status' => '0', 'p.deleted_status' => '0', 'm.status' => 'Active', 'p.id' => $id]);
+        $this->db->where(['m.deleted_status' => '0', 'p.deleted_status' => '0', 'm.status' => 'Active', 'p.id' => $id,'vendor_id'=>$this->session->userdata('vendor_login_id')]);
         $query = $this->db->get();
         return $query->row_array();
     }

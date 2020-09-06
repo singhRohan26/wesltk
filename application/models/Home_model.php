@@ -36,6 +36,7 @@ class Home_model extends CI_Model {
         $this->db->where_in('p.admin_service_menu_id', $checked_val);
         $this->db->group_by('v.vendor_id');
         $sel = $this->db->get();
+//        echo $this->db->last_query();die;
         return $sel->result_array();
     }    
     public function getLoginDetailBySalonProductId($product_id){
@@ -105,7 +106,7 @@ class Home_model extends CI_Model {
         $this->db->join('product p', 'p.service_menu_id = m.id');
         $this->db->join('product_image pi','pi.product_id=p.id');
         $this->db->where(['p.deleted_status' => '0', 'm.deleted_status' => '0', 'p.status' => 'Active', 'm.status' => 'Active', 'v.vendor_id' => $vendor_id, 'm.type' => $type]);
-        $this->db->where_in('p.admin_service_menu_id', $cat_type);
+        $this->db->where_in('p.service_menu_id', $cat_type);
         $this->db->group_by('pi.product_id');
         $sel = $this->db->get();
         return $sel->result_array();
@@ -166,11 +167,21 @@ class Home_model extends CI_Model {
         $this->db->join('product_image pi', 'pi.product_id = p.id');
         $this->db->where(['p.deleted_status' => '0', 'm.deleted_status' => '0', 'p.status' => 'Active', 'm.status' => 'Active', 'v.vendor_id' => $vendor_id,'p.form_type'=>$type]);
         $sel = $this->db->get();
-//        echo $this->db->last_query();
+        return $sel->result_array();
+    }
+    
+    public function getSaloonProductImages($vendor_id,$type){
+        $this->db->select('pi.*');
+        $this->db->from('vendors v');
+        $this->db->join('menu_servcie m', 'm.vendor_id = v.vendor_id');
+        $this->db->join('product p', 'p.service_menu_id = m.id');
+        $this->db->join('product_image pi', 'pi.product_id = p.id');
+        $this->db->where(['p.deleted_status' => '0', 'm.deleted_status' => '0', 'p.status' => 'Active', 'm.status' => 'Active', 'v.vendor_id' => $vendor_id,'p.form_type'=>$type]);
+        $sel = $this->db->get();
         return $sel->result_array();
     }
     public function getSalonDataByName($restaurant_name,$type){
-        $this->db->select('v.name,v.image,v.category, v.vendor_id');
+        $this->db->select('v.*');
         $this->db->from('vendors v');
         $this->db->join('menu_servcie m', 'm.vendor_id = v.vendor_id');
         $this->db->join('product p', 'p.service_menu_id = m.id');
@@ -193,7 +204,7 @@ class Home_model extends CI_Model {
         return $sel->row_array();
     }
     public function getRestaurantDataByName($restaurant_name){
-        $this->db->select('v.name,v.image,v.category, v.vendor_id');
+        $this->db->select('v.*');
         $this->db->from('vendors v');
         $this->db->join('menu_restaurant m', 'm.vendor_id = v.vendor_id');
         $this->db->join('product p', 'p.menu_id = m.id');
@@ -205,7 +216,7 @@ class Home_model extends CI_Model {
     } 
     
     public function getProductDataByName($restaurant_name){
-        $this->db->select('v.name,v.image,v.category, v.vendor_id');
+        $this->db->select('v.*');
         $this->db->from('vendors v');
         $this->db->join('menu_product m', 'm.vendor_id = v.vendor_id');
         $this->db->join('product p', 'p.menu_product_id = m.id');

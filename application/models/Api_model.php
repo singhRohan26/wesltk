@@ -72,6 +72,13 @@ class Api_model extends CI_Model {
         return $sel->row_array();
     }
     
+    public function getFaq(){
+      $this->db->select('*');
+        $this->db->from('faq');
+        $sel = $this->db->get();
+        return $sel->result_array();  
+    }
+    
     
 
 }

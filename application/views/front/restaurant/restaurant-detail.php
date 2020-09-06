@@ -16,15 +16,15 @@
 						<div class="OrderDetail">
 							<ul>
 								<li>Minimum Order Amount :</li>
-								<li>AED 100.00</li>
+								<li>$ <?php echo $restaurant['min_amount']  ?></li>
 							</ul>
 							<ul>
 								<li>Working Hours Today :</li>
-								<li>10.00 AM - 4.00 PM</li>
+								<li><?php echo $restaurant['working_hours']  ?></li>
 							</ul>
 							<ul>
 								<li>Delivery Time :</li>
-								<li>120 Mins.</li>
+								<li><?php echo $restaurant['delivery_time']  ?></li>
 							</ul>
 
 						</div>

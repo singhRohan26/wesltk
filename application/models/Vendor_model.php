@@ -50,6 +50,9 @@ class Vendor_model extends CI_Model {
             'email' => $this->security->xss_clean($this->input->post('email_id')),
             'phone' =>$this->security->xss_clean($this->input->post('phone')),
             'website' =>$this->security->xss_clean($this->input->post('website')),
+            'min_amount' =>$this->security->xss_clean($this->input->post('amount')),
+            'delivery_time' =>$this->security->xss_clean($this->input->post('time')),
+            'working_hours' =>$this->security->xss_clean($this->input->post('hours')),
             'image'=>$img_res
              
           );

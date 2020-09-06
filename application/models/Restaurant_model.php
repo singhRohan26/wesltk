@@ -61,26 +61,26 @@ class Restaurant_model extends CI_Model {
     }
     
     public function getMenuData(){
-        $query = $this->db->get_where('menu_restaurant', ['deleted_status' => '0']);
+        $query = $this->db->get_where('menu_restaurant', ['deleted_status' => '0','vendor_id'=>$this->session->userdata('vendor_login_id')]);
         return $query->result_array();
     }
     public function getMenuDataById($id){
-        $query = $this->db->get_where('menu_restaurant', ['id' => $id, 'deleted_status' => '0']);
+        $query = $this->db->get_where('menu_restaurant', ['id' => $id, 'deleted_status' => '0','vendor_id'=>$this->session->userdata('vendor_login_id')]);
         return $query->row_array();
     }
     public function getMenuServiceData($type){
-        $query = $this->db->get_where('menu_servcie', ['deleted_status' => '0', 'type' => $type]);
+        $query = $this->db->get_where('menu_servcie', ['deleted_status' => '0', 'type' => $type ,'vendor_id'=>$this->session->userdata('vendor_login_id')]);
         return $query->result_array();
     }
     public function getMenuServiceDataById($id){
-        $query = $this->db->get_where('menu_servcie', ['id' => $id, 'deleted_status' => '0']);
+        $query = $this->db->get_where('menu_servcie', ['id' => $id, 'deleted_status' => '0','vendor_id'=>$this->session->userdata('vendor_login_id')]);
         return $query->row_array();
     }
     public function getProductData(){
         $this->db->select('m.name as menu_name, p.name as product_name, p.price,p.status, p.id');
         $this->db->from('menu_restaurant m');
         $this->db->join('product p', 'p.menu_id = m.id');
-        $this->db->where(['m.deleted_status' => '0', 'p.deleted_status' => '0', 'm.status' => 'Active','p.form_type'=>'food']);
+        $this->db->where(['m.deleted_status' => '0', 'p.deleted_status' => '0', 'm.status' => 'Active','p.form_type'=>'food','m.vendor_id'=>$this->session->userdata('vendor_login_id')]);
         $query = $this->db->get();
         return $query->result_array();
     }
@@ -89,7 +89,7 @@ class Restaurant_model extends CI_Model {
         $this->db->from('menu_restaurant m');
         $this->db->join('product p', 'p.menu_id = m.id');
         $this->db->join('admin_menu am','am.id=p.admin_menu_id');
-        $this->db->where(['m.deleted_status' => '0', 'p.deleted_status' => '0', 'm.status' => 'Active', 'p.id' => $id]);
+        $this->db->where(['m.deleted_status' => '0', 'p.deleted_status' => '0', 'm.status' => 'Active', 'p.id' => $id,'m.vendor_id'=>$this->session->userdata('vendor_login_id')]);
         $query = $this->db->get();
         return $query->row_array();
     }
@@ -98,7 +98,7 @@ class Restaurant_model extends CI_Model {
         $this->db->from('menu_servcie m');
         $this->db->join('product p', 'p.service_menu_id = m.id');
         $this->db->join('admin_service_menu am','am.id=p.admin_service_menu_id');
-        $this->db->where(['m.deleted_status' => '0', 'm.type' => $type, 'p.deleted_status' => '0', 'm.status' => 'Active','p.form_type'=>'services']);
+        $this->db->where(['m.deleted_status' => '0', 'm.type' => $type, 'p.deleted_status' => '0', 'm.status' => 'Active','p.form_type'=>'services','m.vendor_id'=>$this->session->userdata('vendor_login_id')]);
         $query = $this->db->get();
         return $query->result_array();
     }
@@ -107,7 +107,7 @@ class Restaurant_model extends CI_Model {
         $this->db->from('menu_servcie m');
         $this->db->join('product p', 'p.service_menu_id = m.id');
         $this->db->join('admin_service_menu am','am.id=p.admin_service_menu_id');
-        $this->db->where(['m.deleted_status' => '0', 'p.deleted_status' => '0', 'm.status' => 'Active', 'p.id' => $id]);
+        $this->db->where(['m.deleted_status' => '0', 'p.deleted_status' => '0', 'm.status' => 'Active', 'p.id' => $id,'m.vendor_id'=>$this->session->userdata('vendor_login_id')]);
         $query = $this->db->get();
         return $query->row_array();
     }

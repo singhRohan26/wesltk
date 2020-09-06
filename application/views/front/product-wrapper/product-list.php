@@ -14,7 +14,7 @@
 					<h2><?php echo $restaurant['name'] ?></h2>
 					<p>North Indian, Mughlai, Seafood, Biryani, Desserts, Kebabs</p>
 					<div class="quickView">
-						<a href="<?php echo base_url('shop-details/'.$restaurant['name']);?>">Quick View</a>
+						<a href="<?php echo base_url('shop-details/'.str_replace(' ','-',$restaurant['name']));?>">Quick View</a>
 					</div>
 				</div>
 			</li>

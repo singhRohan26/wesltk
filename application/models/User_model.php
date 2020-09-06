@@ -14,7 +14,7 @@ class User_model extends CI_Model {
         $data = array(
         'name' =>$this->security->xss_clean($this->input->post('name')),
         'email' =>$this->security->xss_clean($this->input->post('email')),
-        'phone' =>$this->security->xss_clean($this->input->post('phone')),
+        'phone' =>$this->security->xss_clean($this->input->post('phonecode')).$this->security->xss_clean($this->input->post('phone')),
         'password' =>$this->security->xss_clean(hash('sha256', $this->input->post('pass')))
         );
         $this->db->insert('users',$data);
@@ -34,7 +34,7 @@ class User_model extends CI_Model {
     public function updatProfile($img){
         $data = array(
             'name' =>$this->security->xss_clean($this->input->post('profile_name')),
-            'email' =>$this->security->xss_clean($this->input->post('profile_email')),
+//            'email' =>$this->security->xss_clean($this->input->post('profile_email')),
             'phone' =>$this->security->xss_clean($this->input->post('profile_phone')),
             'image' =>$this->security->xss_clean($img)
         );

@@ -51,10 +51,10 @@
                                     <span>Services</span>
                                 </a>
                                 <ul class="sub-menu mm-collapse" aria-expanded="false" >
-                                    <li><a href="<?php echo base_url('vendor/service-menu');?>">Add Sallon Category</a></li>
+                                    <li><a href="<?php echo base_url('vendor/service-menu');?>">Add Saloon Category</a></li>
                                     <li><a href="<?php echo base_url('vendor/service-product-lists');?>">Add Saloon Product</a></li>
-                                    <li><a href="<?php echo base_url('vendor/service-catring-menu');?>">Add Catring Category</a></li>
-                                    <li><a href="<?php echo base_url('vendor/service-catring-product-lists');?>">Add Catring Product</a></li>
+                                    <li><a href="<?php echo base_url('vendor/service-catring-menu');?>">Add Catering Category</a></li>
+                                    <li><a href="<?php echo base_url('vendor/service-catring-product-lists');?>">Add Catering</a></li>
                                 </ul>
                             </li>
                             <?php

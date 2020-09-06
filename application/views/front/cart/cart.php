@@ -10,6 +10,7 @@
 		</div>
 	</section>
 
+<!--
 	<section class="alsoOrder paddingAll   boxs">
 		<div class="container">
 			<div class="alsoOrderIn">
@@ -101,4 +102,4 @@
 		</div>
 		</div>
 
-	</section>
+	</section>-->

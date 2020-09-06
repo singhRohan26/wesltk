@@ -74,6 +74,10 @@ $route['home/shop-product-listing/(:any)'] = 'home/shopProductListing/$1';
 $route['home/contact-us'] = 'home/contactUs';
 $route['home/career'] = 'home/career';
 $route['home/do-add-career'] = 'home/doAddCareer';
+$route['home/wesltk-offers'] = 'home/offers';
+$route['home/why-us'] = 'home/whyus';
+$route['home/cancellation-policy'] = 'home/cancellation';
+$route['home/terms-and-conditions'] = 'home/terms';
 
 
 ///   User Controlller ////

@@ -81,6 +81,45 @@ class Home extends CI_Controller {
         $this->load->view('front/commons/footer');
     }
     
+    public function offers(){
+        $data['title'] = 'Offers';
+        $data['userData'] = $this->getLoginDetail();
+        $data['about_data'] = $this->home_model->getPagesData('offer');
+        $this->load->view('front/commons/header',$data);
+        $this->load->view('front/commons/navbar');
+        $this->load->view('front/offer');
+        $this->load->view('front/commons/footer');
+    }
+    
+    public function terms(){
+        $data['title'] = 'Terms and conditions';
+        $data['userData'] = $this->getLoginDetail();
+        $data['about_data'] = $this->home_model->getPagesData('term');
+        $this->load->view('front/commons/header',$data);
+        $this->load->view('front/commons/navbar');
+        $this->load->view('front/terms');
+        $this->load->view('front/commons/footer');
+    }
+    
+    public function whyus(){
+        $data['title'] = 'whyus';
+        $data['userData'] = $this->getLoginDetail();
+        $data['about_data'] = $this->home_model->getPagesData('whyus');
+        $this->load->view('front/commons/header',$data);
+        $this->load->view('front/commons/navbar');
+        $this->load->view('front/terms');
+        $this->load->view('front/commons/footer');
+    }
+    
+    public function cancellation(){
+        $data['title'] = 'Cancellation policy';
+        $data['userData'] = $this->getLoginDetail();
+        $data['about_data'] = $this->home_model->getPagesData('cancellation');
+        $this->load->view('front/commons/header',$data);
+        $this->load->view('front/commons/navbar');
+        $this->load->view('front/terms');
+        $this->load->view('front/commons/footer');
+    }
     public function contactUs(){
         $data['title'] = 'Contact us';
         $data['userData'] = $this->getLoginDetail();
@@ -311,6 +350,7 @@ class Home extends CI_Controller {
         $restaurant_name = str_replace('-', ' ', $restaurant_name);
         $data['userData'] = $this->getLoginDetail();
         $data['restaurant'] = $this->home_model->getSalonDataByName($restaurant_name, 'salon');
+//        print_r($data['restaurant']);die;
         if(empty($data['restaurant'])){
             redirect(base_url('home/salon-lists'));
         }
@@ -489,6 +529,17 @@ class Home extends CI_Controller {
         $wrapper = $this->load->view('front/wrapper/restaurant-img', $data, true);
         $this->output->set_output(json_encode(['result' => 1, 'wrapper' => $wrapper]));
         return FALSE;  
+    }
+    
+    public function saloon_product_img($vendor_id,$type){
+       $this->output->set_content_type('application/json');
+        
+        $data['reviews'] = "true";
+        $data['product_images'] = $this->home_model->getSaloonProductImages($vendor_id,$type);
+//        print_r($data['product_images']);die;
+        $wrapper = $this->load->view('front/wrapper/shop-img', $data, true);
+        $this->output->set_output(json_encode(['result' => 1, 'wrapper' => $wrapper]));
+        return FALSE;   
     }
     
     

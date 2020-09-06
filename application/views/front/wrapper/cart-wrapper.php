@@ -49,8 +49,8 @@ if(!empty($this->cart->contents())) {  ?>
 					</div>
 				</div>
 <?php } else{   ?>
-<div style="text-align:center">
+<div class="cart">
 <img src="<?php echo base_url('public/front/img/emptycart.png') ?>">
-<p>No items in the cart!</p>
+<!--<p>No items in the cart!</p>-->
 </div>
 <?php } ?>

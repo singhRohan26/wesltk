@@ -15,16 +15,16 @@
 					<div class="middleMenu">
 						<ul>
 							<li><a href="javascript:void(0);" data-toggle="modal" data-target="#become_partner">Become a Partner</a></li>
-							<li><a href="#0">Offers</a></li>
+							<li><a href="<?php echo base_url('home/wesltk-offers') ?>">Offers</a></li>
 							<li class="nav-item urserShow"> <a  class="nav-link afterservClick" href="#0">Services <span><img src="<?php echo base_url('public/front/') ?>img/dropdown2.svg" class="img-fluid" alt="dropdown"></span></a>
 								<div class="profileChanges chk">
 										<ul>
-											<li><a href="<?php echo base_url('catring') ?>">Catring</a></li>
+											<li><a href="<?php echo base_url('catring') ?>">Cattering</a></li>
 											<li><a href="<?php echo base_url('salon') ?>">Salon</a></li>
 										</ul>
 									</div>
 							</li>
-							<li><a href="#0">Shop <span><img src="<?php echo base_url('public/front/') ?>img/dropdown2.svg" class="img-fluid" alt="dropdown"></span></a></li>
+							<li><a href="<?php echo base_url('home/products-shops') ?>">Shop <span></span></a></li>
 						</ul>
 					</div>
 					<div class="loginCart">
@@ -35,10 +35,10 @@
 									</a>
 									<div class="profileChanges chk1">
 										<ul>
-											<li><a href="<?php echo base_url('user/user-profile') ?>">Profile</a></li>
-											<li><a href="profile.html">Notification</a></li>
-											<li><a href="profile.html">Orders</a></li>
-											<li><a href="profile.html">Address</a></li>
+											<li><a href="<?php echo base_url('user/user-profile') ?>">My Profile</a></li>
+											
+											<li><a href="<?php echo base_url('user/user-profile') ?>">My Orders</a></li>
+											
 											<li><a href="<?php echo base_url('user/logout') ?>">Logout</a></li>
 										</ul>
 									</div>
@@ -182,7 +182,7 @@
 							<img src="<?php echo base_url('public/front/') ?>img/menu1.png" class="img-fluid" alt="menu">
 						</div>
 						<div class="menuName">
-							<a href="restaurantslist.html">Launch <span><img src="<?php echo base_url('public/front/') ?>img/dropdown.svg" class="img-fluid" alt="drop"></span></a>
+							<a href="<?php echo base_url('home/restaurant-lists') ?>">Lunch <span><img src="<?php echo base_url('public/front/') ?>img/dropdown.svg" class="img-fluid" alt="drop"></span></a>
 						</div>
 					</div>
 				</div>
@@ -192,7 +192,7 @@
 							<img src="<?php echo base_url('public/front/') ?>img/menu2.png" class="img-fluid" alt="menu">
 						</div>
 						<div class="menuName">
-							<a href="restaurantslist.html">Dinner <span><img src="<?php echo base_url('public/front/') ?>img/dropdown.svg" class="img-fluid" alt="drop"></span></a>
+							<a href="<?php echo base_url('home/restaurant-lists') ?>">Dinner <span><img src="<?php echo base_url('public/front/') ?>img/dropdown.svg" class="img-fluid" alt="drop"></span></a>
 						</div>
 					</div>
 				</div>
@@ -202,7 +202,7 @@
 							<img src="<?php echo base_url('public/front/') ?>img/menu3.png" class="img-fluid" alt="menu">
 						</div>
 						<div class="menuName">
-							<a href="restaurantslist.html">Cattering <span><img src="<?php echo base_url('public/front/') ?>img/dropdown.svg" class="img-fluid" alt="drop"></span></a>
+							<a href="<?php echo base_url('catring') ?>">Cattering <span><img src="<?php echo base_url('public/front/') ?>img/dropdown.svg" class="img-fluid" alt="drop"></span></a>
 						</div>
 					</div>
 				</div>

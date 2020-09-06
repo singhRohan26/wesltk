@@ -9,17 +9,17 @@
 						<div class="headerBox d-flex align-items-center float-right">
 							<ul class="navbar-nav">
 								<li class="nav-item"><a class="nav-link active" href="javascript:void(0);" data-toggle="modal" data-target="#become_partner">Become a Partner </a></li>
-								<li class="nav-item afterLogin categoryBox"><a class="nav-link subMenu" href="javascript:void(0)"> Offers </a>
+								<li class="nav-item afterLogin categoryBox"><a class="nav-link subMenu" href="<?php echo base_url('home/wesltk-offers') ?>"> Offers </a>
 								</li>
 								<li class="nav-item urserShow"> <a  class="nav-link afterservClick" href="#0">Services <span><img src="<?php echo base_url('public/front/') ?>img/dropblue.svg" class="img-fluid" alt="dropdown"></span></a>
 								<div class="profileChanges chk">
 										<ul>
-											<li><a href="<?php echo base_url('catring') ?>">Catring</a></li>
+											<li><a href="<?php echo base_url('catring') ?>">Cattering</a></li>
 											<li><a href="<?php echo base_url('salon') ?>">Salon</a></li>
 										</ul>
 									</div>
 							</li>
-								<li class="nav-item"><a class="nav-link" href="#0">Shop <span><img src="<?php echo base_url('public/front/') ?>img/dropblue.svg" class="img-fluid" alt="dropdown"></span> </a></li>
+								<li class="nav-item"><a class="nav-link" href="<?php echo base_url('home/products-shops') ?>">Shop <span></span> </a></li>
 								<li class="nav-item"><a class="nav-link" href="<?php echo base_url('home/your-cart') ?>"><span><img src="<?php echo base_url('public/front/') ?>img/cart2.svg" class="img-fluid" alt="cart"></span><span class="badge"><?php echo count($this->cart->contents()); ?></span> </a></li>
 
 								
@@ -28,10 +28,10 @@
 									</a>
 									<div class="profileChanges chk1">
 										<ul>
-											<li><a href="<?php echo base_url('user/user-profile') ?>">Profile</a></li>
-											<li><a href="profile.html">Notification</a></li>
-											<li><a href="profile.html">Orders</a></li>
-											<li><a href="profile.html">Address</a></li>
+											<li><a href="<?php echo base_url('user/user-profile') ?>">My Profile</a></li>
+											
+											<li><a href="<?php echo base_url('user/user-profile') ?>">My Orders</a></li>
+											
 											<li><a href="<?php echo base_url('user/logout') ?>">Logout</a></li>
 										</ul>
 									</div>

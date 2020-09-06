@@ -63,6 +63,27 @@
                             <input type="text" name="website" id="website" class="form-control" value="<?php if(!empty($profileData['website'])) { echo $profileData['website'];}else{ echo "";} ?>" placeholder="Website Url...">
                         </div>
                     </div>
+                    
+                    <div class="col-sm-6">
+                         <div class="form-group">
+                            <label class="col-form-label">Min. Order Amount</label>
+                            <input type="text" name="amount" id="amount" class="form-control" value="<?php if(!empty($profileData['min_amount'])) { echo $profileData['min_amount'];}else{ echo "";} ?>" placeholder="Min. Order Amount">
+                        </div>
+                    </div>
+                         
+                    <div class="col-sm-6">
+                         <div class="form-group">
+                            <label class="col-form-label">Delivery Time</label>
+                            <input type="text" name="time" id="time" class="form-control" value="<?php if(!empty($profileData['delivery_time'])) { echo $profileData['delivery_time'];}else{ echo "";} ?>" placeholder="Delivery Time">
+                        </div>
+                    </div>
+                         
+                         <div class="col-sm-6">
+                         <div class="form-group">
+                            <label class="col-form-label">Working hours</label>
+                            <input type="text" name="hours" id="hours" class="form-control" value="<?php if(!empty($profileData['working_hours'])) { echo $profileData['working_hours'];}else{ echo "";} ?>" placeholder="Delivery Time">
+                        </div>
+                    </div>
                          
                     <div class="col-sm-6">
                          <div class="form-group">
