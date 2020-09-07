@@ -3,7 +3,7 @@
 		if(!empty($restaurants)){
 			foreach($restaurants as $restaurant) {
 			$var = explode(',',$restaurant['category']);
-			if(in_array('food',$var)){ 
+			if(in_array('service',$var)){ 
 			?>
 			<li>
 				<div class="menuListImg">
@@ -14,7 +14,7 @@
 					<h2><?php echo $restaurant['name'] ?></h2>
 					<p>North Indian, Mughlai, Seafood, Biryani, Desserts, Kebabs</p>
 					<div class="quickView">
-						<a href="<?php echo base_url('catring-details/'.$restaurant['name']);?>">Quick View</a>
+						<a href="<?php echo base_url('catring-details/'.str_replace(' ', '-', $restaurant['name']));?>">Quick View</a>
 					</div>
 				</div>
 			</li>

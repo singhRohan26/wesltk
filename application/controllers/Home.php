@@ -352,7 +352,7 @@ class Home extends CI_Controller {
         $data['restaurant'] = $this->home_model->getSalonDataByName($restaurant_name, 'salon');
 //        print_r($data['restaurant']);die;
         if(empty($data['restaurant'])){
-            redirect(base_url('home/salon-lists'));
+            redirect(base_url('salon'));
         }
         $data['menus'] = $this->home_model->getSalonMenuData($data['restaurant']['vendor_id'], 'salon');
         $this->load->view('front/commons/header',$data);
@@ -366,7 +366,7 @@ class Home extends CI_Controller {
         $data['userData'] = $this->getLoginDetail();
         $data['restaurant'] = $this->home_model->getSalonDataByName($restaurant_name, 'catring');
         if(empty($data['restaurant'])){
-            redirect(base_url('home/salon-lists'));
+            redirect(base_url('catring'));
         }
         $data['menus'] = $this->home_model->getSalonMenuData($data['restaurant']['vendor_id'], 'catring');
         $this->load->view('front/commons/header',$data);

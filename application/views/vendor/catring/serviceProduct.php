@@ -15,7 +15,7 @@
 						<h4 class="mb-0 font-size-18">Service Menu</h4>
 						<ol class="breadcrumb m-0">
 							<li class="breadcrumb-item"><a href="<?php echo base_url('vendor/dashboard');?>">Dashboard</a></li>
-							<li class="breadcrumb-item"><a href="<?php echo base_url('vendor/add-service-product');?>">Add Product</a></li>
+							<li class="breadcrumb-item"><a href="<?php echo base_url('vendor/add-service-catring-product');?>">Add Product</a></li>
 						</ol>
 					</div>
 				</div>
