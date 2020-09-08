@@ -436,7 +436,47 @@
 	</div>
 	<!-- End of Popup Modal of  address code end-->
 
-    
+ 	<div class="modal  ReviewModals fade" id="review" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="closeBtn">
+					<a href="#0" data-dismiss="modal"><img src="<?php echo base_url('public/front/') ?>img/close.svg" class="img-fluid" alt="close"></a>
+				</div>
+				<div class="loginAll">
+					<div class="loginRight loginRightreview">
+						<form>
+							<div class="forgetIn">
+								<h2 class="">Write A Review</h2>
+							</div>
+							<div class="reviewForm">
+								
+								
+<!--
+								<div class="form-group">
+									<label class="labelel">Add Photos</label>
+									<input type="file" class="form-control inputcss" placeholder="Full Name">
+								</div>
+-->
+								<div class="form-group">
+									<label class="labelel">Write a Review</label>
+									<textarea  class="form-control inputcss" placeholder="Message"></textarea>
+								</div>
+							</div>
+							<div class="socialIconsM socialIconsM33 socialIconsM2">
+								<ul>
+									<li class="Btn"><a href="#0" class="btncommon">Add Review</a></li>
+								</ul>
+							</div>
+
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>    
+
+
+
 <!-- Start of Popup Modal of display map -->
 	<div class="modal  LoginModals LoginModals2 fade" id="mapModal" role="dialog">
 		<div class="modal-dialog">

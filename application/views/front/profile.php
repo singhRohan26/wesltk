@@ -45,7 +45,7 @@
 								
 								<div class="orderProcess">
 									<ul>
-										<li class="<?php if($order['status'] == 'Cancelled'){ echo 'cancel'; } ?>"><span><img src="<?php echo base_url('public/front/')?>img/bluecheck.svg" class="img-fluid" alt="check"></span><?php echo $order['status']; ?></li>
+										<li class="<?php if($order['status'] == 'Cancelled'){ echo 'cancel'; } elseif($order['status'] == 'Completed') { echo 'green'; } else { echo ''; } ?>"><span><img src="<?php echo base_url('public/front/')?>img/bluecheck.svg" class="img-fluid" alt="check"></span><?php echo $order['status']; ?></li>
 										<li><?php echo date("F jS, Y", strtotime($order['created_at'])); ?></li>
 										<li>Order Amount: $ <?php echo $order['sub_total']; ?></li>
 										<li><a href="#0" class="showDrop"><img src="<?php echo base_url('public/front/')?>img/dropblue.svg" class="img-fluid" alt="dropdown"></a></li>
@@ -65,9 +65,16 @@
 											<h2>Order ID</h2>
 											<p># <?php echo  $order['unique_id']; ?></p>
 										</div>
-                                        <?php if($order['status'] != 'Cancelled'){   ?>
+                                        <?php if($order['status'] == 'Processing' || $order['status'] == 'Accepted' ){   ?>
                                         <div class="addressHist">
 											<a href="<?php echo base_url('booking/cancelOrder/'.$order['unique_id']) ?>" class="delete-item"><h2 class="text-danger">Cancel order?</h2></a>
+
+										</div>
+                                        <?php } ?>
+                                        
+                                        <?php if($order['status'] == 'Completed'){   ?>
+                                        <div class="addressHist">
+											<a href="#" data-toggle="modal" data-target="#review"><h2 class="text-warning">Add Review</h2></a>
 
 										</div>
                                         <?php } ?>
