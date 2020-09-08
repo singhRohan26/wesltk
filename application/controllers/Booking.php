@@ -172,6 +172,18 @@ class Booking extends CI_Controller {
             return redirect('home/your-cart');
         }
     }
+    
+    public function cancelOrder($id){
+     $this->output->set_content_type('application/json');
+        $result = $this->home_model->cancelOrder($id);
+        if($result){
+          $this->output->set_output(json_encode(['result' => 1, 'url' => base_url('user/user-profile'), 'msg' => 'Order Cancelled!']));
+                return FALSE;  
+        }else{
+          $this->output->set_output(json_encode(['result' => -1, 'msg' => 'Something Went Wrong!..']));
+                return FALSE;  
+        }
+    }
 
 
 	

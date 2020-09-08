@@ -22,6 +22,7 @@ var Event = function () {
     this.clickCuisineWrapper();
     this.restaurantVegType();
     this.serachProduct();
+    this.cancelOrder();
 };
 
 this.commonForm = function(){
@@ -118,6 +119,29 @@ this.deleteItem = function(){
         var url = $(this).attr("href");
         swal({
             title: "Do you really want to Delete?",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+            closeOnClickOutside: false,
+        })
+        .then((willDelete) => {
+            if (willDelete) {
+                $.post(url, '', function (out) {
+                    if (out.result === 1) {
+                        window.location.href = out.url;
+                    }
+                });
+            }
+        });
+    });
+};
+    
+this.cancelOrder = function(){
+    $(document).on('click', '.delete-item', function(e){
+        e.preventDefault();
+        var url = $(this).attr("href");
+        swal({
+            title: "Do you really want to Cancel this order?",
             icon: "warning",
             buttons: true,
             dangerMode: true,

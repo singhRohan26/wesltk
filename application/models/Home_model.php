@@ -435,4 +435,10 @@ class Home_model extends CI_Model {
         $this->db->delete('address');
         return $this->db->affected_rows();
     }
+    
+    public function cancelOrder($id){
+        $this->db->where('unique_id',$id);
+        $this->db->update('order',['status'=>'Cancelled']);
+        return $this->db->affected_rows();
+    }
 }
