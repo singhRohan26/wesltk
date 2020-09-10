@@ -20,7 +20,7 @@
 									</div>
 							</li>
 								<li class="nav-item"><a class="nav-link" href="<?php echo base_url('home/products-shops') ?>">Shop <span></span> </a></li>
-								<li class="nav-item"><a class="nav-link" href="<?php echo base_url('home/your-cart') ?>"><span><img src="<?php echo base_url('public/front/') ?>img/cart2.svg" class="img-fluid" alt="cart"></span><span class="badge"><?php echo count($this->cart->contents()); ?></span> </a></li>
+								<li class="nav-item"><a class="nav-link" href="<?php echo base_url('home/your-cart') ?>"><span><img src="<?php echo base_url('public/front/') ?>img/cart2.svg" class="img-fluid" alt="cart"></span><span class="badge" id="count_cart_wrapper" data-url="<?php echo base_url('home/getCartWrapper');?>"><?php echo count($this->cart->contents()); ?></span> </a></li>
 
 								
                                 <?php if(!empty($this->session->userdata('login_id'))){  ?>

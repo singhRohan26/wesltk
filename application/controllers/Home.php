@@ -544,6 +544,13 @@ class Home extends CI_Controller {
     
     
 //Add to cart section
+
+        public function getCartWrapper(){
+            $this->output->set_content_type('application/json');
+            $content_wrapper = count($this->cart->contents());
+            $this->output->set_output(json_encode(['result' => 1, 'content_wrapper' => $content_wrapper]));
+            return FALSE;
+        }
        public function addToCart($product_id) {
             $this->output->set_content_type('application/json');
             $quantity = $this->input->post('qty');
@@ -558,11 +565,16 @@ class Home extends CI_Controller {
             if(!empty($this->cart->contents())) {
                 foreach($this->cart->contents() as $cart){
                     if(!empty($this->input->post('minus'))){
-                        $quantity = -1;
-                        $this->cart->update(['rowid' => $cart['rowid'], 'qty' => 0]);
-                        return false;
+                        if($cart['id'] == $product_id && $quantity == 0){
+                            $this->cart->update(['rowid' => $cart['rowid'], 'qty' => 0]);
+                            return false;
+                        }else if($cart['id'] == $product_id ){
+                            $quantity = -1;
+                        }
                     }else{
-                        $quantity = 1;
+                        if($cart['id'] == $product_id){
+                            $quantity = 1;
+                        }
                     }
                     if($cart['type'] != $type){
                         $this->output->set_output(json_encode(['result' => -1, 'msg' => "You cannot add two different type at a time",'url' => $_SERVER['HTTP_REFERER']]));

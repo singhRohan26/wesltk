@@ -264,10 +264,14 @@ this.addToCart = function(){
                     closeOnClickOutside: false,
                 }).then(function () {
                     $(qty_val).val(qty);
-                    // var url = $("#conent_cart_wrapper").data('url');
-                    // $.post(url, function(out){
-                    //     $("#conent_cart_wrapper").html(out.content_wrapper)
-                    // })
+                    var url = $("#conent_cart_wrapper").data('url');
+                    $.post(url, function(out){
+                        $("#conent_cart_wrapper").html(out.content_wrapper)
+                    })
+                    var url = $("#count_cart_wrapper").data('url');
+                    $.post(url, function(out){
+                        $("#count_cart_wrapper").html(out.content_wrapper)
+                    })
                     $(this_data).parents('.vaulebox').find('.minus_btn').css('display', 'block');
                     $(this_data).parents('.vaulebox').find('.plus_btn').css('display', 'block');
                     $(this_data).parents('.vaulebox').find('.qty').css('display', 'block');
@@ -285,6 +289,10 @@ this.addToCart = function(){
                     var url = $("#conent_cart_wrapper").data('url');
                     $.post(url, function(out){
                         $("#conent_cart_wrapper").html(out.content_wrapper)
+                    })
+                    var url = $("#count_cart_wrapper").data('url');
+                    $.post(url, function(out){
+                        $("#count_cart_wrapper").html(out.content_wrapper)
                     })
                 });
             }
@@ -310,6 +318,10 @@ this.addToCartBtn = function(){
                     $.post(url, function(out){
                         $("#conent_cart_wrapper").html(out.content_wrapper)
                     })
+                    var url = $("#count_cart_wrapper").data('url');
+                    $.post(url, function(out){
+                        $("#count_cart_wrapper").html(out.content_wrapper)
+                    })
                     $(this_data).parents('.vaulebox').find('.minus_btn').css('display', 'block');
                     $(this_data).parents('.vaulebox').find('.qty').css('display', 'block');
                     $(this_data).parents('.vaulebox').find('.productAdd').css('display', 'none');
@@ -325,6 +337,10 @@ this.addToCartBtn = function(){
                     var url = $("#conent_cart_wrapper").data('url');
                     $.post(url, function(out){
                         $("#conent_cart_wrapper").html(out.content_wrapper)
+                    })
+                    var url = $("#count_cart_wrapper").data('url');
+                    $.post(url, function(out){
+                        $("#count_cart_wrapper").html(out.content_wrapper)
                     })
                 });
             }
@@ -352,6 +368,10 @@ this.addToCartByNowBtn = function(){
                     $.post(url, function(out){
                         $("#conent_cart_wrapper").html(out.content_wrapper)
                     })
+                    var url = $("#count_cart_wrapper").data('url');
+                    $.post(url, function(out){
+                        $("#count_cart_wrapper").html(out.content_wrapper)
+                    })
                 });
             }
         })
@@ -377,6 +397,10 @@ $(document).on('click', '.plus_btn', function () {
                 $.post(url, function(out){
                     $("#conent_cart_wrapper").html(out.content_wrapper)
                 })
+                var url = $("#count_cart_wrapper").data('url');
+                $.post(url, function(out){
+                    $("#count_cart_wrapper").html(out.content_wrapper)
+                })
                 $(this_data).parents('.vaulebox').find('.minus_btn').css('display', 'block');
                 $(this_data).parents('.vaulebox').find('.plus_btn').css('display', 'block');
                 $(this_data).parents('.vaulebox').find('.qty').css('display', 'block');
@@ -393,6 +417,10 @@ $(document).on('click', '.plus_btn', function () {
                 var url = $("#conent_cart_wrapper").data('url');
                 $.post(url, function(out){
                     $("#conent_cart_wrapper").html(out.content_wrapper)
+                })
+                var url = $("#count_cart_wrapper").data('url');
+                $.post(url, function(out){
+                    $("#count_cart_wrapper").html(out.content_wrapper)
                 })
             });
         }
@@ -412,6 +440,10 @@ $(document).on('click', '.minus_btn', function () {
                 $.post(url, function(out){
                     $("#conent_cart_wrapper").html(out.content_wrapper)
                 })
+                var url = $("#count_cart_wrapper").data('url');
+                $.post(url, function(out){
+                    $("#count_cart_wrapper").html(out.content_wrapper)
+                })
                 if(qty1 == 0){
                     $(this_data).parents('.vaulebox').find('.minus_btn').css('display', 'none');
                     $(this_data).parents('.vaulebox').find('.plus_btn').css('display', 'none');
@@ -430,6 +462,10 @@ $(document).on('click', '.minus_btn', function () {
                 var url = $("#conent_cart_wrapper").data('url');
                 $.post(url, function(out){
                     $("#conent_cart_wrapper").html(out.content_wrapper)
+                })
+                var url = $("#count_cart_wrapper").data('url');
+                $.post(url, function(out){
+                    $("#count_cart_wrapper").html(out.content_wrapper)
                 })
             });
         }
