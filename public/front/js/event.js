@@ -23,6 +23,8 @@ var Event = function () {
     this.restaurantVegType();
     this.serachProduct();
     this.cancelOrder();
+    this.changeOrderStatus();
+    this.addRating();
 };
 
 this.commonForm = function(){
@@ -762,6 +764,42 @@ this.serachProduct = function (){
         })
     })
 }
+
+this.changeOrderStatus = function () { 
+        $(document).on('change', '.change-order-status', function (e) {
+            e.preventDefault(e);
+            $(".loader").show();
+            var url = $(this).attr('data-url');
+            var postdata = $(this).val();
+            $.post(url, {status: postdata}, function (out) {
+                 $(".loader").hide();
+                  if (out.result === 1) {
+                    swal( out.msg);
+                     window.setTimeout(function () {
+                        if (out.url) {
+                            window.location.href = out.url;
+                        }
+                    }, 2000);
+                }
+                if (out.result === -1) {
+                    swal( out.msg);
+                }
+            });
+        });
+    };
+    
+    this.addRating = function () {
+        $(document).on('click', '.rating_chk li a', function(){
+            var rating = $(this).data('rating');
+            $(this).parent('li').parent('ul').find('a').removeClass('filled_color');
+            $(".rating_chk li a").each(function(){
+                if($(this).data('rating') <= rating){
+                    $(this).addClass('filled_color');
+                    $("#rating").val(rating);
+                }
+            })
+        })
+    }
 this.__construct();
 };
 var obj = new Event();

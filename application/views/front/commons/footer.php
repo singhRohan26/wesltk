@@ -436,44 +436,54 @@
 	</div>
 	<!-- End of Popup Modal of  address code end-->
 
+<!--
  	<div class="modal  ReviewModals fade" id="review" role="dialog">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="closeBtn">
+
+         <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="closeBtn">
 					<a href="#0" data-dismiss="modal"><img src="<?php echo base_url('public/front/') ?>img/close.svg" class="img-fluid" alt="close"></a>
 				</div>
-				<div class="loginAll">
-					<div class="loginRight loginRightreview">
-						<form>
-							<div class="forgetIn">
-								<h2 class="">Write A Review</h2>
-							</div>
-							<div class="reviewForm">
-								
-								
-<!--
-								<div class="form-group">
-									<label class="labelel">Add Photos</label>
-									<input type="file" class="form-control inputcss" placeholder="Full Name">
-								</div>
--->
-								<div class="form-group">
-									<label class="labelel">Write a Review</label>
-									<textarea  class="form-control inputcss" placeholder="Message"></textarea>
-								</div>
-							</div>
-							<div class="socialIconsM socialIconsM33 socialIconsM2">
+                <form method="post" action="" id="common-form">
+                    <div id="error_msg"></div>
+                    <div class="modal-body boxs">
+                        <div class="profileHead profileHead2 boxs">
+                            <h3 class="headingSize">Review and Rating</h3>
+                        </div>
+                        <div class="otpInner">
+                            <div class="otpInput reviewAll boxs">
+                                <div class="reviewAllnew">
+                                    <ul class="rating_chk">
+                                        <li ><a data-rating="1" href="#" class="fas fa-star"></a></li>
+                                        <li><a data-rating="2" href="#" class="fas fa-star"></a></li>
+                                        <li><a href="#" data-rating="3" class="fas fa-star"></a></li>
+                                        <li><a href="#" class="fas fa-star" data-rating="4"></a></li>
+                                        <li><a href="#" class="fas fa-star"  data-rating="5"></a></li>
+                                    </ul>
+                                    
+                                </div>
+                                <div class="rateExp">
+                                    <input type="hidden" name="rating" id="rating" value="">
+                                    <p class="headingSize"> Rate Your Experience</p>
+                                </div><br>
+                                <div class="form-group">
+                                    <textarea class="form-control inputForm" rows="4" name="review" id="review" placeholder="What did you liked so much?"></textarea>
+                                </div>
+                                <div class="otpBtn">
+                                    <div class="socialIconsM socialIconsM33 socialIconsM2">
 								<ul>
-									<li class="Btn"><a href="#0" class="btncommon">Add Review</a></li>
+									<li class="Btn"><button class="btncommon" type="submit">Add Review</button></li>
 								</ul>
 							</div>
-
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
 	</div>    
+-->
 
 
 

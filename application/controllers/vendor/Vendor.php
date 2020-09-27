@@ -247,6 +247,138 @@ class Vendor extends CI_Controller {
 		}
     }
     
+    public function deliveryBoy(){
+        if(empty($this->is_login())){
+			redirect(base_url('vendor'));
+		}
+		$data['title'] = 'Delivery Boy';
+		$data['userData'] = $this->getLoginDetail();
+        $data['boys'] = $this->vendor_model->getDeliveryBoys($data['userData']['vendor_id']);
+		$this->load->view('vendor/commons/header', $data);
+		$this->load->view('vendor/commons/sidebar');
+		$this->load->view('vendor/delivery/list');
+		$this->load->view('vendor/commons/footer');
+        
+    }
+    
+    public function addDeliveryBoy($id = null){
+        if(empty($this->is_login())){
+			redirect(base_url('vendor'));
+		}
+		$data['title'] = 'Delivery Boy';
+		$data['userData'] = $this->getLoginDetail();
+        if(!empty($id)){
+			$data['delivery'] = $this->vendor_model->getDeliveryBoyById($id);
+			if(empty($data['delivery'])){
+				redirect(base_url('vendor/delivery-boy'));
+			}
+			
+		}
+		$this->load->view('vendor/commons/header', $data);
+		$this->load->view('vendor/commons/sidebar');
+		$this->load->view('vendor/delivery/add-boy');
+		$this->load->view('vendor/commons/footer');
+    }
+    
+    public function doAddDeliveryBoy(){
+       $this->output->set_content_type('application/json');
+		$this->form_validation->set_rules('name', 'Name', 'required');
+		$this->form_validation->set_rules('email', 'Email', 'required');
+		$this->form_validation->set_rules('phone', 'Phone', 'required');
+		$this->form_validation->set_rules('status', 'Status', 'required');
+		$this->form_validation->set_rules('pass', 'Password', 'required');
+		if ($this->form_validation->run() === FALSE) {
+			$this->output->set_output(json_encode(['result' => 0, 'errors' => $this->form_validation->error_array()]));
+			return FALSE;
+		}
+        $data['userData'] = $this->getLoginDetail();
+        $result = $this->vendor_model->doAddDeliveryBoy($data['userData']['vendor_id']);
+        if($result){
+           $this->output->set_output(json_encode(['result' => 1, 'url' => base_url('vendor/delivery-boy'), 'msg' => 'Delivery boy added']));
+			return FALSE; 
+        }else{
+            $this->output->set_output(json_encode(['result' => -1, 'msg' => 'No changes Were Made!']));
+			return FALSE;
+        }
+        
+    }
+    
+    public function doEditDeliveryBoy($id){
+      $this->output->set_content_type('application/json');
+		$this->form_validation->set_rules('name', 'Name', 'required');
+		$this->form_validation->set_rules('email', 'Email', 'required');
+		$this->form_validation->set_rules('phone', 'Phone', 'required');
+		$this->form_validation->set_rules('status', 'Status', 'required');
+		$this->form_validation->set_rules('pass', 'Password', 'required');
+		if ($this->form_validation->run() === FALSE) {
+			$this->output->set_output(json_encode(['result' => 0, 'errors' => $this->form_validation->error_array()]));
+			return FALSE;
+		}
+        
+        $result = $this->vendor_model->doEditDeliveryBoy($id);
+        if($result){
+           $this->output->set_output(json_encode(['result' => 1, 'url' => base_url('vendor/delivery-boy'), 'msg' => 'Delivery boy updated']));
+			return FALSE; 
+        }else{
+            $this->output->set_output(json_encode(['result' => -1, 'msg' => 'No changes Were Made!']));
+			return FALSE;
+        }  
+        
+    }
+    
+    public function deleteBoy($id){
+        $result = $this->vendor_model->deleteBoy($id);
+        if($result){
+        $this->output->set_output(json_encode(['result' => 1, 'url' => base_url('vendor/delivery-boy'), 'msg' => 'Delivery boy deleted']));
+			return FALSE; 
+        }else{
+            $this->output->set_output(json_encode(['result' => -1, 'msg' => 'No changes Were Made!']));
+			return FALSE;
+        }  
+    }
+    
+    public function orderLists(){
+        if(empty($this->is_login())){
+			redirect(base_url('vendor'));
+		}
+		$data['title'] = 'Order List';
+		$data['userData'] = $this->getLoginDetail();
+        $data['boys'] = $this->vendor_model->getDeliveryBoys($data['userData']['vendor_id']);
+        $data['orders'] = $this->vendor_model->orderListByVendorId($data['userData']['vendor_id']);
+		$this->load->view('vendor/commons/header', $data);
+		$this->load->view('vendor/commons/sidebar');
+		$this->load->view('vendor/order/order-list');
+		$this->load->view('vendor/commons/footer');
+        
+    }
+    
+    public function changeOrderStatus($unique_id){
+        $status = $this->input->post('status');
+        $result = $this->vendor_model->changeOrderStatus($unique_id,$status);
+        if ($result) {
+        $this->output->set_output(json_encode(['result' => 1, 'msg' => 'Status updated sucessfully!!', 'url' => base_url('vendor/order-lists')]));
+        return FALSE;
+    } else {
+            $this->output->set_output(json_encode(['result' => -1, 'msg' => 'Try Again']));
+            return FALSE;
+        }
+    }
+    
+    public function assignDeliveryBoy($unique_id){
+        $id = $this->input->post('delivery_id');
+        $result = $this->vendor_model->assignDeliveryBoy($unique_id,$id);
+        if ($result) {
+        $this->output->set_output(json_encode(['result' => 1, 'msg' => 'Status updated sucessfully!!', 'url' => base_url('vendor/order-lists')]));
+        return FALSE;
+    } else {
+            $this->output->set_output(json_encode(['result' => -1, 'msg' => 'Try Again']));
+            return FALSE;
+        }
+        
+    }
+    
+
+    
     
     
     

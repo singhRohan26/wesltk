@@ -38,7 +38,8 @@
 									<h2>My Orders</h2>
 								</div>
                         <?php
-                    if(!empty($orderLists)){  
+                    if(!empty($orderLists)){ 
+//                        print_r($orderLists);die;
                         foreach($orderLists as $order){  ?>
 						<div class="profileOrderDet">
 							<div class="orderFirst">
@@ -74,8 +75,56 @@
                                         
                                         <?php if($order['status'] == 'Completed'){   ?>
                                         <div class="addressHist">
-											<a href="#" data-toggle="modal" data-target="#review"><h2 class="text-warning">Add Review</h2></a>
-
+											<a href="#" data-toggle="modal" data-target="#review<?php echo $order['unique_id'] ?>"><h2 class="text-warning">Add Review</h2></a>
+                                            
+                                            
+        <div class="modal  ReviewModals fade" id="review<?php echo  $order['unique_id'] ?>" role="dialog">
+         <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="closeBtn">
+					<a href="#0" data-dismiss="modal"><img src="<?php echo base_url('public/front/') ?>img/close.svg" class="img-fluid" alt="close"></a>
+				</div>
+                <form method="post" action="<?php echo base_url('home/add-review') ?>" id="common-form">
+                    <div id="error_msg"></div>
+                    <div class="modal-body boxs">
+                        <div class="profileHead profileHead2 boxs">
+                            <h3 class="headingSize">Review and Rating</h3>
+                        </div>
+                        <div class="otpInner">
+                            <div class="otpInput reviewAll boxs">
+                                <div class="reviewAllnew">
+                                    <ul class="rating_chk">
+                                        <li ><a data-rating="1" href="#" class="fas fa-star"></a></li>
+                                        <li><a data-rating="2" href="#" class="fas fa-star"></a></li>
+                                        <li><a href="#" data-rating="3" class="fas fa-star"></a></li>
+                                        <li><a href="#" class="fas fa-star" data-rating="4"></a></li>
+                                        <li><a href="#" class="fas fa-star"  data-rating="5"></a></li>
+                                    </ul>
+                                    
+                                </div>
+                                <div class="rateExp">
+                                    <input type="hidden" name="rating" id="rating" value="">
+                                    <p class="headingSize"> Rate Your Experience</p>
+                                </div><br>
+                                <input type="hidden" name="vendor_id" id="vendor_id" value="<?php echo $order['vendor_id']; ?>">
+                                <div class="form-group">
+                                    <textarea class="form-control inputForm" rows="4" name="review" id="review" placeholder="What did you liked so much?"></textarea>
+                                </div>
+                                <div class="otpBtn">
+                                    
+                                    <div class="socialIconsM socialIconsM33 socialIconsM2">
+								<ul>
+									<li class="Btn"><button class="btncommon" type="submit">Add Review</button></li>
+								</ul>
+							</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+	</div>    
 										</div>
                                         <?php } ?>
 									</div>
@@ -97,6 +146,9 @@
                                         
 									</div>
                                     <?php } ?>
+                                    
+                                    
+                                    
 								</div>
 							</div>
 						</div>

@@ -441,4 +441,25 @@ class Home_model extends CI_Model {
         $this->db->update('order',['status'=>'Cancelled']);
         return $this->db->affected_rows();
     }
+    
+    public function addReviews($rating,$review,$vendor_id,$user_id){
+        $data = array(
+            'user_id' => $user_id,
+            'vendor_id' =>$vendor_id,
+            'rating' =>$rating,
+            'review' =>$review
+        );
+        
+        $this->db->insert('review',$data);
+        return $this->db->insert_id();
+    }
+    
+    public function getReviewsByVendorId($vendor_id){
+      $this->db->select('r.*,u.name,u.image');
+      $this->db->from('review r');
+      $this->db->join('users u','u.user_id=r.user_id');
+      $this->db->where('r.vendor_id',$vendor_id);
+      $sel = $this->db->get();
+      return $sel->result_array();
+    }
 }

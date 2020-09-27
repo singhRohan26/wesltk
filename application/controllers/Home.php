@@ -450,10 +450,12 @@ class Home extends CI_Controller {
     }
     public function review_listing($vendor_id){
         $this->output->set_content_type('application/json');
+//        echo $vendor_id;die;
         $veg_type = $this->input->post('veg_type');
         $cat_type = $this->input->post('cat_type');
         $data['reviews'] = "true";
-        // $data['products'] = $this->home_model->getProducts($veg_type, $cat_type, $vendor_id);
+        $data['allreviews'] = $this->home_model->getReviewsByVendorId($vendor_id);
+//        print_r($data['allreviews']);die;
         $wrapper = $this->load->view('front/wrapper/restaurant-reviews', $data, true);
         $this->output->set_output(json_encode(['result' => 1, 'wrapper' => $wrapper]));
         return FALSE;
@@ -614,6 +616,8 @@ class Home extends CI_Controller {
         $this->output->set_output(json_encode(['result' => 1, 'content_wrapper' => $content_wrapper]));
         return FALSE;
     }
+    
+    
     
     
 	

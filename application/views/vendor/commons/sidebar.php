@@ -60,7 +60,21 @@
                             <?php
                                 }
                             ?>
-                                                  
+                             
+                            <li class="<?php if($title == "Orders"){ echo "mm-active";}?>">
+                                <a href="<?php echo base_url('vendor/order-lists') ?>" class=" waves-effect <?php if($title == "Orders"){ echo "active";}?>">
+                                    <i class="fas fa-images"></i>
+                                    <span>Orders</span>
+                                </a>
+                            </li>
+                            
+                            <li class="<?php if($title == "Delivery Boy"){ echo "mm-active";}?>">
+                                <a href="<?php echo base_url('vendor/delivery-boy') ?>" class=" waves-effect <?php if($title == "Delivery Boy"){ echo "active";}?>">
+                                    <i class="fas fa-users"></i>
+                                    <span>Add delivery boy</span>
+                                </a>
+                            </li>
+                            
                         </ul>
 
                     </div>

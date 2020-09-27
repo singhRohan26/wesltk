@@ -78,6 +78,7 @@ $route['home/wesltk-offers'] = 'home/offers';
 $route['home/why-us'] = 'home/whyus';
 $route['home/cancellation-policy'] = 'home/cancellation';
 $route['home/terms-and-conditions'] = 'home/terms';
+$route['home/add-review'] = 'booking/addReviews';
 
 
 ///   User Controlller ////
@@ -103,7 +104,17 @@ $route['vendor/change-password'] = 'vendor/vendor/changePassword';
 $route['vendor/doChangePass'] = 'vendor/vendor/doChangePass';
 $route['vendor/edit-profile'] = 'vendor/vendor/editProfile';
 $route['vendor/doChangeProfile/(:any)'] = 'vendor/vendor/doChangeProfile/$1';
+$route['vendor/order-lists'] = 'vendor/vendor/orderLists';
+$route['vendor/changeOrderStatus/(:any)'] = 'vendor/vendor/changeOrderStatus/$1';
+$route['vendor/assignDeliveryBoy/(:any)'] = 'vendor/vendor/assignDeliveryBoy/$1';
 
+///   Delivery boy(vendor panel) ////
+$route['vendor/delivery-boy'] = 'vendor/vendor/deliveryBoy';
+$route['vendor/add-delivery-boy'] = 'vendor/vendor/addDeliveryBoy';
+$route['vendor/doAddDeliveryBoy'] = 'vendor/vendor/doAddDeliveryBoy';
+$route['vendor/edit-delivery-boy/(:any)'] = 'vendor/vendor/addDeliveryBoy/$1';
+$route['vendor/doEditDeliveryBoy/(:any)'] = 'vendor/vendor/doEditDeliveryBoy/$1';
+$route['vendor/delete-boy/(:any)'] = 'vendor/vendor/deleteBoy/$1';
 
 ///   Product Controlller ////
 $route['vendor/product-lists'] = 'vendor/product/index';

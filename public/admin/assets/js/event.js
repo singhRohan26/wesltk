@@ -8,6 +8,8 @@ var Event = function () {
     this.changeStatus();
     this.dashboardFilter();
     this.sendNotificationSubmit();
+    this.changeOrderStatus();
+    this.changeServiceProvider();
   };
     
     this.commonForm = function(){
@@ -219,6 +221,49 @@ this.dashboardFilter = function(){
                     $(".error_msg").html(message + out.msg);
                     $(".error_msg").fadeOut(2000);
                     $('#notificationModal').modal('hide');
+                }
+            });
+        });
+    };
+    
+    this.changeOrderStatus = function () { 
+        $(document).on('change', '#order_status', function (e) {
+            e.preventDefault(e);
+//            $(".loader").show();
+            var url = $(this).attr('data-url');
+            var postdata = $(this).val();
+//            alert(postdata);
+            $.post(url, {status: postdata}, function (out) {
+                 $(".loader").hide();
+                  if (out.result === 1) {
+                    swal(out.msg);
+                     window.setTimeout(function () {
+                        if (out.url) {
+                            window.location.href = out.url;
+                        }
+                    }, 2000);
+                }
+                if (out.result === -1) {
+                    swal( out.msg);
+                }
+            });
+        });
+    };
+    
+        this.changeServiceProvider = function () { 
+        $(document).on('change', '#deivery', function (e) {
+            e.preventDefault(e);
+//            $(".loader").show();
+            var url = $(this).attr('data-url');
+            var postdata = $(this).val();
+//            alert(postdata);
+            $.post(url, {delivery_id: postdata}, function (out) {
+                $(".loader").hide();
+                  if (out.result === 1) {
+                    swal( out.msg);
+                }
+                if (out.result === -1) {
+                    swal( out.msg);
                 }
             });
         });

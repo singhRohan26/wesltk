@@ -184,6 +184,29 @@ class Booking extends CI_Controller {
                 return FALSE;  
         }
     }
+    
+    public function addReviews(){
+     $this->output->set_content_type('application/json');
+        $this->form_validation->set_rules('rating', 'Rating', 'required');
+        $this->form_validation->set_rules('review', 'Review', 'required');
+        if ($this->form_validation->run() === FALSE) {
+            $this->output->set_output(json_encode(['result' => 0, 'errors' => $this->form_validation->error_array()]));
+            return FALSE;
+        } 
+        $data['userData'] = $this->getLoginDetail();
+        $rating = $this->input->post('rating');
+        $review = $this->input->post('review');
+        $vendor_id = $this->input->post('vendor_id');
+        
+        $result = $this->home_model->addReviews($rating,$review,$vendor_id,$data['userData']['user_id']);
+        if($result){
+         $this->output->set_output(json_encode(['result' => 1, 'url' => base_url('user/user-profile'), 'msg' => 'Review Added']));
+                return FALSE;    
+        }else{
+           $this->output->set_output(json_encode(['result' => -1, 'msg' => 'Something Went Wrong!..']));
+                return FALSE;   
+        }
+    }
 
 
 	
