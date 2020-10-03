@@ -3018,3 +3018,7 @@ float: unset;
     cursor: pointer;
     font-family: var(--monserratRegular);
 }
+body #formModals {
+    overflow-x: hidden;
+    overflow-y: auto;
+}

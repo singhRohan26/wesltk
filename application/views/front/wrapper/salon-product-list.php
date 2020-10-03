@@ -26,7 +26,7 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="closeBtn">
-					<a href="#0" data-dismiss="modal"><img src="img/close.svg" class="img-fluid" alt="close"></a>
+					<a href="#0" data-dismiss="modal"><img src="<?php echo base_url('public/front/');?>img/close.svg" class="img-fluid" alt="close"></a>
 				</div>
 				<div class="bookingModal">
 					<div class="forgetIn forgetInbook">
@@ -37,7 +37,7 @@
 						<h2 class="price">$<?php echo $product['price'];?></h2>
 						<div class="socialIconsM  social">
 							<ul>
-								<li class="Btn"><a href="#0" class="btncommon" data-dismiss="modal" data-toggle="modal" data-target="<?php if(!empty($this->session->userdata('login_id'))){ echo "#formModals"; } else{ echo "#loginModal"; }?>" onclick="$('#product_id').val(<?php echo $product['id'];?>)">Book Now</a></li>
+								<li class="Btn"><a href="javascript:;" class="btncommon" data-dismiss="modal" data-toggle="modal" data-target="<?php if(!empty($this->session->userdata('login_id'))){ echo "#formModals"; } else{ echo "#loginModal"; }?>" onclick="$('#product_id').val(<?php echo $product['id'];?>);$('body').css('overflow', 'hidden')">Book Now</a></li>
 							</ul>
 						</div>
 					</div>
@@ -114,3 +114,8 @@
 	<?php
 		}
 	?>
+<script type="text/javascript">
+	$(document).on('click', '.btncommon', function(){
+		$('body').addClass('modal-open')
+	})
+</script>
