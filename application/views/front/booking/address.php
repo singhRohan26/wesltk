@@ -225,7 +225,7 @@
 <!--							<a href="">Continue</a>-->
                             <div class="socialIconsM socialIconsM33 socialIconsM2">
 								<ul>
-									<li class="Btn"><button type="submit" class="btncommon prcd_buy" data-url="<?php echo base_url('booking/order');?>">Submit</button></li>
+									<li class="Btn"><button type="submit" class="btncommon prcd_buy prcd_buy_ck" data-url="<?php echo base_url('booking/order');?>">Submit</button></li>
 								</ul>
 							</div>
 						</div>

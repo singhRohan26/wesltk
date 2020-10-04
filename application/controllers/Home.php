@@ -209,27 +209,52 @@ class Home extends CI_Controller {
             $this->output->set_output(json_encode(['result' => 0, 'errors' => $this->form_validation->error_array()]));
             return FALSE;
         }
-        $unique_id = $this->uniqueId();
-        $user_id = $this->getLoginDetail()['user_id'];
-        $product_detail = $this->home_model->getLoginDetailBySalonProductId($this->input->post('product_id'));
-        $vendor_id = $product_detail['vendor_id'];
-        $total = $product_detail['price'];
-        $data[] = array(
-            'product_id' => $this->input->post('product_id'),
-            'qty' => 1,
-            'price'=>$total,
-            'unique_id'=>$unique_id
-            );
-        $result = $this->home_model->doBookService();
-        $this->home_model->order($unique_id,$vendor_id,$user_id,$total, $result);
-        $this->home_model->order_details($data);
-        if($result){
-            $this->output->set_output(json_encode(['result' => 1, 'url' => $_SERVER['HTTP_REFERER'], 'msg' => 'Service Booked Successfully!..', 'swal' => 'true']));
-                return FALSE;
-        }else{
-            $this->output->set_output(json_encode(['result' => -1, 'msg' => 'Something Went Wrong!..']));
-                return FALSE;
+        
+        $product_id = $this->input->post('product_id');
+        $this->session->set_flashdata('product_ses', $product_id);
+        $data = array(
+            'name' =>$this->security->xss_clean($this->input->post('full_name_ser')),
+            'email' =>$this->security->xss_clean($this->input->post('email_sir')),
+            'phone' =>$this->security->xss_clean($this->input->post('phone_no_ser')),
+            'date' =>$this->security->xss_clean($this->input->post('date_ser')),
+            'time' =>$this->security->xss_clean($this->input->post('time_ser')),
+        );
+        $this->session->set_flashdata('data_ses', $data);
+        $this->output->set_output(json_encode(['result' => 1, 'url' => base_url('catring-checkout'), 'msg' => 'Service Booked Successfully!..']));
+        return FALSE;
+    }
+    public function doAddbookService(){
+        $this->output->set_content_type('application/json');
+        $this->form_validation->set_rules('full_name_ser', 'Name', 'required');
+        $this->form_validation->set_rules('email_sir', ' Email', 'required|valid_email');
+        $this->form_validation->set_rules('phone_no_ser', ' Phone Number', 'required');
+        $this->form_validation->set_rules('date_ser', 'Date', 'required');
+        $this->form_validation->set_rules('time_ser', 'Time', 'required');
+        $this->form_validation->set_rules('address', 'address', 'required');
+        $this->form_validation->set_rules('pincode', 'pin code', 'required');
+        $this->form_validation->set_rules('city', 'city', 'required');
+        $this->form_validation->set_rules('state', 'state', 'required');
+        $this->form_validation->set_rules('country', 'country', 'required');
+        if ($this->form_validation->run() === FALSE) {
+            $this->output->set_output(json_encode(['result' => 0, 'errors' => $this->form_validation->error_array()]));
+            return FALSE;
         }
+        $data = array(
+            'name' =>$this->security->xss_clean($this->input->post('full_name_ser')),
+            'email' =>$this->security->xss_clean($this->input->post('email_sir')),
+            'phone' =>$this->security->xss_clean($this->input->post('phone_no_ser')),
+            'date' =>$this->security->xss_clean($this->input->post('date_ser')),
+            'time' =>$this->security->xss_clean($this->input->post('time_ser')),
+            'address' =>$this->security->xss_clean($this->input->post('address')),
+            'pincode' =>$this->security->xss_clean($this->input->post('pincode')),
+            'city' =>$this->security->xss_clean($this->input->post('city')),
+            'state' =>$this->security->xss_clean($this->input->post('state')),
+            'country' =>$this->security->xss_clean($this->input->post('country'))
+        );
+        $this->session->set_flashdata('data_ses', $data);
+        $this->session->set_flashdata('product_ses', $this->security->xss_clean($this->input->post('p_id')));
+        // $this->output->set_output(json_encode(['result' => 1, 'msg' => 'Data Saved Successfully!..']));
+        // return FALSE;
     }
     public function bookCatringService(){
         $this->output->set_content_type('application/json');

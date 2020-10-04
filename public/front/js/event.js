@@ -55,9 +55,11 @@ this.commonForm = function(){
             $(".error_msg").removeClass('alert-danger alert-danger admin_chk_dng').addClass('alert alert-success alert-dismissable admin_chk_suc').show();
             $(".error_msg").html(message + out.msg);
             $(".error_msg").fadeOut(2000);
-            window.setTimeout(function () {
-                window.location.href = out.url;
-            }, 1000);
+            if(out.url){
+                window.setTimeout(function () {
+                    window.location.href = out.url;
+                }, 1000);
+            }
         }
           
           if (out.result === 4) {
@@ -487,7 +489,7 @@ this.cartWrappper = function (){
 
 
 this.orderConfirm = function (){
-    $(document).on('click', '.prcd_buy', function(e){
+    $(document).on('click', '.prcd_buy_ck', function(e){
         e.preventDefault();
         var url = $(this).data('url');
         var address_id = $("input[name='address_id']:checked").val();

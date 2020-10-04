@@ -552,6 +552,10 @@ function initMap() {
             form$.get(0).submit();
         }
     }
+    $(document).on('click', '.sub_dta', function(){
+    	$("#common-form").submit();
+    	$("#stripe_form").submit();
+    })
     
   	 $(document).ready(function () {
 	        $('#stripe_form').validate({ // initialize the plugin

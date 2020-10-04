@@ -41,9 +41,17 @@ class Booking extends CI_Controller {
         $this->load->view('front/commons/footer');
      }
     public function catring_checkout(){
+        if(empty($this->session->flashdata('data_ses')) || empty($this->session->flashdata('product_ses'))){
+            redirect(base_url());
+        }else{
+            $this->session->set_flashdata('data_ses', $this->session->flashdata('data_ses'));
+            $this->session->set_flashdata('product_ses', $this->session->flashdata('product_ses'));
+            $data['fill_data'] = $this->session->flashdata('data_ses');
+        }
         $data['title'] = 'Checkout';
         $data['userData'] = $this->getLoginDetail();
-        $user_id = $data['userData']['user_id'];
+        $user_id = $data['userData']['user_id']; 
+        $data['product'] = $this->home_model->getSalonProductByProductId($this->session->flashdata('product_ses'), 'salon');
         $data['address'] = $this->home_model->getAddressByUserId($user_id);
         $this->load->view('front/commons/header',$data);
         $this->load->view('front/commons/navbar');

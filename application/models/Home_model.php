@@ -390,18 +390,7 @@ class Home_model extends CI_Model {
         return $this->db->insert_id();
     }
 
-    public function doBookService(){
-        $data = array(
-        'name' =>$this->security->xss_clean($this->input->post('full_name_ser')),
-        'email' =>$this->security->xss_clean($this->input->post('email_sir')),
-        'phone' =>$this->security->xss_clean($this->input->post('phone_no_ser')),
-        'date' =>$this->security->xss_clean($this->input->post('date_ser')),
-        'time' =>$this->security->xss_clean($this->input->post('time_ser')),
-        );
-        
-        $this->db->insert('order_address',$data);
-        return $this->db->insert_id();
-    }
+   
     public function doAddOrderAddress($data){
         $this->db->insert('order_address',$data);
         return $this->db->insert_id();
