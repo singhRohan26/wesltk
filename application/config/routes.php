@@ -91,6 +91,7 @@ $route['home/reset-password'] = 'user/resetPassword';
 
 // Booking controller//
 $route['checkout'] = 'booking/checkout';
+$route['catring-checkout'] = 'booking/catring_checkout';
 $route['home/confirmation'] = 'booking/orderConfirmation';
 $route['home/remove-cart/(:any)'] = 'booking/removeCart/$1';
 

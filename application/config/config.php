@@ -23,6 +23,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
+
+$config['stripe_key'] = 'pk_test_51HXiGCEcc3jErBvvTG3R9U8if1fXKYQnV8V2RtN8VXw2n0la12pkxKNCybRtzTG93ysTtkXiRxTFcIsJqNP4IJdl00H4MtxJ5N';
+$config['stripe_secret'] = 'sk_test_51HXiGCEcc3jErBvvbiblpF2vkHw4x7LuJt7JApWjhyxho90vrsfv4SS5rOLxx9fvqn59TWkYSC0mtWeyXZxQ6yiX00BVqxlZnO';
 $config['base_url'] = 'http://localhost/wesltk/';
 
 /*

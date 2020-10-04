@@ -40,7 +40,69 @@ class Booking extends CI_Controller {
         
         $this->load->view('front/commons/footer');
      }
-    
+    public function catring_checkout(){
+        $data['title'] = 'Checkout';
+        $data['userData'] = $this->getLoginDetail();
+        $user_id = $data['userData']['user_id'];
+        $data['address'] = $this->home_model->getAddressByUserId($user_id);
+        $this->load->view('front/commons/header',$data);
+        $this->load->view('front/commons/navbar');
+        if(empty($data['userData'])){
+            $this->load->view('front/booking/catring_checkout');    
+        }else{
+            $this->load->view('front/booking/catring_address');   
+        }
+        
+        $this->load->view('front/commons/footer');
+     }
+    public function test(){
+         require_once('application/libraries/stripe-php/init.php');
+        \Stripe\Stripe::setApiKey($this->config->item('stripe_secret'));
+         try {
+            $charge = \Stripe\Charge::create ([
+                            "amount" => 100 * 100,
+                            "currency" => "usd",
+                            "source" => $this->input->post('stripeToken'),
+                            "description" => "Test payment from itsolutionstuff.com." 
+                    ]);
+            $chargeJson = $charge->jsonSerialize();
+            } catch(Stripe_CardError $e) {
+            echo " it's a decline, Stripe_CardError will be caught";die;
+              $body = $e->getJsonBody();
+              $err  = $body['error'];
+            
+              print('Status is:' . $e->getHttpStatus() . "\n");
+              print('Type is:' . $err['type'] . "\n");
+              print('Code is:' . $err['code'] . "\n");
+              // param is '' in this case
+              print('Param is:' . $err['param'] . "\n");
+              print('Message is:' . $err['message'] . "\n");
+            } catch (Stripe_InvalidRequestError $e) {
+                
+              echo " Invalid parameters were supplied to Stripe's API";die;
+            } catch (Stripe_AuthenticationError $e) {
+              // Authentication with Stripe's API failed
+              echo " (maybe you changed API keys recently)";die;
+            } catch (Stripe_ApiConnectionError $e) {
+              echo "Network communication with Stripe failed";die;
+            } catch (Stripe_Error $e) {
+              echo " Display a very generic error to the user, and maybe send";die;
+              // yourself an email
+            } catch (Exception $e) {
+              echo "Something else happened, completely unrelated to Stripe";die;
+            }
+            
+                
+            //  if($chargeJson)
+            //  {
+            //      // $txn_id = $chargeJson['balance_transaction'];
+            //      // $this->home_model->updatePersonDetail($this->session->userdata('user_id'));
+            //      // redirect(base_url('home/result'));
+            //  }else{
+            //     $this->session->unset_userdata('stripe_payment');
+            //     redirect('home/paymentFailure/');
+            // }
+    }
      private function is_login(){
 		return $this->session->userdata('login_id');
 	}
@@ -118,6 +180,7 @@ class Booking extends CI_Controller {
         }
         
         $address_id = $this->input->post('address_id');
+        $address_data = $this->home_model->getAddressById($address_id);
         $payment_type = $this->input->post('card_type');
         $unique_id = $this->uniqueId();
         $user_id = $this->getLoginDetail()['user_id'];
@@ -134,7 +197,8 @@ class Booking extends CI_Controller {
             $vendor_id = $cart['vendor_id'];
         }
         //insert-order-details
-        $result = $this->home_model->order($unique_id,$vendor_id,$user_id,$total);
+        $address_id = $this->home_model->doAddOrderAddress($address_data);
+        $result = $this->home_model->order($unique_id,$vendor_id,$user_id,$total, $address_id);
         $this->home_model->order_details($data);
         if($result){
             $this->output->set_output(json_encode(['result' => 1, 'url' => base_url('home/confirmation'), 'msg' => 'Order placed Successfully!..']));

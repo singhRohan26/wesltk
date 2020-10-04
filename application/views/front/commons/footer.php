@@ -535,6 +535,66 @@ function initMap() {
     <script defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDIYtKPyUvUy4ouNk-bA444gwfQHVxiMF0&callback=initMap">
     </script>
+    <script src="https://js.stripe.com/v2/"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+    <script>
+// Set your publishable key
+     Stripe.setPublishableKey('pk_test_51HXiGCEcc3jErBvvTG3R9U8if1fXKYQnV8V2RtN8VXw2n0la12pkxKNCybRtzTG93ysTtkXiRxTFcIsJqNP4IJdl00H4MtxJ5N');
+    // Stripe.setPublishableKey('pk_test_9L1k4zZVwLGPryDSCyGRSv0m00Z3hroU7f');
+// Callback to handle the response from stripe
+    function stripeResponseHandler(status, response) {
+        if (response.error) {
+            $(".payment-status").html('<p style="color:red;">' + response.error.message + '</p>');
+        } else {
+            var form$ = $('#stripe_form');
+            var token = response.id;
+            form$.append("<input type='hidden' name='stripeToken' value='" + token + "' />");
+            form$.get(0).submit();
+        }
+    }
+    
+  	 $(document).ready(function () {
+	        $('#stripe_form').validate({ // initialize the plugin
+	            rules: {
+	                holder_name: {
+	                    required: true,
+	                    minlength: 3
+	                },
+	                acc: {
+	                    required: true,
+	                    minlength: 16
+	                    
+	                },
+	                exp_date: {
+	                    required: true,
+	                    minlength: 4
+	                },
+	                exp_month: {
+	                    required: true,
+	                    minlength: 2
+	                },
+	                cvv: {
+	                    required: true,
+	                    minlength: 3
+	                }
+	            }
+	        });
+	    });
+    // On form submit
+    $(document).on('submit', '#stripe_form', function (evt) {
+        evt.preventDefault();
+        
+        Stripe.createToken({
+            number: $('#acc').val(),
+            name: $('#holder_name').val(),
+            exp_year: $('#exp_date').val(),
+            exp_month: $('#exp_month').val(),
+            cvc: $('#cvv').val()
+        }, stripeResponseHandler);
+
+        return false;
+    });
+</script>
 </body>
 
 </html>

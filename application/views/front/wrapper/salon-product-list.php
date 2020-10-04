@@ -37,7 +37,7 @@
 						<h2 class="price">$<?php echo $product['price'];?></h2>
 						<div class="socialIconsM  social">
 							<ul>
-								<li class="Btn"><a href="javascript:;" class="btncommon" data-dismiss="modal" data-toggle="modal" data-target="<?php if(!empty($this->session->userdata('login_id'))){ echo "#formModals"; } else{ echo "#loginModal"; }?>" onclick="$('#product_id').val(<?php echo $product['id'];?>);$('body').css('overflow', 'hidden')">Book Now</a></li>
+								<li class="Btn"><a href="javascript:;" class="btncommon" data-dismiss="modal" data-toggle="modal" data-target="<?php if(!empty($this->session->userdata('login_id'))){ echo "#formModals"; } else{ echo "#loginModal"; }?>" onclick="$('#product_id').val(<?php echo $product['id'];?>);">Book Now</a></li>
 							</ul>
 						</div>
 					</div>

@@ -15,8 +15,11 @@
 							<h2 class="mainHeading">Delivery Address</h2>
 							<div class="Adresses">
                                 
-                                <?php foreach($address as $add){  ?>
-								<div class="AddressLeft">
+                                <?php 
+                                	$sr = 1;
+                                	foreach($address as $add){  
+                            	?>
+								<div class="AddressLeft <?php if($sr % 2 == 0){ echo "AddressRight";}?>">
 									<div class="addressUp">
 										<div class="editProp">
 											<h2><?php echo $add['name']; ?></h2>
@@ -32,7 +35,7 @@
 									</ul>
 								</div>
                                 
-                                <div class="modal  ReviewModals fade" id="reviewModals<?php echo $add['id'] ?>" role="dialog">
+                      	          <div class="modal  ReviewModals fade" id="reviewModals<?php echo $add['id'] ?>" role="dialog">
 		<div class="modal-dialog">
 			<div class="modal-content" id="address_wrapper">
 				<div class="closeBtn">
@@ -99,7 +102,7 @@
 	</div>
                                 
                                 
-                                <?php } ?>
+                                <?php $sr++; } ?>
 								<div class="AddressLeft AddressRight">
 									<div class="addressUp">
 										<div class="editProp">

@@ -335,6 +335,12 @@ class Home_model extends CI_Model {
         $sel = $this->db->get_where('address',['user_id'=>$user_id]);
         return $sel->result_array();
     }
+      
+    public function getAddressById($address_id){
+        $this->db->select('name, address, pincode, city_id, state_id, country_id, type, phone');
+        $query = $this->db->get_where('address', ['id' => $address_id]);
+        return $query->row_array();
+    }
     
     public function order($unique_id,$vendor_id,$user_id,$total,$address_id =  null){
         if(empty($address_id)){
@@ -396,6 +402,10 @@ class Home_model extends CI_Model {
         $this->db->insert('order_address',$data);
         return $this->db->insert_id();
     }
+    public function doAddOrderAddress($data){
+        $this->db->insert('order_address',$data);
+        return $this->db->insert_id();
+    }
     public function doBookCatringService($user_id){
         $data = array(
             'user_id' => $user_id,
@@ -413,7 +423,7 @@ class Home_model extends CI_Model {
         $this->db->select('o.*,u.name as user_name,a.*');
         $this->db->from('order o');
         $this->db->join('users u','u.user_id=o.user_id');
-        $this->db->join('address a','a.id=o.address_id');
+        $this->db->join('order_address a','a.id=o.address_id');
         $this->db->where('o.user_id',$user_id);
         $sel = $this->db->get();
         return $sel->result_array();
